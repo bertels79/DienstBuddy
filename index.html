@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b2d5c" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="DienstBuddy" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <title>DienstBuddy</title>
+  <style>
+    :root{
+      --bg:#f5f7fb; --card:#fff; --text:#172033; --muted:#6b7280;
+      --primary:#2563eb; --primary2:#1d4ed8; --border:#e5e7eb; --danger:#dc2626;
+      --good:#15803d;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:980px;margin:auto;padding:18px}
+    h1{margin:0 0 6px;font-size:28px}
+    h2{font-size:18px;margin:0 0 14px}
+    p{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:0 3px 16px rgba(0,0,0,.04)}
+    .stat strong{display:block;font-size:24px;margin-top:4px}
+    .muted{color:var(--muted);font-size:13px}
+    .row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+    label{font-size:13px;color:var(--muted);display:block;margin-bottom:5px}
+    input,button,textarea{font:inherit}
+    input,textarea{width:100%;border:1px solid var(--border);border-radius:10px;padding:10px;background:#fff}
+    button{border:0;border-radius:10px;padding:10px 14px;cursor:pointer;background:var(--primary);color:white;font-weight:650}
+    button:hover{background:var(--primary2)}
+    button.secondary{background:#eef2ff;color:#1e3a8a}
+    button.danger{background:#fee2e2;color:#991b1b}
+    .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    table{width:100%;border-collapse:collapse;margin-top:10px}
+    th,td{padding:10px 8px;border-bottom:1px solid var(--border);text-align:left;font-size:14px}
+    th{color:var(--muted);font-weight:600}
+    .right{text-align:right}
+    .ocrbox{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    #preview{max-width:100%;max-height:320px;border-radius:12px;display:none}
+    #status{min-height:22px;color:var(--muted);font-size:14px}
+    .pill{display:inline-block;padding:4px 8px;border-radius:999px;background:#ecfdf5;color:var(--good);font-size:12px}
+    @media(max-width:760px){
+      .grid{grid-template-columns:1fr}
+      .row{grid-template-columns:1fr 1fr}
+      .ocrbox{grid-template-columns:1fr}
+      table{display:block;overflow:auto}
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>DienstBuddy</h1>
+  <div class="muted">Deine Schichten. Deine Stunden. Dein Geld.</div>
+
+  
+  <div class="card" id="installCard">
+    <h2>DienstBuddy installieren</h2>
+    <p id="installHint">Du kannst DienstBuddy wie eine normale App auf deinem Startbildschirm installieren.</p>
+    <div class="actions">
+      <button id="installBtn" style="display:none">App installieren</button>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card stat"><span class="muted">Gesamtstunden</span><strong id="totalHours">0,00 h</strong></div>
+    <div class="card stat"><span class="muted">Bruttolohn</span><strong id="totalPay">0,00 €</strong></div>
+    <div class="card stat">
+      <label for="wage">Stundenlohn (€)</label>
+      <input id="wage" type="number" min="0" step="0.01" value="13.90">
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Schicht hinzufügen</h2>
+    <div class="row">
+      <div><label>Datum</label><input id="date" type="date"></div>
+      <div><label>Beginn</label><input id="start" type="time"></div>
+      <div><label>Ende</label><input id="end" type="time"></div>
+      <div><label>Pause (Min.)</label><input id="breakMin" type="number" min="0" step="5" value="0"></div>
+      <div><label>Notiz</label><input id="note" type="text" placeholder="z. B. Frühdienst"></div>
+    </div>
+    <div class="actions">
+      <button id="addBtn">Schicht speichern</button>
+      <button class="secondary" id="demoBtn">Beispiel einfügen</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Schichten</h2>
+    <div style="overflow:auto">
+      <table>
+        <thead>
+          <tr><th>Datum</th><th>Zeit</th><th>Pause</th><th>Stunden</th><th>Lohn</th><th>Notiz</th><th></th></tr>
+        </thead>
+        <tbody id="shiftRows"></tbody>
+      </table>
+    </div>
+    <div class="actions">
+      <button class="secondary" id="exportBtn">CSV exportieren</button>
+      <button class="danger" id="clearBtn">Alles löschen</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Dienstplan aus Foto übernehmen <span class="pill">ohne API-Key</span></h2>
+    <p>Foto auswählen. Die Texterkennung läuft direkt im Browser. Danach werden erkannte Zeilen mit Datum und Uhrzeiten vorgeschlagen.</p>
+    <div class="ocrbox">
+      <div>
+        <input id="photo" type="file" accept="image/*" capture="environment">
+        <div style="height:10px"></div>
+        <img id="preview" alt="Vorschau">
+      </div>
+      <div>
+        <div id="status">Noch kein Foto ausgewählt.</div>
+        <textarea id="ocrText" rows="10" placeholder="Erkannter Text erscheint hier..."></textarea>
+        <div class="actions">
+          <button id="parseBtn">Text in Schichten umwandeln</button>
+        </div>
+      </div>
+    </div>
+    <p class="muted">Hinweis: Je klarer das Foto und je einfacher der Dienstplan, desto besser die Erkennung. Erkannte Zeiten bitte kurz kontrollieren.</p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+let shifts = JSON.parse(localStorage.getItem('dienstplan_shifts') || '[]');
+$('wage').value = localStorage.getItem('dienstplan_wage') || '13.90';
+
+function save(){
+  localStorage.setItem('dienstplan_shifts', JSON.stringify(shifts));
+  localStorage.setItem('dienstplan_wage', $('wage').value || '0');
+}
+function money(v){ return new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(v); }
+function hoursFor(s){
+  const [sh,sm]=s.start.split(':').map(Number), [eh,em]=s.end.split(':').map(Number);
+  let mins=(eh*60+em)-(sh*60+sm);
+  if(mins<0) mins += 24*60;
+  mins -= Number(s.breakMin||0);
+  return Math.max(0, mins/60);
+}
+function render(){
+  const wage=Number($('wage').value||0);
+  const tbody=$('shiftRows'); tbody.innerHTML='';
+  let total=0;
+  [...shifts].sort((a,b)=>a.date.localeCompare(b.date)).forEach((s)=>{
+    const h=hoursFor(s); total+=h;
+    const tr=document.createElement('tr');
+    const d=new Date(s.date+'T12:00:00');
+    tr.innerHTML=`<td>${d.toLocaleDateString('de-DE')}</td>
+      <td>${s.start}–${s.end}</td><td>${s.breakMin||0} Min.</td>
+      <td>${h.toFixed(2).replace('.',',')}</td><td>${money(h*wage)}</td>
+      <td>${escapeHtml(s.note||'')}</td>
+      <td><button class="danger" data-id="${s.id}">Löschen</button></td>`;
+    tbody.appendChild(tr);
+  });
+  $('totalHours').textContent=total.toFixed(2).replace('.',',')+' h';
+  $('totalPay').textContent=money(total*wage);
+  tbody.querySelectorAll('button[data-id]').forEach(b=>b.onclick=()=>{
+    shifts=shifts.filter(x=>String(x.id)!==b.dataset.id); save(); render();
+  });
+}
+function escapeHtml(t){const d=document.createElement('div');d.textContent=t;return d.innerHTML;}
+function addShift(s){
+  shifts.push({id:Date.now()+Math.random(),...s});
+  save(); render();
+}
+$('addBtn').onclick=()=>{
+  if(!$('date').value || !$('start').value || !$('end').value){ alert('Bitte Datum, Beginn und Ende eingeben.'); return; }
+  addShift({date:$('date').value,start:$('start').value,end:$('end').value,breakMin:Number($('breakMin').value||0),note:$('note').value});
+};
+$('wage').oninput=()=>{save();render()};
+$('clearBtn').onclick=()=>{
+  if(confirm('Wirklich alle Schichten löschen?')){ shifts=[]; save(); render(); }
+};
+$('demoBtn').onclick=()=>{
+  const today=new Date(); const iso=today.toISOString().slice(0,10);
+  addShift({date:iso,start:'08:00',end:'16:30',breakMin:30,note:'Beispiel'});
+};
+$('exportBtn').onclick=()=>{
+  const wage=Number($('wage').value||0);
+  const lines=[['Datum','Beginn','Ende','Pause_Min','Stunden','Stundenlohn','Lohn','Notiz']];
+  shifts.forEach(s=>{const h=hoursFor(s);lines.push([s.date,s.start,s.end,s.breakMin||0,h.toFixed(2),wage.toFixed(2),(h*wage).toFixed(2),s.note||''])});
+  const csv=lines.map(r=>r.map(v=>`"${String(v).replaceAll('"','""')}"`).join(';')).join('\n');
+  const blob=new Blob(["\ufeff"+csv],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='dienstplan.csv';a.click();URL.revokeObjectURL(a.href);
+};
+
+$('photo').onchange=async e=>{
+  const file=e.target.files[0]; if(!file)return;
+  $('preview').src=URL.createObjectURL(file); $('preview').style.display='block';
+  $('status').textContent='Texterkennung läuft …';
+  try{
+    const result=await Tesseract.recognize(file,'deu',{
+      logger:m=>{ if(m.status==='recognizing text') $('status').textContent='Texterkennung: '+Math.round((m.progress||0)*100)+' %'; }
+    });
+    $('ocrText').value=result.data.text||'';
+    $('status').textContent='Fertig. Bitte Text prüfen und dann umwandeln.';
+  }catch(err){
+    $('status').textContent='Texterkennung konnte nicht gestartet werden. Internetverbindung für die OCR-Bibliothek prüfen.';
+    console.error(err);
+  }
+};
+
+function normalizeDate(d,m,y){
+  y=y?Number(y):new Date().getFullYear();
+  if(y<100)y+=2000;
+  const dt=new Date(y,Number(m)-1,Number(d));
+  if(Number.isNaN(dt.getTime())) return null;
+  return `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
+}
+function cleanTime(h,m){return `${String(Number(h)).padStart(2,'0')}:${String(Number(m)).padStart(2,'0')}`;}
+
+$('parseBtn').onclick=()=>{
+  const text=$('ocrText').value;
+  const lines=text.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+  let added=0;
+  for(const line of lines){
+    const dm=line.match(/\b([0-3]?\d)[.\-/]([01]?\d)(?:[.\-/](\d{2,4}))?\b/);
+    const times=[...line.matchAll(/\b([0-2]?\d)[:.]([0-5]\d)\b/g)];
+    if(dm && times.length>=2){
+      const date=normalizeDate(dm[1],dm[2],dm[3]);
+      if(!date)continue;
+      const start=cleanTime(times[0][1],times[0][2]);
+      const end=cleanTime(times[1][1],times[1][2]);
+      const pauseMatch=line.match(/(?:Pause|P)\s*[:\-]?\s*(\d{1,3})/i);
+      addShift({date,start,end,breakMin:pauseMatch?Number(pauseMatch[1]):0,note:'Aus Foto'});
+      added++;
+    }
+  }
+  if(!added) alert('Keine eindeutigen Zeilen erkannt. Erwartet wird z. B.: 18.08.2026 08:00 16:30 Pause 30');
+  else alert(`${added} Schicht(en) übernommen. Bitte Zeiten kontrollieren.`);
+};
+
+render();
+
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const btn = document.getElementById('installBtn');
+  if (btn) btn.style.display = 'inline-block';
+});
+document.getElementById('installBtn')?.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  document.getElementById('installBtn').style.display = 'none';
+});
+window.addEventListener('appinstalled', () => {
+  const hint = document.getElementById('installHint');
+  if (hint) hint.textContent = 'DienstBuddy wurde installiert.';
+});
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(console.error));
+}
+
+</script>
+</body>
+</html>
