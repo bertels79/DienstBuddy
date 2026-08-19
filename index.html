@@ -1,11 +1,11 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>DienstBuddy V2.7</title><link rel="manifest" href="manifest.webmanifest"><style>
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>DienstBuddy V2.8</title><link rel="manifest" href="manifest.webmanifest"><style>
 :root{--bg:#f3f6fb;--card:#fff;--ink:#10213d;--muted:#6c7890;--line:#dfe6f1;--blue:#155eef;--soft:#edf4ff;--good:#16803c;--bad:#b42318}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}header{position:sticky;top:0;z-index:10;background:linear-gradient(135deg,#082b59,#155eef);color:white;padding:14px 14px 9px}.wrap{max-width:1180px;margin:auto}.brand{display:flex;gap:10px;align-items:center}.logo{width:44px;height:44px;border-radius:13px;background:#fff;display:grid;place-items:center;font-size:25px}h1{font-size:21px;margin:0}nav{display:flex;gap:7px;overflow:auto;margin-top:10px}button{border:0;border-radius:11px;padding:9px 12px;font:inherit;font-weight:700;background:var(--blue);color:#fff;cursor:pointer}nav button{background:#ffffff1a;border:1px solid #ffffff28;white-space:nowrap}nav button.active{background:#fff;color:#12345f}button.secondary{background:var(--soft);color:#19407c}button.danger{background:#feeceb;color:var(--bad)}button.good{background:#eaf8ee;color:var(--good)}main{max-width:1180px;margin:auto;padding:14px}.tab{display:none}.tab.active{display:block}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:0 4px 18px #0c234014}h2,h3{margin:0 0 11px}.muted{color:var(--muted);font-size:13px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:12px}.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px}.stat strong{display:block;font-size:20px}.calhead{display:flex;align-items:center;gap:8px}.calhead h2{flex:1;text-align:center;margin:0}.week,.calendar{display:grid;grid-template-columns:repeat(7,1fr)}.week div{text-align:center;padding:6px;font-size:11px;color:var(--muted);font-weight:800}.day{min-height:105px;border:1px solid var(--line);border-right:0;border-bottom:0;padding:5px;background:#fff}.day:nth-child(7n){border-right:1px solid var(--line)}.calendar .day:nth-last-child(-n+7){border-bottom:1px solid var(--line)}.day.other{background:#f8fafc;color:#a0a8b5}.day.today{outline:2px solid var(--blue);outline-offset:-2px}.daynum{font-size:11px;font-weight:800;margin-bottom:4px}.entry{font-size:10px;padding:4px 5px;border-radius:7px;background:#eaf2ff;color:#123f85;margin:3px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.entry.Frei{background:#eaf8ee;color:#24683a}.entry.Urlaub{background:#fff3dc;color:#8a4b00}.entry.Krank{background:#feeceb;color:#9e1e18}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}label{font-size:12px;color:var(--muted);display:block;margin-bottom:4px}input,select,textarea{width:100%;padding:9px;border:1px solid var(--line);border-radius:10px;font:inherit}.actions,.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.chip{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:999px}.row{display:grid;grid-template-columns:1.2fr .8fr .8fr .8fr auto;gap:7px;align-items:center;border:1px solid var(--line);border-radius:11px;padding:9px;margin:7px 0}.scanbox{border:2px dashed #b9c7db;border-radius:14px;padding:16px;text-align:center}.preview{max-width:100%;max-height:330px;border-radius:12px;margin-top:10px;display:none}.modal{position:fixed;inset:0;background:#07111f99;display:none;align-items:center;justify-content:center;z-index:50;padding:14px}.modal.open{display:flex}.modalbox{background:#fff;border-radius:16px;padding:14px;width:min(520px,100%);max-height:90vh;overflow:auto}@media(max-width:720px){main{padding:9px}.stats{grid-template-columns:1fr 1fr}.grid,.row{grid-template-columns:1fr 1fr}.day{min-height:82px;padding:3px}.entry{font-size:8.5px}.week div{font-size:9px}}
-</style></head><body><header><div class="wrap"><div class="brand"><div class="logo">📅</div><div><h1>DienstBuddy V2.7</h1><div style="opacity:.8;font-size:12px">Deine Schichten. Deine Zuschläge. Dein Kalender.</div></div></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
+</style></head><body><header><div class="wrap"><div class="brand"><div class="logo">📅</div><div><h1>DienstBuddy V2.8</h1><div style="opacity:.8;font-size:12px">Deine Schichten. Deine Zuschläge. Dein Kalender.</div></div></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
 <section id="kal" class="tab active"><div class="stats"><div class="stat"><span class="muted">Arbeitsstunden</span><strong id="stH">0,0 h</strong></div><div class="stat"><span class="muted">Nachtstunden</span><strong id="stN">0,0 h</strong></div><div class="stat"><span class="muted">So./Feiertag</span><strong id="stS">0,0 h</strong></div><div class="stat"><span class="muted">Zuschläge</span><strong id="stB">0,00 €</strong></div></div><div class="card"><div class="calhead"><button class="secondary" id="prev">‹</button><h2 id="title"></h2><button class="secondary" id="next">›</button></div><div class="week"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div><div id="calendar" class="calendar"></div></div>
 <div class="card"><h3>Monatsauswertung</h3><p class="muted">Hier siehst du genau, welche Schicht welche Stunden verursacht.</p><div id="monthBreakdown"></div></div>
 <div class="card"><h3>Kalender benutzen</h3><p class="muted">Tippe auf einen Tag. Dann kannst du eine gespeicherte Schicht, Frei, Urlaub, Krank oder eine individuelle Schicht eintragen.</p></div></section>
 <section id="sch" class="tab"><div class="card"><h2>Vordefinierte Schichten</h2><div class="grid"><div><label>Name</label><input id="sn" placeholder="Früh"></div><div><label>Beginn</label><input id="ss" type="time"></div><div><label>Ende</label><input id="se" type="time"></div><div><label>Pause Min.</label><input id="sb" type="number" value="0"></div></div><div class="actions"><button id="addShift">Schicht speichern</button></div></div><div class="card" id="shiftList"></div></section>
-<section id="scan" class="tab"><div class="card"><h2>Dienstplan scannen</h2><div class="scanbox"><strong>Foto aufnehmen ODER vorhandenes Bild auswählen</strong><p class="muted">Das Dateifeld öffnet auf dem Handy Kamera, Galerie oder Dateien – je nach Browser.</p><input id="photo" type="file" accept="image/*"><img id="preview" class="preview"><div id="scanStatus" class="muted">Noch kein Bild gewählt.</div></div><label style="margin-top:10px">Erkannter Text</label><textarea id="ocr" rows="8"></textarea><div class="actions"><button id="parse">Auswerten</button></div></div><div class="card"><h3>Erkannte Einträge</h3><div id="scanResults" class="muted">Noch nichts erkannt.</div><p class="muted">Neue erkannte Schichtzeiten werden beim Übernehmen automatisch unter „Schichten“ gespeichert.</p><div class="actions"><button id="importScan" class="good">In Kalender übernehmen</button></div></div></section>
+<section id="scan" class="tab"><div class="card"><h2>Dienstplan scannen</h2><div class="scanbox"><strong>Foto aufnehmen ODER vorhandenes Bild auswählen</strong><p class="muted">Das Dateifeld öffnet auf dem Handy Kamera, Galerie oder Dateien – je nach Browser.</p><input id="photo" type="file" accept="image/*"><img id="preview" class="preview"><div id="scanStatus" class="muted">Noch kein Bild gewählt.</div></div><label style="margin-top:10px">Erkannter Text</label><textarea id="ocr" rows="8"></textarea><div class="actions"><button id="parse">Auswerten</button></div></div><div class="card"><h3>Erkannte Einträge <span class="muted">Parser 2.8</span></h3><div id="scanResults" class="muted">Noch nichts erkannt.</div><p class="muted">Neue erkannte Schichtzeiten werden beim Übernehmen automatisch unter „Schichten“ gespeichert.</p><div class="actions"><button id="importScan" class="good">In Kalender übernehmen</button></div></div></section>
 <section id="set" class="tab"><div class="card"><h2>Zuschläge</h2><p class="muted">Kein Schichtlohn: dein Festgehalt bleibt außen vor. Der Basis-Stundenwert dient nur dazu, die Zuschlagsbeträge zu berechnen.</p><div class="grid"><div><label>Basis-Stundenwert €</label><input id="base" type="number" step="0.01"></div><div><label>Nacht von</label><input id="nf" type="time"></div><div><label>Nacht bis</label><input id="nt" type="time"></div><div><label>Nacht %</label><input id="np" type="number" step="0.1"></div><div><label>Sonntag %</label><input id="sp" type="number" step="0.1"></div><div><label>Feiertag %</label><input id="hp" type="number" step="0.1"></div><div><label>Samstag % optional</label><input id="sap" type="number" step="0.1"></div></div><div class="actions"><button id="saveSet">Einstellungen speichern</button></div><p class="muted">V2 erkennt die bundesweit geltenden Feiertage automatisch. Regionale Sonderfeiertage können wir in V2.1 ergänzen.</p></div><div class="card"><h3>Backup</h3><div class="actions"><button id="export" class="secondary">Backup exportieren</button><label style="padding:9px 12px;background:var(--soft);color:#19407c;border-radius:11px;font-weight:700">Backup importieren<input id="import" type="file" accept="application/json,.json" style="display:none"></label><button id="cleanInvalid" class="secondary">Falsche Scan-Zeiten löschen</button><button id="clear" class="danger">Alles löschen</button></div></div></section>
 </main><div id="modal" class="modal"><div class="modalbox"><div style="display:flex;justify-content:space-between"><h3 id="modalDate"></h3><button class="secondary" id="close">✕</button></div><div id="choices" class="chips"></div><hr style="border:0;border-top:1px solid var(--line);margin:14px 0"><h3>Zeiten ansehen / bearbeiten</h3><div class="grid"><div><label>Beginn</label><input id="cs" type="time"></div><div><label>Ende</label><input id="ce" type="time"></div><div><label>Pause Min.</label><input id="cb" type="number" value="0"></div></div><div class="actions"><button id="saveCustom">Eintragen</button><button id="delDay" class="danger">Tag löschen</button></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script><script>
@@ -179,78 +179,86 @@ function mkDate(day,month,year=scanYear()){
   let dt=new Date(y,Number(month)-1,Number(day));
   return dt.getFullYear()===y&&dt.getMonth()===Number(month)-1&&dt.getDate()===Number(day)?ISO(y,Number(month)-1,Number(day)):null;
 }
+
 function expandDates(line){
   let out=[],year=scanYear(),m;
-  // 25.08.-27.08. / 25.08.–27.08. / 25.08 bis 27.08
+  // Range: 25.08.-27.08 / 25.08–27.08 / 25.08 bis 27.08
   m=line.match(/\b([0-3]?\d)[.\/-](0?[1-9]|1[0-2])\.?\s*(?:[-–—]|bis)\s*([0-3]?\d)[.\/-](0?[1-9]|1[0-2])(?:[.\/-](\d{2,4}))?/i);
   if(m){
     let y=m[5]?Number(m[5]):year;if(y<100)y+=2000;
     let a=new Date(y,Number(m[2])-1,Number(m[1])),b=new Date(y,Number(m[4])-1,Number(m[3]));
     if(a>b)return [];
-    for(let d=new Date(a);d<=b&&out.length<40;d.setDate(d.getDate()+1))out.push(ISO(d.getFullYear(),d.getMonth(),d.getDate()));
+    for(let d=new Date(a);d<=b&&out.length<40;d.setDate(d.getDate()+1)){
+      out.push(ISO(d.getFullYear(),d.getMonth(),d.getDate()));
+    }
     return out;
   }
-
-  // 22.+23.08. / 29,+30.08. / 22 & 23.08. / 22 und 23.08.
+  // Multiple days, one month: 22.+23.08 / 29,+30.08 / 22 & 23.08
   m=line.match(/\b([0-3]?\d)\s*[.,]?\s*(?:\+|&|und)\s*([0-3]?\d)[.\/-](0?[1-9]|1[0-2])(?:[.\/-](\d{2,4}))?/i);
   if(m){
     let y=m[4]?Number(m[4]):year;
-    let a=mkDate(m[1],m[3],y),b=mkDate(m[2],m[3],y);
-    return [a,b].filter(Boolean);
+    return [mkDate(m[1],m[3],y),mkDate(m[2],m[3],y)].filter(Boolean);
   }
-
-  // "Heute bis 20.08." => use the stated end date as today's listed assignment date.
+  // "Heute bis 20.08." -> interpret the explicit date
   m=line.match(/\bheute\s+bis\s+([0-3]?\d)[.\/-](0?[1-9]|1[0-2])(?:[.\/-](\d{2,4}))?/i);
   if(m){
     let y=m[3]?Number(m[3]):year;
     let d=mkDate(m[1],m[2],y);
     return d?[d]:[];
   }
-
-  let d=pdate(line);return d?[d]:[];
+  let d=pdate(line);
+  return d?[d]:[];
 }
+
 function normalizeScanLine(l){
   return l
     .replace(/[Oo](?=\d)/g,'0')
     .replace(/\s+/g,' ')
-    .replace(/(\d)\s*,\s*(?=\+\s*\d)/g,'$1') // 29,+30.08 -> 29+30.08
+    .replace(/(\d)\s*,\s*(?=\+\s*\d)/g,'$1')
     .trim();
 }
-function findCode(line){
-  let clean=line.toUpperCase().replace(/\s+/g,'');
-  let exact=data.shifts.find(s=>clean.includes(s.name.toUpperCase().replace(/\s+/g,'')));
-  if(exact)return exact;
-  let code=(line.match(/\b([A-ZÄÖÜ]{1,4}\s*\d{0,2})\b/gi)||[]).map(x=>x.replace(/\s+/g,''));
-  for(let c of code){
-    let sh=data.shifts.find(s=>s.name.toUpperCase().replace(/\s+/g,'')===c.toUpperCase());
-    if(sh)return sh;
-  }
-  return null;
-}
+
 function extractShiftCode(line){
-  // Prefer short roster codes such as S2, F2, F7, N1 etc.
+  // Roster codes like S2, F2, F7, N1.
   let m=line.toUpperCase().match(/\b([A-ZÄÖÜ]{1,3}\d{1,2})\b/);
   return m?m[1]:null;
 }
+
+function stripDateSyntax(line){
+  let x=line;
+  // Remove "Heute bis 20.08."
+  x=x.replace(/\bheute\s+bis\s+[0-3]?\d[.\/-](?:0?[1-9]|1[0-2])(?:[.\/-]\d{2,4})?/gi,' ');
+  // Remove date ranges 25.08.-27.08.
+  x=x.replace(/\b[0-3]?\d[.\/-](?:0?[1-9]|1[0-2])\.?\s*(?:[-–—]|bis)\s*[0-3]?\d[.\/-](?:0?[1-9]|1[0-2])(?:[.\/-]\d{2,4})?/gi,' ');
+  // Remove multi-day 22.+23.08 or 29,+30.08
+  x=x.replace(/\b[0-3]?\d\s*[.,]?\s*(?:\+|&|und)\s*[0-3]?\d[.\/-](?:0?[1-9]|1[0-2])(?:[.\/-]\d{2,4})?/gi,' ');
+  // Remove single dates 20.08 / 21.08 / 31,08 (OCR comma)
+  x=x.replace(/\b[0-3]?\d[.,\/-](?:0?[1-9]|1[0-2])(?:[.\/-]\d{2,4})?\b/g,' ');
+  return x.replace(/\s+/g,' ').trim();
+}
+
 function extractTimes(line){
-  const MONTH='(?:0?[1-9]|1[0-2])';
-  const DAY='(?:[0-2]?\d|3[01])';
-
-  let x=line
-    .replace(new RegExp('\\bheute\\s+bis\\s+'+DAY+'[.\\/-]'+MONTH+'(?:[.\\/-]\\d{2,4})?','gi'),' ')
-    .replace(new RegExp('\\b'+DAY+'[.\\/-]'+MONTH+'(?:[.\\/-]\\d{2,4})?\\s*(?:[-–—]|bis)\\s*'+DAY+'[.\\/-]'+MONTH+'(?:[.\\/-]\\d{2,4})?\\b','gi'),' ')
-    .replace(new RegExp('\\b'+DAY+'\\s*[.,]?\\s*(?:\\+|&|und)\\s*'+DAY+'[.\\/-]'+MONTH+'(?:[.\\/-]\\d{2,4})?\\b','gi'),' ')
-    .replace(new RegExp('\\b'+DAY+'[.\\/-]'+MONTH+'(?:[.\\/-]\\d{2,4})?\\b','g'),' ');
-
-  // Accept real clock values with ":" or "." after dates have been removed.
+  let x=stripDateSyntax(line);
+  // Prefer explicit "bis" pair, accept 14.00 / 14:00.
+  let pair=x.match(/\b([01]?\d|2[0-3])[:.]([0-5]\d)\s*(?:uhr\s*)?(?:bis|-|–|—)\s*([01]?\d|2[0-3])[:.]([0-5]\d)\b/i);
+  if(pair){
+    return [
+      String(Number(pair[1])).padStart(2,'0')+':'+pair[2],
+      String(Number(pair[3])).padStart(2,'0')+':'+pair[4]
+    ];
+  }
+  // Otherwise take first two valid remaining clock values.
   let ts=[...x.matchAll(/\b([01]?\d|2[0-3])[:.]([0-5]\d)\b/g)];
-  return ts.map(m=>String(Number(m[1])).padStart(2,'0')+':'+m[2]);
+  return ts.slice(0,2).map(m=>String(Number(m[1])).padStart(2,'0')+':'+m[2]);
 }
-function knownShiftByCode(code){
+
+function storedShiftByCode(code){
   if(!code)return null;
-  return data.shifts.find(s=>s.name.toUpperCase().replace(/\s+/g,'')===code.toUpperCase())||null;
+  let c=code.toUpperCase();
+  return data.shifts.find(s=>String(s.name).toUpperCase().replace(/\s+/g,'')===c)||null;
 }
-function makeCandidate(line,date,scanLearned){
+
+function makeCandidate(line,date,learned){
   let sm=line.match(/\b(frei|urlaub|krank)\b/i);
   if(sm){
     let q=sm[1][0].toUpperCase()+sm[1].slice(1).toLowerCase();
@@ -258,54 +266,70 @@ function makeCandidate(line,date,scanLearned){
   }
 
   let code=extractShiftCode(line);
+  let stored=storedShiftByCode(code);
   let times=extractTimes(line);
-  let stored=knownShiftByCode(code);
 
-  // If this line teaches us what a code means, remember it immediately for later lines in the same scan.
-  if(code && times.length>=2){
-    let st=times[0],en=times[1];
-    let learned={name:code,start:st,end:en,breakMin:stored?.breakMin||0};
-    scanLearned[code]=learned;
-    return {date,type:'shift',label:stored?.name||code,start:stored?.start||st,end:stored?.end||en,breakMin:stored?.breakMin||0,source:line};
+  // If a known code exists, ALWAYS trust its stored times.
+  if(stored){
+    return {date,type:'shift',label:stored.name,start:stored.start,end:stored.end,breakMin:stored.breakMin||0,source:line};
   }
 
-  // Code without times: use an already stored shift or one learned earlier in this same scan.
-  if(code){
-    let sh=stored||scanLearned[code];
-    if(sh)return {date,type:'shift',label:sh.name,start:sh.start,end:sh.end,breakMin:sh.breakMin||0,source:line};
+  // If code has explicit valid times, learn it for this scan.
+  if(code && times.length>=2 && validTime(times[0]) && validTime(times[1])){
+    let sh={name:code,start:times[0],end:times[1],breakMin:0};
+    learned[code]=sh;
+    return {date,type:'shift',label:code,start:sh.start,end:sh.end,breakMin:0,source:line};
   }
 
-  // No code: fall back to time matching.
-  if(times.length>=2){
-    let st=times[0],en=times[1],sh=closeShift(st,en);
+  // If code was learned earlier in this scan, reuse it.
+  if(code && learned[code]){
+    let sh=learned[code];
+    return {date,type:'shift',label:sh.name,start:sh.start,end:sh.end,breakMin:sh.breakMin||0,source:line};
+  }
+
+  // No code: use explicit times if valid.
+  if(times.length>=2 && validTime(times[0]) && validTime(times[1])){
+    let sh=closeShift(times[0],times[1]);
     if(sh)return {date,type:'shift',label:sh.name,start:sh.start,end:sh.end,breakMin:sh.breakMin,source:line};
-    if(validTime(st)&&validTime(en))return {date,type:'shift',label:'Erkannte Schicht',start:st,end:en,breakMin:0,source:line};
+    return {date,type:'shift',label:'Erkannte Schicht',start:times[0],end:times[1],breakMin:0,source:line};
   }
   return null;
 }
+
 function renderCandidates(){
-  $('scanResults').innerHTML=cands.length?cands.map((c,i)=>`<div class="row"><span>${c.date}</span><strong>${c.label}</strong><span>${c.start?c.start+'–'+c.end:''}</span><span class="muted">${c.source}</span><button class="danger" data-rm="${i}">Entfernen</button></div>`).join(''):'<span class="muted">Keine eindeutigen Einträge erkannt. Prüfe den OCR-Text und korrigiere bei Bedarf Datum oder Schichtkürzel.</span>';
-  document.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{cands.splice(Number(b.dataset.rm),1);renderCandidates()});
+  $('scanResults').innerHTML=cands.length?cands.map((c,i)=>`
+    <div class="row">
+      <span>${c.date}</span>
+      <strong>${c.label}</strong>
+      <span>${c.start?c.start+'–'+c.end:''}</span>
+      <span class="muted">${c.source}</span>
+      <button class="danger" data-rm="${i}">Entfernen</button>
+    </div>`).join(''):'<span class="muted">Keine eindeutigen Einträge erkannt. Prüfe den OCR-Text und korrigiere bei Bedarf Datum oder Schichtkürzel.</span>';
+  document.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{
+    cands.splice(Number(b.dataset.rm),1);
+    renderCandidates();
+  });
 }
+
 $('parse').onclick=()=>{
   cands=[];
-  let scanLearned={};
+  let learned={};
   let lines=$('ocr').value.split(/\r?\n/).map(normalizeScanLine).filter(Boolean);
 
-  // First pass: learn every code that appears together with explicit times.
+  // First pass: learn every unknown code that has explicit times.
   for(let l of lines){
     let code=extractShiftCode(l),times=extractTimes(l);
-    if(code&&times.length>=2){
-      let stored=knownShiftByCode(code);
-      scanLearned[code]={name:stored?.name||code,start:stored?.start||times[0],end:stored?.end||times[1],breakMin:stored?.breakMin||0};
+    if(code && !storedShiftByCode(code) && times.length>=2 && validTime(times[0]) && validTime(times[1])){
+      learned[code]={name:code,start:times[0],end:times[1],breakMin:0};
     }
   }
 
-  // Second pass: expand dates and create one calendar candidate per date.
+  // Second pass: expand each date expression to one candidate per day.
   for(let l of lines){
-    let dates=expandDates(l);if(!dates.length)continue;
+    let dates=expandDates(l);
+    if(!dates.length)continue;
     for(let d of dates){
-      let c=makeCandidate(l,d,scanLearned);
+      let c=makeCandidate(l,d,learned);
       if(c)cands.push(c);
     }
   }
@@ -331,7 +355,7 @@ $('importScan').onclick=()=>{
     data.entries[c.date]=[{type:c.type,label:c.label,start:c.start,end:c.end,breakMin:c.breakMin||0}];
   }
   save();renderShifts();renderCal();
-  alert(cands.length+' Einträge übernommen.'+(created?' '+created+' neue Schicht(en) wurden automatisch unter „Schichten“ gespeichert.':''));
+  alert(cands.length+' Einträge übernommen.'+(created?' '+created+' neue Schicht(en) wurden automatisch gespeichert.':''));
 };
 $('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='DienstBuddy-Backup.json';a.click()};$('import').onchange=async e=>{try{data=JSON.parse(await e.target.files[0].text());save();renderShifts();loadSet();renderCal();alert('Backup importiert.')}catch{alert('Datei konnte nicht gelesen werden.')}};$('cleanInvalid').onclick=()=>{
   let n=0;
