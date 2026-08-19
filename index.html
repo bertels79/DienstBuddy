@@ -1,15 +1,76 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>DienstBuddy V2.8</title><link rel="manifest" href="manifest.webmanifest"><style>
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>DienstBuddy V2.9</title><link rel="manifest" href="manifest.webmanifest"><style>
 :root{--bg:#f3f6fb;--card:#fff;--ink:#10213d;--muted:#6c7890;--line:#dfe6f1;--blue:#155eef;--soft:#edf4ff;--good:#16803c;--bad:#b42318}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}header{position:sticky;top:0;z-index:10;background:linear-gradient(135deg,#082b59,#155eef);color:white;padding:14px 14px 9px}.wrap{max-width:1180px;margin:auto}.brand{display:flex;gap:10px;align-items:center}.logo{width:44px;height:44px;border-radius:13px;background:#fff;display:grid;place-items:center;font-size:25px}h1{font-size:21px;margin:0}nav{display:flex;gap:7px;overflow:auto;margin-top:10px}button{border:0;border-radius:11px;padding:9px 12px;font:inherit;font-weight:700;background:var(--blue);color:#fff;cursor:pointer}nav button{background:#ffffff1a;border:1px solid #ffffff28;white-space:nowrap}nav button.active{background:#fff;color:#12345f}button.secondary{background:var(--soft);color:#19407c}button.danger{background:#feeceb;color:var(--bad)}button.good{background:#eaf8ee;color:var(--good)}main{max-width:1180px;margin:auto;padding:14px}.tab{display:none}.tab.active{display:block}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:0 4px 18px #0c234014}h2,h3{margin:0 0 11px}.muted{color:var(--muted);font-size:13px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:12px}.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px}.stat strong{display:block;font-size:20px}.calhead{display:flex;align-items:center;gap:8px}.calhead h2{flex:1;text-align:center;margin:0}.week,.calendar{display:grid;grid-template-columns:repeat(7,1fr)}.week div{text-align:center;padding:6px;font-size:11px;color:var(--muted);font-weight:800}.day{min-height:105px;border:1px solid var(--line);border-right:0;border-bottom:0;padding:5px;background:#fff}.day:nth-child(7n){border-right:1px solid var(--line)}.calendar .day:nth-last-child(-n+7){border-bottom:1px solid var(--line)}.day.other{background:#f8fafc;color:#a0a8b5}.day.today{outline:2px solid var(--blue);outline-offset:-2px}.daynum{font-size:11px;font-weight:800;margin-bottom:4px}.entry{font-size:10px;padding:4px 5px;border-radius:7px;background:#eaf2ff;color:#123f85;margin:3px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.entry.Frei{background:#eaf8ee;color:#24683a}.entry.Urlaub{background:#fff3dc;color:#8a4b00}.entry.Krank{background:#feeceb;color:#9e1e18}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}label{font-size:12px;color:var(--muted);display:block;margin-bottom:4px}input,select,textarea{width:100%;padding:9px;border:1px solid var(--line);border-radius:10px;font:inherit}.actions,.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.chip{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:999px}.row{display:grid;grid-template-columns:1.2fr .8fr .8fr .8fr auto;gap:7px;align-items:center;border:1px solid var(--line);border-radius:11px;padding:9px;margin:7px 0}.scanbox{border:2px dashed #b9c7db;border-radius:14px;padding:16px;text-align:center}.preview{max-width:100%;max-height:330px;border-radius:12px;margin-top:10px;display:none}.modal{position:fixed;inset:0;background:#07111f99;display:none;align-items:center;justify-content:center;z-index:50;padding:14px}.modal.open{display:flex}.modalbox{background:#fff;border-radius:16px;padding:14px;width:min(520px,100%);max-height:90vh;overflow:auto}@media(max-width:720px){main{padding:9px}.stats{grid-template-columns:1fr 1fr}.grid,.row{grid-template-columns:1fr 1fr}.day{min-height:82px;padding:3px}.entry{font-size:8.5px}.week div{font-size:9px}}
-</style></head><body><header><div class="wrap"><div class="brand"><div class="logo">📅</div><div><h1>DienstBuddy V2.8</h1><div style="opacity:.8;font-size:12px">Deine Schichten. Deine Zuschläge. Dein Kalender.</div></div></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
+
+.yeargrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.yearcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}
+.yearcard strong{display:block;font-size:18px;margin-top:4px}
+.print-only{display:none}
+@media(max-width:720px){.yeargrid{grid-template-columns:1fr 1fr}}
+@media print{
+  header,nav,.no-print,button,input,select,textarea{display:none!important}
+  body{background:#fff}
+  main{max-width:none;padding:0}
+  .tab{display:none!important}
+  #kal.tab{display:block!important}
+  .card{box-shadow:none;border:1px solid #ccc;break-inside:avoid}
+  .print-only{display:block}
+  .day{min-height:90px}
+}
+
+</style></head><body><header><div class="wrap"><div class="brand"><div class="logo">📅</div><div><h1>DienstBuddy V2.9</h1><div style="opacity:.8;font-size:12px">Deine Schichten. Deine Zuschläge. Dein Kalender.</div></div></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
 <section id="kal" class="tab active"><div class="stats"><div class="stat"><span class="muted">Arbeitsstunden</span><strong id="stH">0,0 h</strong></div><div class="stat"><span class="muted">Nachtstunden</span><strong id="stN">0,0 h</strong></div><div class="stat"><span class="muted">So./Feiertag</span><strong id="stS">0,0 h</strong></div><div class="stat"><span class="muted">Zuschläge</span><strong id="stB">0,00 €</strong></div></div><div class="card"><div class="calhead"><button class="secondary" id="prev">‹</button><h2 id="title"></h2><button class="secondary" id="next">›</button></div><div class="week"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div><div id="calendar" class="calendar"></div></div>
 <div class="card"><h3>Monatsauswertung</h3><p class="muted">Hier siehst du genau, welche Schicht welche Stunden verursacht.</p><div id="monthBreakdown"></div></div>
-<div class="card"><h3>Kalender benutzen</h3><p class="muted">Tippe auf einen Tag. Dann kannst du eine gespeicherte Schicht, Frei, Urlaub, Krank oder eine individuelle Schicht eintragen.</p></div></section>
+<div class="card"><h3>Kalender benutzen</h3><p class="muted">Tippe auf einen Tag. Dann kannst du eine gespeicherte Schicht, Frei, Urlaub, Krank oder eine individuelle Schicht eintragen.</p></div>
+<div class="card no-print">
+  <h3>Export & Druck</h3>
+  <div class="actions">
+    <button id="exportIcs" class="secondary">📅 Monat als Kalender exportieren</button>
+    <button id="printMonth" class="secondary">🖨️ Monat drucken</button>
+  </div>
+</div>
+</section>
+<section id="year" class="tab">
+  <div class="card">
+    <div class="calhead">
+      <button class="secondary" id="prevYear">‹</button>
+      <h2 id="yearTitle"></h2>
+      <button class="secondary" id="nextYear">›</button>
+    </div>
+    <div class="yeargrid">
+      <div class="yearcard"><span class="muted">Arbeitsstunden</span><strong id="yHours">0,0 h</strong></div>
+      <div class="yearcard"><span class="muted">Nachtstunden</span><strong id="yNight">0,0 h</strong></div>
+      <div class="yearcard"><span class="muted">So./Feiertag</span><strong id="ySpecial">0,0 h</strong></div>
+      <div class="yearcard"><span class="muted">Zuschläge</span><strong id="yBonus">0,00 €</strong></div>
+      <div class="yearcard"><span class="muted">Frei</span><strong id="yFree">0</strong></div>
+      <div class="yearcard"><span class="muted">Urlaub</span><strong id="yVacation">0</strong></div>
+      <div class="yearcard"><span class="muted">Krank</span><strong id="ySick">0</strong></div>
+      <div class="yearcard"><span class="muted">Arbeitstage</span><strong id="yWorkdays">0</strong></div>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Monate</h3>
+    <div id="yearMonths"></div>
+    <div class="actions">
+      <button id="exportYearIcs" class="secondary">📅 Jahr als Kalender exportieren</button>
+      <button id="printYear" class="secondary">🖨️ Jahresübersicht drucken</button>
+    </div>
+  </div>
+</section>
 <section id="sch" class="tab"><div class="card"><h2>Vordefinierte Schichten</h2><div class="grid"><div><label>Name</label><input id="sn" placeholder="Früh"></div><div><label>Beginn</label><input id="ss" type="time"></div><div><label>Ende</label><input id="se" type="time"></div><div><label>Pause Min.</label><input id="sb" type="number" value="0"></div></div><div class="actions"><button id="addShift">Schicht speichern</button></div></div><div class="card" id="shiftList"></div></section>
 <section id="scan" class="tab"><div class="card"><h2>Dienstplan scannen</h2><div class="scanbox"><strong>Foto aufnehmen ODER vorhandenes Bild auswählen</strong><p class="muted">Das Dateifeld öffnet auf dem Handy Kamera, Galerie oder Dateien – je nach Browser.</p><input id="photo" type="file" accept="image/*"><img id="preview" class="preview"><div id="scanStatus" class="muted">Noch kein Bild gewählt.</div></div><label style="margin-top:10px">Erkannter Text</label><textarea id="ocr" rows="8"></textarea><div class="actions"><button id="parse">Auswerten</button></div></div><div class="card"><h3>Erkannte Einträge <span class="muted">Parser 2.8</span></h3><div id="scanResults" class="muted">Noch nichts erkannt.</div><p class="muted">Neue erkannte Schichtzeiten werden beim Übernehmen automatisch unter „Schichten“ gespeichert.</p><div class="actions"><button id="importScan" class="good">In Kalender übernehmen</button></div></div></section>
-<section id="set" class="tab"><div class="card"><h2>Zuschläge</h2><p class="muted">Kein Schichtlohn: dein Festgehalt bleibt außen vor. Der Basis-Stundenwert dient nur dazu, die Zuschlagsbeträge zu berechnen.</p><div class="grid"><div><label>Basis-Stundenwert €</label><input id="base" type="number" step="0.01"></div><div><label>Nacht von</label><input id="nf" type="time"></div><div><label>Nacht bis</label><input id="nt" type="time"></div><div><label>Nacht %</label><input id="np" type="number" step="0.1"></div><div><label>Sonntag %</label><input id="sp" type="number" step="0.1"></div><div><label>Feiertag %</label><input id="hp" type="number" step="0.1"></div><div><label>Samstag % optional</label><input id="sap" type="number" step="0.1"></div></div><div class="actions"><button id="saveSet">Einstellungen speichern</button></div><p class="muted">V2 erkennt die bundesweit geltenden Feiertage automatisch. Regionale Sonderfeiertage können wir in V2.1 ergänzen.</p></div><div class="card"><h3>Backup</h3><div class="actions"><button id="export" class="secondary">Backup exportieren</button><label style="padding:9px 12px;background:var(--soft);color:#19407c;border-radius:11px;font-weight:700">Backup importieren<input id="import" type="file" accept="application/json,.json" style="display:none"></label><button id="cleanInvalid" class="secondary">Falsche Scan-Zeiten löschen</button><button id="clear" class="danger">Alles löschen</button></div></div></section>
+<section id="set" class="tab">
+<div class="card">
+  <h2>Eigener Dienstplan / Mitarbeiter-Filter</h2>
+  <p class="muted">Bei Dienstplänen mit mehreren Kollegen übernimmt der Scanner nur Zeilen, in denen dein Name oder dein Kürzel vorkommt. Leer lassen = alles scannen.</p>
+  <div class="grid">
+    <div><label>Name oder Kürzel</label><input id="employeeKey" placeholder="z. B. Max Mustermann oder MM"></div>
+  </div>
+  <div class="actions"><button id="saveEmployee">Filter speichern</button></div>
+</div>
+<div class="card"><h2>Zuschläge</h2><p class="muted">Kein Schichtlohn: dein Festgehalt bleibt außen vor. Der Basis-Stundenwert dient nur dazu, die Zuschlagsbeträge zu berechnen.</p><div class="grid"><div><label>Basis-Stundenwert €</label><input id="base" type="number" step="0.01"></div><div><label>Nacht von</label><input id="nf" type="time"></div><div><label>Nacht bis</label><input id="nt" type="time"></div><div><label>Nacht %</label><input id="np" type="number" step="0.1"></div><div><label>Sonntag %</label><input id="sp" type="number" step="0.1"></div><div><label>Feiertag %</label><input id="hp" type="number" step="0.1"></div><div><label>Samstag % optional</label><input id="sap" type="number" step="0.1"></div></div><div class="actions"><button id="saveSet">Einstellungen speichern</button></div><p class="muted">V2 erkennt die bundesweit geltenden Feiertage automatisch. Regionale Sonderfeiertage können wir in V2.1 ergänzen.</p></div><div class="card"><h3>Backup</h3><div class="actions"><button id="export" class="secondary">Backup exportieren</button><label style="padding:9px 12px;background:var(--soft);color:#19407c;border-radius:11px;font-weight:700">Backup importieren<input id="import" type="file" accept="application/json,.json" style="display:none"></label><button id="cleanInvalid" class="secondary">Falsche Scan-Zeiten löschen</button><button id="clear" class="danger">Alles löschen</button></div></div></section>
 </main><div id="modal" class="modal"><div class="modalbox"><div style="display:flex;justify-content:space-between"><h3 id="modalDate"></h3><button class="secondary" id="close">✕</button></div><div id="choices" class="chips"></div><hr style="border:0;border-top:1px solid var(--line);margin:14px 0"><h3>Zeiten ansehen / bearbeiten</h3><div class="grid"><div><label>Beginn</label><input id="cs" type="time"></div><div><label>Ende</label><input id="ce" type="time"></div><div><label>Pause Min.</label><input id="cb" type="number" value="0"></div></div><div class="actions"><button id="saveCustom">Eintragen</button><button id="delDay" class="danger">Tag löschen</button></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script><script>
-const $=x=>document.getElementById(x),KEY='dienstbuddy_v2';const DEF={shifts:[{id:'f',name:'Früh',start:'06:00',end:'14:00',breakMin:30},{id:'s',name:'Spät',start:'14:00',end:'22:00',breakMin:30},{id:'n',name:'Nacht',start:'22:00',end:'06:00',breakMin:30}],entries:{},settings:{base:0,nf:'22:00',nt:'06:00',np:25,sp:50,hp:100,sap:0}};let data=(()=>{try{let x=JSON.parse(localStorage.getItem(KEY)||'{}');return {...DEF,...x,settings:{...DEF.settings,...(x.settings||{})}}}catch{return structuredClone(DEF)}})(),view=new Date(),selected=null,cands=[];view=new Date(view.getFullYear(),view.getMonth(),1);const save=()=>localStorage.setItem(KEY,JSON.stringify(data));const M=t=>{let[a,b]=t.split(':').map(Number);return a*60+b};const validTime=t=>{if(typeof t!=='string'||!/^\d{1,2}:\d{2}$/.test(t))return false;let[h,m]=t.split(':').map(Number);return h>=0&&h<=23&&m>=0&&m<=59};
+const $=x=>document.getElementById(x),KEY='dienstbuddy_v2';const DEF={shifts:[{id:'f',name:'Früh',start:'06:00',end:'14:00',breakMin:30},{id:'s',name:'Spät',start:'14:00',end:'22:00',breakMin:30},{id:'n',name:'Nacht',start:'22:00',end:'06:00',breakMin:30}],entries:{},settings:{base:0,nf:'22:00',nt:'06:00',np:25,sp:50,hp:100,sap:0,employeeKey:''}};let data=(()=>{try{let x=JSON.parse(localStorage.getItem(KEY)||'{}');return {...DEF,...x,settings:{...DEF.settings,...(x.settings||{})}}}catch{return structuredClone(DEF)}})(),view=new Date(),selected=null,cands=[];view=new Date(view.getFullYear(),view.getMonth(),1);const save=()=>localStorage.setItem(KEY,JSON.stringify(data));const M=t=>{let[a,b]=t.split(':').map(Number);return a*60+b};const validTime=t=>{if(typeof t!=='string'||!/^\d{1,2}:\d{2}$/.test(t))return false;let[h,m]=t.split(':').map(Number);return h>=0&&h<=23&&m>=0&&m<=59};
 const ISO=(y,m,d)=>`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;const dur=e=>{if(!e.start)return 0;let x=M(e.end)-M(e.start);if(x<=0)x+=1440;return Math.max(0,(x-Number(e.breakMin||0))/60)};
 function easter(y){let f=Math.floor,G=y%19,C=f(y/100),H=(C-f(C/4)-f((8*C+13)/25)+19*G+15)%30,I=H-f(H/28)*(1-f(29/(H+1))*f((21-G)/11)),J=(y+f(y/4)+I+2-C+f(C/4))%7,L=I-J,m=3+f((L+40)/44),d=L+28-31*f(m/4);return new Date(y,m-1,d)}function hol(dt){let y=dt.getFullYear(),k=ISO(y,dt.getMonth(),dt.getDate()),fix={[`${y}-01-01`]:1,[`${y}-05-01`]:1,[`${y}-10-03`]:1,[`${y}-12-25`]:1,[`${y}-12-26`]:1};if(fix[k])return true;let e=easter(y);for(let off of[-2,1,39,50]){let d=new Date(e);d.setDate(d.getDate()+off);if(ISO(d.getFullYear(),d.getMonth(),d.getDate())===k)return true}return false}
 function renderCal(){let y=view.getFullYear(),m=view.getMonth(),first=(new Date(y,m,1).getDay()+6)%7,days=new Date(y,m+1,0).getDate(),pd=new Date(y,m,0).getDate();$('title').textContent=view.toLocaleDateString('de-DE',{month:'long',year:'numeric'});let now=new Date(),today=ISO(now.getFullYear(),now.getMonth(),now.getDate()),h='';for(let c=0;c<42;c++){let d,cm=m,cy=y,o=false;if(c<first){d=pd-first+c+1;cm=m-1;o=true;if(cm<0){cm=11;cy--}}else if(c>=first+days){d=c-first-days+1;cm=m+1;o=true;if(cm>11){cm=0;cy++}}else d=c-first+1;let k=ISO(cy,cm,d),arr=data.entries[k]||[];h+=`<div class="day ${o?'other':''} ${k===today?'today':''}" data-date="${k}"><div class="daynum">${d}${hol(new Date(cy,cm,d))?' 🎉':''}</div>${arr.map(e=>`<div class="entry ${e.type||''}">${e.label}</div>`).join('')}</div>`}$('calendar').innerHTML=h;document.querySelectorAll('.day').forEach(x=>x.onclick=()=>openDay(x.dataset.date));stats()}
@@ -125,7 +186,7 @@ function stats(){
   document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>openDay(b.dataset.open));
 }
 function renderShifts(){$('shiftList').innerHTML=data.shifts.map(s=>`<div class="row"><strong>${s.name}</strong><span>${s.start}</span><span>${s.end}</span><span>${s.breakMin} Min</span><button class="danger" data-del="${s.id}">Löschen</button></div>`).join('');document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{data.shifts=data.shifts.filter(s=>s.id!==b.dataset.del);save();renderShifts()})}$('addShift').onclick=()=>{if(!$('sn').value||!$('ss').value||!$('se').value)return alert('Name, Beginn und Ende ausfüllen.');data.shifts.push({id:'x'+Date.now(),name:$('sn').value,start:$('ss').value,end:$('se').value,breakMin:Number($('sb').value||0)});save();renderShifts()};
-function loadSet(){for(let k of['base','nf','nt','np','sp','hp','sap'])$(k).value=data.settings[k]}loadSet();$('saveSet').onclick=()=>{for(let k of['base','nf','nt','np','sp','hp','sap'])data.settings[k]=$(k).value;save();renderCal();alert('Gespeichert.')};$('prev').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);renderCal()};$('next').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);renderCal()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.tab).classList.add('active')});
+function loadSet(){for(let k of['base','nf','nt','np','sp','hp','sap'])$(k).value=data.settings[k];$('employeeKey').value=data.settings.employeeKey||''}loadSet();$('saveEmployee').onclick=()=>{data.settings.employeeKey=$('employeeKey').value.trim();save();alert('Mitarbeiter-Filter gespeichert.')};$('saveSet').onclick=()=>{for(let k of['base','nf','nt','np','sp','hp','sap'])data.settings[k]=$(k).value;save();renderCal();alert('Gespeichert.')};$('prev').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);renderCal()};$('next').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);renderCal()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.tab).classList.add('active');if(b.dataset.tab==='year')renderYear()});
 async function prepareImage(file){
   const img=new Image(),url=URL.createObjectURL(file);
   await new Promise((ok,no)=>{img.onload=ok;img.onerror=no;img.src=url});
@@ -315,6 +376,11 @@ $('parse').onclick=()=>{
   cands=[];
   let learned={};
   let lines=$('ocr').value.split(/\r?\n/).map(normalizeScanLine).filter(Boolean);
+  let employee=(data.settings.employeeKey||'').trim().toLowerCase();
+  if(employee){
+    let filtered=lines.filter(l=>l.toLowerCase().includes(employee));
+    if(filtered.length)lines=filtered;
+  }
 
   // First pass: learn every unknown code that has explicit times.
   for(let l of lines){
@@ -340,10 +406,9 @@ $('importScan').onclick=()=>{
   let created=0;
   for(let c of cands){
     if(c.type==='shift'&&c.start&&c.end){if(!validTime(c.start)||!validTime(c.end))continue;
-      let existing=data.shifts.find(sh=>
-        sh.name.toLowerCase()===String(c.label).toLowerCase() ||
-        (sh.start===c.start&&sh.end===c.end&&Number(sh.breakMin||0)===Number(c.breakMin||0))
-      );
+      let existingByName=data.shifts.find(sh=>sh.name.toLowerCase()===String(c.label).toLowerCase());
+      let existingByTime=data.shifts.find(sh=>sh.start===c.start&&sh.end===c.end&&Number(sh.breakMin||0)===Number(c.breakMin||0));
+      let existing=existingByName || (String(c.label).startsWith('Auto ') || c.label==='Erkannte Schicht' ? existingByTime : null);
       if(existing){
         c.label=existing.name;c.start=existing.start;c.end=existing.end;c.breakMin=existing.breakMin;
       }else{
@@ -357,6 +422,84 @@ $('importScan').onclick=()=>{
   save();renderShifts();renderCal();
   alert(cands.length+' Einträge übernommen.'+(created?' '+created+' neue Schicht(en) wurden automatisch gespeichert.':''));
 };
+
+let yearView=view.getFullYear();
+
+function yearStats(year){
+  let T={h:0,n:0,s:0,b:0,free:0,vac:0,sick:0,workdays:0}, months=Array.from({length:12},()=>({h:0,n:0,s:0,b:0}));
+  Object.entries(data.entries).forEach(([d,arr])=>{
+    let dt=new Date(d+'T12:00');
+    if(dt.getFullYear()!==year)return;
+    arr.forEach(raw=>{
+      if(raw.type==='Frei')T.free++;
+      else if(raw.type==='Urlaub')T.vac++;
+      else if(raw.type==='Krank')T.sick++;
+      let r=calc(d,raw);
+      if(r.h>0)T.workdays++;
+      T.h+=r.h;T.n+=r.n;T.s+=r.s;T.b+=r.b;
+      let m=dt.getMonth();months[m].h+=r.h;months[m].n+=r.n;months[m].s+=r.s;months[m].b+=r.b;
+    });
+  });
+  return {T,months};
+}
+
+function renderYear(){
+  let {T,months}=yearStats(yearView);
+  $('yearTitle').textContent=yearView;
+  $('yHours').textContent=T.h.toFixed(1).replace('.',',')+' h';
+  $('yNight').textContent=T.n.toFixed(1).replace('.',',')+' h';
+  $('ySpecial').textContent=T.s.toFixed(1).replace('.',',')+' h';
+  $('yBonus').textContent=new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(T.b);
+  $('yFree').textContent=T.free;$('yVacation').textContent=T.vac;$('ySick').textContent=T.sick;$('yWorkdays').textContent=T.workdays;
+  $('yearMonths').innerHTML=months.map((m,i)=>`<div class="row"><strong>${new Date(yearView,i,1).toLocaleDateString('de-DE',{month:'long'})}</strong><span>${m.h.toFixed(1).replace('.',',')} h</span><span>${m.n.toFixed(1).replace('.',',')} h Nacht</span><span>${m.s.toFixed(1).replace('.',',')} h So./Feiertag</span><span>${new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(m.b)}</span></div>`).join('');
+}
+$('prevYear').onclick=()=>{yearView--;renderYear()};
+$('nextYear').onclick=()=>{yearView++;renderYear()};
+
+function icsEscape(x){return String(x||'').replace(/\\/g,'\\\\').replace(/,/g,'\\,').replace(/;/g,'\\;').replace(/\n/g,'\\n')}
+function icsDateTime(date,time){
+  let [y,m,d]=date.split('-'),[hh,mm]=time.split(':');
+  return `${y}${m}${d}T${hh}${mm}00`;
+}
+function buildIcs(filterFn){
+  let lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//DienstBuddy//DE','CALSCALE:GREGORIAN'];
+  Object.entries(data.entries).sort(([a],[b])=>a.localeCompare(b)).forEach(([date,arr])=>{
+    if(!filterFn(date))return;
+    arr.forEach(e=>{
+      if(!e.start||!e.end||!validTime(e.start)||!validTime(e.end))return;
+      let endDate=date;
+      if(M(e.end)<=M(e.start)){
+        let dt=new Date(date+'T12:00');dt.setDate(dt.getDate()+1);endDate=ISO(dt.getFullYear(),dt.getMonth(),dt.getDate());
+      }
+      lines.push('BEGIN:VEVENT');
+      lines.push('UID:'+date+'-'+Math.random().toString(36).slice(2)+'@dienstbuddy');
+      lines.push('DTSTART:'+icsDateTime(date,e.start));
+      lines.push('DTEND:'+icsDateTime(endDate,e.end));
+      lines.push('SUMMARY:'+icsEscape(e.label||'Dienst'));
+      lines.push('DESCRIPTION:'+icsEscape(`Pause: ${e.breakMin||0} Min.`));
+      lines.push('END:VEVENT');
+    });
+  });
+  lines.push('END:VCALENDAR');
+  return lines.join('\r\n');
+}
+function downloadText(name,text,type){
+  let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+$('exportIcs').onclick=()=>{
+  let y=view.getFullYear(),m=view.getMonth();
+  downloadText(`DienstBuddy-${y}-${String(m+1).padStart(2,'0')}.ics`,buildIcs(d=>{let x=new Date(d+'T12:00');return x.getFullYear()===y&&x.getMonth()===m}),'text/calendar;charset=utf-8');
+};
+$('exportYearIcs').onclick=()=>{
+  let y=yearView;downloadText(`DienstBuddy-${y}.ics`,buildIcs(d=>new Date(d+'T12:00').getFullYear()===y),'text/calendar;charset=utf-8');
+};
+$('printMonth').onclick=()=>window.print();
+$('printYear').onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  $('year').classList.add('active');
+  setTimeout(()=>window.print(),100);
+};
+
 $('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='DienstBuddy-Backup.json';a.click()};$('import').onchange=async e=>{try{data=JSON.parse(await e.target.files[0].text());save();renderShifts();loadSet();renderCal();alert('Backup importiert.')}catch{alert('Datei konnte nicht gelesen werden.')}};$('cleanInvalid').onclick=()=>{
   let n=0;
   for(let date of Object.keys(data.entries)){
