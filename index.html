@@ -1,6 +1,6 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>DienstBuddy V2.6</title><link rel="manifest" href="manifest.webmanifest"><style>
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>DienstBuddy V2.7</title><link rel="manifest" href="manifest.webmanifest"><style>
 :root{--bg:#f3f6fb;--card:#fff;--ink:#10213d;--muted:#6c7890;--line:#dfe6f1;--blue:#155eef;--soft:#edf4ff;--good:#16803c;--bad:#b42318}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}header{position:sticky;top:0;z-index:10;background:linear-gradient(135deg,#082b59,#155eef);color:white;padding:14px 14px 9px}.wrap{max-width:1180px;margin:auto}.brand{display:flex;gap:10px;align-items:center}.logo{width:44px;height:44px;border-radius:13px;background:#fff;display:grid;place-items:center;font-size:25px}h1{font-size:21px;margin:0}nav{display:flex;gap:7px;overflow:auto;margin-top:10px}button{border:0;border-radius:11px;padding:9px 12px;font:inherit;font-weight:700;background:var(--blue);color:#fff;cursor:pointer}nav button{background:#ffffff1a;border:1px solid #ffffff28;white-space:nowrap}nav button.active{background:#fff;color:#12345f}button.secondary{background:var(--soft);color:#19407c}button.danger{background:#feeceb;color:var(--bad)}button.good{background:#eaf8ee;color:var(--good)}main{max-width:1180px;margin:auto;padding:14px}.tab{display:none}.tab.active{display:block}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:0 4px 18px #0c234014}h2,h3{margin:0 0 11px}.muted{color:var(--muted);font-size:13px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:12px}.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px}.stat strong{display:block;font-size:20px}.calhead{display:flex;align-items:center;gap:8px}.calhead h2{flex:1;text-align:center;margin:0}.week,.calendar{display:grid;grid-template-columns:repeat(7,1fr)}.week div{text-align:center;padding:6px;font-size:11px;color:var(--muted);font-weight:800}.day{min-height:105px;border:1px solid var(--line);border-right:0;border-bottom:0;padding:5px;background:#fff}.day:nth-child(7n){border-right:1px solid var(--line)}.calendar .day:nth-last-child(-n+7){border-bottom:1px solid var(--line)}.day.other{background:#f8fafc;color:#a0a8b5}.day.today{outline:2px solid var(--blue);outline-offset:-2px}.daynum{font-size:11px;font-weight:800;margin-bottom:4px}.entry{font-size:10px;padding:4px 5px;border-radius:7px;background:#eaf2ff;color:#123f85;margin:3px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.entry.Frei{background:#eaf8ee;color:#24683a}.entry.Urlaub{background:#fff3dc;color:#8a4b00}.entry.Krank{background:#feeceb;color:#9e1e18}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}label{font-size:12px;color:var(--muted);display:block;margin-bottom:4px}input,select,textarea{width:100%;padding:9px;border:1px solid var(--line);border-radius:10px;font:inherit}.actions,.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.chip{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:999px}.row{display:grid;grid-template-columns:1.2fr .8fr .8fr .8fr auto;gap:7px;align-items:center;border:1px solid var(--line);border-radius:11px;padding:9px;margin:7px 0}.scanbox{border:2px dashed #b9c7db;border-radius:14px;padding:16px;text-align:center}.preview{max-width:100%;max-height:330px;border-radius:12px;margin-top:10px;display:none}.modal{position:fixed;inset:0;background:#07111f99;display:none;align-items:center;justify-content:center;z-index:50;padding:14px}.modal.open{display:flex}.modalbox{background:#fff;border-radius:16px;padding:14px;width:min(520px,100%);max-height:90vh;overflow:auto}@media(max-width:720px){main{padding:9px}.stats{grid-template-columns:1fr 1fr}.grid,.row{grid-template-columns:1fr 1fr}.day{min-height:82px;padding:3px}.entry{font-size:8.5px}.week div{font-size:9px}}
-</style></head><body><header><div class="wrap"><div class="brand"><div class="logo">📅</div><div><h1>DienstBuddy V2.6</h1><div style="opacity:.8;font-size:12px">Deine Schichten. Deine Zuschläge. Dein Kalender.</div></div></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
+</style></head><body><header><div class="wrap"><div class="brand"><div class="logo">📅</div><div><h1>DienstBuddy V2.7</h1><div style="opacity:.8;font-size:12px">Deine Schichten. Deine Zuschläge. Dein Kalender.</div></div></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
 <section id="kal" class="tab active"><div class="stats"><div class="stat"><span class="muted">Arbeitsstunden</span><strong id="stH">0,0 h</strong></div><div class="stat"><span class="muted">Nachtstunden</span><strong id="stN">0,0 h</strong></div><div class="stat"><span class="muted">So./Feiertag</span><strong id="stS">0,0 h</strong></div><div class="stat"><span class="muted">Zuschläge</span><strong id="stB">0,00 €</strong></div></div><div class="card"><div class="calhead"><button class="secondary" id="prev">‹</button><h2 id="title"></h2><button class="secondary" id="next">›</button></div><div class="week"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div><div id="calendar" class="calendar"></div></div>
 <div class="card"><h3>Monatsauswertung</h3><p class="muted">Hier siehst du genau, welche Schicht welche Stunden verursacht.</p><div id="monthBreakdown"></div></div>
 <div class="card"><h3>Kalender benutzen</h3><p class="muted">Tippe auf einen Tag. Dann kannst du eine gespeicherte Schicht, Frei, Urlaub, Krank oder eine individuelle Schicht eintragen.</p></div></section>
@@ -182,7 +182,7 @@ function mkDate(day,month,year=scanYear()){
 function expandDates(line){
   let out=[],year=scanYear(),m;
   // 25.08.-27.08. / 25.08.–27.08. / 25.08 bis 27.08
-  m=line.match(/\b([0-3]?\d)[.\/-]([01]?\d)\.?\s*(?:[-–—]|bis)\s*([0-3]?\d)[.\/-]([01]?\d)(?:[.\/-](\d{2,4}))?/i);
+  m=line.match(/\b([0-3]?\d)[.\/-](0?[1-9]|1[0-2])\.?\s*(?:[-–—]|bis)\s*([0-3]?\d)[.\/-](0?[1-9]|1[0-2])(?:[.\/-](\d{2,4}))?/i);
   if(m){
     let y=m[5]?Number(m[5]):year;if(y<100)y+=2000;
     let a=new Date(y,Number(m[2])-1,Number(m[1])),b=new Date(y,Number(m[4])-1,Number(m[3]));
@@ -192,7 +192,7 @@ function expandDates(line){
   }
 
   // 22.+23.08. / 29,+30.08. / 22 & 23.08. / 22 und 23.08.
-  m=line.match(/\b([0-3]?\d)\s*[.,]?\s*(?:\+|&|und)\s*([0-3]?\d)[.\/-]([01]?\d)(?:[.\/-](\d{2,4}))?/i);
+  m=line.match(/\b([0-3]?\d)\s*[.,]?\s*(?:\+|&|und)\s*([0-3]?\d)[.\/-](0?[1-9]|1[0-2])(?:[.\/-](\d{2,4}))?/i);
   if(m){
     let y=m[4]?Number(m[4]):year;
     let a=mkDate(m[1],m[3],y),b=mkDate(m[2],m[3],y);
@@ -200,7 +200,7 @@ function expandDates(line){
   }
 
   // "Heute bis 20.08." => use the stated end date as today's listed assignment date.
-  m=line.match(/\bheute\s+bis\s+([0-3]?\d)[.\/-]([01]?\d)(?:[.\/-](\d{2,4}))?/i);
+  m=line.match(/\bheute\s+bis\s+([0-3]?\d)[.\/-](0?[1-9]|1[0-2])(?:[.\/-](\d{2,4}))?/i);
   if(m){
     let y=m[3]?Number(m[3]):year;
     let d=mkDate(m[1],m[2],y);
@@ -233,14 +233,16 @@ function extractShiftCode(line){
   return m?m[1]:null;
 }
 function extractTimes(line){
-  // Remove date/date-range fragments before reading clock values.
-  let x=line
-    .replace(/\bheute\s+bis\s+[0-3]?\d[.\/-][01]?\d(?:[.\/-]\d{2,4})?/gi,' ')
-    .replace(/\b[0-3]?\d[.\/-][01]?\d(?:[.\/-]\d{2,4})?\s*(?:[-–—]|bis)\s*[0-3]?\d[.\/-][01]?\d(?:[.\/-]\d{2,4})?\b/gi,' ')
-    .replace(/\b[0-3]?\d\s*[.,]?\s*(?:\+|&|und)\s*[0-3]?\d[.\/-][01]?\d(?:[.\/-]\d{2,4})?\b/gi,' ')
-    .replace(/\b[0-3]?\d[.\/-][01]?\d(?:[.\/-]\d{2,4})?\b/g,' ');
+  const MONTH='(?:0?[1-9]|1[0-2])';
+  const DAY='(?:[0-2]?\d|3[01])';
 
-  // Accept 14:00 and 14.00, but only after all date tokens are removed.
+  let x=line
+    .replace(new RegExp('\\bheute\\s+bis\\s+'+DAY+'[.\\/-]'+MONTH+'(?:[.\\/-]\\d{2,4})?','gi'),' ')
+    .replace(new RegExp('\\b'+DAY+'[.\\/-]'+MONTH+'(?:[.\\/-]\\d{2,4})?\\s*(?:[-–—]|bis)\\s*'+DAY+'[.\\/-]'+MONTH+'(?:[.\\/-]\\d{2,4})?\\b','gi'),' ')
+    .replace(new RegExp('\\b'+DAY+'\\s*[.,]?\\s*(?:\\+|&|und)\\s*'+DAY+'[.\\/-]'+MONTH+'(?:[.\\/-]\\d{2,4})?\\b','gi'),' ')
+    .replace(new RegExp('\\b'+DAY+'[.\\/-]'+MONTH+'(?:[.\\/-]\\d{2,4})?\\b','g'),' ');
+
+  // Accept real clock values with ":" or "." after dates have been removed.
   let ts=[...x.matchAll(/\b([01]?\d|2[0-3])[:.]([0-5]\d)\b/g)];
   return ts.map(m=>String(Number(m[1])).padStart(2,'0')+':'+m[2]);
 }
