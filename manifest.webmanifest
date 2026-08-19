@@ -1,24 +1,8 @@
 {
-  "name": "DienstBuddy",
+  "name": "DienstBuddy V2",
   "short_name": "DienstBuddy",
-  "description": "Deine Schichten. Deine Stunden. Dein Geld.",
   "start_url": "./index.html",
-  "scope": "./",
   "display": "standalone",
-  "background_color": "#f5f7fb",
-  "theme_color": "#0b2d5c",
-  "icons": [
-    {
-      "src": "icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ]
+  "background_color": "#f3f6fb",
+  "theme_color": "#0b2d5c"
 }
