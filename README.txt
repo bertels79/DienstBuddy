@@ -1,17 +1,18 @@
-Schichtiva V3.1 – Testversion
+Schichtiva V3.2 – Testversion
 
-Basis: gesicherte DienstBuddy V3.0.
+Basis: getestete Schichtiva V3.1.
 
-Neu:
-- Umbenennung DienstBuddy -> Schichtiva
-- neues Schichtiva App-Icon
-- Hinweis beim ersten Start
-- bestehende lokale DienstBuddy-Daten bleiben erhalten
-- Lohnmodell: Festgehalt oder Stundenlohn
-- Monatsverdienst bei Stundenlohn
-- Bundesland-Auswahl für landesweit geltende Feiertage
-- bestehende Kalender-, Scan-, Schicht-, Zuschlags-, Jahres- und Backup-Funktionen bleiben erhalten
+Neu in V3.2:
+- Feiertage werden im Kalender mit Namen angezeigt.
+- Bundeslandabhängige Feiertage bleiben berücksichtigt.
+- Bei Stundenlohn wird der Stundenlohn automatisch als Zuschlagsbasis verwendet.
+- Urlaub und Krank werden bei Stundenlohn als bezahlte Abwesenheit berücksichtigt.
+- Einstellbare Sollstunden pro bezahltem Urlaub-/Kranktag (Standard: 8 h).
+- Tatsächliche Arbeitsstunden und bezahlte Abwesenheit bleiben getrennt sichtbar.
+- Verdienst = Arbeitsstunden + bezahlte Abwesenheit + Zuschläge.
 
-WICHTIG:
-Diese Dateien nur in den Branch schichtiva-v3.1 hochladen und dort testen.
-main bleibt auf DienstBuddy V3.0, bis V3.1 freigegeben wurde.
+Hinweis:
+Urlaub/Krank werden hier als persönliche Rechenhilfe abgebildet. Tarifvertrag,
+Arbeitsvertrag und gesetzliche Sonderfälle können abweichen.
+
+Nur im Test-Branch verwenden. Noch nicht nach main übernehmen.

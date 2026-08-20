@@ -2,8 +2,8 @@
   "id": "./",
   "name": "Schichtiva",
   "short_name": "Schichtiva",
-  "description": "Keine Diva. Nur dein Dienstplan.",
-  "start_url": "./?v=31",
+  "description": "Keine Diva. Nur dein Dienstplan. V3.2 Testversion.",
+  "start_url": "./?v=32",
   "scope": "./",
   "display": "standalone",
   "display_override": [
