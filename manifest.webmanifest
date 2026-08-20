@@ -1,9 +1,9 @@
 {
   "id": "./",
-  "name": "DienstBuddy",
-  "short_name": "DienstBuddy",
-  "description": "Deine Schichten. Deine Zuschläge. Dein Kalender.",
-  "start_url": "./?v=30",
+  "name": "Schichtiva",
+  "short_name": "Schichtiva",
+  "description": "Keine Diva. Nur dein Dienstplan.",
+  "start_url": "./?v=31",
   "scope": "./",
   "display": "standalone",
   "display_override": [
