@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.7.3.5</title><link rel="manifest" href="./manifest.webmanifest?v=3735">
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V4</title><link rel="manifest" href="./manifest.webmanifest?v=4">
 <link rel="icon" href="./icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <meta name="application-name" content="Schichtiva">
@@ -71,7 +71,94 @@
 .cprGuide{border:2px solid #dc2626;background:#fff7f7;border-radius:14px;padding:14px;margin-top:12px}
 .cprStep{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px;margin:8px 0}
 .cprBig{font-size:18px;font-weight:900}
-</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V3.7.3.5</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div><button id="firstAidQuick" class="firstAidQuick"><span class="redCross">✚</span> Erste-Hilfe-Kompass</button></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="firstaid">🩹 Erste Hilfe</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
+
+.v4notice{background:#fff4d6;border:2px solid #e4a11b;border-radius:14px;padding:14px;margin:12px 0;font-weight:700}
+.emergencyNumbers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.emergencyNumbers a{display:block;text-align:center;padding:14px;border-radius:14px;text-decoration:none;font-weight:900}
+.n112{background:#b71c1c;color:white}.n116{background:#e7f0ff;color:#123c73;border:2px solid #87a9d8}
+.v4card{border:1px solid #d7dde5;border-radius:14px;padding:14px;margin:12px 0;background:white}
+.v4card input,.v4card textarea,.v4card select{width:100%;box-sizing:border-box;padding:10px;margin:5px 0 10px;border:1px solid #b8c0ca;border-radius:9px;font:inherit}
+.v4row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.v4btn{border:0;border-radius:10px;padding:11px 14px;font-weight:800;cursor:pointer;background:#1d5fa7;color:white}
+.v4btn.secondary{background:#59636f}.v4btn.danger{background:#a92121}
+.v4item{border-top:1px solid #e2e6eb;padding:10px 0}.v4item:first-child{border-top:0}
+.changelog li{margin:7px 0}
+
+
+.modalV4{position:fixed;inset:0;background:rgba(15,23,42,.48);display:none;align-items:center;justify-content:center;z-index:12000;padding:18px}
+.modalV4.open{display:flex}
+.modalCardV4{width:min(520px,100%);background:#fff;border-radius:18px;padding:18px;box-shadow:0 24px 70px rgba(0,0,0,.28)}
+.modalHeadV4{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.modalCloseV4{background:#eef2f7;color:#334155;border:0;border-radius:10px;padding:8px 11px;font-weight:800;cursor:pointer}
+.phoneTableV4{display:grid;gap:8px;margin-top:12px}
+.phoneRowV4{display:grid;grid-template-columns:1.2fr 1fr auto auto;gap:8px;align-items:center;padding:10px 12px;border:1px solid #dbe2ea;border-radius:12px;background:#fff}
+.phoneNameV4{font-weight:800}
+.phoneNumV4{font-variant-numeric:tabular-nums}
+.phoneActionV4{border:0;border-radius:9px;padding:8px 10px;font-weight:800;cursor:pointer}
+.phoneCallV4{background:#e8f2ff;color:#134d8b;text-decoration:none}
+.phoneDeleteV4{background:#feecec;color:#9f1b1b}
+.timePickerV4{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;margin:8px 0 12px}
+.timeColumnV4{border:1px solid #cdd6df;border-radius:12px;background:#f8fafc;padding:8px}
+.timeColumnV4 strong{display:block;text-align:center;margin-bottom:6px}
+.timeScrollV4{height:180px;overflow:auto;display:grid;gap:6px}
+.timeOptionV4{border:1px solid #d7dee8;border-radius:9px;background:#fff;padding:8px;text-align:center;cursor:pointer;font-weight:700}
+.timeOptionV4.active{background:#1d5fa7;color:#fff;border-color:#1d5fa7}
+.appointmentBadgeV4{display:block;margin-top:4px;border-radius:7px;padding:3px 6px;font-size:11px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#efe7ff;color:#5f3ca8;border:1px solid #d8c9ff}
+.apptLegendV4{display:inline-flex;align-items:center;gap:7px;margin-top:8px;font-size:12px;color:#5f3ca8}
+.apptLegendDotV4{width:12px;height:12px;border-radius:4px;background:#efe7ff;border:1px solid #d8c9ff}
+@media(max-width:720px){
+ .phoneRowV4{grid-template-columns:1fr auto}
+ .phoneNumV4{grid-column:1/2}
+ .phoneCallV4,.phoneDeleteV4{grid-row:1/3}
+ .timeScrollV4{height:150px}
+}
+
+
+.clockTriggerV4{width:100%;display:flex;align-items:center;justify-content:space-between;border:1px solid #b8c0ca;border-radius:10px;background:#fff;padding:11px 12px;font:inherit;cursor:pointer}
+.clockModalV4{position:fixed;inset:0;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;z-index:13000;padding:18px}
+.clockModalV4.open{display:flex}
+.clockCardV4{width:min(420px,100%);background:#fff;border-radius:20px;padding:18px;box-shadow:0 24px 70px rgba(0,0,0,.3)}
+.clockFaceV4{position:relative;width:300px;height:300px;margin:14px auto;border-radius:50%;background:#f4f7fb;border:2px solid #d5dde7}
+.clockCenterV4{position:absolute;left:50%;top:50%;width:10px;height:10px;border-radius:50%;background:#1d5fa7;transform:translate(-50%,-50%)}
+.clockNumV4{position:absolute;width:42px;height:42px;margin:-21px 0 0 -21px;border:0;border-radius:50%;background:transparent;cursor:pointer;font-weight:800}
+.clockNumV4:hover,.clockNumV4.active{background:#1d5fa7;color:#fff}
+.clockTitleV4{text-align:center;font-size:18px;font-weight:900}
+.clockTimeV4{text-align:center;font-size:34px;font-weight:900;margin-top:4px}
+.colorGridV4{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 12px}
+.colorChoiceV4{width:34px;height:34px;border-radius:50%;border:3px solid transparent;cursor:pointer}
+.colorChoiceV4.active{outline:3px solid #111827;outline-offset:2px}
+
+
+/* V4 build 4004 */
+.clockCardV4{border-top:7px solid var(--clock-accent,#6d4bc3)}
+.clockFaceV4{background:radial-gradient(circle at center,#ffffff 0 46%,#f1edff 47% 100%);border:3px solid #c8b8ff}
+.clockCenterV4{background:var(--clock-accent,#6d4bc3)}
+.clockNumV4.active,.clockNumV4:hover{background:var(--clock-accent,#6d4bc3);color:#fff}
+.clockHandV4{position:absolute;left:50%;top:50%;height:3px;background:var(--clock-accent,#6d4bc3);transform-origin:0 50%;z-index:1;border-radius:4px}
+.reminderGridV4{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.settingBoxV4{border:1px solid #d7dee8;border-radius:12px;padding:12px;background:#f8fafc}
+.settingBoxV4 select,.settingBoxV4 input{width:100%;box-sizing:border-box;padding:10px;border:1px solid #c9d1dc;border-radius:9px;background:#fff}
+.inlineCheckV4{display:flex;align-items:center;gap:8px;margin:8px 0}
+.inlineCheckV4 input{width:auto}
+.noticeV4{border-radius:12px;padding:10px 12px;background:#fff7df;border:1px solid #e8c766;margin:8px 0;font-size:13px}
+.repeatRowV4{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:720px){.reminderGridV4,.repeatRowV4{grid-template-columns:1fr}}
+
+
+/* V4 build 4005 – dunkle Uhr */
+.clockFaceV4{
+  background:#000 !important;
+  border-color:#333 !important;
+}
+.clockNumV4{
+  color:#fff !important;
+}
+.clockNumV4.active,
+.clockNumV4:hover{
+  color:#fff !important;
+}
+
+</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="icon-192.png" alt="Schichtiva" onerror="this.onerror=null;this.src='./icon-192.png?v=4003'" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V4</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div><button id="firstAidQuick" class="firstAidQuick"><span class="redCross">✚</span> Erste-Hilfe-Kompass</button></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="firstaid">🩹 Erste-Hilfe-Kompass</button><button data-tab="phoneListV4">📞 Telefonliste</button><button data-tab="appointmentsV4">📅 Termine</button><button data-tab="changelogV4">🧾 Changelog</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
 <section id="kal" class="tab active"><div class="stats"><div class="stat"><span class="muted">Arbeitsstunden</span><strong id="stH">0,0 h</strong></div><div class="stat"><span class="muted">Nachtstunden</span><strong id="stN">0,0 h</strong></div><div class="stat"><span class="muted">So./Feiertag</span><strong id="stS">0,0 h</strong></div><div class="stat"><span class="muted">Zuschläge</span><strong id="stB">0,00 €</strong></div><div class="stat"><span class="muted">Bezahlte Abwesenheit</span><strong id="stPaidAbs">0,0 h</strong></div><div class="stat"><span class="muted">Verdienst inkl. Zuschläge</span><strong id="stPay">—</strong></div></div><div class="card"><div class="calhead"><button class="secondary" id="prev">‹</button><h2 id="title"></h2><button class="secondary" id="next">›</button></div><div class="week"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div><div id="calendar" class="calendar"></div></div>
 <div class="card"><h3>Monatsauswertung</h3><p class="muted">Hier siehst du genau, welche Schicht welche Stunden verursacht.</p><div id="monthBreakdown"></div></div>
 <div class="card"><h3>Kalender benutzen</h3><p class="muted">Tippe auf einen Tag. Dann kannst du eine gespeicherte Schicht, Frei, Urlaub, Krank oder eine individuelle Schicht eintragen.</p></div>
@@ -115,8 +202,14 @@
 
 <section id="firstaid" class="tab">
 <div class="card">
-<h2><span style="color:#dc2626">✚</span> Erste-Hilfe-Kompass V3.7.3.5</h2>
-<p class="muted">Beschreibe Beschwerden oder Situation frei. V3.7.3.5 durchsucht eine deutlich größere Symptomdatenbank und kombiniert Körperregion, Beschwerdeart und Warnzeichen. Danach folgt eine geführte Abfrage – immer nur eine Frage gleichzeitig. Keine Diagnose.</p>
+<h2><span style="color:#dc2626">✚</span> Erste-Hilfe-Kompass V4</h2>
+<div class="v4notice">⚠️ <strong>Wichtiger Hinweis:</strong> Der Erste-Hilfe-Kompass wird nach und nach erweitert. Er kann nicht jede denkbare Situation vollständig abbilden und ersetzt keine professionelle medizinische Beurteilung. <strong>Wenn die Situation unklar ist, du Zweifel am Zustand der betroffenen Person hast oder ein Notfall möglich ist: 112 anrufen.</strong></div>
+<div class="emergencyNumbers">
+  <a class="n112" href="tel:112">📞 112 – Notruf</a>
+  <a class="n116" href="tel:116117">📞 116117 – Ärztlicher Bereitschaftsdienst</a>
+</div>
+<p class="muted"><strong>112:</strong> bei lebensbedrohlichen Notfällen oder wenn eine mögliche Notfallsituation nicht sicher eingeschätzt werden kann. <strong>116117:</strong> bei dringenden, nicht lebensbedrohlichen Beschwerden außerhalb regulärer Praxiszeiten.</p>
+<p class="muted">Beschreibe Beschwerden oder Situation frei. V4 durchsucht eine deutlich größere Symptomdatenbank und kombiniert Körperregion, Beschwerdeart und Warnzeichen. Danach folgt eine geführte Abfrage – immer nur eine Frage gleichzeitig. Keine Diagnose.</p>
 <label>Symptome / Situation</label>
 <input id="triageSearch" placeholder="Symptome oder Verletzung eingeben …" autocomplete="off">
 <div id="symptomMatches" class="symptomMatches"></div>
@@ -150,6 +243,115 @@
   <p class="muted" style="margin-top:10px">Hinweis: Die biometrischen Daten verlassen dein Gerät nicht. Schichtiva speichert nur eine technische Kennung für die lokale Entsperrung.</p>
 </div>
 <div class="card"><h3>Backup</h3><div class="actions"><button id="export" class="secondary">Backup exportieren</button><label style="padding:9px 12px;background:var(--soft);color:#19407c;border-radius:11px;font-weight:700">Backup importieren<input id="import" type="file" accept="application/json,.json" style="display:none"></label><button id="cleanInvalid" class="secondary">Falsche Scan-Zeiten löschen</button><button id="clear" class="danger">Alles löschen</button></div></div></section>
+
+<section id="phoneListV4" class="tab">
+ <div class="card">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+   <div><h2 style="margin-bottom:4px">📞 Telefonliste</h2><p class="muted" style="margin:0">Eigene wichtige Rufnummern übersichtlich speichern.</p></div>
+   <button class="v4btn" id="openPhoneModalV4">+ Neue Rufnummer</button>
+  </div>
+  <div class="phoneTableV4" id="phoneItemsV4"></div>
+ </div>
+</section>
+
+<section id="appointmentsV4" class="tab">
+ <div class="card">
+  <h2>📅 Termine</h2>
+  <p class="muted">Termine erscheinen in deiner gewählten Farbe im Kalender.</p>
+  <div class="v4card">
+   <label>Termin</label><input id="apptTitleV4" placeholder="z. B. Hausarzt">
+   <label>Datum</label><input id="apptDateV4" type="date">
+
+   <label>Uhrzeit</label>
+   <button type="button" id="openClockV4" class="clockTriggerV4"><span>🕒 Uhrzeit auswählen</span><strong id="selectedTimeV4">09:00</strong></button>
+
+   <label style="margin-top:12px">Farbe</label>
+   <div id="colorPickerV4" class="colorGridV4"></div>
+
+   <div class="reminderGridV4">
+    <div class="settingBoxV4">
+     <label>🔔 Erinnerung</label>
+     <select id="apptReminderV4">
+      <option value="0">Zur Terminzeit</option>
+      <option value="5">5 Minuten vorher</option>
+      <option value="10">10 Minuten vorher</option>
+      <option value="15" selected>15 Minuten vorher</option>
+      <option value="30">30 Minuten vorher</option>
+      <option value="60">1 Stunde vorher</option>
+      <option value="120">2 Stunden vorher</option>
+      <option value="1440">1 Tag vorher</option>
+     </select>
+    </div>
+    <div class="settingBoxV4">
+     <label>🔊 Erinnerungston</label>
+     <select id="apptToneV4">
+      <option value="soft">Sanfter Ton</option>
+      <option value="classic">Klassischer Ton</option>
+      <option value="double">Doppelton</option>
+      <option value="urgent">Deutlicher Ton</option>
+      <option value="none">Kein Ton</option>
+     </select>
+     <button type="button" class="v4btn secondary" id="testToneV4" style="margin-top:8px">Ton testen</button>
+    </div>
+   </div>
+
+   <div class="settingBoxV4" style="margin-top:10px">
+    <label>🔁 Wiederholung</label>
+    <select id="apptRepeatV4">
+     <option value="none">Keine</option>
+     <option value="daily">Täglich</option>
+     <option value="weekly">Wöchentlich</option>
+     <option value="monthly">Monatlich</option>
+     <option value="yearly">Jährlich</option>
+    </select>
+    <div id="repeatExtraV4" style="display:none;margin-top:10px">
+     <label>Wiederholen bis</label>
+     <select id="repeatEndModeV4">
+      <option value="never">Unbegrenzt</option>
+      <option value="date">Bis zu einem Datum</option>
+     </select>
+     <input id="repeatEndDateV4" type="date" style="display:none;margin-top:8px">
+    </div>
+   </div>
+
+   <label style="margin-top:12px">Notiz</label><textarea id="apptNoteV4" rows="3" placeholder="optional"></textarea>
+
+   <div class="noticeV4">
+    📱 <strong>Handy-Erinnerung:</strong> Beim ersten Termin fragt Schichtiva nach Benachrichtigungs-Erlaubnis.
+    Erinnerungen funktionieren zuverlässig, solange Schichtiva geöffnet ist. Auf manchen Handys kann der Browser Hintergrund-Erinnerungen einschränken.
+   </div>
+
+   <button class="v4btn" onclick="addAppointmentV4()">Termin hinzufügen</button>
+   <div id="apptItemsV4"></div>
+  </div>
+ </div>
+</section>
+
+<section id="changelogV4" class="tab">
+ <div class="card changelog">
+  <h2>🧾 Changelog – Was ist seit V3 neu?</h2>
+  <p class="muted"><strong>Veröffentlichung V4:</strong> finaler getesteter Stand der V4-Reihe.</p>
+  <ul>
+   <li><strong>Umbenennung zu Schichtiva:</strong> neuer App-Name, neues Icon und überarbeitete Oberfläche.</li>
+   <li><strong>Mobile Nutzung:</strong> Smartphone-Optimierung und Swipe-Navigation.</li>
+   <li><strong>Biometrischer App-Schutz:</strong> Entsperren über Gerätesicherheit wie Fingerabdruck, Gesichtserkennung oder Geräte-PIN; automatische Entsperrabfrage beim Öffnen.</li>
+   <li><strong>Kalender erweitert:</strong> Schichten, freie Tage, Urlaub, Krankheit, Feiertage und besondere Kalendertage übersichtlicher dargestellt.</li>
+   <li><strong>Besondere Tage:</strong> Heiligabend, Silvester, Ostersonntag und Pfingstsonntag ergänzt.</li>
+   <li><strong>Lohn/Zuschläge:</strong> Stundenlohn oder Festgehalt, Nacht-, Sonn-/Feiertagsstunden, Zuschläge, bezahlte Abwesenheit und Gesamtverdienst weiter ausgebaut.</li>
+   <li><strong>Scan:</strong> bestehende Scan-Funktion in Schichtiva integriert und beibehalten.</li>
+   <li><strong>Erste-Hilfe-Kompass:</strong> freier Symptomeingang, geführte Fragepfade, Tippfehlertoleranz, 112/116117, Giftnotruf und situationsbezogene Sofortmaßnahmen.</li>
+   <li><strong>Bewusstlosigkeit / Reanimation:</strong> Reaktion → Atmung → HLW/AED-Pfad.</li>
+   <li><strong>AED:</strong> eigene Schritt-für-Schritt-Anleitung bei vorhandenem AED und HLW-Anleitung, wenn zunächst keiner verfügbar ist.</li>
+   <li><strong>Weitere Erste-Hilfe-Pfade:</strong> u. a. Blutung/Kopfverletzung, Stromunfall, Verschlucken/Atemwegsverlegung, Verbrennung, Erbrechen/Vergiftung, Sturz/Knochenverletzung, Allergie/Insektenstich, Brustbeschwerden und Bauchschmerzen mit Fieber.</li>
+   <li><strong>Hinweis im Kompass:</strong> der Kompass wird nach und nach erweitert; bei unklarer möglicher Notfallsituation 112.</li>
+   <li><strong>Telefonliste:</strong> neu in V4 – Rufnummern übersichtlich speichern, direkt anrufen und löschen; neue Nummern werden über ein separates Eingabefenster hinzugefügt.</li>
+   <li><strong>Termine:</strong> neu in V4 – Termine mit Datum, Notiz und eigener Farbe anlegen; überarbeitete dunkle 24-Stunden-Uhr mit Stunden- und Minutenauswahl; farbliche Anzeige im Kalender; einstellbare Erinnerung vor dem Termin; mehrere Erinnerungstöne mit Testfunktion; tägliche, wöchentliche, monatliche oder jährliche Wiederholungen mit optionalem Enddatum; vergangene einmalige Termine werden ab 00:00 Uhr des Folgetages automatisch aus der lokalen Terminliste entfernt.</li>
+   <li><strong>Changelog:</strong> neu in V4 – eigene Seite mit den wichtigsten Änderungen seit V3.</li>
+   <li><strong>Lokale Speicherung:</strong> Telefonliste und Termine bleiben im Teststand lokal auf dem jeweiligen Gerät gespeichert.</li>
+  </ul>
+ </div>
+</section>
+
 </main>
 <div id="lockScreen" class="lockScreen">
   <div class="lockCard">
@@ -728,9 +930,9 @@ $('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObje
   data.shifts=data.shifts.filter(sh=>!(sh.start&&sh.end&&(!validTime(sh.start)||!validTime(sh.end))));
   save();renderShifts();renderCal();alert(n+' fehlerhafte Scan-Einträge entfernt.');
 };
-$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=3735').catch(()=>{}));
+$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=4').catch(()=>{}));
 
-const REBRAND_KEY='schichtiva_v3735_welcome_seen';
+const REBRAND_KEY='schichtiva_v4_welcome_seen';
 window.addEventListener('load',()=>{if(!localStorage.getItem(REBRAND_KEY)){$('rebrandModal').classList.add('open')}});
 $('rebrandOk').onclick=()=>{localStorage.setItem(REBRAND_KEY,'1');$('rebrandModal').classList.remove('open')};
 
@@ -1323,4 +1525,243 @@ document.addEventListener('visibilitychange',()=>{
   }
 });
 
-</script></body></html>
+</script>
+<script>
+const V4_PHONE_KEY='schichtiva_v4_phone_list';
+const V4_APPT_KEY='schichtiva_v4_appointments';
+const V4_NOTIFIED_KEY='schichtiva_v4_notified';
+let selectedHourV4='09', selectedMinuteV4='00', selectedColorV4='#8b5cf6', clockModeV4='hour';
+const V4_COLORS=['#8b5cf6','#2563eb','#059669','#d97706','#dc2626','#db2777','#0891b2','#64748b'];
+
+function v4Load(k){try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(e){return []}}
+function v4Save(k,v){localStorage.setItem(k,JSON.stringify(v))}
+function v4Esc(x){return String(x||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function pad2(n){return String(n).padStart(2,'0')}
+
+function openPhoneModalV4(){const m=document.getElementById('phoneModalV4');if(!m)return;m.classList.add('open');m.setAttribute('aria-hidden','false');setTimeout(()=>document.getElementById('phoneNameV4')?.focus(),50)}
+function closePhoneModalV4(){const m=document.getElementById('phoneModalV4');if(!m)return;m.classList.remove('open');m.setAttribute('aria-hidden','true')}
+function addPhoneV4(){const n=document.getElementById('phoneNameV4').value.trim(),tel=document.getElementById('phoneNumberV4').value.trim();if(!n||!tel){alert('Bitte Name und Telefonnummer eingeben.');return}const a=v4Load(V4_PHONE_KEY);a.push({id:Date.now(),name:n,tel});v4Save(V4_PHONE_KEY,a);document.getElementById('phoneNameV4').value='';document.getElementById('phoneNumberV4').value='';closePhoneModalV4();renderPhonesV4()}
+function delPhoneV4(id){if(!confirm('Rufnummer wirklich löschen?'))return;v4Save(V4_PHONE_KEY,v4Load(V4_PHONE_KEY).filter(x=>x.id!==id));renderPhonesV4()}
+function renderPhonesV4(){const el=document.getElementById('phoneItemsV4');if(!el)return;const a=v4Load(V4_PHONE_KEY);el.innerHTML=a.length?a.map(x=>`<div class="phoneRowV4"><div class="phoneNameV4">${v4Esc(x.name)}</div><div class="phoneNumV4">${v4Esc(x.tel)}</div><a class="phoneActionV4 phoneCallV4" href="tel:${v4Esc(x.tel)}">📞 Anrufen</a><button class="phoneActionV4 phoneDeleteV4" onclick="delPhoneV4(${x.id})">🗑 Löschen</button></div>`).join(''):'<p class="muted">Noch keine eigenen Rufnummern gespeichert.</p>'}
+
+function renderColorPickerV4(){
+ const el=document.getElementById('colorPickerV4');if(!el)return;
+ el.innerHTML=V4_COLORS.map(c=>`<button type="button" class="colorChoiceV4 ${c===selectedColorV4?'active':''}" data-color="${c}" style="background:${c}" aria-label="Farbe ${c}"></button>`).join('');
+ el.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>{selectedColorV4=b.dataset.color;renderColorPickerV4();const card=document.querySelector('.clockCardV4');if(card)card.style.setProperty('--clock-accent',selectedColorV4)});
+}
+
+function openClockV4(){
+ clockModeV4='hour';
+ const card=document.querySelector('.clockCardV4');if(card)card.style.setProperty('--clock-accent',selectedColorV4);
+ document.getElementById('clockModalV4')?.classList.add('open');
+ document.getElementById('clockModalV4')?.setAttribute('aria-hidden','false');
+ renderClockFaceV4();
+}
+function closeClockV4(){document.getElementById('clockModalV4')?.classList.remove('open');document.getElementById('clockModalV4')?.setAttribute('aria-hidden','true')}
+function renderClockFaceV4(){
+ const face=document.getElementById('clockFaceV4');if(!face)return;
+ face.querySelectorAll('.clockNumV4').forEach(x=>x.remove());
+ const isHour=clockModeV4==='hour';
+ const vals=isHour?Array.from({length:24},(_,i)=>i):Array.from({length:12},(_,i)=>i*5);
+ const cx=150,cy=150;
+ vals.forEach((num,i)=>{
+   const outer=isHour ? num>=12 : true;
+   const ringRadius=isHour?(outer?116:82):116;
+   const angle=(isHour?(num%12)/12:num/60)*Math.PI*2-Math.PI/2;
+   const b=document.createElement('button');b.type='button';b.className='clockNumV4';
+   b.style.left=(cx+Math.cos(angle)*ringRadius)+'px';b.style.top=(cy+Math.sin(angle)*ringRadius)+'px';
+   b.textContent=isHour?pad2(num):pad2(num);
+   const active=isHour?Number(selectedHourV4)===num:Number(selectedMinuteV4)===num;
+   if(active)b.classList.add('active');
+   b.onclick=()=>{
+     if(isHour){selectedHourV4=pad2(num);clockModeV4='minute';}
+     else selectedMinuteV4=pad2(num);
+     renderClockFaceV4();updateClockPreviewV4();
+   };
+   face.appendChild(b);
+ });
+ document.getElementById('clockModeTitleV4').textContent=isHour?'Stunde wählen (00–23)':'Minute wählen';
+ document.getElementById('clockBackV4').style.display=isHour?'none':'inline-block';
+ updateClockPreviewV4();
+ updateClockHandV4();
+}
+function updateClockHandV4(){
+ const hand=document.getElementById('clockHandV4');if(!hand)return;
+ const isHour=clockModeV4==='hour';
+ const value=isHour?(Number(selectedHourV4)%12):Number(selectedMinuteV4);
+ const angle=(isHour?value/12:value/60)*360-90;
+ hand.style.width=(isHour?'78px':'112px');
+ hand.style.transform=`rotate(${angle}deg)`;
+}
+function updateClockPreviewV4(){
+ const t=`${selectedHourV4}:${selectedMinuteV4}`;
+ document.getElementById('clockTimePreviewV4')&&(document.getElementById('clockTimePreviewV4').textContent=t);
+ document.getElementById('selectedTimeV4')&&(document.getElementById('selectedTimeV4').textContent=t);
+}
+
+function repeatOccurrenceDatesV4(a, from, to){
+ const dates=[];
+ const start=new Date(a.date+'T00:00:00');
+ const endMode=a.repeatEndMode||'never';
+ const endDate=a.repeatEndDate?new Date(a.repeatEndDate+'T23:59:59'):null;
+ for(let d=new Date(start);d<=to;d.setDate(d.getDate()+1)){
+   if(d<from||d<start)continue;
+   if(endMode==='date'&&endDate&&d>endDate)break;
+   let match=false;
+   if(a.repeat==='daily')match=true;
+   else if(a.repeat==='weekly')match=d.getDay()===start.getDay();
+   else if(a.repeat==='monthly')match=d.getDate()===start.getDate();
+   else if(a.repeat==='yearly')match=d.getDate()===start.getDate()&&d.getMonth()===start.getMonth();
+   if(match)dates.push(new Date(d));
+ }
+ return dates;
+}
+function occurrenceListV4(from,to){
+ const list=[];
+ v4Load(V4_APPT_KEY).forEach(a=>{
+   if(!a.repeat||a.repeat==='none'){
+     const d=new Date(`${a.date}T${a.time||'00:00'}:00`);
+     if(d>=from&&d<=to)list.push({...a,occurrenceDate:a.date});
+   }else{
+     repeatOccurrenceDatesV4(a,from,to).forEach(d=>{
+       const ds=`${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
+       list.push({...a,occurrenceDate:ds});
+     });
+   }
+ });
+ return list;
+}
+async function ensureNotificationPermissionV4(){
+ if(!('Notification' in window))return false;
+ if(Notification.permission==='granted')return true;
+ if(Notification.permission==='denied')return false;
+ try{return (await Notification.requestPermission())==='granted'}catch(e){return false}
+}
+function playToneV4(tone){
+ if(tone==='none')return;
+ try{
+   const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
+   const ctx=new AC();
+   const patterns={
+     soft:[[660,.12],[880,.16]], classic:[[880,.18],[660,.18]], double:[[880,.14],[0,.08],[880,.14]], urgent:[[880,.15],[1040,.15],[880,.15]]
+   };
+   let t=ctx.currentTime;
+   (patterns[tone]||patterns.soft).forEach(([freq,dur])=>{
+     if(freq){const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=freq;o.connect(g);g.connect(ctx.destination);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.15,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.start(t);o.stop(t+dur+.02);}
+     t+=dur;
+   });
+ }catch(e){}
+}
+function checkRemindersV4(){
+ const now=new Date(), horizon=new Date(now.getTime()+2*86400000);
+ const occ=occurrenceListV4(new Date(now.getTime()-2*86400000),horizon);
+ let notified=v4Load(V4_NOTIFIED_KEY);
+ const keepAfter=Date.now()-7*86400000;
+ notified=notified.filter(x=>x.ts>keepAfter);
+ occ.forEach(a=>{
+   const dt=new Date(`${a.occurrenceDate}T${a.time||'00:00'}:00`);
+   const remind=Number(a.reminder||0);
+   const trigger=dt.getTime()-remind*60000;
+   const key=`${a.id}_${a.occurrenceDate}_${a.time}_${remind}`;
+   if(Date.now()>=trigger&&Date.now()<dt.getTime()+60000&&!notified.some(x=>x.key===key)){
+     const body=`${a.title} um ${a.time}${remind?` – Erinnerung ${remind} Min. vorher`:''}`;
+     if('Notification' in window&&Notification.permission==='granted'){
+       try{new Notification('Schichtiva – Termin', {body,icon:'icon-192.png',tag:key})}catch(e){}
+     }
+     playToneV4(a.tone||'soft');
+     notified.push({key,ts:Date.now()});
+   }
+ });
+ v4Save(V4_NOTIFIED_KEY,notified);
+}
+function cleanupExpiredAppointmentsV4(){
+ const today=new Date();today.setHours(0,0,0,0);
+ const arr=v4Load(V4_APPT_KEY);
+ const kept=arr.filter(a=>{
+   if(a.repeat&&a.repeat!=='none')return true;
+   const d=new Date(a.date+'T00:00:00');
+   // Delete once the next calendar day has begun.
+   return d>=today;
+ });
+ if(kept.length!==arr.length){v4Save(V4_APPT_KEY,kept);renderAppointmentsV4();renderCalendarAppointmentsV4();}
+}
+
+async function addAppointmentV4(){
+ const title=document.getElementById('apptTitleV4').value.trim(),date=document.getElementById('apptDateV4').value,note=document.getElementById('apptNoteV4').value.trim();
+ if(!title||!date){alert('Bitte mindestens Termin und Datum eingeben.');return}
+ const reminder=document.getElementById('apptReminderV4').value;
+ const tone=document.getElementById('apptToneV4').value;
+ const repeat=document.getElementById('apptRepeatV4').value;
+ const repeatEndMode=document.getElementById('repeatEndModeV4').value;
+ const repeatEndDate=document.getElementById('repeatEndDateV4').value;
+ const time=`${selectedHourV4}:${selectedMinuteV4}`;
+ const a=v4Load(V4_APPT_KEY);
+ a.push({id:Date.now(),title,date,time,note,color:selectedColorV4,reminder,tone,repeat,repeatEndMode,repeatEndDate});
+ a.sort((x,y)=>(x.date+x.time).localeCompare(y.date+y.time));v4Save(V4_APPT_KEY,a);
+ await ensureNotificationPermissionV4();
+ document.getElementById('apptTitleV4').value='';document.getElementById('apptDateV4').value='';document.getElementById('apptNoteV4').value='';
+ renderAppointmentsV4();renderCalendarAppointmentsV4();checkRemindersV4();
+}
+function delAppointmentV4(id){if(!confirm('Termin wirklich löschen?'))return;v4Save(V4_APPT_KEY,v4Load(V4_APPT_KEY).filter(x=>x.id!==id));renderAppointmentsV4();renderCalendarAppointmentsV4()}
+function repeatLabelV4(a){return !a.repeat||a.repeat==='none'?'':({daily:' · täglich',weekly:' · wöchentlich',monthly:' · monatlich',yearly:' · jährlich'}[a.repeat]||'')}
+function renderAppointmentsV4(){
+ const el=document.getElementById('apptItemsV4');if(!el)return;
+ const a=v4Load(V4_APPT_KEY);
+ el.innerHTML=a.length?a.map(x=>`<div class="v4item" style="border-left:8px solid ${v4Esc(x.color||'#8b5cf6')};padding-left:10px"><strong>${v4Esc(x.title)}</strong><br>${v4Esc(x.date)} · ${v4Esc(x.time)}${repeatLabelV4(x)}<br><span class="muted">🔔 ${v4Esc(x.reminder||'0')} Min. vorher · 🔊 ${v4Esc(x.tone||'soft')}</span>${x.note?'<br>'+v4Esc(x.note):''}<div style="margin-top:7px"><button class="v4btn danger" onclick="delAppointmentV4(${x.id})">Löschen</button></div></div>`).join(''):'<p class="muted">Noch keine Termine gespeichert.</p>';
+}
+function renderCalendarAppointmentsV4(){
+ document.querySelectorAll('.appointmentBadgeV4').forEach(x=>x.remove());
+ const monthNames={Januar:1,Februar:2,März:3,April:4,Mai:5,Juni:6,Juli:7,August:8,September:9,Oktober:10,November:11,Dezember:12};
+ const title=[...document.querySelectorAll('#kal h2,#kal h3')].find(x=>Object.keys(monthNames).some(m=>(x.textContent||'').includes(m)));if(!title)return;
+ const mt=(title.textContent||'').match(/(Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember)\s+(\d{4})/);if(!mt)return;
+ const month=monthNames[mt[1]],year=Number(mt[2]);
+ const from=new Date(year,month-1,1),to=new Date(year,month,0,23,59,59);
+ occurrenceListV4(from,to).forEach(a=>{
+   const day=Number(a.occurrenceDate.slice(8,10));let cell=document.querySelector(`#kal [data-date="${a.occurrenceDate}"]`);
+   if(!cell){const c=[...document.querySelectorAll('#kal td,#kal .day,#kal .calendar-day,#kal [class*="day"]')];cell=c.find(el=>(el.firstElementChild?.textContent||'').trim()===String(day))}
+   if(cell){const b=document.createElement('span');b.className='appointmentBadgeV4';b.style.background=a.color||'#8b5cf6';b.style.color='#fff';b.style.borderColor=a.color||'#8b5cf6';b.textContent=`📅 ${a.time} ${a.title}`;cell.appendChild(b)}
+ });
+}
+function initV4Enhancements(){
+ renderPhonesV4();renderAppointmentsV4();renderColorPickerV4();updateClockPreviewV4();cleanupExpiredAppointmentsV4();renderCalendarAppointmentsV4();
+ document.getElementById('openPhoneModalV4')?.addEventListener('click',openPhoneModalV4);
+ document.getElementById('closePhoneModalV4')?.addEventListener('click',closePhoneModalV4);
+ document.getElementById('cancelPhoneModalV4')?.addEventListener('click',closePhoneModalV4);
+ document.getElementById('phoneModalV4')?.addEventListener('click',e=>{if(e.target.id==='phoneModalV4')closePhoneModalV4()});
+ document.getElementById('openClockV4')?.addEventListener('click',openClockV4);
+ document.getElementById('closeClockV4')?.addEventListener('click',closeClockV4);
+ document.getElementById('clockUseV4')?.addEventListener('click',closeClockV4);
+ document.getElementById('clockBackV4')?.addEventListener('click',()=>{clockModeV4='hour';renderClockFaceV4()});
+ document.getElementById('clockModalV4')?.addEventListener('click',e=>{if(e.target.id==='clockModalV4')closeClockV4()});
+ document.getElementById('testToneV4')?.addEventListener('click',()=>playToneV4(document.getElementById('apptToneV4').value));
+ document.getElementById('apptRepeatV4')?.addEventListener('change',e=>{document.getElementById('repeatExtraV4').style.display=e.target.value==='none'?'none':'block'});
+ document.getElementById('repeatEndModeV4')?.addEventListener('change',e=>{document.getElementById('repeatEndDateV4').style.display=e.target.value==='date'?'block':'none'});
+ document.addEventListener('click',e=>{if(e.target.closest('[data-tab="kal"]')||e.target.closest('#kal button'))setTimeout(renderCalendarAppointmentsV4,100)});
+ setInterval(()=>{cleanupExpiredAppointmentsV4();checkRemindersV4()},30000);
+ checkRemindersV4();
+}
+document.addEventListener('DOMContentLoaded',initV4Enhancements);
+</script>
+
+
+<div id="phoneModalV4" class="modalV4" aria-hidden="true">
+ <div class="modalCardV4">
+  <div class="modalHeadV4"><h3 style="margin:0">📞 Neue Rufnummer</h3><button id="closePhoneModalV4" class="modalCloseV4">✕</button></div>
+  <label>Name / Stelle</label><input id="phoneNameV4" placeholder="z. B. Hausarzt">
+  <label>Telefonnummer</label><input id="phoneNumberV4" inputmode="tel" placeholder="z. B. 01234 567890">
+  <div class="actions"><button class="v4btn" onclick="addPhoneV4()">Speichern</button><button class="v4btn secondary" id="cancelPhoneModalV4">Abbrechen</button></div>
+ </div>
+</div>
+
+
+<div id="clockModalV4" class="clockModalV4" aria-hidden="true">
+ <div class="clockCardV4" style="--clock-accent:#6d4bc3">
+  <div class="modalHeadV4"><h3 style="margin:0">🕒 Uhrzeit wählen</h3><button id="closeClockV4" class="modalCloseV4">✕</button></div>
+  <div id="clockModeTitleV4" class="clockTitleV4">Stunde wählen</div>
+  <div id="clockTimePreviewV4" class="clockTimeV4">09:00</div>
+  <div id="clockFaceV4" class="clockFaceV4"><div class="clockCenterV4"></div><div id="clockHandV4" class="clockHandV4"></div></div>
+  <div class="actions" style="justify-content:center"><button id="clockBackV4" class="v4btn secondary" style="display:none">← Stunde ändern</button><button id="clockUseV4" class="v4btn">Übernehmen</button></div>
+ </div>
+</div>
+
+</body></html>

@@ -1,9 +1,9 @@
 {
   "id": "./",
-  "name": "Schichtiva V3.7.3.5",
-  "short_name": "Schichtiva",
-  "description": "Schichtiva V3.7.3.5 – Einzelfragen und konkrete Sofortmaßnahmen für Allergie, Brustbeschwerden und Bauchschmerzen mit Fieber.",
-  "start_url": "./?v=3735",
+  "name": "Schichtiva V4",
+  "short_name": "Schichtiva V4",
+  "description": "Schichtiva V4 – Dienstplan, Kalender, Termine, Telefonliste und Erste-Hilfe-Kompass.",
+  "start_url": "./?v=4",
   "scope": "./",
   "display": "standalone",
   "display_override": [
