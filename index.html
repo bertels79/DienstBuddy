@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.7.3.1</title><link rel="manifest" href="./manifest.webmanifest?v=3731">
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.7.3.1</title><link rel="manifest" href="./manifest.webmanifest?v=37311">
 <link rel="icon" href="./icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <meta name="application-name" content="Schichtiva">
@@ -115,8 +115,8 @@
 
 <section id="firstaid" class="tab">
 <div class="card">
-<h2><span style="color:#dc2626">✚</span> Erste-Hilfe-Kompass V3.7.3</h2>
-<p class="muted">Beschreibe Beschwerden oder Situation frei. V3.7.3 durchsucht eine deutlich größere Symptomdatenbank und kombiniert Körperregion, Beschwerdeart und Warnzeichen. Danach folgt eine geführte Abfrage – immer nur eine Frage gleichzeitig. Keine Diagnose.</p>
+<h2><span style="color:#dc2626">✚</span> Erste-Hilfe-Kompass V3.7.3.1</h2>
+<p class="muted">Beschreibe Beschwerden oder Situation frei. V3.7.3.1 durchsucht eine deutlich größere Symptomdatenbank und kombiniert Körperregion, Beschwerdeart und Warnzeichen. Danach folgt eine geführte Abfrage – immer nur eine Frage gleichzeitig. Keine Diagnose.</p>
 <label>Symptome / Situation</label>
 <input id="triageSearch" placeholder="Symptome oder Verletzung eingeben …" autocomplete="off">
 <div id="symptomMatches" class="symptomMatches"></div>
@@ -728,7 +728,7 @@ $('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObje
   data.shifts=data.shifts.filter(sh=>!(sh.start&&sh.end&&(!validTime(sh.start)||!validTime(sh.end))));
   save();renderShifts();renderCal();alert(n+' fehlerhafte Scan-Einträge entfernt.');
 };
-$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=3731').catch(()=>{}));
+$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=37311').catch(()=>{}));
 
 const REBRAND_KEY='schichtiva_v3731_welcome_seen';
 window.addEventListener('load',()=>{if(!localStorage.getItem(REBRAND_KEY)){$('rebrandModal').classList.add('open')}});
@@ -768,6 +768,8 @@ const SYN={
 // V3.7.3 – erweiterter lokaler Wortschatz.
 // Die Begriffe dienen nur zur Zuordnung in einen Fragepfad, NICHT zur Diagnose.
 const EXTRA_SYMPTOMS={
+ 'bewustlos':'bewusstlos','bewußtlos':'bewusstlos','bewust':'bewusstlos',
+ 'bewusst loß':'bewusstlos','ohnmächtig':'bewusstlos','ohnmacht':'bewusstlos',
  'kopfdruck':'kopf schmerz','migräne':'kopf schmerz','lichtempfindlich':'kopf schmerz',
  'drehschwindel':'schwindel','schwankschwindel':'schwindel','unsicherer gang':'schwindel',
  'herzklopfen':'herzrasen','stolpern':'herzrasen','puls':'herzrasen',
@@ -865,8 +867,8 @@ const Q={
   ['Ist die Atemnot neu, anhaltend oder deutlich stärker als üblich?','urgent','medical']
  ],
  conscious:[
-  ['Reagiert die Person aktuell nicht normal auf Ansprechen und vorsichtiges Berühren?',1,'urgent'],
-  ['Atmet die Person normal?','red','cpr']
+  ['Reagiert die Person auf lautes Ansprechen und vorsichtiges Berühren?',1,'urgent'],
+  ['Atmet die Person normal?','unconsciousBreathing','cpr']
  ],
  seizure:[
   ['Dauert der Anfall länger als 5 Minuten oder folgen mehrere Anfälle ohne vollständige Erholung?','red',1],
@@ -950,10 +952,23 @@ function normalize(q){
  return x.replace(/\s+/g,' ').trim();
 }
 function tokens(q){return normalize(q).split(' ').filter(Boolean)}
+function nearWord(a,b){
+ if(a===b)return true;
+ if(Math.abs(a.length-b.length)>1)return false;
+ let i=0,j=0,d=0;
+ while(i<a.length&&j<b.length){
+   if(a[i]===b[j]){i++;j++;continue;}
+   d++; if(d>1)return false;
+   if(a.length>b.length)i++; else if(b.length>a.length)j++; else {i++;j++;}
+ }
+ return true;
+}
+function hasTok(toks,k){return toks.includes(k)||toks.some(t=>t.length>=5&&k.length>=5&&nearWord(t,k))}
+
 function categoryScore(rule,toks){
  let score=0;
- (rule.any||[]).forEach(k=>{if(toks.includes(k))score+=4});
- (rule.keys||[]).forEach(k=>{if(toks.includes(k))score+=2});
+ (rule.any||[]).forEach(k=>{if(hasTok(toks,k))score+=4});
+ (rule.keys||[]).forEach(k=>{if(hasTok(toks,k))score+=2});
  return score;
 }
 let current=null,step=0;
@@ -984,7 +999,7 @@ function answer(next){if(typeof next==='number'){step=next;renderQuestion();}els
 function renderResult(key){
  if(key==='cpr'){renderCPRChoice();return;}
  const r=RESULT[key]||RESULT.medical;
- $('triageFlow').innerHTML=`<div class="triageResult ${r.cls}"><h3>${safeTxt(r.title)}</h3><p>${safeTxt(r.text)}</p><h3>Nächster Schritt</h3><ul>${r.steps.map(x=>`<li>${safeTxt(x)}</li>`).join('')}</ul><div class="callRow">${key==='red'||key==='cpr'?'<a class="callBtn" href="tel:112">📞 112 anrufen</a>':''}${key==='urgent'||key==='medical'?'<a class="callBtn secondary" href="tel:116117">📞 116117</a>':''}${key==='poison'?'<button id="poisonJump" class="secondary">☠️ Giftnotrufnummern</button>':''}</div><div class="actions"><button id="restart" class="secondary">↩ Neuer Check</button><a class="callBtn secondary" href="https://www.116117.de/de/patienten-navi.php" target="_blank" rel="noopener">Offizielles 116117 Patienten-Navi</a></div></div>`;
+ $('triageFlow').innerHTML=`<div class="triageResult ${r.cls}"><h3>${safeTxt(r.title)}</h3><p>${safeTxt(r.text)}</p><h3>Nächster Schritt</h3><ul>${r.steps.map(x=>`<li>${safeTxt(x)}</li>`).join('')}</ul><div class="callRow">${key==='red'||key==='cpr'||key==='unconsciousBreathing'?'<a class="callBtn" href="tel:112">📞 112 anrufen</a>':''}${key==='urgent'||key==='medical'?'<a class="callBtn secondary" href="tel:116117">📞 116117</a>':''}${key==='poison'?'<button id="poisonJump" class="secondary">☠️ Giftnotrufnummern</button>':''}</div><div class="actions"><button id="restart" class="secondary">↩ Neuer Check</button><a class="callBtn secondary" href="https://www.116117.de/de/patienten-navi.php" target="_blank" rel="noopener">Offizielles 116117 Patienten-Navi</a></div></div>`;
  $('restart').onclick=resetTriage;if($('poisonJump'))$('poisonJump').onclick=()=>document.querySelector('#poisonList').scrollIntoView({behavior:'smooth'});
 }
 
