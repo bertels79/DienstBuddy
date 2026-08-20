@@ -1,11 +1,20 @@
 Schichtiva V3.3 – Testversion
 
-Neu:
-- Heiligabend und Silvester werden namentlich angezeigt, ohne automatischen Feiertagszuschlag.
-- Ostersonntag und Pfingstsonntag werden namentlich angezeigt.
-- Gesetzlicher Status von Oster-/Pfingstsonntag bleibt bundeslandabhängig.
-- Feste untere Navigation für Handy/Tablet.
-- Untere Navigation horizontal scrollbar: Kalender, Schichten, Scan, Einstellungen.
-- Obere Navigation bleibt erhalten.
+Zum Hochladen in den bestehenden Test-Branch.
+NICHT nach main veröffentlichen.
 
-Bestehende V3.2-Funktionen bleiben erhalten.
+Enthalten:
+- index.html
+- manifest.webmanifest
+- service-worker.js
+- icon-192.png
+- icon-512.png
+- README.txt
+
+V3.3:
+- Heiligabend und Silvester werden namentlich angezeigt, aber nicht automatisch als gesetzliche Feiertage gerechnet.
+- Ostersonntag und Pfingstsonntag werden namentlich angezeigt.
+- Gesetzlicher Feiertagsstatus bleibt bundeslandabhängig.
+- Auf dem Handy kann zwischen Kalender, Schichten, Scan, Jahr und Einstellungen nach links/rechts gewischt werden.
+- Keine zusätzliche Navigationsleiste unten.
+- V3.2-Funktionen bleiben erhalten.
