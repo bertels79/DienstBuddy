@@ -2,8 +2,8 @@
   "id": "./",
   "name": "Schichtiva",
   "short_name": "Schichtiva",
-  "description": "Keine Diva. Nur dein Dienstplan. V3.5 mit automatischer Geräte-Entsperrung.",
-  "start_url": "./?v=35",
+  "description": "Schichtiva V3.6 – Freigaben und individuelle Rechte als Teststufe.",
+  "start_url": "./?v=36",
   "scope": "./",
   "display": "standalone",
   "display_override": [

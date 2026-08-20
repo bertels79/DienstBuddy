@@ -1,23 +1,24 @@
-Schichtiva V3.5 – Testversion
+Schichtiva V3.6 – Testversion
 
-Basis: getestete Schichtiva V3.4.
+Basis: getestete V3.5.
 
-Neu in V3.5:
-- Ist der App-Schutz aktiviert, versucht Schichtiva beim Öffnen automatisch
-  die Geräte-Entsperrung zu starten.
-- Je nach Gerät: Fingerabdruck, Gesichtserkennung oder Geräte-PIN.
-- Nach mehr als 15 Sekunden im Hintergrund wird Schichtiva gesperrt und
-  versucht beim Zurückkehren erneut automatisch die Geräte-Entsperrung.
-- Der Button „Schichtiva entsperren“ bleibt als Wiederholen-/Notfallknopf erhalten,
-  falls die automatische Abfrage abgebrochen wird oder der Browser sie nicht
-  automatisch zulässt.
-- Keine zusätzliche untere Navigationsleiste.
-- Swipe-Navigation aus V3.3 bleibt erhalten.
-- Alle Funktionen aus V3.4 bleiben erhalten.
+Neu:
+- Bereich „Freigaben“ in den Einstellungen.
+- Eigentümer kann Personen lokal anlegen und entfernen.
+- Für jede Person können Rechte einzeln per Klick gesetzt werden:
+  Kalender ansehen / bearbeiten
+  Schichten ansehen / bearbeiten
+  Jahresübersicht ansehen
+  Zuschläge sehen
+  Verdienst sehen
+  Scan benutzen
+- Sicherheit, App-Schutz und Freigabeverwaltung bleiben Eigentümer-Rechte.
+- V3.5 Biometrie und automatische Entsperrung bleiben erhalten.
 
 WICHTIG:
-WebAuthn benötigt HTTPS. Für den Handy-Test weiterhin die HTTPS-Testadresse verwenden.
-Einige Browser können automatische WebAuthn-Abfragen einschränken; in diesem Fall
-bleibt der Entsperr-Button als sichere Rückfallmöglichkeit verfügbar.
+Diese erste V3.6-Stufe testet Oberfläche und Rechtekonzept lokal.
+Damit eine hinzugefügte Person tatsächlich auf einem anderen Handy zugreifen kann,
+brauchen wir im nächsten Schritt einen Online-Dienst für Anmeldung, Datenbank und
+Synchronisierung. Die reine HTML-Datei kann Geräte nicht miteinander synchronisieren.
 
 Noch nicht nach main übernehmen.
