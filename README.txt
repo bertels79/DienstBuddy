@@ -1,19 +1,19 @@
-Schichtiva V3.7.1 – korrigierter Erste-Hilfe-Frageassistent
+Schichtiva V3.7.2 – Testversion
 
-Wichtigste Korrektur:
-- Eingabe eines Symptoms allein zeigt KEINE fertige Notfallempfehlung.
-- Nach Eingabe wird zunächst nur ein passender Fragepfad angeboten.
-- Danach erscheint immer nur EINE Frage gleichzeitig.
-- Erst nach den Ja/Nein-Antworten folgt eine Empfehlung.
-- Der Kompass stellt keine Diagnose.
+Erste-Hilfe-Kompass neu aufgebaut:
+- freie Eingabe mehrerer Symptome/Situationen
+- symptomübergreifende Gruppen statt Krankheit-für-Krankheit-Sondercode
+- geführte Abfrage, immer eine Frage gleichzeitig
+- gemeinsame Warnzeichen-Logik für Verletzung, Blutung, Brust, Neurologie/Schwindel,
+  Atemnot, Bewusstseinsstörung, Bauch, Rücken, Arm/Bein, Verbrennung,
+  Vergiftung, Allergie, Krampfanfall, Auge sowie Hitze/Kälte
+- Ergebnisse: 112 / dringende ärztliche Abklärung bzw. 116117 /
+  keine akuten Warnzeichen bestätigt / Giftnotruf
+- keine Diagnose
 
-Zusätzlich:
-- Rotes ✚ „Erste-Hilfe-Kompass“ direkt oben neben dem App-Namen.
-- Normaler Menüpunkt „Erste Hilfe“ bleibt erhalten.
-- Geführte Pfade für Brustbeschwerden, Schlaganfall-Warnzeichen, Atemnot,
-  Bewusstlosigkeit und Vergiftung.
-- 112 bei bestätigten Warnzeichen.
-- 116117 bei dringenden, nicht lebensbedrohlichen Beschwerden.
-- Giftnotrufzentren bleiben enthalten.
+Sicherheitsprinzip:
+Bei bestätigten lebensbedrohlichen Warnzeichen wird die Abfrage beendet und 112 empfohlen.
+116117 ist für dringende, nicht lebensbedrohliche Beschwerden gedacht.
+Giftnotrufnummern: BfR-Verzeichnis, Stand 22.07.2026.
 
 Noch nicht nach main übernehmen.

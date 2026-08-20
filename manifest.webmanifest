@@ -2,8 +2,8 @@
   "id": "./",
   "name": "Schichtiva",
   "short_name": "Schichtiva",
-  "description": "Schichtiva V3.7.1 – korrigierter Erste-Hilfe-Frageassistent.",
-  "start_url": "./?v=371",
+  "description": "Schichtiva V3.7.2 – symptomgeführter Erste-Hilfe- und Dringlichkeitskompass.",
+  "start_url": "./?v=372",
   "scope": "./",
   "display": "standalone",
   "display_override": [
