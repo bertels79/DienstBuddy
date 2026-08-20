@@ -1,9 +1,9 @@
 {
   "id": "./",
-  "name": "Schichtiva",
+  "name": "Schichtiva V3.7.3.2",
   "short_name": "Schichtiva",
-  "description": "Schichtiva V3.7.3.1 – korrigierter Bewusstlosigkeits-, Atmungs-, AED- und HLW-Pfad.",
-  "start_url": "./?v=37311",
+  "description": "Schichtiva V3.7.3.2 – korrigierter Erste-Hilfe-Kompass mit symptomgeführten Fragepfaden, AED und HLW.",
+  "start_url": "./?v=3732",
   "scope": "./",
   "display": "standalone",
   "display_override": [

@@ -1,4 +1,4 @@
-Schichtiva V3.7.3.1 – korrigierter Gesamtstand
+Schichtiva V3.7.3.2 – korrigierter Gesamtstand
 
 Korrekturen:
 - „bewusstlos“, „bewustlos“, „ohnmächtig“ und ähnliche Schreibweisen führen
@@ -12,7 +12,15 @@ Korrekturen:
   5. AED vorhanden -> geführte AED-Anleitung.
   6. Kein AED -> geführte HLW-Anleitung.
 - Andere Symptome wie Brust, Schwindel, Blutung usw. bleiben in ihren eigenen Pfaden.
-- Interne Anzeige vollständig auf V3.7.3.1 aktualisiert.
+- Interne Anzeige vollständig auf V3.7.3.2 aktualisiert.
 - Neuer Cache-Stand, damit nicht wieder alte Dateien angezeigt werden.
 
-Version: Schichtiva V3.7.3.1
+Version: Schichtiva V3.7.3.2
+
+
+V3.7.3.2 BUILD-HINWEIS
+- Dies ist eine echte neue interne Version, nicht nur eine umbenannte ZIP-Datei.
+- Sichtbare Versionsnummer: V3.7.3.2
+- Manifest/start_url: v=3732
+- Service-Worker-Cache: schichtiva-v3-7-3-2
+- Bewusstlosigkeits-/Atmungs-/AED-/HLW-Korrektur aus dem letzten Stand ist enthalten.
