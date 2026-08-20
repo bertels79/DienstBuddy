@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.7</title><link rel="manifest" href="./manifest.webmanifest?v=371">
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.7</title><link rel="manifest" href="./manifest.webmanifest?v=372">
 <link rel="icon" href="./icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <meta name="application-name" content="Schichtiva">
@@ -66,8 +66,8 @@
 .symptomMatch{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;text-align:left}
 .symptomMatch strong{display:block}
 .questionBox{border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px;background:#f8fafc}
-@media(max-width:720px){.firstAidQuick{margin:8px 0 0 0}.symptomMatches{grid-template-columns:1fr}}
-</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V3.7</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="firstaid">🩹 Erste Hilfe</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
+@media(max-width:720px){.brand{flex-wrap:wrap}.firstAidQuick{margin:4px 0 0 54px;padding:7px 9px;font-size:12px}.symptomMatches{grid-template-columns:1fr}}
+</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div style="min-width:0"><h1>Schichtiva V3.7</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div><button id="firstAidQuick" class="firstAidQuick"><span class="redCross">✚</span> Erste-Hilfe-Kompass</button></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="firstaid">🩹 Erste Hilfe</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
 <section id="kal" class="tab active"><div class="stats"><div class="stat"><span class="muted">Arbeitsstunden</span><strong id="stH">0,0 h</strong></div><div class="stat"><span class="muted">Nachtstunden</span><strong id="stN">0,0 h</strong></div><div class="stat"><span class="muted">So./Feiertag</span><strong id="stS">0,0 h</strong></div><div class="stat"><span class="muted">Zuschläge</span><strong id="stB">0,00 €</strong></div><div class="stat"><span class="muted">Bezahlte Abwesenheit</span><strong id="stPaidAbs">0,0 h</strong></div><div class="stat"><span class="muted">Verdienst inkl. Zuschläge</span><strong id="stPay">—</strong></div></div><div class="card"><div class="calhead"><button class="secondary" id="prev">‹</button><h2 id="title"></h2><button class="secondary" id="next">›</button></div><div class="week"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div><div id="calendar" class="calendar"></div></div>
 <div class="card"><h3>Monatsauswertung</h3><p class="muted">Hier siehst du genau, welche Schicht welche Stunden verursacht.</p><div id="monthBreakdown"></div></div>
 <div class="card"><h3>Kalender benutzen</h3><p class="muted">Tippe auf einen Tag. Dann kannst du eine gespeicherte Schicht, Frei, Urlaub, Krank oder eine individuelle Schicht eintragen.</p></div>
@@ -112,32 +112,18 @@
 <section id="firstaid" class="tab">
   <div class="card">
     <h2><span style="color:#d92d20">✚</span> Erste-Hilfe-Kompass</h2>
-    <div class="emergencyBox">
-      <strong>Bei akuter Lebensgefahr oder wenn du unsicher bist: 112.</strong>
-      <p style="margin:6px 0 0">Der Kompass stellt keine Diagnose. Er erkennt typische Warnzeichen und hilft bei der Entscheidung zwischen sofortigem Notruf 112 und dringender ärztlicher Hilfe.</p>
-      <div class="callRow">
-        <a class="callBtn" href="tel:112">📞 112 anrufen</a>
-        <a class="callBtn secondary" href="tel:116117">📞 116117</a>
-      </div>
-    </div>
+    <p class="muted">Beschreibe zuerst nur das Hauptsymptom. Danach stellt der Kompass immer nur <strong>eine</strong> anklickbare Frage nach der anderen. Er stellt keine Diagnose.</p>
 
-    <label>Symptom eingeben</label>
-    <input id="triageSearch" placeholder="z. B. Brustschmerz, kalter Schweiß, Sprachstörung, Atemnot …" autocomplete="off">
+    <label>Was ist das Hauptproblem?</label>
+    <input id="triageSearch" placeholder="z. B. Brust, Brustschmerz, Atemnot, Sprache, Schwindel …" autocomplete="off">
     <div id="symptomMatches" class="symptomMatches"></div>
     <div id="triageFlow"></div>
-  </div>
-
-  <div class="card">
-    <h2>Weitere Erste-Hilfe-Themen</h2>
-    <p class="muted">Für Verletzungen und andere Notfälle kannst du auch direkt ein Thema auswählen.</p>
-    <div id="firstAidList" class="firstAidGrid"></div>
   </div>
 
   <div class="card">
     <h2>☠️ Giftnotruf Deutschland</h2>
     <p class="muted">Bei Vergiftungsverdacht Produkt/Verpackung bereithalten. Bei Bewusstlosigkeit, Atemproblemen, Krampf oder anderer akuter Lebensgefahr zuerst 112.</p>
     <div id="poisonList"></div>
-    <div class="sourceNote">Giftinformationszentren nach dem BfR-Verzeichnis. Stand der zugrunde gelegten Liste: 31.07.2025.</div>
   </div>
 </section>
 <section id="set" class="tab">
@@ -740,7 +726,7 @@ $('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObje
   data.shifts=data.shifts.filter(sh=>!(sh.start&&sh.end&&(!validTime(sh.start)||!validTime(sh.end))));
   save();renderShifts();renderCal();alert(n+' fehlerhafte Scan-Einträge entfernt.');
 };
-$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=371').catch(()=>{}));
+$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=372').catch(()=>{}));
 
 const REBRAND_KEY='schichtiva_v37_welcome_seen';
 window.addEventListener('load',()=>{if(!localStorage.getItem(REBRAND_KEY)){$('rebrandModal').classList.add('open')}});
@@ -748,103 +734,66 @@ $('rebrandOk').onclick=()=>{localStorage.setItem(REBRAND_KEY,'1');$('rebrandModa
 
 
 
+
 const TRIAGE_FLOWS={
  chest:{
-  title:'Brustschmerz / Druck oder Enge in der Brust',
-  aliases:'brust brustschmerz brustschmerzen druck enge herz herzinfarkt kaltschweißig kalter schweiß arm kiefer rücken oberbauch übelkeit',
+  title:'Brust / Brustbeschwerden',
+  aliases:'brust brustschmerz brustschmerzen druck enge stechen herz rippe brustkorb',
   questions:[
-   {q:'Sind die Brustschmerzen stark, neu oder dauern sie länger als etwa 5 Minuten an?',yes:'red',no:1},
-   {q:'Bestehen Atemnot, kalter Schweiß, starke Schwäche, Übelkeit oder Erbrechen?',yes:'red',no:2},
-   {q:'Strahlen Schmerzen oder Druck in Arm, Schulter, Rücken, Hals, Kiefer oder Oberbauch aus?',yes:'red',no:'orange'}
+   {q:'Sind aktuell Schmerzen, Druck oder Enge im Brustkorb vorhanden?',yes:1,no:5},
+   {q:'Sind die Beschwerden neu, ungewohnt, deutlich stärker als sonst oder plötzlich aufgetreten?',yes:'red',no:2},
+   {q:'Bestehen zusätzlich Atemnot, kalter Schweiß, starke Schwäche, Übelkeit, Schwindel oder Ohnmacht?',yes:'red',no:3},
+   {q:'Strahlen die Beschwerden in Arm, Schulter, Rücken, Hals, Kiefer oder Oberbauch aus?',yes:'red',no:4},
+   {q:'Treten die Beschwerden bei Belastung auf oder werden sie bei Belastung stärker?',yes:'urgent',no:'medical'},
+   {q:'Geht es eher um eine Verletzung, Druckempfindlichkeit, Hautveränderung oder Schmerzen nur bei bestimmter Bewegung?',yes:'medical',no:'medical'}
   ],
-  red:{title:'Möglicher Herz-Kreislauf-Notfall',text:'Diese Warnzeichen können zu einem Herzinfarkt oder einem anderen ernsten Notfall passen. Nicht selbst fahren und nicht abwarten.',steps:['Sofort 112 anrufen.','Betroffene Person beruhigen und körperliche Belastung vermeiden.','Bei Bewusstlosigkeit Atmung prüfen. Bei fehlender normaler Atmung sofort Wiederbelebung beginnen.']},
-  orange:{title:'Dringend medizinisch abklären',text:'Der Fragepfad zeigt aktuell keine eindeutigen 112-Warnzeichen. Brustbeschwerden sollten trotzdem zeitnah ärztlich beurteilt werden. Bei Verschlechterung oder Unsicherheit 112.',steps:['Wenn die Arztpraxis geschlossen ist und die Beschwerden nicht bis zur nächsten Sprechzeit warten können: 116117.','Bei neuem starken Brustschmerz, Atemnot, kaltem Schweiß, Bewusstseinsstörung oder Verschlechterung sofort 112.']}
+  red:{title:'Akute Brustbeschwerden – 112',text:'Bei neuen oder akuten Brustschmerzen können ernsthafte Ursachen nicht sicher ausgeschlossen werden. Die offizielle deutsche Gesundheitsinformation empfiehlt bei Schmerzen im Brustbereich den Notruf 112.',steps:['112 anrufen und Beschwerden schildern.','Nicht selbst mit dem Auto fahren.','Person ruhig halten; bei Bewusstlosigkeit Atmung prüfen.']},
+  urgent:{title:'Dringend ärztlich abklären',text:'Belastungsabhängige Brustbeschwerden können medizinisch relevant sein. Bei Verschlechterung, Beschwerden in Ruhe, Atemnot, kaltem Schweiß oder anderen Warnzeichen sofort 112.',steps:['Zeitnah ärztlich abklären.','Außerhalb der Praxiszeiten bei dringenden, nicht lebensbedrohlichen Beschwerden 116117.']},
+  medical:{title:'Ärztliche Abklärung empfohlen',text:'Der kurze Fragepfad zeigt keine bestätigten akuten Warnzeichen. Er kann die Ursache aber nicht feststellen.',steps:['Bei anhaltenden oder wiederkehrenden Beschwerden ärztlich abklären.','Außerhalb der Praxiszeiten bei dringenden Beschwerden 116117.','Bei Verschlechterung oder neuen Warnzeichen 112.']}
  },
  stroke:{
-  title:'Schlaganfall-Warnzeichen',
-  aliases:'schlaganfall gesicht mundwinkel arm bein lähmung schwäche taub sprachstörung sprechen sehen sehstörung schwindel kopfschmerz',
+  title:'Neurologische Beschwerden / Schlaganfall-Warnzeichen',
+  aliases:'schlaganfall gesicht mundwinkel arm bein lähmung schwäche taub sprache sprechen sehstörung sehen schwindel',
   questions:[
-   {q:'Ist plötzlich ein Mundwinkel herabgesunken oder wirkt eine Gesichtshälfte gelähmt?',yes:'red',no:1},
+   {q:'Ist plötzlich eine Gesichtshälfte auffällig oder ein Mundwinkel herabgesunken?',yes:'red',no:1},
    {q:'Ist plötzlich ein Arm oder Bein einseitig schwach, taub oder gelähmt?',yes:'red',no:2},
-   {q:'Besteht plötzlich eine Sprach- oder Sprechstörung, Verwirrtheit oder versteht die Person Sprache schlecht?',yes:'red',no:3},
-   {q:'Bestehen plötzlich Sehstörungen, starker Schwindel/unsicherer Gang oder ungewöhnlich starke Kopfschmerzen?',yes:'red',no:'orange'}
+   {q:'Ist plötzlich die Sprache verwaschen, fehlen Wörter oder wird Gesprochenes schlecht verstanden?',yes:'red',no:3},
+   {q:'Bestehen plötzlich neue Sehprobleme, starke Gleichgewichtsstörungen oder ungewöhnlich starke Kopfschmerzen?',yes:'red',no:'medical'}
   ],
-  red:{title:'Schlaganfall möglich – jede Minute zählt',text:'Bei Verdacht auf Schlaganfall sofort den Rettungsdienst rufen. Nicht darauf warten, dass die Beschwerden verschwinden.',steps:['Sofort 112 anrufen.','Zeitpunkt merken, wann die Symptome begonnen haben bzw. wann die Person zuletzt ohne Symptome war.','Person beruhigen und nicht allein lassen.','Bei Bewusstlosigkeit Atmung prüfen und entsprechend Erste Hilfe leisten.']},
-  orange:{title:'Keine typischen Warnzeichen bestätigt',text:'Der kurze Check ersetzt keine medizinische Untersuchung. Bei neuen neurologischen Beschwerden oder Unsicherheit medizinische Hilfe holen.',steps:['Bei plötzlicher Verschlechterung, Lähmung, Sprach-/Sehstörung oder Bewusstseinsstörung sofort 112.','Bei dringenden, nicht lebensbedrohlichen Beschwerden außerhalb der Praxiszeiten: 116117.']}
+  red:{title:'Schlaganfall möglich – 112',text:'Plötzlich auftretende Lähmungs-, Sprach- oder Sehstörungen sind Warnzeichen eines möglichen Schlaganfalls.',steps:['Sofort 112 anrufen.','Zeitpunkt des Beginns merken.','Person nicht allein lassen.']},
+  medical:{title:'Keine typischen Warnzeichen bestätigt',text:'Der Check ersetzt keine Untersuchung. Neue neurologische Beschwerden sollten ärztlich beurteilt werden.',steps:['Bei plötzlicher Verschlechterung oder neuen Lähmungs-/Sprach-/Sehstörungen sofort 112.','Bei dringenden, nicht lebensbedrohlichen Beschwerden außerhalb der Praxiszeiten 116117.']}
  },
  breathing:{
-  title:'Atemnot',
-  aliases:'atemnot luftnot atmen keine luft asthma blau lippen',
+  title:'Atemnot / Luftnot',
+  aliases:'atemnot luftnot atmen keine luft asthma',
   questions:[
    {q:'Ist die Atemnot stark, plötzlich oder kann die Person kaum sprechen?',yes:'red',no:1},
-   {q:'Sind Lippen/Haut bläulich, besteht Bewusstseinsstörung oder wird die Person deutlich schlechter?',yes:'red',no:'orange'}
+   {q:'Bestehen Brustschmerz, bläuliche Lippen/Haut, Bewusstseinsstörung oder deutliche Verschlechterung?',yes:'red',no:'urgent'}
   ],
-  red:{title:'Schwere Atemnot – Notfall',text:'Schwere Atemnot kann lebensbedrohlich sein.',steps:['Sofort 112 anrufen.','Person beruhigen, nicht allein lassen und eine angenehme aufrechte Position unterstützen.','Bei Bewusstlosigkeit Atmung prüfen; bei fehlender normaler Atmung Wiederbelebung.']},
-  orange:{title:'Atembeschwerden ärztlich abklären',text:'Wenn die Beschwerden dringend sind, aber keine akuten Lebensgefahr-Zeichen bestehen, ist ärztliche Hilfe sinnvoll.',steps:['Außerhalb der Praxiszeiten bei dringenden Beschwerden 116117.','Bei Verschlechterung oder Unsicherheit 112.']}
+  red:{title:'Schwere Atemnot – 112',text:'Schwere oder plötzlich auftretende Atemnot kann lebensbedrohlich sein.',steps:['Sofort 112 anrufen.','Person beruhigen und eine angenehme aufrechte Position unterstützen.','Bei Bewusstlosigkeit Atmung prüfen.']},
+  urgent:{title:'Dringend medizinisch abklären',text:'Atembeschwerden sollten bei Dringlichkeit ärztlich beurteilt werden.',steps:['Außerhalb der Praxiszeiten 116117.','Bei Verschlechterung sofort 112.']}
  },
  unconscious:{
-  title:'Bewusstlosigkeit / Ohnmacht',
-  aliases:'bewusstlos ohnmacht reagiert nicht kollaps',
+  title:'Ohnmacht / Bewusstlosigkeit',
+  aliases:'ohnmacht bewusstlos kollaps reagiert nicht',
   questions:[
-   {q:'Reagiert die Person nicht auf lautes Ansprechen und vorsichtiges Berühren?',yes:1,no:'orange'},
-   {q:'Atmet die Person NICHT normal?',yes:'cpr',no:'red'}
+   {q:'Reagiert die Person jetzt nicht auf Ansprechen und vorsichtiges Berühren?',yes:1,no:'medical'},
+   {q:'Atmet die Person normal?',yes:'red',no:'cpr'}
   ],
-  red:{title:'Bewusstlos, aber normale Atmung',text:'Bewusstlosigkeit ist ein Notfall.',steps:['112 anrufen.','Stabile Seitenlage durchführen.','Atmung regelmäßig kontrollieren und Person zudecken.']},
-  cpr:{title:'Keine normale Atmung – sofort Wiederbelebung',text:'Das ist ein akuter lebensbedrohlicher Notfall.',steps:['Sofort 112 veranlassen.','Unverzüglich Herz-Lungen-Wiederbelebung beginnen.','Wenn verfügbar AED holen lassen und Anweisungen befolgen.']},
-  orange:{title:'Person ist ansprechbar',text:'Wenn trotzdem starke Beschwerden, Verletzungen oder erneute Ohnmacht bestehen, ärztlich abklären.',steps:['Bei Verschlechterung oder Bewusstlosigkeit 112.','Bei dringenden, nicht lebensbedrohlichen Beschwerden außerhalb der Praxiszeiten 116117.']}
- },
- allergy:{
-  title:'Allergische Reaktion',
-  aliases:'allergie allergisch anaphylaxie biene wespe stich schwellung zunge hals ausschlag',
-  questions:[
-   {q:'Bestehen Atemnot, Schwellung von Zunge/Hals, Kreislaufprobleme oder Bewusstseinsstörung?',yes:'red',no:1},
-   {q:'Breitet sich die Reaktion rasch aus oder betrifft sie mehrere Körperbereiche?',yes:'red',no:'orange'}
-  ],
-  red:{title:'Schwere allergische Reaktion möglich',text:'Eine Anaphylaxie kann schnell lebensbedrohlich werden.',steps:['Sofort 112 anrufen.','Falls die Person ein eigenes verordnetes Notfallset hat, bei dessen Anwendung helfen.','Bewusstsein und Atmung beobachten.']},
-  orange:{title:'Allergische Reaktion beobachten und abklären',text:'Bei Verschlechterung sofort 112.',steps:['Bei dringenden Beschwerden außerhalb der Praxiszeiten 116117.','Bei Atemnot, Hals-/Zungenschwellung oder Kreislaufproblemen sofort 112.']}
- },
- seizure:{
-  title:'Krampfanfall',
-  aliases:'krampf krampfanfall epilepsie zucken',
-  questions:[
-   {q:'Dauert der Anfall länger als 5 Minuten oder folgen mehrere Anfälle kurz hintereinander?',yes:'red',no:1},
-   {q:'Ist es der erste bekannte Anfall, besteht eine Verletzung, Atemproblem oder erholt sich die Person nicht?',yes:'red',no:'orange'}
-  ],
-  red:{title:'Krampfanfall – Rettungsdienst',text:'Bei diesen Warnzeichen ist der Rettungsdienst erforderlich.',steps:['112 anrufen.','Person vor Verletzungen schützen und Umgebung freimachen.','Nichts in den Mund stecken und Krampfbewegungen nicht festhalten.','Nach Ende des Anfalls Atmung prüfen.']},
-  orange:{title:'Nach dem Anfall beobachten',text:'Person schützen und Erholung abwarten. Bei Unsicherheit ärztliche Hilfe holen.',steps:['Bei erneutem/längerem Anfall, Atemproblem oder Bewusstseinsstörung 112.','Bei dringendem ärztlichem Bedarf außerhalb der Praxiszeiten 116117.']}
- },
- bleeding:{
-  title:'Starke Blutung',
-  aliases:'blutung blutet blut schnitt wunde stark',
-  questions:[
-   {q:'Ist die Blutung stark, spritzend oder lässt sie sich durch direkten Druck nicht kontrollieren?',yes:'red',no:'orange'}
-  ],
-  red:{title:'Starke Blutung – Notfall',text:'Starker Blutverlust kann lebensbedrohlich sein.',steps:['112 anrufen.','Eigenschutz beachten und direkten Druck auf die Wunde ausüben.','Geeigneten Verband/Druckverband anlegen, wenn möglich.','Person hinlegen, warm halten und Bewusstsein/Atmung beobachten.']},
-  orange:{title:'Wunde versorgen',text:'Bei tiefer, klaffender, verschmutzter oder weiterhin blutender Wunde ärztlich abklären.',steps:['Wunde sauber abdecken.','Bei dringendem Bedarf außerhalb der Praxiszeiten 116117.','Bei stärker werdender Blutung 112.']}
+  red:{title:'Bewusstlos mit normaler Atmung – 112',text:'Bewusstlosigkeit ist ein Notfall.',steps:['112 anrufen.','Stabile Seitenlage.','Atmung regelmäßig kontrollieren.']},
+  cpr:{title:'Keine normale Atmung – 112 + Wiederbelebung',text:'Akuter lebensbedrohlicher Notfall.',steps:['112 veranlassen.','Sofort Herz-Lungen-Wiederbelebung beginnen.','AED verwenden, wenn verfügbar.']},
+  medical:{title:'Person ist wieder ansprechbar',text:'Eine Ohnmacht kann verschiedene Ursachen haben und sollte je nach Situation ärztlich abgeklärt werden.',steps:['Bei erneuter Bewusstlosigkeit oder schweren Beschwerden 112.','Bei dringendem ärztlichem Bedarf außerhalb der Praxiszeiten 116117.']}
  },
  poisoning:{
-  title:'Vergiftung / Vergiftungsverdacht',
-  aliases:'vergiftung gift reiniger medikamente chemikalie pflanze pilz verschluckt',
+  title:'Vergiftung / etwas möglicherweise Giftiges aufgenommen',
+  aliases:'vergiftung gift reiniger medikament chemikalie pflanze pilz verschluckt',
   questions:[
    {q:'Bestehen Bewusstlosigkeit, Atemprobleme, Krampf oder ein anderer schwerer Zustand?',yes:'red',no:'poison'}
   ],
-  red:{title:'Schwere Vergiftung möglich',text:'Bei schweren Symptomen besteht ein medizinischer Notfall.',steps:['Sofort 112 anrufen.','Eigenschutz beachten.','Produkt/Verpackung und Informationen zu Menge und Zeitpunkt bereithalten.','Kein Erbrechen auslösen und keine Hausmittel geben, sofern Fachpersonal nichts anderes anweist.']},
-  poison:{title:'Giftnotruf kontaktieren',text:'Bei Vergiftungsverdacht ohne akute Lebensgefahr kann ein Giftinformationszentrum beraten.',steps:['Produkt/Verpackung, Alter/Gewicht der betroffenen Person sowie mögliche Menge und Zeitpunkt bereithalten.','Giftnotruf anrufen und dessen Anweisungen befolgen.','Bei Verschlechterung sofort 112.']}
+  red:{title:'Schwere Vergiftung möglich – 112',text:'Bei schweren Symptomen besteht ein medizinischer Notfall.',steps:['112 anrufen.','Produkt/Verpackung bereithalten.','Kein Erbrechen auslösen, sofern Fachpersonal nichts anderes anweist.']},
+  poison:{title:'Giftnotruf kontaktieren',text:'Bei Vergiftungsverdacht ohne akute Lebensgefahr kann ein Giftinformationszentrum beraten.',steps:['Produkt/Verpackung, mögliche Menge und Zeitpunkt bereithalten.','Giftnotruf anrufen und Anweisungen befolgen.','Bei Verschlechterung 112.']}
  }
 };
-
-const BASIC_TOPICS=[
- ['Verbrennung / Verbrühung','Bei schweren oder großflächigen Verbrennungen, Gesichts-/Atemwegsbeteiligung oder Unsicherheit 112. Gefahrenquelle stoppen, vorsichtig mit kühlem bis kaltem – nicht eisigem – Wasser kühlen, Unterkühlung vermeiden, locker keimfrei abdecken. Keine Hausmittel, Brandblasen nicht öffnen.'],
- ['Stromunfall','Eigenschutz zuerst: Stromquelle abschalten und Person erst berühren, wenn keine elektrische Gefahr mehr besteht. Bewusstsein und Atmung prüfen. Bei Beschwerden, Bewusstlosigkeit oder Atemproblemen 112.'],
- ['Kopfverletzung','Bei Bewusstseinsstörung, Krampfanfall, zunehmender Verwirrtheit, wiederholtem Erbrechen oder schwerem Unfall 112. Betroffene Person beobachten und bei Verschlechterung sofort Hilfe holen.'],
- ['Knochenbruch / starke Verletzung','Verletzten Bereich möglichst ruhigstellen und nicht unnötig bewegen. Bei Fehlstellung, starker Blutung, Durchblutungs-/Gefühlsstörung oder schwerem Unfall 112.'],
- ['Unterkühlung','Person vor weiterer Kälte schützen, nasse Kleidung wenn möglich entfernen und langsam wärmen. Bei Bewusstseinsstörung oder schwerer Unterkühlung 112.'],
- ['Hitzschlag / schwere Überhitzung','Bei Bewusstseinsstörung, Verwirrtheit oder schwerem Zustand 112. Person aus der Hitze bringen, kühlen und beobachten.'],
- ['Verschlucken / Ersticken','Kann die Person nicht wirksam husten, sprechen oder atmen, ist es ein akuter Notfall: 112 und sofort Erste-Hilfe-Maßnahmen gegen Atemwegsverlegung durchführen.'],
- ['Augenverletzung / Verätzung','Bei chemischer Verätzung sofort ausgiebig mit sauberem Wasser spülen und medizinische Hilfe organisieren. Bei schwerer Augenverletzung oder Sehverlust 112.'],
- ['Nasenbluten','Aufrecht sitzen, Kopf leicht nach vorn, Nasenflügel zusammendrücken. Bei sehr starker oder nicht stoppender Blutung ärztliche Hilfe; bei schwerem Zustand 112.'],
- ['Insektenstich / Tierbiss','Bei Atemnot, Hals-/Zungenschwellung oder Kreislaufproblemen sofort 112. Tierbisse wegen Infektionsrisiko ärztlich beurteilen lassen.']
-];
 
 const POISON_CENTERS=[
  ['Berlin','030 19240','03019240'],['Bonn','0228 19240','022819240'],
@@ -859,25 +808,26 @@ let triageCurrent=null,triageStep=0;
 function showMatches(){
  let q=($('triageSearch')?.value||'').trim().toLowerCase();
  let box=$('symptomMatches'); if(!box)return;
- if(!q){box.innerHTML='<span class="muted">Tippe ein Symptom ein. Passende Themen erscheinen hier anklickbar.</span>';return;}
+ $('triageFlow').innerHTML='';
+ if(!q){box.innerHTML='<span class="muted">Symptom eintippen – danach einen passenden Fragepfad auswählen.</span>';return;}
  let words=q.split(/\s+/).filter(Boolean);
  let matches=Object.entries(TRIAGE_FLOWS).map(([id,f])=>{
    let hay=(f.title+' '+f.aliases).toLowerCase();
    let score=words.reduce((n,w)=>n+(hay.includes(w)?1:0),0);
    return {id,f,score};
  }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score);
- box.innerHTML=matches.length?matches.slice(0,5).map(x=>`<button class="symptomMatch" data-flow="${x.id}"><strong>${safeTxt(x.f.title)}</strong><span class="muted">Geführten Check starten →</span></button>`).join(''):'<div class="muted">Kein eindeutiger Treffer. Bei starken, plötzlich auftretenden oder beunruhigenden Beschwerden im Zweifel 112; bei dringenden, nicht lebensbedrohlichen Beschwerden 116117.</div>';
+ box.innerHTML=matches.length?matches.slice(0,4).map(x=>`<button class="symptomMatch" data-flow="${x.id}"><strong>${safeTxt(x.f.title)}</strong><span class="muted">Fragen starten →</span></button>`).join(''):'<div class="muted">Kein passender Fragepfad gefunden. Bei Lebensgefahr oder schweren Beschwerden 112; bei dringenden, nicht lebensbedrohlichen Beschwerden außerhalb der Praxiszeiten 116117.</div>';
  box.querySelectorAll('[data-flow]').forEach(b=>b.onclick=()=>startFlow(b.dataset.flow));
 }
-
 function startFlow(id){
  triageCurrent=id;triageStep=0;
  $('symptomMatches').innerHTML='';
+ $('triageSearch').disabled=true;
  renderQuestion();
 }
 function renderQuestion(){
- let f=TRIAGE_FLOWS[triageCurrent], q=f.questions[triageStep];
- $('triageFlow').innerHTML=`<div class="questionBox"><div class="muted">${safeTxt(f.title)}</div><h3>${safeTxt(q.q)}</h3><div class="triageChoices"><button id="triageYes">Ja</button><button id="triageNo" class="secondary">Nein</button></div><div class="actions" style="margin-top:8px"><button id="triageRestart" class="ghost">Neu starten</button></div></div>`;
+ let f=TRIAGE_FLOWS[triageCurrent],q=f.questions[triageStep];
+ $('triageFlow').innerHTML=`<div class="questionBox"><div class="muted">${safeTxt(f.title)} · Frage ${triageStep+1}</div><h3>${safeTxt(q.q)}</h3><div class="triageChoices"><button id="triageYes">Ja</button><button id="triageNo" class="secondary">Nein</button></div><div class="actions"><button id="triageRestart" class="secondary">↩ Neu starten</button></div></div>`;
  $('triageYes').onclick=()=>answerTriage(q.yes);
  $('triageNo').onclick=()=>answerTriage(q.no);
  $('triageRestart').onclick=resetTriage;
@@ -887,24 +837,26 @@ function answerTriage(next){
  renderOutcome(next);
 }
 function renderOutcome(key){
- let f=TRIAGE_FLOWS[triageCurrent],r=f[key]||f.orange;
- let red=(key==='red'||key==='cpr'), poison=(key==='poison');
- $('triageFlow').innerHTML=`<div class="triageResult ${red?'red':poison?'blue':'orange'}"><h3>${safeTxt(r.title)}</h3><p>${safeTxt(r.text)}</p><ul>${r.steps.map(x=>`<li>${safeTxt(x)}</li>`).join('')}</ul><div class="callRow">${red?'<a class="callBtn" href="tel:112">📞 112 anrufen</a>':''}${!red&&!poison?'<a class="callBtn secondary" href="tel:116117">📞 116117</a>':''}${poison?'<button id="jumpPoison" class="secondary">☠️ Giftnotrufnummern anzeigen</button>':''}</div><div class="actions" style="margin-top:10px"><button id="triageRestart" class="ghost">Neuen Check starten</button></div></div>`;
+ let f=TRIAGE_FLOWS[triageCurrent],r=f[key]||f.medical||f.urgent;
+ let red=(key==='red'||key==='cpr'), poison=key==='poison';
+ $('triageFlow').innerHTML=`<div class="triageResult ${red?'red':poison?'blue':'orange'}"><h3>${safeTxt(r.title)}</h3><p>${safeTxt(r.text)}</p><h3>Sofortmaßnahmen / nächster Schritt</h3><ul>${r.steps.map(x=>`<li>${safeTxt(x)}</li>`).join('')}</ul><div class="callRow">${red?'<a class="callBtn" href="tel:112">📞 112 anrufen</a>':''}${!red&&!poison?'<a class="callBtn secondary" href="tel:116117">📞 116117</a>':''}${poison?'<button id="jumpPoison" class="secondary">☠️ Giftnotrufnummern</button>':''}</div><div class="actions"><button id="triageRestart" class="secondary">↩ Neuer Check</button></div></div>`;
  $('triageRestart').onclick=resetTriage;
  if($('jumpPoison'))$('jumpPoison').onclick=()=>document.querySelector('#poisonList').scrollIntoView({behavior:'smooth'});
 }
 function resetTriage(){
- triageCurrent=null;triageStep=0;$('triageFlow').innerHTML='';$('triageSearch').value='';showMatches();$('triageSearch').focus();
-}
-function renderBasics(){
- $('firstAidList').innerHTML=BASIC_TOPICS.map(([t,x])=>`<div class="firstAidItem"><h3>${safeTxt(t)}</h3><p>${safeTxt(x)}</p></div>`).join('');
+ triageCurrent=null;triageStep=0;
+ $('triageFlow').innerHTML='';
+ $('triageSearch').disabled=false;
+ $('triageSearch').value='';
+ showMatches();
+ $('triageSearch').focus();
 }
 function renderPoison(){
  $('poisonList').innerHTML=POISON_CENTERS.map(([city,display,dial])=>`<div class="row"><strong>${city}</strong><span>${display}</span><span></span><span></span><a class="callBtn secondary" href="tel:${dial}">Anrufen</a></div>`).join('');
 }
 if($('triageSearch'))$('triageSearch').oninput=showMatches;
 if($('firstAidQuick'))$('firstAidQuick').onclick=()=>activateTab('firstaid');
-showMatches();renderBasics();renderPoison();
+showMatches();renderPoison();
 
 const BIO_ENABLED_KEY='schichtiva_bio_enabled_v1';
 const BIO_CRED_KEY='schichtiva_bio_credential_v1';

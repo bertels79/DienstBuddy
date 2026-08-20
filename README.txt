@@ -1,26 +1,17 @@
-Schichtiva V3.7 – Erste-Hilfe-Kompass, überarbeitete Testversion
+Schichtiva V3.7 – korrigierter Erste-Hilfe-Frageassistent
 
-Basis: V3.5 + Erste-Hilfe-Kompass.
-
-Neu/überarbeitet:
-- Auffälliger Schnellzugriff „✚ Erste-Hilfe-Kompass“ direkt oben neben dem App-Namen.
-- Menüpunkt „Erste Hilfe“ bleibt zusätzlich erhalten.
-- Symptom-Suchmaske mit anklickbaren Treffern.
-- Geführte Ja/Nein-Fragepfade statt Diagnose.
-- Besonders priorisiert: Herzinfarkt-/Brustschmerz-Warnzeichen und Schlaganfall-Warnzeichen.
-- Weitere Pfade: Atemnot, Bewusstlosigkeit, schwere allergische Reaktion,
-  Krampfanfall, starke Blutung und Vergiftungsverdacht.
-- Bei klaren Warnzeichen: direkte Empfehlung 112 und Anrufbutton.
-- Bei dringenden, nicht lebensbedrohlichen Beschwerden: Hinweis 116117.
-- Giftnotrufzentren weiterhin direkt anwählbar.
-- Zusätzliche Erste-Hilfe-Kurzhinweise.
-
-WICHTIG:
-Der Kompass stellt KEINE Diagnose und ersetzt weder medizinische Beratung noch
-einen Erste-Hilfe-Kurs. Bei Lebensgefahr oder Unsicherheit: 112.
-
-Inhaltliche Grundlage der Notfall-Einstufung:
-- gesund.bund.de: Notruf/Notaufnahme, Herzinfarkt, Schlaganfall, Erste Hilfe
-- BfR: Verzeichnis der deutschen Giftinformationszentren (Stand 31.07.2025)
+- Rotes ✚ Erste-Hilfe-Kompass oben direkt beim App-Namen.
+- Erste Hilfe bleibt zusätzlich im normalen Menü.
+- Symptom eingeben -> passenden Fragepfad anklicken.
+- Danach wird IMMER nur eine Frage gleichzeitig angezeigt.
+- Antwort per Ja/Nein -> nächste passende Frage.
+- Erst am Ende erscheint der nächste Schritt mit Sofortmaßnahmen.
+- Kein Diagnosetool.
+- Brust: Eingabe allein löst noch keinen Notruf aus. Erst der Fragepfad beginnt.
+  Bei bestätigten aktuellen/akuten Brustschmerzen wird aus Sicherheitsgründen
+  entsprechend offizieller deutscher Gesundheitsinformation 112 empfohlen.
+- Schlaganfall-Warnzeichen werden ebenfalls priorisiert.
+- 116117 nur für dringende, nicht lebensbedrohliche Situationen.
+- Giftnotruf bleibt enthalten.
 
 Noch nicht nach main übernehmen.
