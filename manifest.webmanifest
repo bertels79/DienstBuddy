@@ -1,9 +1,9 @@
 {
   "id": "./",
-  "name": "Schichtiva V3.7.3.4",
+  "name": "Schichtiva V3.7.3.5",
   "short_name": "Schichtiva",
-  "description": "Schichtiva V3.7.3.4 – erweiterte situationsspezifische Erste-Hilfe-Pfade mit konkreten Sofortmaßnahmen.",
-  "start_url": "./?v=3734",
+  "description": "Schichtiva V3.7.3.5 – Einzelfragen und konkrete Sofortmaßnahmen für Allergie, Brustbeschwerden und Bauchschmerzen mit Fieber.",
+  "start_url": "./?v=3735",
   "scope": "./",
   "display": "standalone",
   "display_override": [

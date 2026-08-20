@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.7.3.4</title><link rel="manifest" href="./manifest.webmanifest?v=3734">
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.7.3.5</title><link rel="manifest" href="./manifest.webmanifest?v=3735">
 <link rel="icon" href="./icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <meta name="application-name" content="Schichtiva">
@@ -71,7 +71,7 @@
 .cprGuide{border:2px solid #dc2626;background:#fff7f7;border-radius:14px;padding:14px;margin-top:12px}
 .cprStep{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px;margin:8px 0}
 .cprBig{font-size:18px;font-weight:900}
-</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V3.7.3.4</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div><button id="firstAidQuick" class="firstAidQuick"><span class="redCross">✚</span> Erste-Hilfe-Kompass</button></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="firstaid">🩹 Erste Hilfe</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
+</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V3.7.3.5</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div><button id="firstAidQuick" class="firstAidQuick"><span class="redCross">✚</span> Erste-Hilfe-Kompass</button></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="firstaid">🩹 Erste Hilfe</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
 <section id="kal" class="tab active"><div class="stats"><div class="stat"><span class="muted">Arbeitsstunden</span><strong id="stH">0,0 h</strong></div><div class="stat"><span class="muted">Nachtstunden</span><strong id="stN">0,0 h</strong></div><div class="stat"><span class="muted">So./Feiertag</span><strong id="stS">0,0 h</strong></div><div class="stat"><span class="muted">Zuschläge</span><strong id="stB">0,00 €</strong></div><div class="stat"><span class="muted">Bezahlte Abwesenheit</span><strong id="stPaidAbs">0,0 h</strong></div><div class="stat"><span class="muted">Verdienst inkl. Zuschläge</span><strong id="stPay">—</strong></div></div><div class="card"><div class="calhead"><button class="secondary" id="prev">‹</button><h2 id="title"></h2><button class="secondary" id="next">›</button></div><div class="week"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div><div id="calendar" class="calendar"></div></div>
 <div class="card"><h3>Monatsauswertung</h3><p class="muted">Hier siehst du genau, welche Schicht welche Stunden verursacht.</p><div id="monthBreakdown"></div></div>
 <div class="card"><h3>Kalender benutzen</h3><p class="muted">Tippe auf einen Tag. Dann kannst du eine gespeicherte Schicht, Frei, Urlaub, Krank oder eine individuelle Schicht eintragen.</p></div>
@@ -115,8 +115,8 @@
 
 <section id="firstaid" class="tab">
 <div class="card">
-<h2><span style="color:#dc2626">✚</span> Erste-Hilfe-Kompass V3.7.3.4</h2>
-<p class="muted">Beschreibe Beschwerden oder Situation frei. V3.7.3.4 durchsucht eine deutlich größere Symptomdatenbank und kombiniert Körperregion, Beschwerdeart und Warnzeichen. Danach folgt eine geführte Abfrage – immer nur eine Frage gleichzeitig. Keine Diagnose.</p>
+<h2><span style="color:#dc2626">✚</span> Erste-Hilfe-Kompass V3.7.3.5</h2>
+<p class="muted">Beschreibe Beschwerden oder Situation frei. V3.7.3.5 durchsucht eine deutlich größere Symptomdatenbank und kombiniert Körperregion, Beschwerdeart und Warnzeichen. Danach folgt eine geführte Abfrage – immer nur eine Frage gleichzeitig. Keine Diagnose.</p>
 <label>Symptome / Situation</label>
 <input id="triageSearch" placeholder="Symptome oder Verletzung eingeben …" autocomplete="off">
 <div id="symptomMatches" class="symptomMatches"></div>
@@ -728,9 +728,9 @@ $('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObje
   data.shifts=data.shifts.filter(sh=>!(sh.start&&sh.end&&(!validTime(sh.start)||!validTime(sh.end))));
   save();renderShifts();renderCal();alert(n+' fehlerhafte Scan-Einträge entfernt.');
 };
-$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=3734').catch(()=>{}));
+$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=3735').catch(()=>{}));
 
-const REBRAND_KEY='schichtiva_v3734_welcome_seen';
+const REBRAND_KEY='schichtiva_v3735_welcome_seen';
 window.addEventListener('load',()=>{if(!localStorage.getItem(REBRAND_KEY)){$('rebrandModal').classList.add('open')}});
 $('rebrandOk').onclick=()=>{localStorage.setItem(REBRAND_KEY,'1');$('rebrandModal').classList.remove('open')};
 
@@ -967,6 +967,28 @@ const Q={
   ['Besteht eine deutliche Fehlstellung oder kann der Körperteil gar nicht belastet/bewegt werden?','fractureCare',4],
   ['Bestehen Taubheit, auffällige Blässe/Blaufärbung oder starke zunehmende Schmerzen?','fractureCare','softTissueCare']
  ],
+
+ allergy2:[
+  ['Besteht Atemnot oder pfeifende/erschwerte Atmung?','allergyEmergency',1],
+  ['Sind Zunge, Lippen, Mund oder Rachen deutlich angeschwollen?','allergyEmergency',2],
+  ['Bestehen Schwindel, Ohnmacht, Kreislaufprobleme oder Bewusstseinsstörung?','allergyEmergency',3],
+  ['Breiten sich Quaddeln/Hautreaktionen rasch über größere Körperbereiche aus?','allergyUrgent',4],
+  ['War der Stich im Mund- oder Rachenraum?','allergyMouth','allergyLocal']
+ ],
+ chest2:[
+  ['Besteht der Druck/Schmerz aktuell noch? ',1,'chestMedical'],
+  ['Ist der Druck/Schmerz neu, ungewohnt oder deutlich stärker als sonst? ',2,'chestMedical'],
+  ['Besteht Atemnot?','chestEmergency',3],
+  ['Bestehen kalter Schweiß, starke Blässe, Übelkeit/Erbrechen, Schwindel oder Ohnmacht?','chestEmergency',4],
+  ['Strahlen Beschwerden in Arm, Schulter, Rücken, Hals, Kiefer oder Oberbauch aus?','chestEmergency','chestEmergency']
+ ],
+ abdofever:[
+  ['Sind die Bauchschmerzen sehr stark oder rasch zunehmend? ',1,3],
+  ['Ist der Bauch auffällig hart/angespannt oder führt Bewegung/Erschütterung zu deutlich mehr Schmerz?','abdoEmergency',2],
+  ['Bestehen Ohnmacht, Kreislaufkollaps, Bewusstseinsstörung oder schwere Atemnot?','abdoEmergency','abdoUrgent'],
+  ['Besteht wiederholtes Erbrechen oder kann kaum Flüssigkeit behalten werden?','abdoUrgent',4],
+  ['Ist Blut im Erbrochenen oder Stuhl vorhanden?','abdoEmergency','abdoUrgent']
+ ],
  general:[
   ['Sind die Beschwerden stark, plötzlich oder rasch zunehmend?',1,2],
   ['Bestehen Atemnot, Bewusstseinsstörung, Ohnmacht, starke Blutung, Lähmung/Sprachstörung oder starke Schmerzen?','red','urgent'],
@@ -975,6 +997,15 @@ const Q={
 };
 
 const RESULT={
+ allergyEmergency:{cls:'red',title:'Schwere allergische Reaktion – 112',text:'Atemwegs-, Kreislauf- oder Bewusstseinszeichen können auf eine schwere allergische Reaktion hinweisen.',steps:['112 anrufen.','Person beruhigen und nicht allein lassen.','Bei bekannter Allergie beim Anwenden des persönlichen Notfallsets nach ärztlicher Einweisung unterstützen.','Bei Kreislaufproblemen und erhaltener Atmung hinlegen; bei ausgeprägter Atemnot eine atemerleichternde Position unterstützen.','Bei Bewusstlosigkeit Atmung prüfen; bei normaler Atmung stabile Seitenlage, bei fehlender normaler Atmung HLW/AED.']},
+ allergyMouth:{cls:'red',title:'Insektenstich im Mund/Rachen – 112',text:'Schwellungen im Mund-/Rachenraum können die Atemwege gefährden.',steps:['112 anrufen.','Wenn sicheres Schlucken möglich ist: Mund/Rachen von innen kühlen, z. B. Eis lutschen lassen.','Hals von außen mit eingewickeltem Kühlelement kühlen.','Atmung fortlaufend beobachten; bei fehlender normaler Atmung HLW/AED.']},
+ allergyUrgent:{cls:'orange',title:'Ausgedehnte allergische Reaktion – dringend abklären',text:'Keine Atemwegs-/Kreislaufwarnzeichen bestätigt, aber eine ausgedehnte Reaktion sollte medizinisch beurteilt werden.',steps:['Person beobachten und nicht allein lassen.','Bei Atemnot, Mund-/Rachenschwellung, Ohnmacht oder rascher Verschlechterung sofort 112.','Bei dringendem, nicht lebensbedrohlichem Verlauf außerhalb der Praxiszeiten 116117.']},
+ allergyLocal:{cls:'blue',title:'Lokale Reaktion nach Insektenstich',text:'Keine schweren Warnzeichen bestätigt.',steps:['Stichstelle vorsichtig kühlen; Kühlelement nicht direkt auf die Haut.','Falls ein Stachel sichtbar ist, möglichst zügig entfernen, ohne einen eventuell anhängenden Giftsack auszudrücken.','Bei zunehmender großflächiger Schwellung, Atemproblemen oder Kreislaufzeichen sofort neu beurteilen; bei schweren Zeichen 112.']},
+ chestEmergency:{cls:'red',title:'Brustbeschwerden – 112',text:'Neue/ungewohnte Brustbeschwerden mit Warnzeichen müssen als medizinischer Notfall behandelt werden.',steps:['112 anrufen.','Person beruhigen, körperliche Anstrengung vermeiden und nicht allein lassen.','Bei Bewusstsein bequem mit erhöhtem Oberkörper lagern.','Enge Kleidung öffnen.','Bewusstsein und Atmung wiederholt kontrollieren.','Bei Bewusstlosigkeit mit normaler Atmung stabile Seitenlage; bei fehlender normaler Atmung HLW/AED.']},
+ chestMedical:{cls:'orange',title:'Brustbeschwerden – medizinisch abklären',text:'Keine zusätzlichen akuten Warnzeichen bestätigt. Brustbeschwerden sollten trotzdem medizinisch beurteilt werden.',steps:['Körperliche Belastung vermeiden.','Bei neuen/stärkeren Beschwerden, Atemnot, kaltem Schweiß, Ohnmacht oder deutlicher Verschlechterung 112.','Bei dringenden, nicht lebensbedrohlichen Beschwerden außerhalb der Praxiszeiten 116117.']},
+ abdoEmergency:{cls:'red',title:'Bauchbeschwerden mit Warnzeichen – 112',text:'Die Antworten enthalten schwere Warnzeichen.',steps:['112 anrufen.','Person eine möglichst schmerzarme Schonhaltung einnehmen lassen.','Nicht allein lassen und Bewusstsein/Atmung beobachten.','Bis zur professionellen Einschätzung nichts erzwingen; bei Bewusstlosigkeit Atmung prüfen.']},
+ abdoUrgent:{cls:'orange',title:'Bauchschmerzen mit Fieber – dringende Abklärung',text:'Keine eindeutigen 112-Warnzeichen bestätigt, aber Bauchschmerzen mit Fieber sollten zeitnah medizinisch beurteilt werden.',steps:['Schonung und Verlauf beobachten.','Bei Verschlechterung, Kreislaufproblemen, Bewusstseinsstörung, Blutung oder sehr starken Schmerzen 112.','Wenn es dringend ist und die Praxis geschlossen ist: 116117.']},
+
  electricHigh:{cls:'red',title:'⚡ Hochspannung – Abstand halten + 112',text:'Bei Hochspannung besteht Lebensgefahr für Helfende.',steps:['Person NICHT berühren und nicht selbst zur Stromquelle gehen.','Großen Sicherheitsabstand halten und andere Personen fernhalten.','112 anrufen und ausdrücklich Hochspannungsunfall melden.','Rettung erst nach Freigabe durch Fachpersonal.']},
  electricLow:{cls:'red',title:'⚡ Stromquelle zuerst sicher unterbrechen',text:'Eigenschutz hat Vorrang.',steps:['Person nicht direkt anfassen, solange Stromkontakt möglich ist.','Wenn gefahrlos möglich: Gerät ausschalten, Stecker ziehen oder Sicherung/Hauptschalter ausschalten.','Nur bei Haushaltsstrom und wenn gefahrlos möglich kann ein nichtleitender trockener Gegenstand helfen, Abstand zur Stromquelle herzustellen.','Danach 112, Bewusstsein und Atmung prüfen.']},
  electric112:{cls:'red',title:'Stromunfall – 112',text:'Nach einem Stromunfall können ernste innere Folgen auftreten.',steps:['112 anrufen.','Stromquelle muss sicher ausgeschaltet sein, bevor die Person berührt wird.','Brandwunden locker/keimfrei bedecken.','Bewusstsein und Atmung wiederholt prüfen.']},
@@ -1048,12 +1079,15 @@ let current=null,step=0;
 
 function scenarioKind(t){
  const raw=t.join(' ');
- if(hasTok(t,'stromschlag')||hasTok(t,'stromunfall')||hasTok(t,'elektrisch')) return {kind:'electric',title:'Stromunfall / Stromschlag'};
- if((hasTok(t,'verschluckt')||hasTok(t,'gegenstand'))&&(raw.includes('verschluck')||hasTok(t,'gegenstand'))) return {kind:'choking',title:'Gegenstand verschluckt / Atemwegsverlegung'};
- if(hasTok(t,'verbrennung')||hasTok(t,'verbruhung')||raw.includes('heiss')||raw.includes('heis')||hasTok(t,'ol')) return {kind:'burn2',title:'Verbrennung / Verbrühung'};
+ if(hasTok(t,'stromschlag')||raw.includes('stromunfall')||raw.includes('elektrisch')) return {kind:'electric',title:'Stromunfall / Stromschlag'};
+ if((raw.includes('verschluck')||hasTok(t,'gegenstand'))&&(raw.includes('gegenstand')||raw.includes('verschluck'))) return {kind:'choking',title:'Gegenstand verschluckt / Atemwegsverlegung'};
+ if(hasTok(t,'verbrennung')||raw.includes('verbruh')||raw.includes('heiss')||raw.includes('heis')||raw.includes('ol')) return {kind:'burn2',title:'Verbrennung / Verbrühung'};
  if((hasTok(t,'erbrechen')||raw.includes('schwall'))&&(raw.includes('pilz')||raw.includes('gift')||raw.includes('verdorben')||raw.includes('falsch gegessen'))) return {kind:'vomitpoison',title:'Erbrechen + möglicher Vergiftungs-/Lebensmittelkontakt'};
  if(hasTok(t,'erbrechen')||raw.includes('schwall')) return {kind:'vomit2',title:'Erbrechen'};
  if((hasTok(t,'schwellung')||raw.includes('geschwollen'))&&(hasTok(t,'sturz')||raw.includes('fahrrad')||raw.includes('rad'))) return {kind:'trauma2',title:'Schwellung / Verletzung nach Sturz'};
+ if((raw.includes('allerg')||raw.includes('wespen')||raw.includes('bienen'))&&(raw.includes('stich')||raw.includes('reaktion')||raw.includes('allerg'))) return {kind:'allergy2',title:'Allergische Reaktion / Insektenstich'};
+ if((hasTok(t,'brust')||raw.includes('brustdruck')||raw.includes('enge'))&&(raw.includes('druck')||raw.includes('schmerz')||raw.includes('enge'))) return {kind:'chest2',title:'Druck / Schmerz / Enge im Brustkorb'};
+ if((hasTok(t,'bauch')||raw.includes('bauchschmerz'))&&(hasTok(t,'fieber')||raw.includes('fieber'))) return {kind:'abdofever',title:'Bauchschmerzen mit Fieber'};
  return null;
 }
 
@@ -1095,7 +1129,7 @@ function renderResult(key){
  if(key==='cpr'){renderCPRChoice();return;}
  let r=RESULT[key]||RESULT.medical;
  if(key==='red'){const extra=contextualEmergencySteps();if(extra)r={...r,steps:extra};}
- $('triageFlow').innerHTML=`<div class="triageResult ${r.cls}"><h3>${safeTxt(r.title)}</h3><p>${safeTxt(r.text)}</p><h3>Sofortmaßnahmen / nächster Schritt</h3><ul>${r.steps.map(x=>`<li>${safeTxt(x)}</li>`).join('')}</ul><div class="callRow">${['red','cpr','unconsciousBreathing','severeBleeding','electricHigh','electricLow','electric112','chokeSevere','burnEmergency','openFracture'].includes(key)?'<a class="callBtn" href="tel:112">📞 112 anrufen</a>':''}${key==='urgent'||key==='medical'?'<a class="callBtn secondary" href="tel:116117">📞 116117</a>':''}${key==='poison'?'<button id="poisonJump" class="secondary">☠️ Giftnotrufnummern</button>':''}</div><div class="actions"><button id="restart" class="secondary">↩ Neuer Check</button><a class="callBtn secondary" href="https://www.116117.de/de/patienten-navi.php" target="_blank" rel="noopener">Offizielles 116117 Patienten-Navi</a></div></div>`;
+ $('triageFlow').innerHTML=`<div class="triageResult ${r.cls}"><h3>${safeTxt(r.title)}</h3><p>${safeTxt(r.text)}</p><h3>Sofortmaßnahmen / nächster Schritt</h3><ul>${r.steps.map(x=>`<li>${safeTxt(x)}</li>`).join('')}</ul><div class="callRow">${['red','cpr','unconsciousBreathing','severeBleeding','electricHigh','electricLow','electric112','chokeSevere','burnEmergency','openFracture','allergyEmergency','allergyMouth','chestEmergency','abdoEmergency'].includes(key)?'<a class="callBtn" href="tel:112">📞 112 anrufen</a>':''}${key==='urgent'||key==='medical'?'<a class="callBtn secondary" href="tel:116117">📞 116117</a>':''}${key==='poison'?'<button id="poisonJump" class="secondary">☠️ Giftnotrufnummern</button>':''}</div><div class="actions"><button id="restart" class="secondary">↩ Neuer Check</button><a class="callBtn secondary" href="https://www.116117.de/de/patienten-navi.php" target="_blank" rel="noopener">Offizielles 116117 Patienten-Navi</a></div></div>`;
  $('restart').onclick=resetTriage;if($('poisonJump'))$('poisonJump').onclick=()=>document.querySelector('#poisonList').scrollIntoView({behavior:'smooth'});
 }
 
