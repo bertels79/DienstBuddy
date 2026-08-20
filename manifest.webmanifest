@@ -2,8 +2,8 @@
   "id": "./",
   "name": "Schichtiva",
   "short_name": "Schichtiva",
-  "description": "Schichtiva V3.7 – mit Erste-Hilfe-Kompass.",
-  "start_url": "./?v=37",
+  "description": "Schichtiva V3.7 – geführter Erste-Hilfe-Kompass mit Symptom-Check.",
+  "start_url": "./?v=371",
   "scope": "./",
   "display": "standalone",
   "display_override": [
