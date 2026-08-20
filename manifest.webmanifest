@@ -2,8 +2,8 @@
   "id": "./",
   "name": "Schichtiva",
   "short_name": "Schichtiva",
-  "description": "Schichtiva V3.7.3 – Erste-Hilfe-Kompass inklusive interaktivem HLW/AED-Pfad nach GRC/ERC 2025.",
-  "start_url": "./?v=37310",
+  "description": "Schichtiva V3.7.3.1 – vollständiger Teststand mit symptomgeführtem Erste-Hilfe-Kompass und korrigierter AED/HLW-Verzweigung.",
+  "start_url": "./?v=3731",
   "scope": "./",
   "display": "standalone",
   "display_override": [

@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.7.3</title><link rel="manifest" href="./manifest.webmanifest?v=37310">
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.7.3.1</title><link rel="manifest" href="./manifest.webmanifest?v=3731">
 <link rel="icon" href="./icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <meta name="application-name" content="Schichtiva">
@@ -71,7 +71,7 @@
 .cprGuide{border:2px solid #dc2626;background:#fff7f7;border-radius:14px;padding:14px;margin-top:12px}
 .cprStep{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px;margin:8px 0}
 .cprBig{font-size:18px;font-weight:900}
-</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V3.7.3</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div><button id="firstAidQuick" class="firstAidQuick"><span class="redCross">✚</span> Erste-Hilfe-Kompass</button></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="firstaid">🩹 Erste Hilfe</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
+</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V3.7.3.1</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div><button id="firstAidQuick" class="firstAidQuick"><span class="redCross">✚</span> Erste-Hilfe-Kompass</button></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="firstaid">🩹 Erste Hilfe</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
 <section id="kal" class="tab active"><div class="stats"><div class="stat"><span class="muted">Arbeitsstunden</span><strong id="stH">0,0 h</strong></div><div class="stat"><span class="muted">Nachtstunden</span><strong id="stN">0,0 h</strong></div><div class="stat"><span class="muted">So./Feiertag</span><strong id="stS">0,0 h</strong></div><div class="stat"><span class="muted">Zuschläge</span><strong id="stB">0,00 €</strong></div><div class="stat"><span class="muted">Bezahlte Abwesenheit</span><strong id="stPaidAbs">0,0 h</strong></div><div class="stat"><span class="muted">Verdienst inkl. Zuschläge</span><strong id="stPay">—</strong></div></div><div class="card"><div class="calhead"><button class="secondary" id="prev">‹</button><h2 id="title"></h2><button class="secondary" id="next">›</button></div><div class="week"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div><div id="calendar" class="calendar"></div></div>
 <div class="card"><h3>Monatsauswertung</h3><p class="muted">Hier siehst du genau, welche Schicht welche Stunden verursacht.</p><div id="monthBreakdown"></div></div>
 <div class="card"><h3>Kalender benutzen</h3><p class="muted">Tippe auf einen Tag. Dann kannst du eine gespeicherte Schicht, Frei, Urlaub, Krank oder eine individuelle Schicht eintragen.</p></div>
@@ -728,9 +728,9 @@ $('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObje
   data.shifts=data.shifts.filter(sh=>!(sh.start&&sh.end&&(!validTime(sh.start)||!validTime(sh.end))));
   save();renderShifts();renderCal();alert(n+' fehlerhafte Scan-Einträge entfernt.');
 };
-$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=37310').catch(()=>{}));
+$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=3731').catch(()=>{}));
 
-const REBRAND_KEY='schichtiva_v373_welcome_seen';
+const REBRAND_KEY='schichtiva_v3731_welcome_seen';
 window.addEventListener('load',()=>{if(!localStorage.getItem(REBRAND_KEY)){$('rebrandModal').classList.add('open')}});
 $('rebrandOk').onclick=()=>{localStorage.setItem(REBRAND_KEY,'1');$('rebrandModal').classList.remove('open')};
 
@@ -933,6 +933,7 @@ const Q={
 };
 
 const RESULT={
+ unconsciousBreathing:{cls:'red',title:'Bewusstlos, aber normale Atmung – 112',text:'Bewusstlosigkeit ist ein Notfall. Da normale Atmung vorhanden ist, wird keine Herzdruckmassage begonnen.',steps:['112 anrufen.','Atemwege frei halten und die Person in stabile Seitenlage bringen, sofern keine Situation dagegen spricht.','Atmung fortlaufend kontrollieren. Wenn keine normale Atmung mehr vorhanden ist, sofort mit Wiederbelebung beginnen und AED einsetzen, sobald verfügbar.']},
  red:{cls:'red',title:'Warnzeichen – 112',text:'Die Antworten enthalten Warnzeichen, bei denen Lebensgefahr oder bleibende Schäden nicht sicher ausgeschlossen werden können.',steps:['112 anrufen und Situation schildern.','Betroffene Person nicht allein lassen.','Bei Bewusstlosigkeit Atmung prüfen; bei fehlender normaler Atmung Wiederbelebung beginnen.']},
  cpr:{cls:'red',title:'Keine normale Atmung – 112 + Wiederbelebung',text:'Akuter lebensbedrohlicher Notfall.',steps:['112 veranlassen.','Sofort Herz-Lungen-Wiederbelebung beginnen.','AED verwenden, wenn verfügbar.']},
  urgent:{cls:'orange',title:'Dringende medizinische Abklärung',text:'Keine eindeutigen 112-Warnzeichen bestätigt, aber die Beschwerden sollten zeitnah medizinisch beurteilt werden.',steps:['Wenn die Praxis geschlossen ist und es nicht bis zur nächsten Sprechzeit warten kann: 116117.','Bei Verschlechterung oder neuen Warnzeichen sofort 112.']},
@@ -968,26 +969,11 @@ function showMatches(){
  box.innerHTML=ranked.length?ranked.slice(0,6).map(x=>`<button class="symptomMatch" data-kind="${x.r.kind}" data-title="${safeTxt(x.r.title)}"><strong>${safeTxt(x.r.title)}</strong><span class="muted">Geführte Abfrage starten →</span></button>`).join(''):`<button class="symptomMatch" data-kind="general" data-title="Allgemeine Beschwerden"><strong>Allgemeine geführte Abfrage</strong><span class="muted">Kein genauer Begriff erkannt – Sicherheits- und Dringlichkeitscheck starten →</span></button>`;
  box.querySelectorAll('[data-kind]').forEach(b=>b.onclick=()=>startFlow(b.dataset.kind,b.dataset.title));
 }
-let safetyStep=0;
-const SAFETY_GATE=[
- ['Ist die Person bewusstlos oder reagiert sie nicht normal?','red'],
- ['Atmet die Person nicht normal oder besteht sehr starke Atemnot?','red'],
- ['Besteht eine sehr starke, nicht kontrollierbare Blutung?','red'],
- ['Bestehen plötzlich Lähmung, Sprachstörung oder deutlicher Sehverlust?','red'],
- ['Bestehen starke Brustschmerzen/-druck mit Atemnot, kaltem Schweiß, Ohnmacht oder starker Schwäche?','red']
-];
 function startFlow(kind,title){
- current={kind,title};step=0;safetyStep=0;
- $('triageSearch').disabled=true;$('symptomMatches').innerHTML='';
- renderSafetyGate();
-}
-function renderSafetyGate(){
- const item=SAFETY_GATE[safetyStep];
- if(!item){renderQuestion();return;}
- $('triageFlow').innerHTML=`<div class="questionBox"><div class="muted">${safeTxt(current.title)} · Sicherheitscheck ${safetyStep+1}/${SAFETY_GATE.length}</div><h3>${safeTxt(item[0])}</h3><div class="answerRow"><button id="yes">Ja</button><button id="no" class="secondary">Nein</button></div><div class="actions"><button id="restart" class="secondary">↩ Neu starten</button></div></div>`;
- $('yes').onclick=()=>renderResult(item[1]);
- $('no').onclick=()=>{safetyStep++;renderSafetyGate();};
- $('restart').onclick=resetTriage;
+ current={kind,title};step=0;
+ $('triageSearch').disabled=true;
+ $('symptomMatches').innerHTML='';
+ renderQuestion();
 }
 function renderQuestion(){
  const flow=Q[current.kind]||Q.general,item=flow[step];
@@ -1003,7 +989,7 @@ function renderResult(key){
 }
 
 function renderCPRChoice(){
- $('triageFlow').innerHTML=`<div class="cprGuide"><h3>❤️ Keine normale Atmung – Herz-Kreislauf-Stillstand möglich</h3>
+ $('triageFlow').innerHTML=`<div class="cprGuide"><h3>❤️ Nicht ansprechbar + keine normale Atmung – Herz-Kreislauf-Stillstand möglich</h3>
  <p><strong>112 veranlassen und sofort mit Herzdruckmassage beginnen.</strong> Laut GRC/ERC soll ein AED verwendet werden, sobald er verfügbar ist; die Herzdruckmassage dabei möglichst wenig unterbrechen.</p>
  <div class="questionBox"><h3>Ist ein AED / Defibrillator verfügbar oder kann jemand einen holen?</h3>
  <div class="answerRow"><button id="aedYes">Ja – AED verfügbar</button><button id="aedNo" class="secondary">Nein – kein AED</button></div></div>
