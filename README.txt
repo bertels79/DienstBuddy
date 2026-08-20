@@ -1,20 +1,25 @@
-Schichtiva V3.3 – Testversion
+Schichtiva V3.4 – Testversion
 
-Zum Hochladen in den bestehenden Test-Branch.
-NICHT nach main veröffentlichen.
+Basis: getestete Schichtiva V3.3.
 
-Enthalten:
-- index.html
-- manifest.webmanifest
-- service-worker.js
-- icon-192.png
-- icon-512.png
-- README.txt
+Neu:
+- Biometrischer App-Schutz über WebAuthn.
+- Entsperrung je nach Gerät mit Fingerabdruck, Gesichtserkennung oder Geräte-PIN.
+- Einrichtung/Deaktivierung unter Einstellungen -> App-Schutz.
+- Automatische Sperre beim Start, wenn Schutz aktiviert ist.
+- Nach mehr als 15 Sekunden im Hintergrund wird beim Zurückkehren erneut gesperrt.
+- Biometrische Daten werden NICHT in Schichtiva gespeichert.
+- Nur eine technische WebAuthn-Kennung wird lokal gespeichert.
+- Bestehende V3.3-Funktionen bleiben erhalten.
 
-V3.3:
-- Heiligabend und Silvester werden namentlich angezeigt, aber nicht automatisch als gesetzliche Feiertage gerechnet.
-- Ostersonntag und Pfingstsonntag werden namentlich angezeigt.
-- Gesetzlicher Feiertagsstatus bleibt bundeslandabhängig.
-- Auf dem Handy kann zwischen Kalender, Schichten, Scan, Jahr und Einstellungen nach links/rechts gewischt werden.
-- Keine zusätzliche Navigationsleiste unten.
-- V3.2-Funktionen bleiben erhalten.
+WICHTIG FÜR DEN TEST:
+WebAuthn benötigt eine sichere HTTPS-Adresse.
+Nicht per lokaler file://-Datei testen.
+Für den Handy-Test die raw.githack-HTTPS-Testadresse verwenden.
+
+Hinweis:
+Die WebAuthn-Anmeldung ist an die jeweilige Web-Domain gebunden.
+Wenn Schichtiva später auf eine andere endgültige Domain umzieht, muss der
+App-Schutz dort einmal neu eingerichtet werden.
+
+Noch nicht nach main übernehmen.

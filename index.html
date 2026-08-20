@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.3</title><link rel="manifest" href="./manifest.webmanifest?v=33">
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.4</title><link rel="manifest" href="./manifest.webmanifest?v=34">
 <link rel="icon" href="./icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <meta name="application-name" content="Schichtiva">
@@ -31,7 +31,15 @@
 .bottomnav::-webkit-scrollbar-thumb{background:#ffffff55;border-radius:999px}
 
 
-</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V3.3</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
+
+.lockScreen{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#082b59,#155eef);display:none;align-items:center;justify-content:center;padding:18px}
+.lockScreen.open{display:flex}
+.lockCard{width:min(420px,100%);background:#fff;border-radius:22px;padding:24px;text-align:center;box-shadow:0 20px 60px #07111f66}
+.lockCard img{width:92px;height:92px;border-radius:22px;display:block;margin:0 auto 14px}
+.lockCard h2{margin-bottom:8px}
+.lockCard .muted{margin-bottom:16px}
+.lockError{color:#b42318;font-size:13px;min-height:18px;margin-top:10px}
+</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V3.4</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
 <section id="kal" class="tab active"><div class="stats"><div class="stat"><span class="muted">Arbeitsstunden</span><strong id="stH">0,0 h</strong></div><div class="stat"><span class="muted">Nachtstunden</span><strong id="stN">0,0 h</strong></div><div class="stat"><span class="muted">So./Feiertag</span><strong id="stS">0,0 h</strong></div><div class="stat"><span class="muted">Zuschläge</span><strong id="stB">0,00 €</strong></div><div class="stat"><span class="muted">Bezahlte Abwesenheit</span><strong id="stPaidAbs">0,0 h</strong></div><div class="stat"><span class="muted">Verdienst inkl. Zuschläge</span><strong id="stPay">—</strong></div></div><div class="card"><div class="calhead"><button class="secondary" id="prev">‹</button><h2 id="title"></h2><button class="secondary" id="next">›</button></div><div class="week"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div><div id="calendar" class="calendar"></div></div>
 <div class="card"><h3>Monatsauswertung</h3><p class="muted">Hier siehst du genau, welche Schicht welche Stunden verursacht.</p><div id="monthBreakdown"></div></div>
 <div class="card"><h3>Kalender benutzen</h3><p class="muted">Tippe auf einen Tag. Dann kannst du eine gespeicherte Schicht, Frei, Urlaub, Krank oder eine individuelle Schicht eintragen.</p></div>
@@ -81,8 +89,30 @@
   </div>
   <div class="actions"><button id="saveEmployee">Filter speichern</button></div>
 </div>
-<div class="card"><h2>Lohn & Zuschläge</h2><p class="muted">Wähle dein Modell. Beim Festgehalt werden weiterhin nur die Zuschläge berechnet. Beim Stundenlohn zeigt Schichtiva zusätzlich den Monatsverdienst.</p><div class="grid"><div><label>Lohnmodell</label><select id="payMode"><option value="salary">Festgehalt</option><option value="hourly">Stundenlohn</option></select></div><div><label>Stundenlohn €</label><input id="hourlyRate" type="number" min="0" step="0.01"></div><div><label>Sollstunden pro bezahltem Urlaub-/Kranktag</label><input id="targetHours" type="number" min="0" step="0.25"></div><div><label>Basis-Stundenwert für Zuschläge €</label><input id="base" type="number" step="0.01"><div class="muted" id="baseHint" style="margin-top:4px">Bei Stundenlohn wird dieser Wert automatisch übernommen.</div></div><div><label>Bundesland</label><select id="state"><option value="">Nur bundesweite Feiertage</option><option value="BW">Baden-Württemberg</option><option value="BY">Bayern</option><option value="BE">Berlin</option><option value="BB">Brandenburg</option><option value="HB">Bremen</option><option value="HH">Hamburg</option><option value="HE">Hessen</option><option value="MV">Mecklenburg-Vorpommern</option><option value="NI">Niedersachsen</option><option value="NW">Nordrhein-Westfalen</option><option value="RP">Rheinland-Pfalz</option><option value="SL">Saarland</option><option value="SN">Sachsen</option><option value="ST">Sachsen-Anhalt</option><option value="SH">Schleswig-Holstein</option><option value="TH">Thüringen</option></select></div><div><label>Nacht von</label><input id="nf" type="time"></div><div><label>Nacht bis</label><input id="nt" type="time"></div><div><label>Nacht %</label><input id="np" type="number" step="0.1"></div><div><label>Sonntag %</label><input id="sp" type="number" step="0.1"></div><div><label>Feiertag %</label><input id="hp" type="number" step="0.1"></div><div><label>Samstag % optional</label><input id="sap" type="number" step="0.1"></div></div><div class="actions"><button id="saveSet">Einstellungen speichern</button></div><p class="muted">Schichtiva berücksichtigt bundesweite Feiertage und – nach Auswahl – die landesweit geltenden Feiertage des Bundeslands. Kommunale Sonderregelungen sind nicht enthalten.</p></div><div class="card"><h3>Backup</h3><div class="actions"><button id="export" class="secondary">Backup exportieren</button><label style="padding:9px 12px;background:var(--soft);color:#19407c;border-radius:11px;font-weight:700">Backup importieren<input id="import" type="file" accept="application/json,.json" style="display:none"></label><button id="cleanInvalid" class="secondary">Falsche Scan-Zeiten löschen</button><button id="clear" class="danger">Alles löschen</button></div></div></section>
-</main><div id="rebrandModal" class="modal"><div class="modalbox"><div style="text-align:center"><img src="./icon-192.png" alt="Schichtiva" style="width:96px;height:96px;border-radius:24px"><h2 style="margin-top:10px">DienstBuddy heißt jetzt Schichtiva</h2><p>Keine Diva. Nur dein Dienstplan.</p><p class="muted">Deine bisherigen Schichten, Einstellungen und Kalenderdaten bleiben erhalten. V3.3 ergänzt besondere Kalendertage und erlaubt auf dem Handy den Menüwechsel per Wischgeste.</p><button id="rebrandOk">Alles klar</button></div></div></div><div id="modal" class="modal"><div class="modalbox"><div style="display:flex;justify-content:space-between"><h3 id="modalDate"></h3><button class="secondary" id="close">✕</button></div><div id="choices" class="chips"></div><hr style="border:0;border-top:1px solid var(--line);margin:14px 0"><h3>Zeiten ansehen / bearbeiten</h3><div class="grid"><div><label>Beginn</label><input id="cs" type="time"></div><div><label>Ende</label><input id="ce" type="time"></div><div><label>Pause Min.</label><input id="cb" type="number" value="0"></div></div><div class="actions"><button id="saveCustom">Eintragen</button><button id="delDay" class="danger">Tag löschen</button></div></div></div>
+<div class="card"><h2>Lohn & Zuschläge</h2><p class="muted">Wähle dein Modell. Beim Festgehalt werden weiterhin nur die Zuschläge berechnet. Beim Stundenlohn zeigt Schichtiva zusätzlich den Monatsverdienst.</p><div class="grid"><div><label>Lohnmodell</label><select id="payMode"><option value="salary">Festgehalt</option><option value="hourly">Stundenlohn</option></select></div><div><label>Stundenlohn €</label><input id="hourlyRate" type="number" min="0" step="0.01"></div><div><label>Sollstunden pro bezahltem Urlaub-/Kranktag</label><input id="targetHours" type="number" min="0" step="0.25"></div><div><label>Basis-Stundenwert für Zuschläge €</label><input id="base" type="number" step="0.01"><div class="muted" id="baseHint" style="margin-top:4px">Bei Stundenlohn wird dieser Wert automatisch übernommen.</div></div><div><label>Bundesland</label><select id="state"><option value="">Nur bundesweite Feiertage</option><option value="BW">Baden-Württemberg</option><option value="BY">Bayern</option><option value="BE">Berlin</option><option value="BB">Brandenburg</option><option value="HB">Bremen</option><option value="HH">Hamburg</option><option value="HE">Hessen</option><option value="MV">Mecklenburg-Vorpommern</option><option value="NI">Niedersachsen</option><option value="NW">Nordrhein-Westfalen</option><option value="RP">Rheinland-Pfalz</option><option value="SL">Saarland</option><option value="SN">Sachsen</option><option value="ST">Sachsen-Anhalt</option><option value="SH">Schleswig-Holstein</option><option value="TH">Thüringen</option></select></div><div><label>Nacht von</label><input id="nf" type="time"></div><div><label>Nacht bis</label><input id="nt" type="time"></div><div><label>Nacht %</label><input id="np" type="number" step="0.1"></div><div><label>Sonntag %</label><input id="sp" type="number" step="0.1"></div><div><label>Feiertag %</label><input id="hp" type="number" step="0.1"></div><div><label>Samstag % optional</label><input id="sap" type="number" step="0.1"></div></div><div class="actions"><button id="saveSet">Einstellungen speichern</button></div><p class="muted">Schichtiva berücksichtigt bundesweite Feiertage und – nach Auswahl – die landesweit geltenden Feiertage des Bundeslands. Kommunale Sonderregelungen sind nicht enthalten.</p></div>
+<div class="card">
+  <h2>🔐 App-Schutz</h2>
+  <p class="muted">Schütze Schichtiva beim Öffnen mit der Sicherheitsfunktion deines Geräts. Je nach Smartphone nutzt der Browser Fingerabdruck, Gesichtserkennung oder die Geräte-PIN.</p>
+  <div id="bioStatus" class="muted" style="margin-bottom:10px">Biometrischer Schutz wird geprüft …</div>
+  <div class="actions">
+    <button id="setupBio">Biometrie / Gerätesperre einrichten</button>
+    <button id="testBio" class="secondary">Entsperrung testen</button>
+    <button id="disableBio" class="danger">App-Schutz deaktivieren</button>
+  </div>
+  <p class="muted" style="margin-top:10px">Hinweis: Die biometrischen Daten verlassen dein Gerät nicht. Schichtiva speichert nur eine technische Kennung für die lokale Entsperrung.</p>
+</div>
+<div class="card"><h3>Backup</h3><div class="actions"><button id="export" class="secondary">Backup exportieren</button><label style="padding:9px 12px;background:var(--soft);color:#19407c;border-radius:11px;font-weight:700">Backup importieren<input id="import" type="file" accept="application/json,.json" style="display:none"></label><button id="cleanInvalid" class="secondary">Falsche Scan-Zeiten löschen</button><button id="clear" class="danger">Alles löschen</button></div></div></section>
+</main>
+<div id="lockScreen" class="lockScreen">
+  <div class="lockCard">
+    <img src="./icon-192.png" alt="Schichtiva">
+    <h2>Schichtiva ist gesperrt</h2>
+    <p class="muted">Entsperre die App mit Fingerabdruck, Gesichtserkennung oder deiner Geräte-PIN.</p>
+    <button id="unlockBio">🔓 Schichtiva entsperren</button>
+    <div id="lockError" class="lockError"></div>
+  </div>
+</div>
+<div id="rebrandModal" class="modal"><div class="modalbox"><div style="text-align:center"><img src="./icon-192.png" alt="Schichtiva" style="width:96px;height:96px;border-radius:24px"><h2 style="margin-top:10px">DienstBuddy heißt jetzt Schichtiva</h2><p>Keine Diva. Nur dein Dienstplan.</p><p class="muted">Deine bisherigen Schichten, Einstellungen und Kalenderdaten bleiben erhalten. V3.4 ergänzt einen biometrischen App-Schutz über die Gerätesperre deines Smartphones.</p><button id="rebrandOk">Alles klar</button></div></div></div><div id="modal" class="modal"><div class="modalbox"><div style="display:flex;justify-content:space-between"><h3 id="modalDate"></h3><button class="secondary" id="close">✕</button></div><div id="choices" class="chips"></div><hr style="border:0;border-top:1px solid var(--line);margin:14px 0"><h3>Zeiten ansehen / bearbeiten</h3><div class="grid"><div><label>Beginn</label><input id="cs" type="time"></div><div><label>Ende</label><input id="ce" type="time"></div><div><label>Pause Min.</label><input id="cb" type="number" value="0"></div></div><div class="actions"><button id="saveCustom">Eintragen</button><button id="delDay" class="danger">Tag löschen</button></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script><script>
 const $=x=>document.getElementById(x),KEY='dienstbuddy_v2';const DEF={shifts:[{id:'f',name:'Früh',start:'06:00',end:'14:00',breakMin:30},{id:'s',name:'Spät',start:'14:00',end:'22:00',breakMin:30},{id:'n',name:'Nacht',start:'22:00',end:'06:00',breakMin:30}],entries:{},settings:{base:0,nf:'22:00',nt:'06:00',np:25,sp:50,hp:100,sap:0,employeeKey:'',payMode:'salary',hourlyRate:0,state:'',targetHours:8}};let data=(()=>{try{let x=JSON.parse(localStorage.getItem(KEY)||'{}');return {...DEF,...x,settings:{...DEF.settings,...(x.settings||{})}}}catch{return structuredClone(DEF)}})(),view=new Date(),selected=null,cands=[];view=new Date(view.getFullYear(),view.getMonth(),1);const save=()=>localStorage.setItem(KEY,JSON.stringify(data));const M=t=>{let[a,b]=t.split(':').map(Number);return a*60+b};const validTime=t=>{if(typeof t!=='string'||!/^\d{1,2}:\d{2}$/.test(t))return false;let[h,m]=t.split(':').map(Number);return h>=0&&h<=23&&m>=0&&m<=59};
 const ISO=(y,m,d)=>`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;const dur=e=>{if(!e.start)return 0;let x=M(e.end)-M(e.start);if(x<=0)x+=1440;return Math.max(0,(x-Number(e.breakMin||0))/60)};
@@ -650,9 +680,145 @@ $('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObje
   data.shifts=data.shifts.filter(sh=>!(sh.start&&sh.end&&(!validTime(sh.start)||!validTime(sh.end))));
   save();renderShifts();renderCal();alert(n+' fehlerhafte Scan-Einträge entfernt.');
 };
-$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=33').catch(()=>{}));
+$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=34').catch(()=>{}));
 
-const REBRAND_KEY='schichtiva_v33_welcome_seen';
+const REBRAND_KEY='schichtiva_v34_welcome_seen';
 window.addEventListener('load',()=>{if(!localStorage.getItem(REBRAND_KEY)){$('rebrandModal').classList.add('open')}});
 $('rebrandOk').onclick=()=>{localStorage.setItem(REBRAND_KEY,'1');$('rebrandModal').classList.remove('open')};
+
+const BIO_ENABLED_KEY='schichtiva_bio_enabled_v1';
+const BIO_CRED_KEY='schichtiva_bio_credential_v1';
+let lastHiddenAt=0;
+
+function b64url(bytes){
+  return btoa(String.fromCharCode(...bytes))
+    .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+}
+function fromB64url(s){
+  s=s.replace(/-/g,'+').replace(/_/g,'/');
+  while(s.length%4)s+='=';
+  return Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+}
+function randomBytes(n=32){
+  let a=new Uint8Array(n);crypto.getRandomValues(a);return a;
+}
+function bioSupported(){
+  return !!(window.PublicKeyCredential && navigator.credentials && window.isSecureContext);
+}
+function bioEnabled(){
+  return localStorage.getItem(BIO_ENABLED_KEY)==='1' && !!localStorage.getItem(BIO_CRED_KEY);
+}
+function setBioStatus(msg){let x=$('bioStatus');if(x)x.textContent=msg}
+function refreshBioStatus(){
+  if(!bioSupported()){
+    setBioStatus('Auf diesem Browser/über diese Adresse ist WebAuthn nicht verfügbar. Für den Test die HTTPS-Testadresse verwenden.');
+    return;
+  }
+  setBioStatus(bioEnabled()?'✅ App-Schutz ist aktiviert.':'App-Schutz ist noch nicht aktiviert.');
+}
+
+async function setupBiometric(){
+  if(!bioSupported()){
+    alert('Biometrie/WebAuthn ist hier nicht verfügbar. Öffne Schichtiva über die HTTPS-Testadresse auf dem Handy.');
+    return false;
+  }
+  try{
+    const userId=randomBytes(16);
+    const cred=await navigator.credentials.create({
+      publicKey:{
+        challenge:randomBytes(32),
+        rp:{name:'Schichtiva'},
+        user:{id:userId,name:'schichtiva-local-user',displayName:'Schichtiva Nutzer'},
+        pubKeyCredParams:[
+          {type:'public-key',alg:-7},
+          {type:'public-key',alg:-257}
+        ],
+        authenticatorSelection:{
+          authenticatorAttachment:'platform',
+          residentKey:'discouraged',
+          userVerification:'required'
+        },
+        timeout:60000,
+        attestation:'none'
+      }
+    });
+    if(!cred)throw new Error('Keine Anmeldung erstellt');
+    localStorage.setItem(BIO_CRED_KEY,b64url(new Uint8Array(cred.rawId)));
+    localStorage.setItem(BIO_ENABLED_KEY,'1');
+    refreshBioStatus();
+    alert('App-Schutz ist aktiviert.');
+    return true;
+  }catch(err){
+    console.error(err);
+    alert('Einrichtung wurde abgebrochen oder ist auf diesem Gerät nicht verfügbar.');
+    return false;
+  }
+}
+
+async function verifyBiometric(){
+  if(!bioEnabled())return true;
+  if(!bioSupported())throw new Error('WebAuthn nicht verfügbar');
+  const id=fromB64url(localStorage.getItem(BIO_CRED_KEY));
+  const assertion=await navigator.credentials.get({
+    publicKey:{
+      challenge:randomBytes(32),
+      allowCredentials:[{type:'public-key',id:id,transports:['internal']}],
+      userVerification:'required',
+      timeout:60000
+    }
+  });
+  return !!assertion;
+}
+
+async function unlockApp(){
+  $('lockError').textContent='';
+  try{
+    if(await verifyBiometric()){
+      $('lockScreen').classList.remove('open');
+      return true;
+    }
+  }catch(err){
+    console.error(err);
+    $('lockError').textContent='Entsperrung fehlgeschlagen. Bitte erneut versuchen.';
+  }
+  return false;
+}
+
+function lockApp(){
+  if(bioEnabled())$('lockScreen').classList.add('open');
+}
+
+$('setupBio').onclick=setupBiometric;
+$('testBio').onclick=async()=>{
+  if(!bioEnabled())return alert('Bitte zuerst den App-Schutz einrichten.');
+  try{
+    if(await verifyBiometric())alert('Entsperrung erfolgreich.');
+  }catch(err){
+    alert('Entsperrung fehlgeschlagen oder wurde abgebrochen.');
+  }
+};
+$('disableBio').onclick=()=>{
+  if(!bioEnabled())return alert('Der App-Schutz ist nicht aktiviert.');
+  if(!confirm('App-Schutz wirklich deaktivieren?'))return;
+  localStorage.removeItem(BIO_ENABLED_KEY);
+  localStorage.removeItem(BIO_CRED_KEY);
+  $('lockScreen').classList.remove('open');
+  refreshBioStatus();
+  alert('App-Schutz wurde deaktiviert.');
+};
+$('unlockBio').onclick=unlockApp;
+
+window.addEventListener('load',()=>{
+  refreshBioStatus();
+  if(bioEnabled())lockApp();
+});
+
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden){
+    lastHiddenAt=Date.now();
+  }else if(bioEnabled() && lastHiddenAt && Date.now()-lastHiddenAt>15000){
+    lockApp();
+  }
+});
+
 </script></body></html>
