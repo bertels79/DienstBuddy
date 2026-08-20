@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.7.2</title><link rel="manifest" href="./manifest.webmanifest?v=372">
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.7.3</title><link rel="manifest" href="./manifest.webmanifest?v=37310">
 <link rel="icon" href="./icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <meta name="application-name" content="Schichtiva">
@@ -67,7 +67,11 @@
 .symptomMatch strong{display:block}
 .questionBox{border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px;background:#f8fafc}
 @media(max-width:720px){.firstAidQuick{margin:8px 0 0 0}.symptomMatches{grid-template-columns:1fr}}
-</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V3.7.2</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div><button id="firstAidQuick" class="firstAidQuick"><span class="redCross">✚</span> Erste-Hilfe-Kompass</button></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="firstaid">🩹 Erste Hilfe</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
+
+.cprGuide{border:2px solid #dc2626;background:#fff7f7;border-radius:14px;padding:14px;margin-top:12px}
+.cprStep{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px;margin:8px 0}
+.cprBig{font-size:18px;font-weight:900}
+</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V3.7.3</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div><button id="firstAidQuick" class="firstAidQuick"><span class="redCross">✚</span> Erste-Hilfe-Kompass</button></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="firstaid">🩹 Erste Hilfe</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
 <section id="kal" class="tab active"><div class="stats"><div class="stat"><span class="muted">Arbeitsstunden</span><strong id="stH">0,0 h</strong></div><div class="stat"><span class="muted">Nachtstunden</span><strong id="stN">0,0 h</strong></div><div class="stat"><span class="muted">So./Feiertag</span><strong id="stS">0,0 h</strong></div><div class="stat"><span class="muted">Zuschläge</span><strong id="stB">0,00 €</strong></div><div class="stat"><span class="muted">Bezahlte Abwesenheit</span><strong id="stPaidAbs">0,0 h</strong></div><div class="stat"><span class="muted">Verdienst inkl. Zuschläge</span><strong id="stPay">—</strong></div></div><div class="card"><div class="calhead"><button class="secondary" id="prev">‹</button><h2 id="title"></h2><button class="secondary" id="next">›</button></div><div class="week"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div><div id="calendar" class="calendar"></div></div>
 <div class="card"><h3>Monatsauswertung</h3><p class="muted">Hier siehst du genau, welche Schicht welche Stunden verursacht.</p><div id="monthBreakdown"></div></div>
 <div class="card"><h3>Kalender benutzen</h3><p class="muted">Tippe auf einen Tag. Dann kannst du eine gespeicherte Schicht, Frei, Urlaub, Krank oder eine individuelle Schicht eintragen.</p></div>
@@ -111,8 +115,8 @@
 
 <section id="firstaid" class="tab">
 <div class="card">
-<h2><span style="color:#dc2626">✚</span> Erste-Hilfe-Kompass V3.7.2</h2>
-<p class="muted">Beschreibe die Beschwerden frei, z. B. <strong>„starke Blutung Kopf“</strong>, <strong>„Schwindel und Übelkeit“</strong> oder <strong>„Brustdruck“</strong>. Danach folgt eine geführte Abfrage – immer nur eine Frage gleichzeitig. Keine Diagnose.</p>
+<h2><span style="color:#dc2626">✚</span> Erste-Hilfe-Kompass V3.7.3</h2>
+<p class="muted">Beschreibe Beschwerden oder Situation frei. V3.7.3 durchsucht eine deutlich größere Symptomdatenbank und kombiniert Körperregion, Beschwerdeart und Warnzeichen. Danach folgt eine geführte Abfrage – immer nur eine Frage gleichzeitig. Keine Diagnose.</p>
 <label>Symptome / Situation</label>
 <input id="triageSearch" placeholder="Symptome oder Verletzung eingeben …" autocomplete="off">
 <div id="symptomMatches" class="symptomMatches"></div>
@@ -724,9 +728,9 @@ $('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObje
   data.shifts=data.shifts.filter(sh=>!(sh.start&&sh.end&&(!validTime(sh.start)||!validTime(sh.end))));
   save();renderShifts();renderCal();alert(n+' fehlerhafte Scan-Einträge entfernt.');
 };
-$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=372').catch(()=>{}));
+$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=37310').catch(()=>{}));
 
-const REBRAND_KEY='schichtiva_v372_welcome_seen';
+const REBRAND_KEY='schichtiva_v373_welcome_seen';
 window.addEventListener('load',()=>{if(!localStorage.getItem(REBRAND_KEY)){$('rebrandModal').classList.add('open')}});
 $('rebrandOk').onclick=()=>{localStorage.setItem(REBRAND_KEY,'1');$('rebrandModal').classList.remove('open')};
 
@@ -734,134 +738,307 @@ $('rebrandOk').onclick=()=>{localStorage.setItem(REBRAND_KEY,'1');$('rebrandModa
 
 
 
-const SYMPTOM_GROUPS=[
- {id:'headinjury',title:'Kopfverletzung / Blutung am Kopf',words:'kopf kopfplatzwunde kopfwunde blutung blut sturz gefallen schlag unfall gehirnerschütterung',kind:'injury'},
- {id:'bleeding',title:'Blutung / Wunde',words:'blutung blutet blut wunde schnitt platzwunde stark spritzt',kind:'bleeding'},
- {id:'chest',title:'Brustbeschwerden',words:'brust brustschmerz brustdruck brustkorb enge stechen herz',kind:'chest'},
- {id:'neuro',title:'Schwindel / neurologische Beschwerden',words:'schwindel benommen taumeln gleichgewicht lähmung taub sprachstörung sprechen sehen sehstörung kopfschmerz gesicht arm bein',kind:'neuro'},
- {id:'breathing',title:'Atembeschwerden',words:'atemnot luftnot atmen husten asthma ersticken keine luft',kind:'breathing'},
- {id:'conscious',title:'Ohnmacht / Bewusstseinsstörung',words:'ohnmacht bewusstlos benommen verwirrt reagiert nicht kollaps',kind:'conscious'},
- {id:'abdominal',title:'Bauchbeschwerden',words:'bauch bauchschmerz magen unterbauch oberbauch erbrechen übelkeit durchfall',kind:'general'},
- {id:'back',title:'Rücken / Nacken',words:'rücken rückenschmerz nacken halswirbelsäule kreuz',kind:'general'},
- {id:'limb',title:'Arm / Bein / Gelenk',words:'arm bein hand fuß schulter knie gelenk knöchel bruch verstaucht schwellung',kind:'injury'},
- {id:'burn',title:'Verbrennung / Verbrühung',words:'verbrennung verbrühung brandwunde heiß feuer flamme dampf',kind:'burn'},
- {id:'poison',title:'Vergiftung / Stoff aufgenommen',words:'vergiftung gift medikament reiniger chemikalie pflanze pilz alkohol eingeatmet verschluckt',kind:'poison'},
- {id:'allergy',title:'Allergische Reaktion / Stich',words:'allergie allergisch anaphylaxie biene wespe insekt stich ausschlag schwellung zunge hals',kind:'allergy'},
- {id:'seizure',title:'Krampfanfall',words:'krampf krampfanfall epilepsie zucken',kind:'seizure'},
- {id:'eye',title:'Auge / Sehen',words:'auge augen sehstörung sehen fremdkörper verätzung augenverletzung',kind:'eye'},
- {id:'heatcold',title:'Hitze / Kälte',words:'hitzschlag sonnenstich überhitzt unterkühlung kalt erfrierung',kind:'general'}
+
+const BODY_AREAS=[
+ ['kopf','Kopf'],['gesicht','Gesicht'],['auge','Auge'],['ohr','Ohr'],['nase','Nase'],['mund','Mund/Zähne'],
+ ['hals','Hals'],['nacken','Nacken'],['brust','Brust'],['bauch','Bauch'],['oberbauch','Oberbauch'],['unterbauch','Unterbauch'],
+ ['rücken','Rücken'],['arm','Arm'],['schulter','Schulter'],['ellenbogen','Ellenbogen'],['hand','Hand'],['finger','Finger'],
+ ['bein','Bein'],['hüfte','Hüfte'],['knie','Knie'],['fuß','Fuß'],['zehe','Zehe'],['haut','Haut']
+];
+const COMPLAINTS=[
+ ['schmerz','Schmerz'],['blutung','Blutung/Wunde'],['schwindel','Schwindel'],['übelkeit','Übelkeit'],['erbrechen','Erbrechen'],
+ ['durchfall','Durchfall'],['fieber','Fieber'],['atemnot','Atemnot'],['husten','Husten'],['schwellung','Schwellung'],
+ ['ausschlag','Ausschlag'],['taub','Taubheit'],['lähmung','Lähmung/Schwäche'],['sehstörung','Sehstörung'],
+ ['sprachstörung','Sprachstörung'],['bewusstlos','Bewusstlosigkeit/Ohnmacht'],['krampf','Krampfanfall'],
+ ['verbrennung','Verbrennung/Verbrühung'],['verätzung','Verätzung'],['vergiftung','Vergiftung'],
+ ['sturz','Sturz/Unfall'],['bruch','möglicher Bruch'],['stich','Stich/Biss'],['allergie','allergische Reaktion'],
+ ['hitze','Hitzeproblem'],['kälte','Kälteproblem'],['herzrasen','Herzrasen'],['schwäche','starke Schwäche']
+];
+const SYN={
+ 'brustschmerzen':'brust schmerz','brustschmerz':'brust schmerz','kopfschmerzen':'kopf schmerz','kopfschmerz':'kopf schmerz',
+ 'bauchschmerzen':'bauch schmerz','bauchschmerz':'bauch schmerz','rückenschmerzen':'rücken schmerz','rückenschmerz':'rücken schmerz',
+ 'luftnot':'atemnot','keine luft':'atemnot','ohnmacht':'bewusstlos','benommen':'bewusstlos',
+ 'blutet':'blutung','blut':'blutung','wunde':'blutung','schnitt':'blutung','platzwunde':'blutung',
+ 'schlaganfall':'lähmung sprachstörung','herzinfarkt':'brust schmerz','allergisch':'allergie','anaphylaxie':'allergie',
+ 'verbrühung':'verbrennung','stromschlag':'sturz','vergiftet':'vergiftung','gift':'vergiftung',
+ 'sehprobleme':'sehstörung','verschwommen':'sehstörung','sprache':'sprachstörung','taubheit':'taub'
+};
+
+
+// V3.7.3 – erweiterter lokaler Wortschatz.
+// Die Begriffe dienen nur zur Zuordnung in einen Fragepfad, NICHT zur Diagnose.
+const EXTRA_SYMPTOMS={
+ 'kopfdruck':'kopf schmerz','migräne':'kopf schmerz','lichtempfindlich':'kopf schmerz',
+ 'drehschwindel':'schwindel','schwankschwindel':'schwindel','unsicherer gang':'schwindel',
+ 'herzklopfen':'herzrasen','stolpern':'herzrasen','puls':'herzrasen',
+ 'engegefühl':'brust','druckgefühl':'schmerz','seitenstechen':'schmerz',
+ 'keuchen':'atemnot','pfeifen':'atemnot','kurzatmig':'atemnot',
+ 'schluckbeschwerden':'hals schmerz','halsschmerzen':'hals schmerz','heiser':'hals',
+ 'zahnschmerz':'mund schmerz','zahnschmerzen':'mund schmerz',
+ 'nasenbluten':'nase blutung','ohrenschmerz':'ohr schmerz','ohrenschmerzen':'ohr schmerz',
+ 'nackensteif':'nacken schmerz','steifer nacken':'nacken schmerz',
+ 'flankenschmerz':'rücken schmerz','nierenschmerz':'rücken schmerz',
+ 'kribbeln':'taub','gefühllos':'taub','kraftlos':'schwäche',
+ 'zittert':'schwäche','zittern':'schwäche','matt':'schwäche',
+ 'dehydriert':'erbrechen durchfall schwäche','austrocknung':'erbrechen durchfall schwäche',
+ 'schwarzer stuhl':'blutung bauch','blut im stuhl':'blutung bauch',
+ 'blut erbrechen':'blutung erbrechen','bluterbrechen':'blutung erbrechen',
+ 'blut husten':'blutung husten','bluthusten':'blutung husten',
+ 'querschnitt':'lähmung','hängender mundwinkel':'lähmung','verwaschene sprache':'sprachstörung',
+ 'doppelbilder':'sehstörung','blind':'sehstörung','sehverlust':'sehstörung',
+ 'fremdkörper':'auge','chemikalie':'verätzung','säure':'verätzung','lauge':'verätzung',
+ 'sonnenbrand':'verbrennung','brandblase':'verbrennung','rauch':'atemnot',
+ 'biss':'stich','tierbiss':'stich','zeckenbiss':'stich','wespenstich':'stich allergie','bienenstich':'stich allergie',
+ 'quaddeln':'ausschlag allergie','nesselsucht':'ausschlag allergie',
+ 'geschwollen':'schwellung','entzündet':'schwellung','eiter':'schwellung',
+ 'verstaucht':'sturz','verrenkt':'sturz','quetschung':'sturz','prellung':'sturz',
+ 'offener bruch':'bruch blutung','knochen':'bruch',
+ 'strom':'sturz','stromunfall':'sturz','elektrisch':'sturz',
+ 'ertrinken':'atemnot','verschluckt':'atemnot','ersticken':'atemnot',
+ 'unterkühlt':'kälte','erfroren':'kälte','hitzschlag':'hitze','sonnenstich':'hitze',
+ 'diabetes':'schwäche','unterzucker':'schwäche','unterzuckerung':'schwäche',
+ 'fieberkrampf':'krampf fieber','krampft':'krampf',
+ 'schwanger':'bauch','schwangerschaft':'bauch','vaginale blutung':'blutung unterbauch',
+ 'hodenschmerz':'unterbauch schmerz','leiste':'unterbauch',
+ 'wasserlassen':'unterbauch schmerz','urin':'unterbauch','blut im urin':'blutung unterbauch'
+};
+
+const CONTEXT_WORDS=[
+ 'plötzlich','neu','stark','sehr stark','zunehmend','seit heute','seit gestern','seit tagen',
+ 'nach sturz','nach unfall','nach schlag','nach essen','nach medikament','nach stich',
+ 'schwangerschaft','kind','baby','älterer mensch'
 ];
 
-const FLOW={
- injury:[
-  ['Gab es einen Sturz, Schlag, Unfall oder eine andere stärkere Gewalteinwirkung?',1,2],
-  ['War die Person bewusstlos, verwirrt, ungewöhnlich schläfrig oder kann sie sich an den Unfall nicht erinnern?','red',2],
-  ['Bestehen starke oder zunehmende Schmerzen, wiederholtes Erbrechen, Krampf, Lähmung, Sprach-/Sehstörung oder starke Blutung?','red',3],
-  ['Ist eine Wunde tief/klaffend, eine Fehlstellung sichtbar oder kann der betroffene Körperteil kaum benutzt werden?','urgent','medical']
+const CATEGORY_RULES=[
+ {id:'headinjury',title:'Kopfverletzung / Kopfwunde',keys:['kopf','sturz','blutung'],any:['kopf'],kind:'headinjury'},
+ {id:'stroke',title:'Neurologische Warnzeichen',any:['lähmung','sprachstörung','sehstörung','taub'],kind:'neuro'},
+ {id:'chest',title:'Brustbeschwerden',any:['brust'],kind:'chest'},
+ {id:'bleeding',title:'Blutung / Wunde',any:['blutung'],kind:'bleeding'},
+ {id:'breathing',title:'Atembeschwerden',any:['atemnot'],kind:'breathing'},
+ {id:'conscious',title:'Bewusstseinsstörung / Ohnmacht',any:['bewusstlos'],kind:'conscious'},
+ {id:'seizure',title:'Krampfanfall',any:['krampf'],kind:'seizure'},
+ {id:'poison',title:'Vergiftung / Stoffkontakt',any:['vergiftung'],kind:'poison'},
+ {id:'burn',title:'Verbrennung / Verbrühung',any:['verbrennung'],kind:'burn'},
+ {id:'chemical',title:'Verätzung / Chemikalienkontakt',any:['verätzung'],kind:'chemical'},
+ {id:'allergy',title:'Allergische Reaktion',any:['allergie'],kind:'allergy'},
+ {id:'eye',title:'Augenbeschwerden / Augenverletzung',any:['auge','sehstörung'],kind:'eye'},
+ {id:'abdominal',title:'Bauchbeschwerden',any:['bauch','oberbauch','unterbauch'],kind:'abdominal'},
+ {id:'fever',title:'Fieber / Infektzeichen',any:['fieber'],kind:'fever'},
+ {id:'injury',title:'Verletzung / Sturz / möglicher Bruch',any:['sturz','bruch'],kind:'injury'},
+ {id:'skin',title:'Haut / Ausschlag / Schwellung',any:['haut','ausschlag','schwellung','stich'],kind:'skin'},
+ {id:'dizziness',title:'Schwindel / Schwäche',any:['schwindel','schwäche'],kind:'dizziness'},
+ {id:'gastro',title:'Übelkeit / Erbrechen / Durchfall',any:['übelkeit','erbrechen','durchfall'],kind:'gastro'},
+ {id:'pain',title:'Schmerzen',any:['schmerz'],kind:'pain'},
+ {id:'general',title:'Allgemeine Beschwerden',any:['herzrasen','husten','hitze','kälte'],kind:'general'}
+];
+
+const Q={
+ headinjury:[
+  ['Gab es einen Sturz, Schlag oder Unfall gegen den Kopf?',1,2],
+  ['War die Person bewusstlos, verwirrt, ungewöhnlich schläfrig oder besteht eine Erinnerungslücke?','red',2],
+  ['Bestehen wiederholtes Erbrechen, Krampf, Lähmung, Sprach-/Sehstörung oder sehr starke/zunehmende Kopfschmerzen?','red',3],
+  ['Ist die Blutung stark oder lässt sie sich durch festen direkten Druck nicht kontrollieren?','red',4],
+  ['Ist die Wunde tief/klaffend oder besteht eine deutliche Schwellung nach dem Unfall?','urgent','medical']
+ ],
+ neuro:[
+  ['Sind die Beschwerden plötzlich neu aufgetreten?',1,4],
+  ['Besteht eine einseitige Schwäche, Lähmung oder Taubheit?','red',2],
+  ['Besteht eine neue Sprachstörung oder versteht die Person Sprache plötzlich schlecht?','red',3],
+  ['Besteht eine neue Sehstörung, ein auffälliger Mundwinkel oder plötzlich sehr starker Kopfschmerz?','red','urgent'],
+  ['Bestehen die neurologischen Beschwerden weiterhin oder wiederholt?','urgent','medical']
+ ],
+ chest:[
+  ['Sind aktuell Schmerzen, Druck oder Enge im Brustkorb vorhanden?',1,4],
+  ['Sind die Beschwerden stark, neu, plötzlich oder ungewohnt?','red',2],
+  ['Bestehen zusätzlich Atemnot, kalter Schweiß, Ohnmacht oder starke Schwäche?','red',3],
+  ['Strahlen die Beschwerden in Arm, Schulter, Rücken, Hals, Kiefer oder Oberbauch aus?','red','urgent'],
+  ['Bestehen Herzrasen, Atemnot, Ohnmacht oder deutliche Verschlechterung?','red','medical']
  ],
  bleeding:[
   ['Ist die Blutung stark, spritzend oder durchnässt sie Verbände rasch?','red',1],
-  ['Lässt sich die Blutung trotz festem direkten Druck nicht stoppen?','red',2],
+  ['Lässt sie sich trotz festem direkten Druck nicht stoppen?','red',2],
   ['Ist die Wunde tief/klaffend, stark verschmutzt oder durch Biss/Stich entstanden?','urgent','medical']
  ],
- chest:[
-  ['Sind aktuell Schmerzen, Druck oder Enge im Brustkorb vorhanden?',1,'medical'],
-  ['Sind die Beschwerden stark, neu, plötzlich oder ungewohnt?','red',2],
-  ['Bestehen Atemnot, kalter Schweiß, Ohnmacht, starke Schwäche oder Ausstrahlung in Arm/Kiefer/Rücken?','red','urgent']
- ],
- neuro:[
-  ['Sind die Beschwerden plötzlich neu aufgetreten?',1,3],
-  ['Bestehen einseitige Schwäche/Lähmung, Sprachstörung, neue Sehstörung oder ein auffälliger Mundwinkel?','red',2],
-  ['Bestehen Bewusstseinsstörung, ungewöhnlich stärkster Kopfschmerz oder kann die Person nicht sicher stehen/gehen?','red','urgent'],
-  ['Bestehen zusätzlich Ohnmacht, starke Kopfschmerzen, Brustschmerz, Atemnot oder anhaltendes Erbrechen?','red','medical']
- ],
  breathing:[
-  ['Ist die Atemnot stark, plötzlich oder kann die Person kaum in ganzen Sätzen sprechen?','red',1],
-  ['Bestehen Brustschmerz, bläuliche Lippen/Haut, Bewusstseinsstörung oder rasche Verschlechterung?','red','urgent']
+  ['Ist die Atemnot stark, plötzlich oder kann die Person kaum ganze Sätze sprechen?','red',1],
+  ['Bestehen Brustschmerz, bläuliche Lippen/Haut, Bewusstseinsstörung oder rasche Verschlechterung?','red',2],
+  ['Ist die Atemnot neu, anhaltend oder deutlich stärker als üblich?','urgent','medical']
  ],
  conscious:[
-  ['Reagiert die Person aktuell nicht normal auf Ansprechen? ',1,'urgent'],
+  ['Reagiert die Person aktuell nicht normal auf Ansprechen und vorsichtiges Berühren?',1,'urgent'],
   ['Atmet die Person normal?','red','cpr']
  ],
- burn:[
-  ['Ist die Verbrennung großflächig, tief, im Gesicht/Atemweg, durch Strom/Chemikalien verursacht oder besteht Atemnot?','red',1],
-  ['Sind Säugling/Kleinkind betroffen oder bestehen starke Schmerzen bzw. größere Blasen?','urgent','medical']
+ seizure:[
+  ['Dauert der Anfall länger als 5 Minuten oder folgen mehrere Anfälle ohne vollständige Erholung?','red',1],
+  ['Ist es der erste bekannte Anfall, besteht eine Verletzung/Atemstörung oder erholt sich die Person nicht normal?','red','urgent']
  ],
  poison:[
-  ['Bestehen Atemnot, Bewusstseinsstörung, Krampf, schwere Kreislaufprobleme oder ein anderer schwerer Zustand?','red','poison']
+  ['Bestehen Atemnot, Bewusstseinsstörung, Krampf, schwere Kreislaufprobleme oder ein anderer schwerer Zustand?','red',1],
+  ['Wurde möglicherweise ein Medikament, Reiniger, eine Chemikalie, Pflanze, Pilz oder ein anderer unbekannter Stoff aufgenommen?','poison','poison']
+ ],
+ burn:[
+  ['Ist die Verbrennung großflächig, tief, im Gesicht/Atemweg oder besteht Atemnot?','red',1],
+  ['Sind Säugling/Kleinkind betroffen oder bestehen starke Schmerzen bzw. größere Blasen?','urgent','medical']
+ ],
+ chemical:[
+  ['Sind Auge, Atemwege oder eine größere Hautfläche betroffen oder bestehen Atemnot/starke Schmerzen?','red','urgent']
  ],
  allergy:[
   ['Bestehen Atemnot, Zungen-/Halsschwellung, Kreislaufprobleme oder Bewusstseinsstörung?','red',1],
   ['Breitet sich die Reaktion rasch aus oder sind mehrere Körperbereiche betroffen?','red','urgent']
  ],
- seizure:[
-  ['Dauert der Krampfanfall länger als 5 Minuten oder folgen mehrere Anfälle ohne vollständige Erholung?','red',1],
-  ['Ist es der erste bekannte Anfall, besteht eine Verletzung/Atemstörung oder erholt sich die Person nicht normal?','red','urgent']
- ],
  eye:[
-  ['Gab es eine Chemikalie/Verätzung, einen eingedrungenen Fremdkörper oder eine schwere Verletzung am Auge?','urgent',1],
-  ['Besteht plötzlich deutlicher Sehverlust, starke Schmerzen oder eine neurologische Auffälligkeit?','red','medical']
+  ['Bestehen plötzlich deutlicher Sehverlust, starke Augenschmerzen oder eine schwere Augenverletzung?','red',1],
+  ['Gab es Chemikalienkontakt, einen eingedrungenen Fremdkörper oder anhaltende Sehprobleme?','urgent','medical']
+ ],
+ abdominal:[
+  ['Sind die Bauchschmerzen sehr stark, plötzlich oder rasch zunehmend?','red',1],
+  ['Bestehen Bewusstseinsstörung, Kreislaufprobleme, Blut im Erbrochenen/Stuhl oder ein harter, stark schmerzhafter Bauch?','red',2],
+  ['Bestehen anhaltendes Erbrechen, hohes Fieber oder kann kaum Flüssigkeit behalten werden?','urgent','medical']
+ ],
+ fever:[
+  ['Bestehen Bewusstseinsstörung, schwere Atemnot, Krampf, steifer Nacken mit schwerem Krankheitsgefühl oder Kreislaufprobleme?','red',1],
+  ['Ist die Person sehr krank wirkend, trinkt kaum oder verschlechtert sich deutlich?','urgent','medical']
+ ],
+ injury:[
+  ['Gab es einen stärkeren Unfall, Sturz aus Höhe oder eine erhebliche Gewalteinwirkung?','red',1],
+  ['Bestehen Fehlstellung, offene Verletzung, starke Schmerzen oder kann der Körperteil gar nicht belastet/bewegt werden?','urgent','medical']
+ ],
+ skin:[
+  ['Bestehen Atemnot, Zungen-/Halsschwellung, Kreislaufprobleme oder rasche Ausbreitung mit schwerem Krankheitsgefühl?','red',1],
+  ['Bestehen starke Schmerzen, Fieber, deutliche Entzündung oder rasche Verschlechterung?','urgent','medical']
+ ],
+ dizziness:[
+  ['Ist der Schwindel plötzlich neu und sehr stark?',1,3],
+  ['Bestehen Sprach-/Sehstörung, einseitige Schwäche/Taubheit oder kann die Person nicht sicher stehen/gehen?','red',2],
+  ['Bestehen Brustschmerz, Atemnot, Ohnmacht oder ungewöhnlich starker Kopfschmerz?','red','urgent'],
+  ['Bestehen anhaltendes Erbrechen, deutliche Verschlechterung oder wiederholte Ohnmacht?','red','medical']
+ ],
+ gastro:[
+  ['Bestehen starke oder zunehmende Bauchschmerzen, Bewusstseinsstörung oder Kreislaufprobleme?','red',1],
+  ['Ist Blut im Erbrochenen/Stuhl oder kann über längere Zeit keine Flüssigkeit behalten werden?','urgent',2],
+  ['Bestehen hohes Fieber, starke Schwäche oder deutliche Verschlechterung?','urgent','medical']
+ ],
+ pain:[
+  ['Sind die Schmerzen sehr stark, plötzlich oder ungewöhnlich?',1,3],
+  ['Bestehen Atemnot, Bewusstseinsstörung, Lähmung/Sprachstörung, starke Blutung oder ein schwerer Unfall?','red',2],
+  ['Befinden sich die starken Schmerzen in Brust oder Bauch?','red','urgent'],
+  ['Halten die Schmerzen an, werden stärker oder beeinträchtigen sie normale Tätigkeiten deutlich?','urgent','medical']
  ],
  general:[
-  ['Sind die Beschwerden sehr stark, plötzlich oder rasch zunehmend?','red',1],
-  ['Bestehen zusätzlich Atemnot, Bewusstseinsstörung, Ohnmacht, starke Blutung, Lähmung/Sprachstörung oder ein schwerer Unfall?','red',2],
-  ['Kann die Person wegen der Beschwerden kaum trinken, gehen oder normale Tätigkeiten ausführen, oder halten die Beschwerden deutlich an?','urgent','medical']
+  ['Sind die Beschwerden stark, plötzlich oder rasch zunehmend?',1,2],
+  ['Bestehen Atemnot, Bewusstseinsstörung, Ohnmacht, starke Blutung, Lähmung/Sprachstörung oder starke Schmerzen?','red','urgent'],
+  ['Halten die Beschwerden an oder verschlechtern sie sich deutlich?','urgent','medical']
  ]
 };
 
-const RESULTS={
- red:{cls:'red',title:'Warnzeichen – 112',text:'Die Antworten enthalten Warnzeichen für einen möglichen medizinischen Notfall.',steps:['112 anrufen und die Situation schildern.','Betroffene Person nicht allein lassen.','Bei Bewusstlosigkeit Atmung prüfen; bei fehlender normaler Atmung Wiederbelebung beginnen.']},
- cpr:{cls:'red',title:'Keine normale Atmung – 112 + Wiederbelebung',text:'Das ist ein akuter lebensbedrohlicher Notfall.',steps:['112 veranlassen.','Sofort Herz-Lungen-Wiederbelebung beginnen.','AED verwenden, wenn verfügbar.']},
- urgent:{cls:'orange',title:'Dringend ärztlich abklären',text:'Es wurden keine eindeutigen 112-Warnzeichen bestätigt, die Beschwerden sollten aber zeitnah medizinisch beurteilt werden.',steps:['Wenn die Praxis geschlossen ist und es nicht bis zur nächsten Sprechzeit warten kann: 116117.','Bei Verschlechterung oder neuen Warnzeichen sofort 112.']},
- medical:{cls:'blue',title:'Keine akuten Warnzeichen bestätigt',text:'Der kurze Check stellt keine Diagnose und kann eine Erkrankung nicht ausschließen.',steps:['Bei anhaltenden, wiederkehrenden oder unklaren Beschwerden ärztlich abklären.','Bei dringenden Beschwerden außerhalb der Praxiszeiten 116117.','Bei Verschlechterung oder Lebensgefahr 112.']},
- poison:{cls:'blue',title:'Giftnotruf kontaktieren',text:'Bei Vergiftungsverdacht ohne lebensbedrohliche Symptome kann ein Giftinformationszentrum beraten.',steps:['Produkt/Verpackung, Alter/Gewicht, mögliche Menge und Zeitpunkt bereithalten.','Giftnotruf anrufen und Anweisungen befolgen.','Bei Verschlechterung oder schweren Symptomen 112.']}
+const RESULT={
+ red:{cls:'red',title:'Warnzeichen – 112',text:'Die Antworten enthalten Warnzeichen, bei denen Lebensgefahr oder bleibende Schäden nicht sicher ausgeschlossen werden können.',steps:['112 anrufen und Situation schildern.','Betroffene Person nicht allein lassen.','Bei Bewusstlosigkeit Atmung prüfen; bei fehlender normaler Atmung Wiederbelebung beginnen.']},
+ cpr:{cls:'red',title:'Keine normale Atmung – 112 + Wiederbelebung',text:'Akuter lebensbedrohlicher Notfall.',steps:['112 veranlassen.','Sofort Herz-Lungen-Wiederbelebung beginnen.','AED verwenden, wenn verfügbar.']},
+ urgent:{cls:'orange',title:'Dringende medizinische Abklärung',text:'Keine eindeutigen 112-Warnzeichen bestätigt, aber die Beschwerden sollten zeitnah medizinisch beurteilt werden.',steps:['Wenn die Praxis geschlossen ist und es nicht bis zur nächsten Sprechzeit warten kann: 116117.','Bei Verschlechterung oder neuen Warnzeichen sofort 112.']},
+ medical:{cls:'blue',title:'Keine akuten Warnzeichen bestätigt',text:'Der Kompass stellt keine Diagnose und kann Erkrankungen nicht ausschließen.',steps:['Bei anhaltenden, wiederkehrenden oder unklaren Beschwerden ärztlich abklären.','Bei dringenden Beschwerden außerhalb der Praxiszeiten 116117.','Bei Verschlechterung oder Lebensgefahr 112.']},
+ poison:{cls:'blue',title:'Giftnotruf kontaktieren',text:'Bei Vergiftungsverdacht ohne lebensbedrohliche Symptome kann ein Giftinformationszentrum beraten.',steps:['Produkt/Verpackung, Alter/Gewicht, mögliche Menge, Zeitpunkt und Aufnahmeweg bereithalten.','Giftnotruf anrufen und Anweisungen befolgen.','Bei schweren Symptomen oder Verschlechterung 112.']}
 };
-
-const POISON_CENTERS=[
- ['Berlin','030 19240','03019240'],['Bonn','0228 19240','022819240'],
- ['Erfurt','0361 730730','0361730730'],['Freiburg','0761 19240','076119240'],
- ['Göttingen','0551 19240','055119240'],['Mainz','06131 19240','0613119240'],
- ['München','089 19240','08919240']
-];
+const POISON_CENTERS=[['Berlin','030 19240','03019240'],['Bonn','0228 19240','022819240'],['Erfurt','0361 730730','0361730730'],['Freiburg','0761 19240','076119240'],['Göttingen','0551 19240','055119240'],['Mainz','06131 19240','0613119240'],['München','089 19240','08919240']];
 
 function safeTxt(x){return String(x).replace(/[<>&"]/g,m=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[m]))}
-let currentGroup=null, step=0, answers=[];
-
-function scoreGroup(g,q){
- const words=q.toLowerCase().split(/\s+/).filter(Boolean);
- const hay=(g.title+' '+g.words).toLowerCase();
- return words.reduce((n,w)=>n+(hay.includes(w)?2:0),0);
+function normalize(q){
+ let x=q.toLowerCase().replace(/[.,;:!?()]/g,' ');
+ Object.entries(SYN).forEach(([a,b])=>{x=x.split(a).join(b)});
+ Object.entries(EXTRA_SYMPTOMS).forEach(([a,b])=>{x=x.split(a).join(b)});
+ return x.replace(/\s+/g,' ').trim();
 }
+function tokens(q){return normalize(q).split(' ').filter(Boolean)}
+function categoryScore(rule,toks){
+ let score=0;
+ (rule.any||[]).forEach(k=>{if(toks.includes(k))score+=4});
+ (rule.keys||[]).forEach(k=>{if(toks.includes(k))score+=2});
+ return score;
+}
+let current=null,step=0;
 function showMatches(){
- const q=($('triageSearch')?.value||'').trim();
- const box=$('symptomMatches'); if(!box)return;
+ const raw=$('triageSearch')?.value||'',t=tokens(raw),box=$('symptomMatches'); if(!box)return;
  $('triageFlow').innerHTML='';
- if(!q){box.innerHTML='<span class="muted">Mehrere Wörter sind möglich, z. B. „starke Blutung Kopf“.</span>';return;}
- const matches=SYMPTOM_GROUPS.map(g=>({g,score:scoreGroup(g,q)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score);
- box.innerHTML=matches.length?matches.slice(0,5).map(x=>`<button class="symptomMatch" data-group="${x.g.id}"><strong>${safeTxt(x.g.title)}</strong><span class="muted">Abfrage starten →</span></button>`).join(''):'<div class="muted">Dafür ist noch kein sicherer Fragepfad hinterlegt. Bei Lebensgefahr 112; bei dringenden, nicht lebensbedrohlichen Beschwerden 116117.</div>';
- box.querySelectorAll('[data-group]').forEach(b=>b.onclick=()=>startFlow(b.dataset.group));
+ if(!raw.trim()){box.innerHTML='<span class="muted">Du kannst mehrere Angaben kombinieren, z. B. „starke Blutung Kopf nach Sturz“.</span>';return;}
+ let ranked=CATEGORY_RULES.map(r=>({r,score:categoryScore(r,t)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score);
+ // Bonus: head + bleeding/injury should prioritize head injury.
+ if(t.includes('kopf')&&(t.includes('blutung')||t.includes('sturz'))){
+   ranked=ranked.filter(x=>x.r.id!=='headinjury'); ranked.unshift({r:CATEGORY_RULES.find(x=>x.id==='headinjury'),score:99});
+ }
+ box.innerHTML=ranked.length?ranked.slice(0,6).map(x=>`<button class="symptomMatch" data-kind="${x.r.kind}" data-title="${safeTxt(x.r.title)}"><strong>${safeTxt(x.r.title)}</strong><span class="muted">Geführte Abfrage starten →</span></button>`).join(''):`<button class="symptomMatch" data-kind="general" data-title="Allgemeine Beschwerden"><strong>Allgemeine geführte Abfrage</strong><span class="muted">Kein genauer Begriff erkannt – Sicherheits- und Dringlichkeitscheck starten →</span></button>`;
+ box.querySelectorAll('[data-kind]').forEach(b=>b.onclick=()=>startFlow(b.dataset.kind,b.dataset.title));
 }
-function startFlow(id){
- currentGroup=SYMPTOM_GROUPS.find(g=>g.id===id); step=0; answers=[];
- $('triageSearch').disabled=true; $('symptomMatches').innerHTML=''; renderQuestion();
+let safetyStep=0;
+const SAFETY_GATE=[
+ ['Ist die Person bewusstlos oder reagiert sie nicht normal?','red'],
+ ['Atmet die Person nicht normal oder besteht sehr starke Atemnot?','red'],
+ ['Besteht eine sehr starke, nicht kontrollierbare Blutung?','red'],
+ ['Bestehen plötzlich Lähmung, Sprachstörung oder deutlicher Sehverlust?','red'],
+ ['Bestehen starke Brustschmerzen/-druck mit Atemnot, kaltem Schweiß, Ohnmacht oder starker Schwäche?','red']
+];
+function startFlow(kind,title){
+ current={kind,title};step=0;safetyStep=0;
+ $('triageSearch').disabled=true;$('symptomMatches').innerHTML='';
+ renderSafetyGate();
+}
+function renderSafetyGate(){
+ const item=SAFETY_GATE[safetyStep];
+ if(!item){renderQuestion();return;}
+ $('triageFlow').innerHTML=`<div class="questionBox"><div class="muted">${safeTxt(current.title)} · Sicherheitscheck ${safetyStep+1}/${SAFETY_GATE.length}</div><h3>${safeTxt(item[0])}</h3><div class="answerRow"><button id="yes">Ja</button><button id="no" class="secondary">Nein</button></div><div class="actions"><button id="restart" class="secondary">↩ Neu starten</button></div></div>`;
+ $('yes').onclick=()=>renderResult(item[1]);
+ $('no').onclick=()=>{safetyStep++;renderSafetyGate();};
+ $('restart').onclick=resetTriage;
 }
 function renderQuestion(){
- const flow=FLOW[currentGroup.kind]||FLOW.general;
- const item=flow[step];
- $('triageFlow').innerHTML=`<div class="questionBox"><div class="muted">${safeTxt(currentGroup.title)} · Frage ${step+1}</div><h3>${safeTxt(item[0])}</h3><div class="answerRow"><button id="yes">Ja</button><button id="no" class="secondary">Nein</button></div><div class="actions"><button id="restart" class="secondary">↩ Neu starten</button></div></div>`;
- $('yes').onclick=()=>answer(true,item[1]); $('no').onclick=()=>answer(false,item[2]); $('restart').onclick=resetTriage;
+ const flow=Q[current.kind]||Q.general,item=flow[step];
+ $('triageFlow').innerHTML=`<div class="questionBox"><div class="muted">${safeTxt(current.title)} · Frage ${step+1}</div><h3>${safeTxt(item[0])}</h3><div class="answerRow"><button id="yes">Ja</button><button id="no" class="secondary">Nein</button></div><div class="actions"><button id="restart" class="secondary">↩ Neu starten</button></div></div>`;
+ $('yes').onclick=()=>answer(item[1]);$('no').onclick=()=>answer(item[2]);$('restart').onclick=resetTriage;
 }
-function answer(val,next){
- answers.push(val);
- if(typeof next==='number'){step=next;renderQuestion();}else renderResult(next);
-}
+function answer(next){if(typeof next==='number'){step=next;renderQuestion();}else renderResult(next);}
 function renderResult(key){
- const r=RESULTS[key]||RESULTS.medical;
- $('triageFlow').innerHTML=`<div class="triageResult ${r.cls}"><h3>${safeTxt(r.title)}</h3><p>${safeTxt(r.text)}</p><h3>Nächster Schritt</h3><ul>${r.steps.map(x=>`<li>${safeTxt(x)}</li>`).join('')}</ul><div class="callRow">${key==='red'||key==='cpr'?'<a class="callBtn" href="tel:112">📞 112 anrufen</a>':''}${key==='urgent'||key==='medical'?'<a class="callBtn secondary" href="tel:116117">📞 116117</a>':''}${key==='poison'?'<button id="poisonJump" class="secondary">☠️ Giftnotrufnummern</button>':''}</div><div class="actions"><button id="restart" class="secondary">↩ Neuer Check</button></div></div>`;
- $('restart').onclick=resetTriage;
- if($('poisonJump'))$('poisonJump').onclick=()=>document.querySelector('#poisonList').scrollIntoView({behavior:'smooth'});
+ if(key==='cpr'){renderCPRChoice();return;}
+ const r=RESULT[key]||RESULT.medical;
+ $('triageFlow').innerHTML=`<div class="triageResult ${r.cls}"><h3>${safeTxt(r.title)}</h3><p>${safeTxt(r.text)}</p><h3>Nächster Schritt</h3><ul>${r.steps.map(x=>`<li>${safeTxt(x)}</li>`).join('')}</ul><div class="callRow">${key==='red'||key==='cpr'?'<a class="callBtn" href="tel:112">📞 112 anrufen</a>':''}${key==='urgent'||key==='medical'?'<a class="callBtn secondary" href="tel:116117">📞 116117</a>':''}${key==='poison'?'<button id="poisonJump" class="secondary">☠️ Giftnotrufnummern</button>':''}</div><div class="actions"><button id="restart" class="secondary">↩ Neuer Check</button><a class="callBtn secondary" href="https://www.116117.de/de/patienten-navi.php" target="_blank" rel="noopener">Offizielles 116117 Patienten-Navi</a></div></div>`;
+ $('restart').onclick=resetTriage;if($('poisonJump'))$('poisonJump').onclick=()=>document.querySelector('#poisonList').scrollIntoView({behavior:'smooth'});
 }
-function resetTriage(){currentGroup=null;step=0;answers=[];$('triageFlow').innerHTML='';$('triageSearch').disabled=false;$('triageSearch').value='';showMatches();$('triageSearch').focus();}
+
+function renderCPRChoice(){
+ $('triageFlow').innerHTML=`<div class="cprGuide"><h3>❤️ Keine normale Atmung – Herz-Kreislauf-Stillstand möglich</h3>
+ <p><strong>112 veranlassen und sofort mit Herzdruckmassage beginnen.</strong> Laut GRC/ERC soll ein AED verwendet werden, sobald er verfügbar ist; die Herzdruckmassage dabei möglichst wenig unterbrechen.</p>
+ <div class="questionBox"><h3>Ist ein AED / Defibrillator verfügbar oder kann jemand einen holen?</h3>
+ <div class="answerRow"><button id="aedYes">Ja – AED verfügbar</button><button id="aedNo" class="secondary">Nein – kein AED</button></div></div>
+ <div class="callRow"><a class="callBtn" href="tel:112">📞 112 anrufen</a></div></div>`;
+ $('aedYes').onclick=renderAEDGuide;
+ $('aedNo').onclick=renderHLWGuide;
+}
+function renderAEDGuide(){
+ $('triageFlow').innerHTML=`<div class="cprGuide"><h3>⚡ AED verwenden – gleichzeitig HLW fortführen</h3>
+ <div class="cprStep"><span class="cprBig">1. 112 + Herzdruckmassage</span><br>Eine Person ruft 112, eine andere holt wenn möglich den AED. Herzdruckmassage möglichst ohne Unterbrechung fortführen.</div>
+ <div class="cprStep"><span class="cprBig">2. AED einschalten</span><br>Gerät öffnen/einschalten und den gesprochenen bzw. angezeigten Anweisungen folgen.</div>
+ <div class="cprStep"><span class="cprBig">3. Brust freimachen + Elektroden kleben</span><br>Elektroden entsprechend den Abbildungen auf den Elektroden bzw. dem Gerät auf die nackte Brust kleben.</div>
+ <div class="cprStep"><span class="cprBig">4. Analyse</span><br>Wenn der AED zur Analyse auffordert: Niemand berührt die Person. Den Anweisungen des Geräts genau folgen.</div>
+ <div class="cprStep"><span class="cprBig">5. Schock nur nach AED-Anweisung</span><br>Fordert das Gerät einen Schock: sicherstellen, dass niemand die Person berührt, dann den Schock nach Geräteanweisung auslösen. Bei vollautomatischen Geräten den Geräteanweisungen folgen.</div>
+ <div class="cprStep"><span class="cprBig">6. Sofort weiterdrücken</span><br>Nach Analyse bzw. Schock sofort wieder Herzdruckmassage durchführen und weiter den AED-Anweisungen folgen.</div>
+ <p><strong>Herzdruckmassage:</strong> Mitte des Brustkorbs, 100–120/min, mindestens 5 cm und höchstens 6 cm tief, Brustkorb nach jeder Kompression vollständig entlasten.</p>
+ <div class="callRow"><a class="callBtn" href="tel:112">📞 112</a></div>
+ <div class="actions"><button id="restart" class="secondary">↩ Neuer Check</button></div></div>`;
+ $('restart').onclick=resetTriage;
+}
+function renderHLWGuide(){
+ $('triageFlow').innerHTML=`<div class="cprGuide"><h3>❤️ Kein AED verfügbar – HLW sofort fortführen</h3>
+ <div class="cprStep"><span class="cprBig">1. 112</span><br>Notruf veranlassen. Wenn möglich Telefon auf Lautsprecher stellen und den Anweisungen der Leitstelle folgen.</div>
+ <div class="cprStep"><span class="cprBig">2. Hände in die Mitte des Brustkorbs</span><br>Handballen auf die untere Hälfte des Brustbeins / Mitte des Brustkorbs, zweite Hand darüber, Arme gestreckt.</div>
+ <div class="cprStep"><span class="cprBig">3. Drücken: 100–120 pro Minute</span><br>Mindestens 5 cm, höchstens 6 cm tief drücken. Nach jeder Kompression vollständig entlasten. Unterbrechungen möglichst vermeiden.</div>
+ <div class="cprStep"><span class="cprBig">4. Beatmung</span><br>Wenn du in Beatmung geschult bist: 30 Kompressionen und 2 Beatmungen. Wenn du nicht darin geschult bist: ununterbrochene Herzdruckmassage.</div>
+ <div class="cprStep"><span class="cprBig">5. Nicht aufhören</span><br>Fortführen, bis professionelle Hilfe übernimmt, die Person wieder normal atmet oder ein AED verfügbar wird.</div>
+ <div class="questionBox"><h3>Ist inzwischen ein AED verfügbar?</h3><div class="answerRow"><button id="aedLater">Ja – AED ist jetzt da</button></div></div>
+ <div class="callRow"><a class="callBtn" href="tel:112">📞 112</a></div>
+ <div class="actions"><button id="restart" class="secondary">↩ Neuer Check</button></div></div>`;
+ $('aedLater').onclick=renderAEDGuide;
+ $('restart').onclick=resetTriage;
+}
+
+function resetTriage(){current=null;step=0;$('triageFlow').innerHTML='';$('triageSearch').disabled=false;$('triageSearch').value='';showMatches();$('triageSearch').focus();}
 function renderPoison(){$('poisonList').innerHTML=POISON_CENTERS.map(([c,d,n])=>`<div class="row"><strong>${c}</strong><span>${d}</span><span></span><span></span><a class="callBtn secondary" href="tel:${n}">Anrufen</a></div>`).join('');}
 if($('triageSearch'))$('triageSearch').oninput=showMatches;
 if($('firstAidQuick'))$('firstAidQuick').onclick=()=>activateTab('firstaid');
