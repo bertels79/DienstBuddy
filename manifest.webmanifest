@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "Schichtiva V4",
-  "short_name": "Schichtiva V4",
+  "name": "Schichtiva",
+  "short_name": "Schichtiva",
   "description": "Schichtiva V4 – Dienstplan, Kalender, Termine, Telefonliste und Erste-Hilfe-Kompass.",
   "start_url": "./?v=4",
   "scope": "./",
