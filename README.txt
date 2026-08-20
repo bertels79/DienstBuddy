@@ -1,26 +1,13 @@
-Schichtiva V3.7.3.2 – korrigierter Gesamtstand
+Schichtiva V3.7.3.3
 
-Korrekturen:
-- „bewusstlos“, „bewustlos“, „ohnmächtig“ und ähnliche Schreibweisen führen
-  jetzt zuverlässig in den Bewusstlosigkeits-Pfad.
-- Kein allgemeiner Beschwerdepfad mehr bei „bewustlos“.
-- Ablauf Bewusstlosigkeit:
-  1. Reagiert die Person?
-  2. Wenn nein: Atmet die Person normal?
-  3. Ja -> 112 + stabile Seitenlage + Atmung überwachen.
-  4. Nein -> 112 + HLW + Frage nach AED.
-  5. AED vorhanden -> geführte AED-Anleitung.
-  6. Kein AED -> geführte HLW-Anleitung.
-- Andere Symptome wie Brust, Schwindel, Blutung usw. bleiben in ihren eigenen Pfaden.
-- Interne Anzeige vollständig auf V3.7.3.2 aktualisiert.
-- Neuer Cache-Stand, damit nicht wieder alte Dateien angezeigt werden.
+Kernkorrektur:
+- Bewusstlos: Antwort NEIN auf „Reagiert die Person?“ führt zwingend zur Atemkontrolle.
+- Normale Atmung: 112 + stabile Seitenlage + Überwachung.
+- Keine normale Atmung: 112 + HLW + AED-Abfrage.
+- Starke Blutung wird spezifisch gefiltert und erhält konkrete Sofortmaßnahmen.
+- Neue Tippfehlertoleranz ohne gefährliche Teilwort-Ersetzungen.
+- Längere Begriffe tolerieren bis zu zwei einfache Tippfehler.
+- Notfallergebnisse zeigen kontextbezogene Sofortmaßnahmen, nicht nur eine Telefonnummer.
+- 116117 bleibt ausschließlich für dringende, nicht lebensbedrohliche Situationen.
 
-Version: Schichtiva V3.7.3.2
-
-
-V3.7.3.2 BUILD-HINWEIS
-- Dies ist eine echte neue interne Version, nicht nur eine umbenannte ZIP-Datei.
-- Sichtbare Versionsnummer: V3.7.3.2
-- Manifest/start_url: v=3732
-- Service-Worker-Cache: schichtiva-v3-7-3-2
-- Bewusstlosigkeits-/Atmungs-/AED-/HLW-Korrektur aus dem letzten Stand ist enthalten.
+Der Kompass stellt keine Diagnose.

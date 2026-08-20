@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.7.3.2</title><link rel="manifest" href="./manifest.webmanifest?v=3732">
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.7.3.3</title><link rel="manifest" href="./manifest.webmanifest?v=3733">
 <link rel="icon" href="./icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <meta name="application-name" content="Schichtiva">
@@ -71,7 +71,7 @@
 .cprGuide{border:2px solid #dc2626;background:#fff7f7;border-radius:14px;padding:14px;margin-top:12px}
 .cprStep{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px;margin:8px 0}
 .cprBig{font-size:18px;font-weight:900}
-</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V3.7.3.2</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div><button id="firstAidQuick" class="firstAidQuick"><span class="redCross">✚</span> Erste-Hilfe-Kompass</button></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="firstaid">🩹 Erste Hilfe</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
+</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V3.7.3.3</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div><button id="firstAidQuick" class="firstAidQuick"><span class="redCross">✚</span> Erste-Hilfe-Kompass</button></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="firstaid">🩹 Erste Hilfe</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
 <section id="kal" class="tab active"><div class="stats"><div class="stat"><span class="muted">Arbeitsstunden</span><strong id="stH">0,0 h</strong></div><div class="stat"><span class="muted">Nachtstunden</span><strong id="stN">0,0 h</strong></div><div class="stat"><span class="muted">So./Feiertag</span><strong id="stS">0,0 h</strong></div><div class="stat"><span class="muted">Zuschläge</span><strong id="stB">0,00 €</strong></div><div class="stat"><span class="muted">Bezahlte Abwesenheit</span><strong id="stPaidAbs">0,0 h</strong></div><div class="stat"><span class="muted">Verdienst inkl. Zuschläge</span><strong id="stPay">—</strong></div></div><div class="card"><div class="calhead"><button class="secondary" id="prev">‹</button><h2 id="title"></h2><button class="secondary" id="next">›</button></div><div class="week"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div><div id="calendar" class="calendar"></div></div>
 <div class="card"><h3>Monatsauswertung</h3><p class="muted">Hier siehst du genau, welche Schicht welche Stunden verursacht.</p><div id="monthBreakdown"></div></div>
 <div class="card"><h3>Kalender benutzen</h3><p class="muted">Tippe auf einen Tag. Dann kannst du eine gespeicherte Schicht, Frei, Urlaub, Krank oder eine individuelle Schicht eintragen.</p></div>
@@ -115,8 +115,8 @@
 
 <section id="firstaid" class="tab">
 <div class="card">
-<h2><span style="color:#dc2626">✚</span> Erste-Hilfe-Kompass V3.7.3.2</h2>
-<p class="muted">Beschreibe Beschwerden oder Situation frei. V3.7.3.2 durchsucht eine deutlich größere Symptomdatenbank und kombiniert Körperregion, Beschwerdeart und Warnzeichen. Danach folgt eine geführte Abfrage – immer nur eine Frage gleichzeitig. Keine Diagnose.</p>
+<h2><span style="color:#dc2626">✚</span> Erste-Hilfe-Kompass V3.7.3.3</h2>
+<p class="muted">Beschreibe Beschwerden oder Situation frei. V3.7.3.3 durchsucht eine deutlich größere Symptomdatenbank und kombiniert Körperregion, Beschwerdeart und Warnzeichen. Danach folgt eine geführte Abfrage – immer nur eine Frage gleichzeitig. Keine Diagnose.</p>
 <label>Symptome / Situation</label>
 <input id="triageSearch" placeholder="Symptome oder Verletzung eingeben …" autocomplete="off">
 <div id="symptomMatches" class="symptomMatches"></div>
@@ -728,9 +728,9 @@ $('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObje
   data.shifts=data.shifts.filter(sh=>!(sh.start&&sh.end&&(!validTime(sh.start)||!validTime(sh.end))));
   save();renderShifts();renderCal();alert(n+' fehlerhafte Scan-Einträge entfernt.');
 };
-$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=3732').catch(()=>{}));
+$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=3733').catch(()=>{}));
 
-const REBRAND_KEY='schichtiva_v3732_welcome_seen';
+const REBRAND_KEY='schichtiva_v3733_welcome_seen';
 window.addEventListener('load',()=>{if(!localStorage.getItem(REBRAND_KEY)){$('rebrandModal').classList.add('open')}});
 $('rebrandOk').onclick=()=>{localStorage.setItem(REBRAND_KEY,'1');$('rebrandModal').classList.remove('open')};
 
@@ -857,8 +857,8 @@ const Q={
   ['Bestehen Herzrasen, Atemnot, Ohnmacht oder deutliche Verschlechterung?','red','medical']
  ],
  bleeding:[
-  ['Ist die Blutung stark, spritzend oder durchnässt sie Verbände rasch?','red',1],
-  ['Lässt sie sich trotz festem direkten Druck nicht stoppen?','red',2],
+  ['Ist die Blutung stark, spritzend oder durchnässt sie Tücher/Verbände rasch?','severeBleeding',1],
+  ['Lässt sie sich trotz kräftigem, direktem Druck auf die Wunde nicht kontrollieren?','severeBleeding',2],
   ['Ist die Wunde tief/klaffend, stark verschmutzt oder durch Biss/Stich entstanden?','urgent','medical']
  ],
  breathing:[
@@ -867,7 +867,7 @@ const Q={
   ['Ist die Atemnot neu, anhaltend oder deutlich stärker als üblich?','urgent','medical']
  ],
  conscious:[
-  ['Reagiert die Person auf lautes Ansprechen und vorsichtiges Berühren?',1,'urgent'],
+  ['Reagiert die Person auf lautes Ansprechen und vorsichtiges Berühren?','urgent',1],
   ['Atmet die Person normal?','unconsciousBreathing','cpr']
  ],
  seizure:[
@@ -935,6 +935,7 @@ const Q={
 };
 
 const RESULT={
+ severeBleeding:{cls:'red',title:'Starke Blutung – 112 + Blutung sofort stillen',text:'Eine starke oder nicht kontrollierbare Blutung ist ein Notfall.',steps:['112 anrufen bzw. durch eine zweite Person anrufen lassen.','Wenn möglich Einmalhandschuhe verwenden.','Sauberes Tuch oder Wundauflage direkt auf die Wunde drücken und den Druck halten.','An Arm oder Bein kann ein Druckverband angelegt werden. Wenn er durchblutet, weiter Druck ausüben.','Am Kopf oder Hals mit der Hand bzw. einer Wundauflage direkten Druck ausüben, soweit möglich.','Person betreuen und bis zum Eintreffen des Rettungsdienstes beobachten.']},
  unconsciousBreathing:{cls:'red',title:'Bewusstlos, aber normale Atmung – 112',text:'Bewusstlosigkeit ist ein Notfall. Da normale Atmung vorhanden ist, wird keine Herzdruckmassage begonnen.',steps:['112 anrufen.','Atemwege frei halten und die Person in stabile Seitenlage bringen, sofern keine Situation dagegen spricht.','Atmung fortlaufend kontrollieren. Wenn keine normale Atmung mehr vorhanden ist, sofort mit Wiederbelebung beginnen und AED einsetzen, sobald verfügbar.']},
  red:{cls:'red',title:'Warnzeichen – 112',text:'Die Antworten enthalten Warnzeichen, bei denen Lebensgefahr oder bleibende Schäden nicht sicher ausgeschlossen werden können.',steps:['112 anrufen und Situation schildern.','Betroffene Person nicht allein lassen.','Bei Bewusstlosigkeit Atmung prüfen; bei fehlender normaler Atmung Wiederbelebung beginnen.']},
  cpr:{cls:'red',title:'Keine normale Atmung – 112 + Wiederbelebung',text:'Akuter lebensbedrohlicher Notfall.',steps:['112 veranlassen.','Sofort Herz-Lungen-Wiederbelebung beginnen.','AED verwenden, wenn verfügbar.']},
@@ -945,25 +946,44 @@ const RESULT={
 const POISON_CENTERS=[['Berlin','030 19240','03019240'],['Bonn','0228 19240','022819240'],['Erfurt','0361 730730','0361730730'],['Freiburg','0761 19240','076119240'],['Göttingen','0551 19240','055119240'],['Mainz','06131 19240','0613119240'],['München','089 19240','08919240']];
 
 function safeTxt(x){return String(x).replace(/[<>&"]/g,m=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[m]))}
+function foldText(x){
+ return String(x||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ß/g,'ss')
+  .replace(/[^a-z0-9\s-]/g,' ').replace(/\s+/g,' ').trim();
+}
+const SAFE_SYNONYMS={
+ 'ohnmacht':'bewusstlos','ohnmachtig':'bewusstlos','bewustlos':'bewusstlos','bewusstlo':'bewusstlos','bewust':'bewusstlos',
+ 'luftnot':'atemnot','kurzatmig':'atemnot','keine luft':'atemnot',
+ 'blutet':'blutung','blutend':'blutung','wunde':'blutung','platzwunde':'blutung','schnittwunde':'blutung',
+ 'brustschmerz':'brust schmerz','brustschmerzen':'brust schmerz','brustdruck':'brust schmerz',
+ 'kopfschmerz':'kopf schmerz','kopfschmerzen':'kopf schmerz','bauchschmerz':'bauch schmerz','bauchschmerzen':'bauch schmerz',
+ 'schlaganfall':'lahmung sprachstorung','herzinfarkt':'brust schmerz','verbruhung':'verbrennung',
+ 'sehprobleme':'sehstorung','sehverlust':'sehstorung','doppelbilder':'sehstorung','verwaschene sprache':'sprachstorung',
+ 'taubheit':'taub','anaphylaxie':'allergie','allergisch':'allergie','gift':'vergiftung','vergiftet':'vergiftung'
+};
+function editDistance(a,b){
+ const m=a.length,n=b.length,d=Array.from({length:m+1},()=>Array(n+1).fill(0));
+ for(let i=0;i<=m;i++)d[i][0]=i; for(let j=0;j<=n;j++)d[0][j]=j;
+ for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
+ return d[m][n];
+}
 function normalize(q){
- let x=q.toLowerCase().replace(/[.,;:!?()]/g,' ');
- Object.entries(SYN).forEach(([a,b])=>{x=x.split(a).join(b)});
- Object.entries(EXTRA_SYMPTOMS).forEach(([a,b])=>{x=x.split(a).join(b)});
+ let x=foldText(q);
+ Object.entries(SAFE_SYNONYMS).sort((a,b)=>b[0].length-a[0].length).forEach(([a,b])=>{
+   const aa=foldText(a).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+   x=x.replace(new RegExp('(^|\\\\s)'+aa+'(?=\\\\s|$)','g'),(m,p)=>p+b);
+ });
  return x.replace(/\s+/g,' ').trim();
 }
 function tokens(q){return normalize(q).split(' ').filter(Boolean)}
-function nearWord(a,b){
- if(a===b)return true;
- if(Math.abs(a.length-b.length)>1)return false;
- let i=0,j=0,d=0;
- while(i<a.length&&j<b.length){
-   if(a[i]===b[j]){i++;j++;continue;}
-   d++; if(d>1)return false;
-   if(a.length>b.length)i++; else if(b.length>a.length)j++; else {i++;j++;}
- }
- return true;
+function keyMatch(token,key){
+ token=foldText(token); key=foldText(key);
+ if(token===key)return true;
+ if(token.length<5||key.length<5)return false;
+ return editDistance(token,key)<=(Math.max(token.length,key.length)>=9?2:1);
 }
-function hasTok(toks,k){return toks.includes(k)||toks.some(t=>t.length>=5&&k.length>=5&&nearWord(t,k))}
+function hasTok(toks,key){
+ return foldText(key).split(' ').filter(Boolean).every(k=>toks.some(t=>keyMatch(t,k)));
+}
 
 function categoryScore(rule,toks){
  let score=0;
@@ -978,7 +998,7 @@ function showMatches(){
  if(!raw.trim()){box.innerHTML='<span class="muted">Du kannst mehrere Angaben kombinieren, z. B. „starke Blutung Kopf nach Sturz“.</span>';return;}
  let ranked=CATEGORY_RULES.map(r=>({r,score:categoryScore(r,t)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score);
  // Bonus: head + bleeding/injury should prioritize head injury.
- if(t.includes('kopf')&&(t.includes('blutung')||t.includes('sturz'))){
+ if(hasTok(t,'kopf')&&(hasTok(t,'blutung')||hasTok(t,'sturz'))){
    ranked=ranked.filter(x=>x.r.id!=='headinjury'); ranked.unshift({r:CATEGORY_RULES.find(x=>x.id==='headinjury'),score:99});
  }
  box.innerHTML=ranked.length?ranked.slice(0,6).map(x=>`<button class="symptomMatch" data-kind="${x.r.kind}" data-title="${safeTxt(x.r.title)}"><strong>${safeTxt(x.r.title)}</strong><span class="muted">Geführte Abfrage starten →</span></button>`).join(''):`<button class="symptomMatch" data-kind="general" data-title="Allgemeine Beschwerden"><strong>Allgemeine geführte Abfrage</strong><span class="muted">Kein genauer Begriff erkannt – Sicherheits- und Dringlichkeitscheck starten →</span></button>`;
@@ -996,10 +1016,19 @@ function renderQuestion(){
  $('yes').onclick=()=>answer(item[1]);$('no').onclick=()=>answer(item[2]);$('restart').onclick=resetTriage;
 }
 function answer(next){if(typeof next==='number'){step=next;renderQuestion();}else renderResult(next);}
+function contextualEmergencySteps(){
+ if(!current)return null;
+ if(current.kind==='bleeding'||current.kind==='headinjury')return ['112 anrufen.','Blutung mit sauberer Wundauflage/Tuch durch direkten Druck stillen.','Bei starker Kopf-/Halsblutung direkten Druck auf die Wundauflage ausüben.','Person betreuen und Zustand beobachten.'];
+ if(current.kind==='conscious')return ['112 anrufen.','Atmung prüfen.','Bei normaler Atmung stabile Seitenlage und Atmung fortlaufend kontrollieren.','Bei fehlender normaler Atmung sofort HLW beginnen und AED einsetzen, sobald verfügbar.'];
+ if(current.kind==='breathing')return ['112 anrufen.','Person nicht allein lassen und eine Position unterstützen, in der sie am besten atmen kann.','Bei Bewusstlosigkeit Atmung prüfen; bei fehlender normaler Atmung HLW beginnen.'];
+ if(current.kind==='neuro')return ['112 anrufen.','Zeitpunkt des Beginns merken.','Person nicht allein lassen.','Bei Bewusstlosigkeit Atmung prüfen.'];
+ return null;
+}
 function renderResult(key){
  if(key==='cpr'){renderCPRChoice();return;}
- const r=RESULT[key]||RESULT.medical;
- $('triageFlow').innerHTML=`<div class="triageResult ${r.cls}"><h3>${safeTxt(r.title)}</h3><p>${safeTxt(r.text)}</p><h3>Nächster Schritt</h3><ul>${r.steps.map(x=>`<li>${safeTxt(x)}</li>`).join('')}</ul><div class="callRow">${key==='red'||key==='cpr'||key==='unconsciousBreathing'?'<a class="callBtn" href="tel:112">📞 112 anrufen</a>':''}${key==='urgent'||key==='medical'?'<a class="callBtn secondary" href="tel:116117">📞 116117</a>':''}${key==='poison'?'<button id="poisonJump" class="secondary">☠️ Giftnotrufnummern</button>':''}</div><div class="actions"><button id="restart" class="secondary">↩ Neuer Check</button><a class="callBtn secondary" href="https://www.116117.de/de/patienten-navi.php" target="_blank" rel="noopener">Offizielles 116117 Patienten-Navi</a></div></div>`;
+ let r=RESULT[key]||RESULT.medical;
+ if(key==='red'){const extra=contextualEmergencySteps();if(extra)r={...r,steps:extra};}
+ $('triageFlow').innerHTML=`<div class="triageResult ${r.cls}"><h3>${safeTxt(r.title)}</h3><p>${safeTxt(r.text)}</p><h3>Sofortmaßnahmen / nächster Schritt</h3><ul>${r.steps.map(x=>`<li>${safeTxt(x)}</li>`).join('')}</ul><div class="callRow">${key==='red'||key==='cpr'||key==='unconsciousBreathing'||key==='severeBleeding'?'<a class="callBtn" href="tel:112">📞 112 anrufen</a>':''}${key==='urgent'||key==='medical'?'<a class="callBtn secondary" href="tel:116117">📞 116117</a>':''}${key==='poison'?'<button id="poisonJump" class="secondary">☠️ Giftnotrufnummern</button>':''}</div><div class="actions"><button id="restart" class="secondary">↩ Neuer Check</button><a class="callBtn secondary" href="https://www.116117.de/de/patienten-navi.php" target="_blank" rel="noopener">Offizielles 116117 Patienten-Navi</a></div></div>`;
  $('restart').onclick=resetTriage;if($('poisonJump'))$('poisonJump').onclick=()=>document.querySelector('#poisonList').scrollIntoView({behavior:'smooth'});
 }
 
