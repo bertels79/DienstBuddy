@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.4</title><link rel="manifest" href="./manifest.webmanifest?v=34">
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.5</title><link rel="manifest" href="./manifest.webmanifest?v=35">
 <link rel="icon" href="./icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <meta name="application-name" content="Schichtiva">
@@ -39,7 +39,7 @@
 .lockCard h2{margin-bottom:8px}
 .lockCard .muted{margin-bottom:16px}
 .lockError{color:#b42318;font-size:13px;min-height:18px;margin-top:10px}
-</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V3.4</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
+</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V3.5</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
 <section id="kal" class="tab active"><div class="stats"><div class="stat"><span class="muted">Arbeitsstunden</span><strong id="stH">0,0 h</strong></div><div class="stat"><span class="muted">Nachtstunden</span><strong id="stN">0,0 h</strong></div><div class="stat"><span class="muted">So./Feiertag</span><strong id="stS">0,0 h</strong></div><div class="stat"><span class="muted">Zuschläge</span><strong id="stB">0,00 €</strong></div><div class="stat"><span class="muted">Bezahlte Abwesenheit</span><strong id="stPaidAbs">0,0 h</strong></div><div class="stat"><span class="muted">Verdienst inkl. Zuschläge</span><strong id="stPay">—</strong></div></div><div class="card"><div class="calhead"><button class="secondary" id="prev">‹</button><h2 id="title"></h2><button class="secondary" id="next">›</button></div><div class="week"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div><div id="calendar" class="calendar"></div></div>
 <div class="card"><h3>Monatsauswertung</h3><p class="muted">Hier siehst du genau, welche Schicht welche Stunden verursacht.</p><div id="monthBreakdown"></div></div>
 <div class="card"><h3>Kalender benutzen</h3><p class="muted">Tippe auf einen Tag. Dann kannst du eine gespeicherte Schicht, Frei, Urlaub, Krank oder eine individuelle Schicht eintragen.</p></div>
@@ -107,12 +107,12 @@
   <div class="lockCard">
     <img src="./icon-192.png" alt="Schichtiva">
     <h2>Schichtiva ist gesperrt</h2>
-    <p class="muted">Entsperre die App mit Fingerabdruck, Gesichtserkennung oder deiner Geräte-PIN.</p>
+    <p class="muted">Die Geräte-Entsperrung wird automatisch gestartet. Falls sie abgebrochen wird, kannst du sie unten erneut aufrufen.</p>
     <button id="unlockBio">🔓 Schichtiva entsperren</button>
     <div id="lockError" class="lockError"></div>
   </div>
 </div>
-<div id="rebrandModal" class="modal"><div class="modalbox"><div style="text-align:center"><img src="./icon-192.png" alt="Schichtiva" style="width:96px;height:96px;border-radius:24px"><h2 style="margin-top:10px">DienstBuddy heißt jetzt Schichtiva</h2><p>Keine Diva. Nur dein Dienstplan.</p><p class="muted">Deine bisherigen Schichten, Einstellungen und Kalenderdaten bleiben erhalten. V3.4 ergänzt einen biometrischen App-Schutz über die Gerätesperre deines Smartphones.</p><button id="rebrandOk">Alles klar</button></div></div></div><div id="modal" class="modal"><div class="modalbox"><div style="display:flex;justify-content:space-between"><h3 id="modalDate"></h3><button class="secondary" id="close">✕</button></div><div id="choices" class="chips"></div><hr style="border:0;border-top:1px solid var(--line);margin:14px 0"><h3>Zeiten ansehen / bearbeiten</h3><div class="grid"><div><label>Beginn</label><input id="cs" type="time"></div><div><label>Ende</label><input id="ce" type="time"></div><div><label>Pause Min.</label><input id="cb" type="number" value="0"></div></div><div class="actions"><button id="saveCustom">Eintragen</button><button id="delDay" class="danger">Tag löschen</button></div></div></div>
+<div id="rebrandModal" class="modal"><div class="modalbox"><div style="text-align:center"><img src="./icon-192.png" alt="Schichtiva" style="width:96px;height:96px;border-radius:24px"><h2 style="margin-top:10px">DienstBuddy heißt jetzt Schichtiva</h2><p>Keine Diva. Nur dein Dienstplan.</p><p class="muted">Deine bisherigen Schichten, Einstellungen und Kalenderdaten bleiben erhalten. V3.5 startet die Geräte-Entsperrung beim Öffnen automatisch.</p><button id="rebrandOk">Alles klar</button></div></div></div><div id="modal" class="modal"><div class="modalbox"><div style="display:flex;justify-content:space-between"><h3 id="modalDate"></h3><button class="secondary" id="close">✕</button></div><div id="choices" class="chips"></div><hr style="border:0;border-top:1px solid var(--line);margin:14px 0"><h3>Zeiten ansehen / bearbeiten</h3><div class="grid"><div><label>Beginn</label><input id="cs" type="time"></div><div><label>Ende</label><input id="ce" type="time"></div><div><label>Pause Min.</label><input id="cb" type="number" value="0"></div></div><div class="actions"><button id="saveCustom">Eintragen</button><button id="delDay" class="danger">Tag löschen</button></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script><script>
 const $=x=>document.getElementById(x),KEY='dienstbuddy_v2';const DEF={shifts:[{id:'f',name:'Früh',start:'06:00',end:'14:00',breakMin:30},{id:'s',name:'Spät',start:'14:00',end:'22:00',breakMin:30},{id:'n',name:'Nacht',start:'22:00',end:'06:00',breakMin:30}],entries:{},settings:{base:0,nf:'22:00',nt:'06:00',np:25,sp:50,hp:100,sap:0,employeeKey:'',payMode:'salary',hourlyRate:0,state:'',targetHours:8}};let data=(()=>{try{let x=JSON.parse(localStorage.getItem(KEY)||'{}');return {...DEF,...x,settings:{...DEF.settings,...(x.settings||{})}}}catch{return structuredClone(DEF)}})(),view=new Date(),selected=null,cands=[];view=new Date(view.getFullYear(),view.getMonth(),1);const save=()=>localStorage.setItem(KEY,JSON.stringify(data));const M=t=>{let[a,b]=t.split(':').map(Number);return a*60+b};const validTime=t=>{if(typeof t!=='string'||!/^\d{1,2}:\d{2}$/.test(t))return false;let[h,m]=t.split(':').map(Number);return h>=0&&h<=23&&m>=0&&m<=59};
 const ISO=(y,m,d)=>`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;const dur=e=>{if(!e.start)return 0;let x=M(e.end)-M(e.start);if(x<=0)x+=1440;return Math.max(0,(x-Number(e.breakMin||0))/60)};
@@ -680,15 +680,16 @@ $('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObje
   data.shifts=data.shifts.filter(sh=>!(sh.start&&sh.end&&(!validTime(sh.start)||!validTime(sh.end))));
   save();renderShifts();renderCal();alert(n+' fehlerhafte Scan-Einträge entfernt.');
 };
-$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=34').catch(()=>{}));
+$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=35').catch(()=>{}));
 
-const REBRAND_KEY='schichtiva_v34_welcome_seen';
+const REBRAND_KEY='schichtiva_v35_welcome_seen';
 window.addEventListener('load',()=>{if(!localStorage.getItem(REBRAND_KEY)){$('rebrandModal').classList.add('open')}});
 $('rebrandOk').onclick=()=>{localStorage.setItem(REBRAND_KEY,'1');$('rebrandModal').classList.remove('open')};
 
 const BIO_ENABLED_KEY='schichtiva_bio_enabled_v1';
 const BIO_CRED_KEY='schichtiva_bio_credential_v1';
 let lastHiddenAt=0;
+let bioPromptRunning=false;
 
 function b64url(bytes){
   return btoa(String.fromCharCode(...bytes))
@@ -770,18 +771,30 @@ async function verifyBiometric(){
   return !!assertion;
 }
 
-async function unlockApp(){
-  $('lockError').textContent='';
+async function unlockApp(auto=false){
+  if(bioPromptRunning)return false;
+  bioPromptRunning=true;
+  $('lockError').textContent=auto?'Geräte-Entsperrung wird gestartet …':'';
   try{
     if(await verifyBiometric()){
       $('lockScreen').classList.remove('open');
+      $('lockError').textContent='';
       return true;
     }
   }catch(err){
     console.error(err);
-    $('lockError').textContent='Entsperrung fehlgeschlagen. Bitte erneut versuchen.';
+    $('lockError').textContent='Entsperrung abgebrochen oder fehlgeschlagen. Tippe unten zum erneuten Versuch.';
+  }finally{
+    bioPromptRunning=false;
   }
   return false;
+}
+
+function lockAndAutoUnlock(){
+  if(!bioEnabled())return;
+  $('lockScreen').classList.add('open');
+  // Give the page a moment to paint the lock screen, then request device verification.
+  setTimeout(()=>unlockApp(true),250);
 }
 
 function lockApp(){
@@ -810,14 +823,14 @@ $('unlockBio').onclick=unlockApp;
 
 window.addEventListener('load',()=>{
   refreshBioStatus();
-  if(bioEnabled())lockApp();
+  if(bioEnabled())lockAndAutoUnlock();
 });
 
 document.addEventListener('visibilitychange',()=>{
   if(document.hidden){
     lastHiddenAt=Date.now();
   }else if(bioEnabled() && lastHiddenAt && Date.now()-lastHiddenAt>15000){
-    lockApp();
+    lockAndAutoUnlock();
   }
 });
 

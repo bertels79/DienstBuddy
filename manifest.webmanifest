@@ -2,8 +2,8 @@
   "id": "./",
   "name": "Schichtiva",
   "short_name": "Schichtiva",
-  "description": "Keine Diva. Nur dein Dienstplan. V3.4 mit biometrischem App-Schutz.",
-  "start_url": "./?v=34",
+  "description": "Keine Diva. Nur dein Dienstplan. V3.5 mit automatischer Geräte-Entsperrung.",
+  "start_url": "./?v=35",
   "scope": "./",
   "display": "standalone",
   "display_override": [
