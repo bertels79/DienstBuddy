@@ -2,8 +2,8 @@
   "id": "./",
   "name": "Schichtiva",
   "short_name": "Schichtiva",
-  "description": "Schichtiva V3.6 – Freigaben und individuelle Rechte als Teststufe.",
-  "start_url": "./?v=36",
+  "description": "Schichtiva V3.7 – mit Erste-Hilfe-Kompass.",
+  "start_url": "./?v=37",
   "scope": "./",
   "display": "standalone",
   "display_override": [

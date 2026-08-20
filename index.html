@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.6</title><link rel="manifest" href="./manifest.webmanifest?v=36">
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva V3.7</title><link rel="manifest" href="./manifest.webmanifest?v=37">
 <link rel="icon" href="./icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <meta name="application-name" content="Schichtiva">
@@ -40,14 +40,20 @@
 .lockCard .muted{margin-bottom:16px}
 .lockError{color:#b42318;font-size:13px;min-height:18px;margin-top:10px}
 
-.shareCard{border:1px solid var(--line);border-radius:14px;padding:12px;margin:10px 0;background:#f8fafc}
-.shareHead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
-.sharePerms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
-.perm{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px;font-size:12px;color:var(--ink)}
-.perm input{width:auto;margin:0}
-.ownerBadge{font-size:11px;font-weight:800;background:#eaf8ee;color:#24683a;padding:4px 8px;border-radius:999px}
-@media(max-width:720px){.sharePerms{grid-template-columns:1fr}}
-</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V3.6</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
+.firstAidGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.firstAidItem{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff}
+.firstAidItem h3{margin:0 0 8px;font-size:16px}
+.firstAidItem p{margin:6px 0}
+.firstAidItem ul{margin:8px 0 0;padding-left:20px}
+.firstAidItem li{margin:5px 0}
+.emergencyBox{border:2px solid #b42318;background:#fff3f2;border-radius:14px;padding:12px;margin-bottom:12px}
+.emergencyBox strong{color:#b42318}
+.callRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.callBtn{display:inline-block;text-decoration:none;border-radius:11px;padding:9px 12px;font-weight:800;background:#b42318;color:#fff}
+.callBtn.secondary{background:#edf4ff;color:#19407c;border:1px solid #dfe6f1}
+.sourceNote{font-size:11px;color:var(--muted);margin-top:8px}
+@media(max-width:720px){.firstAidGrid{grid-template-columns:1fr}}
+</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="./icon-192.png" alt="Schichtiva" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V3.7</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="firstaid">🩹 Erste Hilfe</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
 <section id="kal" class="tab active"><div class="stats"><div class="stat"><span class="muted">Arbeitsstunden</span><strong id="stH">0,0 h</strong></div><div class="stat"><span class="muted">Nachtstunden</span><strong id="stN">0,0 h</strong></div><div class="stat"><span class="muted">So./Feiertag</span><strong id="stS">0,0 h</strong></div><div class="stat"><span class="muted">Zuschläge</span><strong id="stB">0,00 €</strong></div><div class="stat"><span class="muted">Bezahlte Abwesenheit</span><strong id="stPaidAbs">0,0 h</strong></div><div class="stat"><span class="muted">Verdienst inkl. Zuschläge</span><strong id="stPay">—</strong></div></div><div class="card"><div class="calhead"><button class="secondary" id="prev">‹</button><h2 id="title"></h2><button class="secondary" id="next">›</button></div><div class="week"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div><div id="calendar" class="calendar"></div></div>
 <div class="card"><h3>Monatsauswertung</h3><p class="muted">Hier siehst du genau, welche Schicht welche Stunden verursacht.</p><div id="monthBreakdown"></div></div>
 <div class="card"><h3>Kalender benutzen</h3><p class="muted">Tippe auf einen Tag. Dann kannst du eine gespeicherte Schicht, Frei, Urlaub, Krank oder eine individuelle Schicht eintragen.</p></div>
@@ -88,6 +94,30 @@
 </section>
 <section id="sch" class="tab"><div class="card"><h2>Vordefinierte Schichten</h2><div class="grid"><div><label>Name</label><input id="sn" placeholder="Früh"></div><div><label>Beginn</label><input id="ss" type="time"></div><div><label>Ende</label><input id="se" type="time"></div><div><label>Pause Min.</label><input id="sb" type="number" value="0"></div></div><div class="actions"><button id="addShift">Schicht speichern</button></div></div><div class="card" id="shiftList"></div></section>
 <section id="scan" class="tab"><div class="card"><h2>Dienstplan scannen</h2><div class="scanbox"><strong>Foto aufnehmen ODER vorhandenes Bild auswählen</strong><p class="muted">Das Dateifeld öffnet auf dem Handy Kamera, Galerie oder Dateien – je nach Browser.</p><input id="photo" type="file" accept="image/*"><img id="preview" class="preview"><div id="scanStatus" class="muted">Noch kein Bild gewählt.</div></div><label style="margin-top:10px">Erkannter Text</label><textarea id="ocr" rows="8"></textarea><div class="actions"><button id="parse">Auswerten</button></div></div><div class="card"><h3>Erkannte Einträge <span class="muted">Parser 2.8</span></h3><div id="scanResults" class="muted">Noch nichts erkannt.</div><p class="muted">Neue erkannte Schichtzeiten werden beim Übernehmen automatisch unter „Schichten“ gespeichert.</p><div class="actions"><button id="importScan" class="good">In Kalender übernehmen</button></div></div></section>
+
+<section id="firstaid" class="tab">
+  <div class="card">
+    <h2>🩹 Erste-Hilfe-Kompass</h2>
+    <div class="emergencyBox">
+      <strong>Bei akuter Lebensgefahr: 112</strong>
+      <p style="margin:6px 0 0">Bei Bewusstlosigkeit, fehlender normaler Atmung, schwerer Atemnot, schweren Verbrennungen, starken Blutungen oder schwerer Vergiftung sofort den Rettungsdienst rufen.</p>
+      <div class="callRow">
+        <a class="callBtn" href="tel:112">📞 112 anrufen</a>
+        <a class="callBtn secondary" href="tel:116117">📞 116117 – ärztlicher Bereitschaftsdienst</a>
+      </div>
+    </div>
+    <p class="muted">Wähle oder suche ein Thema. Die Hinweise sind eine kurze Erste-Hilfe-Orientierung und ersetzen keinen Erste-Hilfe-Kurs oder medizinische Beratung.</p>
+    <label>Notfall suchen</label>
+    <input id="firstAidSearch" placeholder="z. B. Verbrennung, Vergiftung, Blutung …">
+    <div id="firstAidList" class="firstAidGrid" style="margin-top:12px"></div>
+  </div>
+  <div class="card">
+    <h2>☠️ Giftnotruf Deutschland</h2>
+    <p class="muted">Bei Vergiftungsverdacht: Produkt/Verpackung bereithalten. Bei Bewusstlosigkeit, Atemproblemen oder anderer akuter Lebensgefahr immer zuerst 112.</p>
+    <div id="poisonList"></div>
+    <div class="sourceNote">Telefonnummern nach dem Verzeichnis der Giftinformationszentren des Bundesinstituts für Risikobewertung (BfR).</div>
+  </div>
+</section>
 <section id="set" class="tab">
 <div class="card">
   <h2>Eigener Dienstplan / Mitarbeiter-Filter</h2>
@@ -98,18 +128,6 @@
   <div class="actions"><button id="saveEmployee">Filter speichern</button></div>
 </div>
 <div class="card"><h2>Lohn & Zuschläge</h2><p class="muted">Wähle dein Modell. Beim Festgehalt werden weiterhin nur die Zuschläge berechnet. Beim Stundenlohn zeigt Schichtiva zusätzlich den Monatsverdienst.</p><div class="grid"><div><label>Lohnmodell</label><select id="payMode"><option value="salary">Festgehalt</option><option value="hourly">Stundenlohn</option></select></div><div><label>Stundenlohn €</label><input id="hourlyRate" type="number" min="0" step="0.01"></div><div><label>Sollstunden pro bezahltem Urlaub-/Kranktag</label><input id="targetHours" type="number" min="0" step="0.25"></div><div><label>Basis-Stundenwert für Zuschläge €</label><input id="base" type="number" step="0.01"><div class="muted" id="baseHint" style="margin-top:4px">Bei Stundenlohn wird dieser Wert automatisch übernommen.</div></div><div><label>Bundesland</label><select id="state"><option value="">Nur bundesweite Feiertage</option><option value="BW">Baden-Württemberg</option><option value="BY">Bayern</option><option value="BE">Berlin</option><option value="BB">Brandenburg</option><option value="HB">Bremen</option><option value="HH">Hamburg</option><option value="HE">Hessen</option><option value="MV">Mecklenburg-Vorpommern</option><option value="NI">Niedersachsen</option><option value="NW">Nordrhein-Westfalen</option><option value="RP">Rheinland-Pfalz</option><option value="SL">Saarland</option><option value="SN">Sachsen</option><option value="ST">Sachsen-Anhalt</option><option value="SH">Schleswig-Holstein</option><option value="TH">Thüringen</option></select></div><div><label>Nacht von</label><input id="nf" type="time"></div><div><label>Nacht bis</label><input id="nt" type="time"></div><div><label>Nacht %</label><input id="np" type="number" step="0.1"></div><div><label>Sonntag %</label><input id="sp" type="number" step="0.1"></div><div><label>Feiertag %</label><input id="hp" type="number" step="0.1"></div><div><label>Samstag % optional</label><input id="sap" type="number" step="0.1"></div></div><div class="actions"><button id="saveSet">Einstellungen speichern</button></div><p class="muted">Schichtiva berücksichtigt bundesweite Feiertage und – nach Auswahl – die landesweit geltenden Feiertage des Bundeslands. Kommunale Sonderregelungen sind nicht enthalten.</p></div>
-
-<div class="card">
-  <h2>👥 Freigaben</h2>
-  <p class="muted">Hier verwaltest du später Personen, die deinen Schichtiva-Kalender sehen oder bearbeiten dürfen. Der Eigentümer legt die Rechte für jede Person einzeln fest.</p>
-  <div class="grid">
-    <div><label>Name</label><input id="shareName" placeholder="z. B. Max"></div>
-    <div><label>E-Mail / Benutzerkennung</label><input id="shareUser" placeholder="z. B. max@example.de"></div>
-  </div>
-  <div class="actions"><button id="addShare">Person hinzufügen</button></div>
-  <div id="shareList" style="margin-top:12px"></div>
-  <p class="muted" style="margin-top:10px"><strong>V3.6 Test:</strong> Die Rechteverwaltung wird bereits lokal getestet. Eine echte Freigabe auf ein zweites Gerät benötigt anschließend die Online-Anmeldung und Synchronisierung.</p>
-</div>
 <div class="card">
   <h2>🔐 App-Schutz</h2>
   <p class="muted">Schütze Schichtiva beim Öffnen mit der Sicherheitsfunktion deines Geräts. Je nach Smartphone nutzt der Browser Fingerabdruck, Gesichtserkennung oder die Geräte-PIN.</p>
@@ -132,9 +150,9 @@
     <div id="lockError" class="lockError"></div>
   </div>
 </div>
-<div id="rebrandModal" class="modal"><div class="modalbox"><div style="text-align:center"><img src="./icon-192.png" alt="Schichtiva" style="width:96px;height:96px;border-radius:24px"><h2 style="margin-top:10px">DienstBuddy heißt jetzt Schichtiva</h2><p>Keine Diva. Nur dein Dienstplan.</p><p class="muted">Deine bisherigen Schichten, Einstellungen und Kalenderdaten bleiben erhalten. V3.6 bereitet Freigaben mit individuell einstellbaren Rechten vor.</p><button id="rebrandOk">Alles klar</button></div></div></div><div id="modal" class="modal"><div class="modalbox"><div style="display:flex;justify-content:space-between"><h3 id="modalDate"></h3><button class="secondary" id="close">✕</button></div><div id="choices" class="chips"></div><hr style="border:0;border-top:1px solid var(--line);margin:14px 0"><h3>Zeiten ansehen / bearbeiten</h3><div class="grid"><div><label>Beginn</label><input id="cs" type="time"></div><div><label>Ende</label><input id="ce" type="time"></div><div><label>Pause Min.</label><input id="cb" type="number" value="0"></div></div><div class="actions"><button id="saveCustom">Eintragen</button><button id="delDay" class="danger">Tag löschen</button></div></div></div>
+<div id="rebrandModal" class="modal"><div class="modalbox"><div style="text-align:center"><img src="./icon-192.png" alt="Schichtiva" style="width:96px;height:96px;border-radius:24px"><h2 style="margin-top:10px">DienstBuddy heißt jetzt Schichtiva</h2><p>Keine Diva. Nur dein Dienstplan.</p><p class="muted">Deine bisherigen Schichten, Einstellungen und Kalenderdaten bleiben erhalten. V3.7 ergänzt den Erste-Hilfe-Kompass.</p><button id="rebrandOk">Alles klar</button></div></div></div><div id="modal" class="modal"><div class="modalbox"><div style="display:flex;justify-content:space-between"><h3 id="modalDate"></h3><button class="secondary" id="close">✕</button></div><div id="choices" class="chips"></div><hr style="border:0;border-top:1px solid var(--line);margin:14px 0"><h3>Zeiten ansehen / bearbeiten</h3><div class="grid"><div><label>Beginn</label><input id="cs" type="time"></div><div><label>Ende</label><input id="ce" type="time"></div><div><label>Pause Min.</label><input id="cb" type="number" value="0"></div></div><div class="actions"><button id="saveCustom">Eintragen</button><button id="delDay" class="danger">Tag löschen</button></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script><script>
-const $=x=>document.getElementById(x),KEY='dienstbuddy_v2';const DEF={shifts:[{id:'f',name:'Früh',start:'06:00',end:'14:00',breakMin:30},{id:'s',name:'Spät',start:'14:00',end:'22:00',breakMin:30},{id:'n',name:'Nacht',start:'22:00',end:'06:00',breakMin:30}],entries:{},shares:[],settings:{base:0,nf:'22:00',nt:'06:00',np:25,sp:50,hp:100,sap:0,employeeKey:'',payMode:'salary',hourlyRate:0,state:'',targetHours:8}};let data=(()=>{try{let x=JSON.parse(localStorage.getItem(KEY)||'{}');return {...DEF,...x,shares:Array.isArray(x.shares)?x.shares:[],settings:{...DEF.settings,...(x.settings||{})}}}catch{return structuredClone(DEF)}})(),view=new Date(),selected=null,cands=[];view=new Date(view.getFullYear(),view.getMonth(),1);const save=()=>localStorage.setItem(KEY,JSON.stringify(data));const M=t=>{let[a,b]=t.split(':').map(Number);return a*60+b};const validTime=t=>{if(typeof t!=='string'||!/^\d{1,2}:\d{2}$/.test(t))return false;let[h,m]=t.split(':').map(Number);return h>=0&&h<=23&&m>=0&&m<=59};
+const $=x=>document.getElementById(x),KEY='dienstbuddy_v2';const DEF={shifts:[{id:'f',name:'Früh',start:'06:00',end:'14:00',breakMin:30},{id:'s',name:'Spät',start:'14:00',end:'22:00',breakMin:30},{id:'n',name:'Nacht',start:'22:00',end:'06:00',breakMin:30}],entries:{},settings:{base:0,nf:'22:00',nt:'06:00',np:25,sp:50,hp:100,sap:0,employeeKey:'',payMode:'salary',hourlyRate:0,state:'',targetHours:8}};let data=(()=>{try{let x=JSON.parse(localStorage.getItem(KEY)||'{}');return {...DEF,...x,settings:{...DEF.settings,...(x.settings||{})}}}catch{return structuredClone(DEF)}})(),view=new Date(),selected=null,cands=[];view=new Date(view.getFullYear(),view.getMonth(),1);const save=()=>localStorage.setItem(KEY,JSON.stringify(data));const M=t=>{let[a,b]=t.split(':').map(Number);return a*60+b};const validTime=t=>{if(typeof t!=='string'||!/^\d{1,2}:\d{2}$/.test(t))return false;let[h,m]=t.split(':').map(Number);return h>=0&&h<=23&&m>=0&&m<=59};
 const ISO=(y,m,d)=>`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;const dur=e=>{if(!e.start)return 0;let x=M(e.end)-M(e.start);if(x<=0)x+=1440;return Math.max(0,(x-Number(e.breakMin||0))/60)};
 function easter(y){let f=Math.floor,G=y%19,C=f(y/100),H=(C-f(C/4)-f((8*C+13)/25)+19*G+15)%30,I=H-f(H/28)*(1-f(29/(H+1))*f((21-G)/11)),J=(y+f(y/4)+I+2-C+f(C/4))%7,L=I-J,m=3+f((L+40)/44),d=L+28-31*f(m/4);return new Date(y,m-1,d)}
 function holidayName(dt){
@@ -351,7 +369,7 @@ $('saveSet').onclick=()=>{
   data.settings.base=data.settings.payMode==='hourly'?$('hourlyRate').value:$('base').value;
   save();loadSet();renderCal();alert('Gespeichert.');
 };
-$('prev').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);renderCal()};$('next').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);renderCal()};const TAB_ORDER=['kal','sch','scan','year','set'];
+$('prev').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);renderCal()};$('next').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);renderCal()};const TAB_ORDER=['kal','sch','scan','year','firstaid','set'];
 function activateTab(tab){
   document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x.dataset.tab===tab));
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
@@ -700,70 +718,136 @@ $('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObje
   data.shifts=data.shifts.filter(sh=>!(sh.start&&sh.end&&(!validTime(sh.start)||!validTime(sh.end))));
   save();renderShifts();renderCal();alert(n+' fehlerhafte Scan-Einträge entfernt.');
 };
-$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=36').catch(()=>{}));
+$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=37').catch(()=>{}));
 
-const REBRAND_KEY='schichtiva_v36_welcome_seen';
+const REBRAND_KEY='schichtiva_v37_welcome_seen';
 window.addEventListener('load',()=>{if(!localStorage.getItem(REBRAND_KEY)){$('rebrandModal').classList.add('open')}});
 $('rebrandOk').onclick=()=>{localStorage.setItem(REBRAND_KEY,'1');$('rebrandModal').classList.remove('open')};
 
 
-const SHARE_PERMS=[
-  ['calendarView','Kalender ansehen'],
-  ['calendarEdit','Kalender bearbeiten'],
-  ['shiftsView','Schichten ansehen'],
-  ['shiftsEdit','Schichten bearbeiten'],
-  ['yearView','Jahresübersicht ansehen'],
-  ['bonusesView','Zuschläge sehen'],
-  ['earningsView','Verdienst sehen'],
-  ['scanUse','Scan benutzen']
+const FIRST_AID_TOPICS=[
+  {
+    title:'Verbrennung / Verbrühung',
+    keywords:'verbrennung verbrühung brandwunde hitze',
+    urgent:'Bei größeren/schweren Verbrennungen, Gesichtsverbrennungen oder Atemnot: 112.',
+    steps:[
+      'Gefahrenquelle stoppen und Eigenschutz beachten.',
+      'Betroffene Stelle mit kühlem bis kaltem, nicht eisigem Wasser etwa 20 Minuten kühlen.',
+      'Großflächige Verbrennungen sowie Säuglinge/Kleinkinder vorsichtig kühlen, Unterkühlung vermeiden.',
+      'Wunde locker und keimfrei bedecken; keine Hausmittel auftragen und Brandblasen nicht öffnen.'
+    ]
+  },
+  {
+    title:'Vergiftung',
+    keywords:'vergiftung gift chemikalien medikamente reiniger pflanzen alkohol',
+    urgent:'Bei Bewusstlosigkeit, Atemproblemen, Krampf oder schwerem Zustand: 112.',
+    steps:[
+      'Eigenschutz beachten und weitere Aufnahme verhindern.',
+      'Verpackung, Produktname und möglichst Menge/Zeitpunkt bereithalten.',
+      'Giftnotruf kontaktieren und dessen Anweisungen befolgen.',
+      'Kein Erbrechen auslösen und keine Hausmittel geben, sofern Fachpersonal nichts anderes anweist.'
+    ]
+  },
+  {
+    title:'Bewusstlosigkeit',
+    keywords:'bewusstlos ohnmacht reagiert nicht',
+    urgent:'Akute Lebensgefahr: 112.',
+    steps:[
+      'Person laut ansprechen und vorsichtig an den Schultern berühren.',
+      'Atmung höchstens 10 Sekunden prüfen.',
+      'Normale Atmung vorhanden: stabile Seitenlage, 112, zudecken und Atmung weiter beobachten.',
+      'Keine normale Atmung: sofort Wiederbelebung beginnen und 112 veranlassen.'
+    ]
+  },
+  {
+    title:'Keine normale Atmung / Kreislaufstillstand',
+    keywords:'keine atmung herzstillstand wiederbelebung reanimation',
+    urgent:'Sofort 112.',
+    steps:[
+      'Bewusstsein und normale Atmung prüfen.',
+      'Wenn keine normale Atmung vorhanden ist: sofort mit Herz-Lungen-Wiederbelebung beginnen.',
+      'Andere Personen gezielt um Hilfe bitten und, wenn vorhanden, einen AED holen lassen.',
+      'Bis zum Eintreffen des Rettungsdienstes weitermachen.'
+    ]
+  },
+  {
+    title:'Starke Blutung',
+    keywords:'blutung blut wunde schnitt verletzung',
+    urgent:'Bei starker oder nicht kontrollierbarer Blutung: 112.',
+    steps:[
+      'Eigenschutz/Handschuhe beachten.',
+      'Betroffene Person hinlegen und beruhigen.',
+      'Direkten Druck auf die Wunde ausüben und geeigneten Verband/Druckverband anlegen.',
+      'Wärmeerhalt sicherstellen und Bewusstsein/Atmung beobachten.'
+    ]
+  },
+  {
+    title:'Stromunfall',
+    keywords:'strom stromschlag elektrik elektrounfall',
+    urgent:'Bei Stromunfall mit Beschwerden, Bewusstlosigkeit oder Atemproblemen: 112.',
+    steps:[
+      'Eigenschutz zuerst: Stromquelle abschalten bzw. Abstand halten.',
+      'Person erst berühren, wenn keine elektrische Gefahr mehr besteht.',
+      'Bewusstsein und Atmung kontrollieren.',
+      'Bei Bewusstlosigkeit mit normaler Atmung stabile Seitenlage; bei fehlender normaler Atmung Wiederbelebung.'
+    ]
+  },
+  {
+    title:'Schock',
+    keywords:'schock blass kaltschweiss zittern unruhe',
+    urgent:'Bei schwerem Zustand oder Bewusstseinsstörung: 112.',
+    steps:[
+      'Betroffene Person beruhigen und hinlegen.',
+      'Wenn passend und keine Gegenanzeichen bestehen: Beine erhöht lagern.',
+      'Zudecken und Auskühlung vermeiden.',
+      'Bewusstsein und Atmung regelmäßig kontrollieren.'
+    ]
+  },
+  {
+    title:'Atemnot',
+    keywords:'atemnot luftnot atmen asthma ersticken',
+    urgent:'Bei schwerer oder plötzlich auftretender Atemnot: 112.',
+    steps:[
+      'Person beruhigen und nicht allein lassen.',
+      'Beengende Kleidung lockern und eine atemerleichternde, aufrechte Position unterstützen.',
+      'Bei bekannter Erkrankung bei der Nutzung eigener verordneter Notfallmedikamente helfen.',
+      'Bei Bewusstlosigkeit Atmung prüfen; bei fehlender normaler Atmung Wiederbelebung.'
+    ]
+  }
 ];
 
-function renderShares(){
-  if(!Array.isArray(data.shares))data.shares=[];
-  $('shareList').innerHTML=data.shares.length?data.shares.map((s,i)=>`
-    <div class="shareCard">
-      <div class="shareHead">
-        <div><strong>${String(s.name||'Person').replace(/[<>&"]/g,'')}</strong><div class="muted">${String(s.user||'').replace(/[<>&"]/g,'')}</div></div>
-        <button class="danger" data-share-del="${i}">Entfernen</button>
-      </div>
-      <div class="sharePerms">
-        ${SHARE_PERMS.map(([key,label])=>`<label class="perm"><input type="checkbox" data-share="${i}" data-perm="${key}" ${s.perms?.[key]?'checked':''}> ${label}</label>`).join('')}
-      </div>
-      <p class="muted" style="margin:8px 0 0">Sicherheit, Freigaben und App-Schutz bleiben ausschließlich beim Eigentümer.</p>
-    </div>`).join(''):'<span class="muted">Noch keine Person hinzugefügt.</span>';
+const POISON_CENTERS=[
+  ['Berlin','030 19240','03019240'],
+  ['Bonn','0228 19240','022819240'],
+  ['Erfurt','0361 730730','0361730730'],
+  ['Freiburg','0761 19240','076119240'],
+  ['Göttingen','0551 19240','055119240'],
+  ['Mainz','06131 19240','0613119240'],
+  ['München','089 19240','08919240']
+];
 
-  document.querySelectorAll('[data-share][data-perm]').forEach(x=>x.onchange=()=>{
-    let i=Number(x.dataset.share),key=x.dataset.perm;
-    data.shares[i].perms=data.shares[i].perms||{};
-    data.shares[i].perms[key]=x.checked;
-    save();
-  });
-  document.querySelectorAll('[data-share-del]').forEach(b=>b.onclick=()=>{
-    let i=Number(b.dataset.shareDel);
-    if(confirm('Diese Person aus den Freigaben entfernen?')){
-      data.shares.splice(i,1);save();renderShares();
-    }
-  });
+function escText(s){return String(s).replace(/[<>&"]/g,m=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[m]))}
+function renderFirstAid(){
+  let q=($('firstAidSearch')?.value||'').trim().toLowerCase();
+  let list=FIRST_AID_TOPICS.filter(x=>!q || (x.title+' '+x.keywords).toLowerCase().includes(q));
+  $('firstAidList').innerHTML=list.length?list.map(x=>`
+    <div class="firstAidItem">
+      <h3>${escText(x.title)}</h3>
+      <p><strong>${escText(x.urgent)}</strong></p>
+      <ul>${x.steps.map(s=>`<li>${escText(s)}</li>`).join('')}</ul>
+    </div>`).join(''):'<span class="muted">Kein passendes Thema gefunden.</span>';
 }
-
-$('addShare').onclick=()=>{
-  let name=$('shareName').value.trim(),user=$('shareUser').value.trim();
-  if(!name)return alert('Bitte einen Namen eingeben.');
-  data.shares=data.shares||[];
-  data.shares.push({
-    id:'share'+Date.now(),
-    name,user,
-    perms:{
-      calendarView:true,calendarEdit:false,
-      shiftsView:true,shiftsEdit:false,
-      yearView:true,bonusesView:false,
-      earningsView:false,scanUse:false
-    }
-  });
-  $('shareName').value='';$('shareUser').value='';
-  save();renderShares();
-};
-renderShares();
+function renderPoison(){
+  $('poisonList').innerHTML=POISON_CENTERS.map(([city,display,dial])=>`
+    <div class="row">
+      <strong>${city}</strong>
+      <span>${display}</span><span></span><span></span>
+      <a class="callBtn secondary" href="tel:${dial}">Anrufen</a>
+    </div>`).join('');
+}
+if($('firstAidSearch'))$('firstAidSearch').oninput=renderFirstAid;
+if($('firstAidList'))renderFirstAid();
+if($('poisonList'))renderPoison();
 
 const BIO_ENABLED_KEY='schichtiva_bio_enabled_v1';
 const BIO_CRED_KEY='schichtiva_bio_credential_v1';
