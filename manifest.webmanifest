@@ -1,9 +1,9 @@
 {
   "id": "./",
-  "name": "Schichtiva V3.7.3.3",
+  "name": "Schichtiva V3.7.3.4",
   "short_name": "Schichtiva",
-  "description": "Schichtiva V3.7.3.3 – korrigierte Erste-Hilfe-Abfrage mit Tippfehlertoleranz und Sofortmaßnahmen.",
-  "start_url": "./?v=3733",
+  "description": "Schichtiva V3.7.3.4 – erweiterte situationsspezifische Erste-Hilfe-Pfade mit konkreten Sofortmaßnahmen.",
+  "start_url": "./?v=3734",
   "scope": "./",
   "display": "standalone",
   "display_override": [
