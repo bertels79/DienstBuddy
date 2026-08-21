@@ -199,7 +199,7 @@
   </div>
 </section>
 <section id="sch" class="tab"><div class="card"><h2>Vordefinierte Schichten</h2><div class="grid"><div><label>Name</label><input id="sn" placeholder="Früh"></div><div><label>Beginn</label><input id="ss" type="time"></div><div><label>Ende</label><input id="se" type="time"></div><div><label>Pause Min.</label><input id="sb" type="number" value="0"></div></div><div class="actions"><button id="addShift">Schicht speichern</button></div></div><div class="card" id="shiftList"></div></section>
-<section id="scan" class="tab"><div class="card"><h2>Dienstplan scannen</h2><div class="scanbox"><strong>Foto aufnehmen ODER vorhandenes Bild auswählen</strong><p class="muted">Das Dateifeld öffnet auf dem Handy Kamera, Galerie oder Dateien – je nach Browser.</p><input id="photo" type="file" accept="image/*"><img id="preview" class="preview"><div id="scanStatus" class="muted">Noch kein Bild gewählt.</div></div><label style="margin-top:10px">Erkannter Text</label><textarea id="ocr" rows="8"></textarea><div class="actions"><button id="parse">Auswerten</button></div></div><div class="card"><h3>Erkannte Einträge <span class="muted">Parser 3.1 · Kalender-Screenshot</span></h3><div id="scanResults" class="muted">Noch nichts erkannt.</div><p class="muted">Neue erkannte Schichtzeiten werden beim Übernehmen automatisch unter „Schichten“ gespeichert.</p><div class="actions"><button id="importScan" class="good">In Kalender übernehmen</button></div></div></section>
+<section id="scan" class="tab"><div class="card"><h2>Dienstplan scannen</h2><div class="scanbox"><strong>Foto aufnehmen ODER vorhandenes Bild auswählen</strong><p class="muted">Das Dateifeld öffnet auf dem Handy Kamera, Galerie oder Dateien – je nach Browser.</p><input id="photo" type="file" accept="image/*"><img id="preview" class="preview"><div id="scanStatus" class="muted">Noch kein Bild gewählt.</div></div><label style="margin-top:10px">Erkannter Text</label><textarea id="ocr" rows="8"></textarea><div class="actions"><button id="parse">Auswerten</button></div></div><div class="card"><h3>Erkannte Einträge <span class="muted">Parser 3.1 · Kalender-Screenshot</span></h3><div id="scanResults" class="muted">Noch nichts erkannt.</div><p class="muted">Prüfe Schicht, Beginn, Ende und Pause vor der Übernahme. Korrekturen werden als persönliche Schicht gespeichert und bei späteren Scans automatisch wiederverwendet.</p><div class="actions"><button id="importScan" class="good">In Kalender übernehmen</button></div></div></section>
 
 <section id="firstaid" class="tab">
 <div class="card">
@@ -735,10 +735,33 @@ function extractTimes(line){
   return ts.slice(0,2).map(m=>String(Number(m[1])).padStart(2,'0')+':'+m[2]);
 }
 
+const SCAN_SHIFT_ALIAS_KEY='schichtiva_scan_shift_alias_v1';
+
+function loadScanShiftAliases(){
+  try{return JSON.parse(localStorage.getItem(SCAN_SHIFT_ALIAS_KEY)||'{}')||{}}
+  catch{return {}}
+}
+
+function saveScanShiftAlias(code,shiftName){
+  if(!code||!shiftName)return;
+  let map=loadScanShiftAliases();
+  map[String(code).toUpperCase()]=String(shiftName);
+  localStorage.setItem(SCAN_SHIFT_ALIAS_KEY,JSON.stringify(map));
+}
+
+function storedShiftByAlias(code){
+  if(!code)return null;
+  let map=loadScanShiftAliases();
+  let name=map[String(code).toUpperCase()];
+  if(!name)return null;
+  return data.shifts.find(s=>String(s.name).toLowerCase()===String(name).toLowerCase())||null;
+}
+
 function storedShiftByCode(code){
   if(!code)return null;
   let c=code.toUpperCase();
-  return data.shifts.find(s=>String(s.name).toUpperCase().replace(/\s+/g,'')===c)||null;
+  return storedShiftByAlias(c) ||
+    data.shifts.find(s=>String(s.name).toUpperCase().replace(/\s+/g,'')===c)||null;
 }
 
 function storedShiftByText(line){
@@ -764,44 +787,25 @@ function makeCandidate(line,date,learned){
     .replace(/\s+/g,' ')
     .trim();
 
-  // Kalender-Sonderfall aus dem echten Testplan:
-  // "Früh kurz" ist eine eigene Schicht und darf nicht als normale "Früh"-Schicht erkannt werden.
-  if(/\bfr[üu]h\s+kurz\b/i.test(normalized)){
-    return {
-      date,
-      type:'shift',
-      label:'Früh kurz',
-      start:'06:20',
-      end:'13:00',
-      breakMin:0,
-      source:line
-    };
-  }
-
   let code=extractShiftCode(line);
   let stored=storedShiftByCode(code) || storedShiftByText(line);
   let times=extractTimes(line);
 
-  // Bei einem bekannten Schichtnamen die gespeicherten End-/Pausenzeiten nutzen.
-  // Wenn der Screenshot eine einzelne Startzeit zeigt (z. B. F2 06:30), hat diese Vorrang.
-  // Falls OCR die Uhrzeit zerstört, greifen bekannte Kalender-Codes als sicherer Fallback:
-  // F2 = 06:30, S2 = 14:00.
+  // Benutzerabhängige Schichten:
+  // Keine F2-/S2-/Früh-kurz-Zeiten sind im Parser fest eingebaut.
+  // Sobald Schichtname oder Kürzel zu einer gespeicherten Schicht passt,
+  // kommen Start, Ende und Pause vollständig aus den Einstellungen des Nutzers.
+  //
+  // Eine einzelne OCR-Uhrzeit ist bei Kalender-Screenshots oft nur die sichtbare
+  // Startzeit und kann beschädigt sein. Sie überschreibt deshalb eine bekannte
+  // gespeicherte Schicht NICHT. So fällt OCR-Müll wie "(0150610" sicher auf die
+  // persönliche gespeicherte Schicht zurück.
   if(stored){
-    let start=stored.start;
-
-    if(times.length===1 && validTime(times[0])){
-      start=times[0];
-    }else if(code==='F2'){
-      start='06:30';
-    }else if(code==='S2'){
-      start='14:00';
-    }
-
     return {
       date,
       type:'shift',
       label:stored.name,
-      start,
+      start:stored.start,
       end:stored.end,
       breakMin:stored.breakMin||0,
       source:line
@@ -1083,13 +1087,83 @@ function spatialCalendarCandidates(){
 
 function renderCandidates(){
   $('scanResults').innerHTML=cands.length?cands.map((c,i)=>`
-    <div class="row">
-      <span>${c.date}</span>
-      <strong>${c.label}</strong>
-      <span>${c.start?c.start+'–'+c.end:''}</span>
-      <span class="muted">${c.source}</span>
-      <button class="danger" data-rm="${i}">Entfernen</button>
-    </div>`).join(''):'<span class="muted">Keine eindeutigen Einträge erkannt. Prüfe den OCR-Text und korrigiere bei Bedarf Datum oder Schichtkürzel.</span>';
+    <div class="scanEditRow" data-scan-row="${i}" style="border:1px solid var(--line);border-radius:12px;padding:10px;margin:8px 0;background:#fff">
+      <div style="display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin-bottom:8px">
+        <div>
+          <label>Datum</label>
+          <input type="date" data-edit-date="${i}" value="${c.date||''}">
+        </div>
+        <div>
+          <label>Schicht</label>
+          <input type="text" data-edit-label="${i}" value="${String(c.label||'').replace(/"/g,'&quot;')}">
+        </div>
+      </div>
+
+      ${c.type==='shift'?`
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+        <div>
+          <label>Beginn</label>
+          <input type="time" data-edit-start="${i}" value="${c.start||''}">
+        </div>
+        <div>
+          <label>Ende</label>
+          <input type="time" data-edit-end="${i}" value="${c.end||''}">
+        </div>
+        <div>
+          <label>Pause Min.</label>
+          <input type="number" min="0" step="1" data-edit-break="${i}" value="${Number(c.breakMin||0)}">
+        </div>
+      </div>`:''}
+
+      <div class="muted" style="margin-top:7px">${c.source||''}</div>
+      <div class="actions">
+        <button class="danger" data-rm="${i}">Entfernen</button>
+      </div>
+    </div>`).join(''):'<span class="muted">Keine eindeutigen Einträge erkannt. Prüfe den OCR-Text und korrigiere bei Bedarf Datum, Schicht oder Uhrzeiten.</span>';
+
+  const propagateShiftEdit=(idx,field,value)=>{
+    let base=cands[idx];
+    if(!base||base.type!=='shift')return;
+    const baseCode=extractShiftCode(base.source||'');
+    cands.forEach((x,j)=>{
+      if(j===idx||x.type!=='shift')return;
+      const xCode=extractShiftCode(x.source||'');
+      const sameCode=baseCode&&xCode&&baseCode===xCode;
+      const sameLabel=String(x.label||'').toLowerCase()===String(base.label||'').toLowerCase();
+      if(sameCode||sameLabel)x[field]=value;
+    });
+  };
+
+  document.querySelectorAll('[data-edit-date]').forEach(el=>el.onchange=()=>{
+    let i=Number(el.dataset.editDate);cands[i].date=el.value;
+  });
+
+  document.querySelectorAll('[data-edit-label]').forEach(el=>el.onchange=()=>{
+    let i=Number(el.dataset.editLabel),old=cands[i].label;
+    cands[i].label=el.value.trim()||old;
+  });
+
+  document.querySelectorAll('[data-edit-start]').forEach(el=>el.onchange=()=>{
+    let i=Number(el.dataset.editStart);
+    cands[i].start=el.value;
+    propagateShiftEdit(i,'start',el.value);
+    renderCandidates();
+  });
+
+  document.querySelectorAll('[data-edit-end]').forEach(el=>el.onchange=()=>{
+    let i=Number(el.dataset.editEnd);
+    cands[i].end=el.value;
+    propagateShiftEdit(i,'end',el.value);
+    renderCandidates();
+  });
+
+  document.querySelectorAll('[data-edit-break]').forEach(el=>el.onchange=()=>{
+    let i=Number(el.dataset.editBreak),v=Math.max(0,Number(el.value||0));
+    cands[i].breakMin=v;
+    propagateShiftEdit(i,'breakMin',v);
+    renderCandidates();
+  });
+
   document.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{
     cands.splice(Number(b.dataset.rm),1);
     renderCandidates();
@@ -1141,24 +1215,73 @@ $('parse').onclick=()=>{
 };
 $('importScan').onclick=()=>{
   if(!cands.length)return alert('Nichts zum Übernehmen.');
-  let created=0;
+
+  let created=0,updated=0,aliases=0;
+
   for(let c of cands){
-    if(c.type==='shift'&&c.start&&c.end){if(!validTime(c.start)||!validTime(c.end))continue;
-      let existingByName=data.shifts.find(sh=>sh.name.toLowerCase()===String(c.label).toLowerCase());
-      let existingByTime=data.shifts.find(sh=>sh.start===c.start&&sh.end===c.end&&Number(sh.breakMin||0)===Number(c.breakMin||0));
-      let existing=existingByName || (String(c.label).startsWith('Auto ') || c.label==='Erkannte Schicht' ? existingByTime : null);
-      if(existing){
-        c.label=existing.name;c.start=existing.start;c.end=existing.end;c.breakMin=existing.breakMin;
+    if(!c.date)continue;
+
+    if(c.type==='shift'){
+      if(!c.start||!c.end||!validTime(c.start)||!validTime(c.end))continue;
+
+      let name=String(c.label||'').trim() || `Auto ${c.start}–${c.end}`;
+      let existingByName=data.shifts.find(sh=>String(sh.name).toLowerCase()===name.toLowerCase());
+
+      if(existingByName){
+        // Manuelle Korrekturen im Scan werden als persönliche Schichtzeit gelernt.
+        let changed=
+          existingByName.start!==c.start ||
+          existingByName.end!==c.end ||
+          Number(existingByName.breakMin||0)!==Number(c.breakMin||0);
+
+        if(changed){
+          existingByName.start=c.start;
+          existingByName.end=c.end;
+          existingByName.breakMin=Number(c.breakMin||0);
+          updated++;
+        }
+
+        c.label=existingByName.name;
       }else{
-        let name=(c.label&&c.label!=='Erkannte Schicht')?c.label:`Auto ${c.start}–${c.end}`;
-        let sh={id:'scan'+Date.now()+Math.random().toString(16).slice(2),name,start:c.start,end:c.end,breakMin:Number(c.breakMin||0)};
-        data.shifts.push(sh);c.label=sh.name;created++;
+        let sh={
+          id:'scan'+Date.now()+Math.random().toString(16).slice(2),
+          name,
+          start:c.start,
+          end:c.end,
+          breakMin:Number(c.breakMin||0)
+        };
+        data.shifts.push(sh);
+        c.label=sh.name;
+        created++;
+      }
+
+      // Erkannte Kürzel wie F2/S2 merken, damit der nächste Scan direkt
+      // die persönliche gespeicherte Schicht dieses Nutzers verwendet.
+      let code=extractShiftCode(c.source||'');
+      if(code){
+        saveScanShiftAlias(code,c.label);
+        aliases++;
       }
     }
-    data.entries[c.date]=[{type:c.type,label:c.label,start:c.start,end:c.end,breakMin:c.breakMin||0}];
+
+    data.entries[c.date]=[{
+      type:c.type,
+      label:c.label,
+      start:c.start,
+      end:c.end,
+      breakMin:Number(c.breakMin||0)
+    }];
   }
-  save();renderShifts();renderCal();
-  alert(cands.length+' Einträge übernommen.'+(created?' '+created+' neue Schicht(en) wurden automatisch gespeichert.':''));
+
+  save();
+  renderShifts();
+  renderCal();
+
+  let msg=cands.length+' Einträge übernommen.';
+  if(created)msg+=' '+created+' neue Schicht(en) gespeichert.';
+  if(updated)msg+=' '+updated+' gespeicherte Schicht(en) aktualisiert.';
+  if(aliases)msg+=' Erkannte Schichtkürzel wurden für zukünftige Scans gemerkt.';
+  alert(msg);
 };
 
 let yearView=view.getFullYear();
