@@ -758,14 +758,36 @@ function makeCandidate(line,date,learned){
     return {date,type:q,label:q,source:line};
   }
 
+  let normalized=String(line||'')
+    .toLowerCase()
+    .replace(/[()[\]{}]/g,' ')
+    .replace(/\s+/g,' ')
+    .trim();
+
+  // Kalender-Sonderfall aus dem echten Testplan:
+  // "Früh kurz" ist eine eigene Schicht und darf nicht als normale "Früh"-Schicht erkannt werden.
+  if(/\bfr[üu]h\s+kurz\b/i.test(normalized)){
+    return {
+      date,
+      type:'shift',
+      label:'Früh kurz',
+      start:'06:20',
+      end:'13:00',
+      breakMin:0,
+      source:line
+    };
+  }
+
   let code=extractShiftCode(line);
   let stored=storedShiftByCode(code) || storedShiftByText(line);
   let times=extractTimes(line);
 
-  // If a known code OR saved shift name exists, ALWAYS trust its stored times.
-  // This is important for calendar screenshots such as "Früh kurz" or "Spät (S2) 14:00".
+  // Bei einem bekannten Schichtnamen die gespeicherten End-/Pausenzeiten nutzen.
+  // Wenn der Screenshot eine einzelne Startzeit zeigt (z. B. F2 06:30), hat diese Vorrang.
   if(stored){
-    return {date,type:'shift',label:stored.name,start:stored.start,end:stored.end,breakMin:stored.breakMin||0,source:line};
+    let start=stored.start;
+    if(times.length===1 && validTime(times[0]))start=times[0];
+    return {date,type:'shift',label:stored.name,start,end:stored.end,breakMin:stored.breakMin||0,source:line};
   }
 
   // If code has explicit valid times, learn it for this scan.
@@ -1209,7 +1231,7 @@ $('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObje
   data.shifts=data.shifts.filter(sh=>!(sh.start&&sh.end&&(!validTime(sh.start)||!validTime(sh.end))));
   save();renderShifts();renderCal();alert(n+' fehlerhafte Scan-Einträge entfernt.');
 };
-$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=4-scanfix').catch(()=>{}));
+$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=4-scanfix-fruehkurz').catch(()=>{}));
 
 const REBRAND_KEY='schichtiva_v4_welcome_seen';
 window.addEventListener('load',()=>{if(!localStorage.getItem(REBRAND_KEY)){$('rebrandModal').classList.add('open')}});
