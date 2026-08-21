@@ -1,9 +1,9 @@
 {
   "id": "./",
-  "name": "DienstBuddy",
-  "short_name": "DienstBuddy",
-  "description": "Deine Schichten. Deine Zuschläge. Dein Kalender.",
-  "start_url": "./?v=30",
+  "name": "Schichtiva",
+  "short_name": "Schichtiva",
+  "description": "Schichtiva V4 – Dienstplan, Kalender, Termine, Telefonliste und Erste-Hilfe-Kompass.",
+  "start_url": "./?v=4",
   "scope": "./",
   "display": "standalone",
   "display_override": [

@@ -1,11 +1,12 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>DienstBuddy V3.0</title><link rel="manifest" href="./manifest.webmanifest?v=30">
+<!doctype html><html lang="de"><head>
+<meta name="apple-mobile-web-app-title" content="Schichtiva"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva</title><link rel="manifest" href="./manifest.webmanifest?v=4-namefix">
 <link rel="icon" href="./icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="./icon-192.png">
-<meta name="application-name" content="DienstBuddy">
+<meta name="application-name" content="Schichtiva">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default"><style>
-:root{--bg:#f3f6fb;--card:#fff;--ink:#10213d;--muted:#6c7890;--line:#dfe6f1;--blue:#155eef;--soft:#edf4ff;--good:#16803c;--bad:#b42318}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}header{position:sticky;top:0;z-index:10;background:linear-gradient(135deg,#082b59,#155eef);color:white;padding:14px 14px 9px}.wrap{max-width:1180px;margin:auto}.brand{display:flex;gap:10px;align-items:center}.logo{width:44px;height:44px;border-radius:13px;background:#fff;display:grid;place-items:center;font-size:25px}h1{font-size:21px;margin:0}nav{display:flex;gap:7px;overflow:auto;margin-top:10px}button{border:0;border-radius:11px;padding:9px 12px;font:inherit;font-weight:700;background:var(--blue);color:#fff;cursor:pointer}nav button{background:#ffffff1a;border:1px solid #ffffff28;white-space:nowrap}nav button.active{background:#fff;color:#12345f}button.secondary{background:var(--soft);color:#19407c}button.danger{background:#feeceb;color:var(--bad)}button.good{background:#eaf8ee;color:var(--good)}main{max-width:1180px;margin:auto;padding:14px}.tab{display:none}.tab.active{display:block}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:0 4px 18px #0c234014}h2,h3{margin:0 0 11px}.muted{color:var(--muted);font-size:13px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:12px}.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px}.stat strong{display:block;font-size:20px}.calhead{display:flex;align-items:center;gap:8px}.calhead h2{flex:1;text-align:center;margin:0}.week,.calendar{display:grid;grid-template-columns:repeat(7,1fr)}.week div{text-align:center;padding:6px;font-size:11px;color:var(--muted);font-weight:800}.day{min-height:105px;border:1px solid var(--line);border-right:0;border-bottom:0;padding:5px;background:#fff}.day:nth-child(7n){border-right:1px solid var(--line)}.calendar .day:nth-last-child(-n+7){border-bottom:1px solid var(--line)}.day.other{background:#f8fafc;color:#a0a8b5}.day.today{outline:2px solid var(--blue);outline-offset:-2px}.daynum{font-size:11px;font-weight:800;margin-bottom:4px}.entry{font-size:10px;padding:4px 5px;border-radius:7px;background:#eaf2ff;color:#123f85;margin:3px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.entry.Frei{background:#eaf8ee;color:#24683a}.entry.Urlaub{background:#fff3dc;color:#8a4b00}.entry.Krank{background:#feeceb;color:#9e1e18}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}label{font-size:12px;color:var(--muted);display:block;margin-bottom:4px}input,select,textarea{width:100%;padding:9px;border:1px solid var(--line);border-radius:10px;font:inherit}.actions,.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.chip{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:999px}.row{display:grid;grid-template-columns:1.2fr .8fr .8fr .8fr auto;gap:7px;align-items:center;border:1px solid var(--line);border-radius:11px;padding:9px;margin:7px 0}.scanbox{border:2px dashed #b9c7db;border-radius:14px;padding:16px;text-align:center}.preview{max-width:100%;max-height:330px;border-radius:12px;margin-top:10px;display:none}.modal{position:fixed;inset:0;background:#07111f99;display:none;align-items:center;justify-content:center;z-index:50;padding:14px}.modal.open{display:flex}.modalbox{background:#fff;border-radius:16px;padding:14px;width:min(520px,100%);max-height:90vh;overflow:auto}@media(max-width:720px){main{padding:9px}.stats{grid-template-columns:1fr 1fr}.grid,.row{grid-template-columns:1fr 1fr}.day{min-height:82px;padding:3px}.entry{font-size:8.5px}.week div{font-size:9px}}
+:root{--bg:#f3f6fb;--card:#fff;--ink:#10213d;--muted:#6c7890;--line:#dfe6f1;--blue:#155eef;--soft:#edf4ff;--good:#16803c;--bad:#b42318}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}header{position:sticky;top:0;z-index:10;background:linear-gradient(135deg,#082b59,#155eef);color:white;padding:14px 14px 9px}.wrap{max-width:1180px;margin:auto}.brand{display:flex;gap:10px;align-items:center}.logo{width:44px;height:44px;border-radius:13px;background:#fff;display:grid;place-items:center;font-size:25px}h1{font-size:21px;margin:0}nav{display:flex;gap:7px;overflow:auto;margin-top:10px}button{border:0;border-radius:11px;padding:9px 12px;font:inherit;font-weight:700;background:var(--blue);color:#fff;cursor:pointer}nav button{background:#ffffff1a;border:1px solid #ffffff28;white-space:nowrap}nav button.active{background:#fff;color:#12345f}button.secondary{background:var(--soft);color:#19407c}button.danger{background:#feeceb;color:var(--bad)}button.good{background:#eaf8ee;color:var(--good)}main{max-width:1180px;margin:auto;padding:14px}.tab{display:none}.tab.active{display:block}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:0 4px 18px #0c234014}h2,h3{margin:0 0 11px}.muted{color:var(--muted);font-size:13px}.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-bottom:12px}.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px}.stat strong{display:block;font-size:20px}.calhead{display:flex;align-items:center;gap:8px}.calhead h2{flex:1;text-align:center;margin:0}.week,.calendar{display:grid;grid-template-columns:repeat(7,1fr)}.week div{text-align:center;padding:6px;font-size:11px;color:var(--muted);font-weight:800}.day{min-height:105px;border:1px solid var(--line);border-right:0;border-bottom:0;padding:5px;background:#fff}.day:nth-child(7n){border-right:1px solid var(--line)}.calendar .day:nth-last-child(-n+7){border-bottom:1px solid var(--line)}.day.other{background:#f8fafc;color:#a0a8b5}.day.today{outline:2px solid var(--blue);outline-offset:-2px}.daynum{font-size:11px;font-weight:800;margin-bottom:4px}.holidayName{font-size:8.5px;line-height:1.15;color:#8a4b00;background:#fff3dc;border-radius:6px;padding:2px 4px;margin:2px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.entry{font-size:10px;padding:4px 5px;border-radius:7px;background:#eaf2ff;color:#123f85;margin:3px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.entry.Frei{background:#eaf8ee;color:#24683a}.entry.Urlaub{background:#fff3dc;color:#8a4b00}.entry.Krank{background:#feeceb;color:#9e1e18}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}label{font-size:12px;color:var(--muted);display:block;margin-bottom:4px}input,select,textarea{width:100%;padding:9px;border:1px solid var(--line);border-radius:10px;font:inherit}.actions,.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.chip{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:999px}.row{display:grid;grid-template-columns:1.2fr .8fr .8fr .8fr auto;gap:7px;align-items:center;border:1px solid var(--line);border-radius:11px;padding:9px;margin:7px 0}.scanbox{border:2px dashed #b9c7db;border-radius:14px;padding:16px;text-align:center}.preview{max-width:100%;max-height:330px;border-radius:12px;margin-top:10px;display:none}.modal{position:fixed;inset:0;background:#07111f99;display:none;align-items:center;justify-content:center;z-index:50;padding:14px}.modal.open{display:flex}.modalbox{background:#fff;border-radius:16px;padding:14px;width:min(520px,100%);max-height:90vh;overflow:auto}@media(max-width:720px){main{padding:9px}.stats{grid-template-columns:1fr 1fr}.grid,.row{grid-template-columns:1fr 1fr}.day{min-height:82px;padding:3px}.entry{font-size:8.5px}.week div{font-size:9px}}
 
 .yeargrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .yearcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}
@@ -23,8 +24,143 @@
   .day{min-height:90px}
 }
 
-</style></head><body><header><div class="wrap"><div class="brand"><div class="logo">📅</div><div><h1>DienstBuddy V3.0</h1><div style="opacity:.8;font-size:12px">Deine Schichten. Deine Zuschläge. Dein Kalender.</div></div></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
-<section id="kal" class="tab active"><div class="stats"><div class="stat"><span class="muted">Arbeitsstunden</span><strong id="stH">0,0 h</strong></div><div class="stat"><span class="muted">Nachtstunden</span><strong id="stN">0,0 h</strong></div><div class="stat"><span class="muted">So./Feiertag</span><strong id="stS">0,0 h</strong></div><div class="stat"><span class="muted">Zuschläge</span><strong id="stB">0,00 €</strong></div></div><div class="card"><div class="calhead"><button class="secondary" id="prev">‹</button><h2 id="title"></h2><button class="secondary" id="next">›</button></div><div class="week"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div><div id="calendar" class="calendar"></div></div>
+
+.bottomnav{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#0b2d5cf2;border-top:1px solid #ffffff28;display:flex;overflow-x:auto;gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -4px 18px #07111f33}
+.bottomnav button{flex:0 0 auto;min-width:108px;background:#ffffff14;border:1px solid #ffffff28;color:#fff;white-space:nowrap}
+.bottomnav button.active{background:#fff;color:#12345f}
+.bottomnav::-webkit-scrollbar{height:5px}
+.bottomnav::-webkit-scrollbar-thumb{background:#ffffff55;border-radius:999px}
+
+
+
+.lockScreen{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#082b59,#155eef);display:none;align-items:center;justify-content:center;padding:18px}
+.lockScreen.open{display:flex}
+.lockCard{width:min(420px,100%);background:#fff;border-radius:22px;padding:24px;text-align:center;box-shadow:0 20px 60px #07111f66}
+.lockCard img{width:92px;height:92px;border-radius:22px;display:block;margin:0 auto 14px}
+.lockCard h2{margin-bottom:8px}
+.lockCard .muted{margin-bottom:16px}
+.lockError{color:#b42318;font-size:13px;min-height:18px;margin-top:10px}
+
+.firstAidGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.firstAidItem{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff}
+.firstAidItem h3{margin:0 0 8px;font-size:16px}
+.firstAidItem p{margin:6px 0}
+.firstAidItem ul{margin:8px 0 0;padding-left:20px}
+.firstAidItem li{margin:5px 0}
+.emergencyBox{border:2px solid #b42318;background:#fff3f2;border-radius:14px;padding:12px;margin-bottom:12px}
+.emergencyBox strong{color:#b42318}
+.callRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.callBtn{display:inline-block;text-decoration:none;border-radius:11px;padding:9px 12px;font-weight:800;background:#b42318;color:#fff}
+.callBtn.secondary{background:#edf4ff;color:#19407c;border:1px solid #dfe6f1}
+.sourceNote{font-size:11px;color:var(--muted);margin-top:8px}
+@media(max-width:720px){.firstAidGrid{grid-template-columns:1fr}}
+
+.firstAidQuick{display:inline-flex;align-items:center;gap:7px;background:#fff;color:#8f1616;border:2px solid #d92d20;font-weight:900;padding:8px 11px;border-radius:12px;margin-left:10px;white-space:nowrap}
+.firstAidQuick .redCross{color:#d92d20;font-size:20px;line-height:1}
+.triageChoices{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.triageChoices button{flex:1 1 150px}
+.triageResult{border-radius:14px;padding:14px;margin-top:12px;border:2px solid var(--line)}
+.triageResult.red{border-color:#d92d20;background:#fff3f2}
+.triageResult.orange{border-color:#f79009;background:#fffaeb}
+.triageResult.blue{border-color:#2e90fa;background:#eff8ff}
+.symptomMatches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+.symptomMatch{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;text-align:left}
+.symptomMatch strong{display:block}
+.questionBox{border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px;background:#f8fafc}
+@media(max-width:720px){.firstAidQuick{margin:8px 0 0 0}.symptomMatches{grid-template-columns:1fr}}
+
+.cprGuide{border:2px solid #dc2626;background:#fff7f7;border-radius:14px;padding:14px;margin-top:12px}
+.cprStep{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px;margin:8px 0}
+.cprBig{font-size:18px;font-weight:900}
+
+.v4notice{background:#fff4d6;border:2px solid #e4a11b;border-radius:14px;padding:14px;margin:12px 0;font-weight:700}
+.emergencyNumbers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.emergencyNumbers a{display:block;text-align:center;padding:14px;border-radius:14px;text-decoration:none;font-weight:900}
+.n112{background:#b71c1c;color:white}.n116{background:#e7f0ff;color:#123c73;border:2px solid #87a9d8}
+.v4card{border:1px solid #d7dde5;border-radius:14px;padding:14px;margin:12px 0;background:white}
+.v4card input,.v4card textarea,.v4card select{width:100%;box-sizing:border-box;padding:10px;margin:5px 0 10px;border:1px solid #b8c0ca;border-radius:9px;font:inherit}
+.v4row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.v4btn{border:0;border-radius:10px;padding:11px 14px;font-weight:800;cursor:pointer;background:#1d5fa7;color:white}
+.v4btn.secondary{background:#59636f}.v4btn.danger{background:#a92121}
+.v4item{border-top:1px solid #e2e6eb;padding:10px 0}.v4item:first-child{border-top:0}
+.changelog li{margin:7px 0}
+
+
+.modalV4{position:fixed;inset:0;background:rgba(15,23,42,.48);display:none;align-items:center;justify-content:center;z-index:12000;padding:18px}
+.modalV4.open{display:flex}
+.modalCardV4{width:min(520px,100%);background:#fff;border-radius:18px;padding:18px;box-shadow:0 24px 70px rgba(0,0,0,.28)}
+.modalHeadV4{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.modalCloseV4{background:#eef2f7;color:#334155;border:0;border-radius:10px;padding:8px 11px;font-weight:800;cursor:pointer}
+.phoneTableV4{display:grid;gap:8px;margin-top:12px}
+.phoneRowV4{display:grid;grid-template-columns:1.2fr 1fr auto auto;gap:8px;align-items:center;padding:10px 12px;border:1px solid #dbe2ea;border-radius:12px;background:#fff}
+.phoneNameV4{font-weight:800}
+.phoneNumV4{font-variant-numeric:tabular-nums}
+.phoneActionV4{border:0;border-radius:9px;padding:8px 10px;font-weight:800;cursor:pointer}
+.phoneCallV4{background:#e8f2ff;color:#134d8b;text-decoration:none}
+.phoneDeleteV4{background:#feecec;color:#9f1b1b}
+.timePickerV4{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;margin:8px 0 12px}
+.timeColumnV4{border:1px solid #cdd6df;border-radius:12px;background:#f8fafc;padding:8px}
+.timeColumnV4 strong{display:block;text-align:center;margin-bottom:6px}
+.timeScrollV4{height:180px;overflow:auto;display:grid;gap:6px}
+.timeOptionV4{border:1px solid #d7dee8;border-radius:9px;background:#fff;padding:8px;text-align:center;cursor:pointer;font-weight:700}
+.timeOptionV4.active{background:#1d5fa7;color:#fff;border-color:#1d5fa7}
+.appointmentBadgeV4{display:block;margin-top:4px;border-radius:7px;padding:3px 6px;font-size:11px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#efe7ff;color:#5f3ca8;border:1px solid #d8c9ff}
+.apptLegendV4{display:inline-flex;align-items:center;gap:7px;margin-top:8px;font-size:12px;color:#5f3ca8}
+.apptLegendDotV4{width:12px;height:12px;border-radius:4px;background:#efe7ff;border:1px solid #d8c9ff}
+@media(max-width:720px){
+ .phoneRowV4{grid-template-columns:1fr auto}
+ .phoneNumV4{grid-column:1/2}
+ .phoneCallV4,.phoneDeleteV4{grid-row:1/3}
+ .timeScrollV4{height:150px}
+}
+
+
+.clockTriggerV4{width:100%;display:flex;align-items:center;justify-content:space-between;border:1px solid #b8c0ca;border-radius:10px;background:#fff;padding:11px 12px;font:inherit;cursor:pointer}
+.clockModalV4{position:fixed;inset:0;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;z-index:13000;padding:18px}
+.clockModalV4.open{display:flex}
+.clockCardV4{width:min(420px,100%);background:#fff;border-radius:20px;padding:18px;box-shadow:0 24px 70px rgba(0,0,0,.3)}
+.clockFaceV4{position:relative;width:300px;height:300px;margin:14px auto;border-radius:50%;background:#f4f7fb;border:2px solid #d5dde7}
+.clockCenterV4{position:absolute;left:50%;top:50%;width:10px;height:10px;border-radius:50%;background:#1d5fa7;transform:translate(-50%,-50%)}
+.clockNumV4{position:absolute;width:42px;height:42px;margin:-21px 0 0 -21px;border:0;border-radius:50%;background:transparent;cursor:pointer;font-weight:800}
+.clockNumV4:hover,.clockNumV4.active{background:#1d5fa7;color:#fff}
+.clockTitleV4{text-align:center;font-size:18px;font-weight:900}
+.clockTimeV4{text-align:center;font-size:34px;font-weight:900;margin-top:4px}
+.colorGridV4{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 12px}
+.colorChoiceV4{width:34px;height:34px;border-radius:50%;border:3px solid transparent;cursor:pointer}
+.colorChoiceV4.active{outline:3px solid #111827;outline-offset:2px}
+
+
+/* V4 build 4004 */
+.clockCardV4{border-top:7px solid var(--clock-accent,#6d4bc3)}
+.clockFaceV4{background:radial-gradient(circle at center,#ffffff 0 46%,#f1edff 47% 100%);border:3px solid #c8b8ff}
+.clockCenterV4{background:var(--clock-accent,#6d4bc3)}
+.clockNumV4.active,.clockNumV4:hover{background:var(--clock-accent,#6d4bc3);color:#fff}
+.clockHandV4{position:absolute;left:50%;top:50%;height:3px;background:var(--clock-accent,#6d4bc3);transform-origin:0 50%;z-index:1;border-radius:4px}
+.reminderGridV4{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.settingBoxV4{border:1px solid #d7dee8;border-radius:12px;padding:12px;background:#f8fafc}
+.settingBoxV4 select,.settingBoxV4 input{width:100%;box-sizing:border-box;padding:10px;border:1px solid #c9d1dc;border-radius:9px;background:#fff}
+.inlineCheckV4{display:flex;align-items:center;gap:8px;margin:8px 0}
+.inlineCheckV4 input{width:auto}
+.noticeV4{border-radius:12px;padding:10px 12px;background:#fff7df;border:1px solid #e8c766;margin:8px 0;font-size:13px}
+.repeatRowV4{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:720px){.reminderGridV4,.repeatRowV4{grid-template-columns:1fr}}
+
+
+/* V4 build 4005 – dunkle Uhr */
+.clockFaceV4{
+  background:#000 !important;
+  border-color:#333 !important;
+}
+.clockNumV4{
+  color:#fff !important;
+}
+.clockNumV4.active,
+.clockNumV4:hover{
+  color:#fff !important;
+}
+
+</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="icon-192.png" alt="Schichtiva" onerror="this.onerror=null;this.src='./icon-192.png?v=4003'" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V4</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div><button id="firstAidQuick" class="firstAidQuick"><span class="redCross">✚</span> Erste-Hilfe-Kompass</button></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="firstaid">🩹 Erste-Hilfe-Kompass</button><button data-tab="phoneListV4">📞 Telefonliste</button><button data-tab="appointmentsV4">📅 Termine</button><button data-tab="changelogV4">🧾 Changelog</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
+<section id="kal" class="tab active"><div class="stats"><div class="stat"><span class="muted">Arbeitsstunden</span><strong id="stH">0,0 h</strong></div><div class="stat"><span class="muted">Nachtstunden</span><strong id="stN">0,0 h</strong></div><div class="stat"><span class="muted">So./Feiertag</span><strong id="stS">0,0 h</strong></div><div class="stat"><span class="muted">Zuschläge</span><strong id="stB">0,00 €</strong></div><div class="stat"><span class="muted">Bezahlte Abwesenheit</span><strong id="stPaidAbs">0,0 h</strong></div><div class="stat"><span class="muted">Verdienst inkl. Zuschläge</span><strong id="stPay">—</strong></div></div><div class="card"><div class="calhead"><button class="secondary" id="prev">‹</button><h2 id="title"></h2><button class="secondary" id="next">›</button></div><div class="week"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div><div id="calendar" class="calendar"></div></div>
 <div class="card"><h3>Monatsauswertung</h3><p class="muted">Hier siehst du genau, welche Schicht welche Stunden verursacht.</p><div id="monthBreakdown"></div></div>
 <div class="card"><h3>Kalender benutzen</h3><p class="muted">Tippe auf einen Tag. Dann kannst du eine gespeicherte Schicht, Frei, Urlaub, Krank oder eine individuelle Schicht eintragen.</p></div>
 <div class="card no-print">
@@ -63,7 +199,29 @@
   </div>
 </section>
 <section id="sch" class="tab"><div class="card"><h2>Vordefinierte Schichten</h2><div class="grid"><div><label>Name</label><input id="sn" placeholder="Früh"></div><div><label>Beginn</label><input id="ss" type="time"></div><div><label>Ende</label><input id="se" type="time"></div><div><label>Pause Min.</label><input id="sb" type="number" value="0"></div></div><div class="actions"><button id="addShift">Schicht speichern</button></div></div><div class="card" id="shiftList"></div></section>
-<section id="scan" class="tab"><div class="card"><h2>Dienstplan scannen</h2><div class="scanbox"><strong>Foto aufnehmen ODER vorhandenes Bild auswählen</strong><p class="muted">Das Dateifeld öffnet auf dem Handy Kamera, Galerie oder Dateien – je nach Browser.</p><input id="photo" type="file" accept="image/*"><img id="preview" class="preview"><div id="scanStatus" class="muted">Noch kein Bild gewählt.</div></div><label style="margin-top:10px">Erkannter Text</label><textarea id="ocr" rows="8"></textarea><div class="actions"><button id="parse">Auswerten</button></div></div><div class="card"><h3>Erkannte Einträge <span class="muted">Parser 2.8</span></h3><div id="scanResults" class="muted">Noch nichts erkannt.</div><p class="muted">Neue erkannte Schichtzeiten werden beim Übernehmen automatisch unter „Schichten“ gespeichert.</p><div class="actions"><button id="importScan" class="good">In Kalender übernehmen</button></div></div></section>
+<section id="scan" class="tab"><div class="card"><h2>Dienstplan scannen</h2><div class="scanbox"><strong>Foto aufnehmen ODER vorhandenes Bild auswählen</strong><p class="muted">Das Dateifeld öffnet auf dem Handy Kamera, Galerie oder Dateien – je nach Browser.</p><input id="photo" type="file" accept="image/*"><img id="preview" class="preview"><div id="scanStatus" class="muted">Noch kein Bild gewählt.</div></div><label style="margin-top:10px">Erkannter Text</label><textarea id="ocr" rows="8"></textarea><div class="actions"><button id="parse">Auswerten</button></div></div><div class="card"><h3>Erkannte Einträge <span class="muted">Parser 2.9</span></h3><div id="scanResults" class="muted">Noch nichts erkannt.</div><p class="muted">Neue erkannte Schichtzeiten werden beim Übernehmen automatisch unter „Schichten“ gespeichert.</p><div class="actions"><button id="importScan" class="good">In Kalender übernehmen</button></div></div></section>
+
+<section id="firstaid" class="tab">
+<div class="card">
+<h2><span style="color:#dc2626">✚</span> Erste-Hilfe-Kompass V4</h2>
+<div class="v4notice">⚠️ <strong>Wichtiger Hinweis:</strong> Der Erste-Hilfe-Kompass wird nach und nach erweitert. Er kann nicht jede denkbare Situation vollständig abbilden und ersetzt keine professionelle medizinische Beurteilung. <strong>Wenn die Situation unklar ist, du Zweifel am Zustand der betroffenen Person hast oder ein Notfall möglich ist: 112 anrufen.</strong></div>
+<div class="emergencyNumbers">
+  <a class="n112" href="tel:112">📞 112 – Notruf</a>
+  <a class="n116" href="tel:116117">📞 116117 – Ärztlicher Bereitschaftsdienst</a>
+</div>
+<p class="muted"><strong>112:</strong> bei lebensbedrohlichen Notfällen oder wenn eine mögliche Notfallsituation nicht sicher eingeschätzt werden kann. <strong>116117:</strong> bei dringenden, nicht lebensbedrohlichen Beschwerden außerhalb regulärer Praxiszeiten.</p>
+<p class="muted">Beschreibe Beschwerden oder Situation frei. V4 durchsucht eine deutlich größere Symptomdatenbank und kombiniert Körperregion, Beschwerdeart und Warnzeichen. Danach folgt eine geführte Abfrage – immer nur eine Frage gleichzeitig. Keine Diagnose.</p>
+<label>Symptome / Situation</label>
+<input id="triageSearch" placeholder="Symptome oder Verletzung eingeben …" autocomplete="off">
+<div id="symptomMatches" class="symptomMatches"></div>
+<div id="triageFlow"></div>
+</div>
+<div class="card">
+<h2>☠️ Giftnotruf Deutschland</h2>
+<p class="muted">Bei Vergiftungsverdacht Verpackung/Produkt bereithalten. Bei lebensbedrohlichen Symptomen zuerst 112.</p>
+<div id="poisonList"></div>
+</div>
+</section>
 <section id="set" class="tab">
 <div class="card">
   <h2>Eigener Dienstplan / Mitarbeiter-Filter</h2>
@@ -73,13 +231,202 @@
   </div>
   <div class="actions"><button id="saveEmployee">Filter speichern</button></div>
 </div>
-<div class="card"><h2>Zuschläge</h2><p class="muted">Kein Schichtlohn: dein Festgehalt bleibt außen vor. Der Basis-Stundenwert dient nur dazu, die Zuschlagsbeträge zu berechnen.</p><div class="grid"><div><label>Basis-Stundenwert €</label><input id="base" type="number" step="0.01"></div><div><label>Nacht von</label><input id="nf" type="time"></div><div><label>Nacht bis</label><input id="nt" type="time"></div><div><label>Nacht %</label><input id="np" type="number" step="0.1"></div><div><label>Sonntag %</label><input id="sp" type="number" step="0.1"></div><div><label>Feiertag %</label><input id="hp" type="number" step="0.1"></div><div><label>Samstag % optional</label><input id="sap" type="number" step="0.1"></div></div><div class="actions"><button id="saveSet">Einstellungen speichern</button></div><p class="muted">V2 erkennt die bundesweit geltenden Feiertage automatisch. Regionale Sonderfeiertage können wir in V2.1 ergänzen.</p></div><div class="card"><h3>Backup</h3><div class="actions"><button id="export" class="secondary">Backup exportieren</button><label style="padding:9px 12px;background:var(--soft);color:#19407c;border-radius:11px;font-weight:700">Backup importieren<input id="import" type="file" accept="application/json,.json" style="display:none"></label><button id="cleanInvalid" class="secondary">Falsche Scan-Zeiten löschen</button><button id="clear" class="danger">Alles löschen</button></div></div></section>
-</main><div id="modal" class="modal"><div class="modalbox"><div style="display:flex;justify-content:space-between"><h3 id="modalDate"></h3><button class="secondary" id="close">✕</button></div><div id="choices" class="chips"></div><hr style="border:0;border-top:1px solid var(--line);margin:14px 0"><h3>Zeiten ansehen / bearbeiten</h3><div class="grid"><div><label>Beginn</label><input id="cs" type="time"></div><div><label>Ende</label><input id="ce" type="time"></div><div><label>Pause Min.</label><input id="cb" type="number" value="0"></div></div><div class="actions"><button id="saveCustom">Eintragen</button><button id="delDay" class="danger">Tag löschen</button></div></div></div>
+<div class="card"><h2>Lohn & Zuschläge</h2><p class="muted">Wähle dein Modell. Beim Festgehalt werden weiterhin nur die Zuschläge berechnet. Beim Stundenlohn zeigt Schichtiva zusätzlich den Monatsverdienst.</p><div class="grid"><div><label>Lohnmodell</label><select id="payMode"><option value="salary">Festgehalt</option><option value="hourly">Stundenlohn</option></select></div><div><label>Stundenlohn €</label><input id="hourlyRate" type="number" min="0" step="0.01"></div><div><label>Sollstunden pro bezahltem Urlaub-/Kranktag</label><input id="targetHours" type="number" min="0" step="0.25"></div><div><label>Basis-Stundenwert für Zuschläge €</label><input id="base" type="number" step="0.01"><div class="muted" id="baseHint" style="margin-top:4px">Bei Stundenlohn wird dieser Wert automatisch übernommen.</div></div><div><label>Bundesland</label><select id="state"><option value="">Nur bundesweite Feiertage</option><option value="BW">Baden-Württemberg</option><option value="BY">Bayern</option><option value="BE">Berlin</option><option value="BB">Brandenburg</option><option value="HB">Bremen</option><option value="HH">Hamburg</option><option value="HE">Hessen</option><option value="MV">Mecklenburg-Vorpommern</option><option value="NI">Niedersachsen</option><option value="NW">Nordrhein-Westfalen</option><option value="RP">Rheinland-Pfalz</option><option value="SL">Saarland</option><option value="SN">Sachsen</option><option value="ST">Sachsen-Anhalt</option><option value="SH">Schleswig-Holstein</option><option value="TH">Thüringen</option></select></div><div><label>Nacht von</label><input id="nf" type="time"></div><div><label>Nacht bis</label><input id="nt" type="time"></div><div><label>Nacht %</label><input id="np" type="number" step="0.1"></div><div><label>Sonntag %</label><input id="sp" type="number" step="0.1"></div><div><label>Feiertag %</label><input id="hp" type="number" step="0.1"></div><div><label>Samstag % optional</label><input id="sap" type="number" step="0.1"></div></div><div class="actions"><button id="saveSet">Einstellungen speichern</button></div><p class="muted">Schichtiva berücksichtigt bundesweite Feiertage und – nach Auswahl – die landesweit geltenden Feiertage des Bundeslands. Kommunale Sonderregelungen sind nicht enthalten.</p></div>
+<div class="card">
+  <h2>🔐 App-Schutz</h2>
+  <p class="muted">Schütze Schichtiva beim Öffnen mit der Sicherheitsfunktion deines Geräts. Je nach Smartphone nutzt der Browser Fingerabdruck, Gesichtserkennung oder die Geräte-PIN.</p>
+  <div id="bioStatus" class="muted" style="margin-bottom:10px">Biometrischer Schutz wird geprüft …</div>
+  <div class="actions">
+    <button id="setupBio">Biometrie / Gerätesperre einrichten</button>
+    <button id="testBio" class="secondary">Entsperrung testen</button>
+    <button id="disableBio" class="danger">App-Schutz deaktivieren</button>
+  </div>
+  <p class="muted" style="margin-top:10px">Hinweis: Die biometrischen Daten verlassen dein Gerät nicht. Schichtiva speichert nur eine technische Kennung für die lokale Entsperrung.</p>
+</div>
+<div class="card"><h3>Backup</h3><div class="actions"><button id="export" class="secondary">Backup exportieren</button><label style="padding:9px 12px;background:var(--soft);color:#19407c;border-radius:11px;font-weight:700">Backup importieren<input id="import" type="file" accept="application/json,.json" style="display:none"></label><button id="cleanInvalid" class="secondary">Falsche Scan-Zeiten löschen</button><button id="clear" class="danger">Alles löschen</button></div></div></section>
+
+<section id="phoneListV4" class="tab">
+ <div class="card">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+   <div><h2 style="margin-bottom:4px">📞 Telefonliste</h2><p class="muted" style="margin:0">Eigene wichtige Rufnummern übersichtlich speichern.</p></div>
+   <button class="v4btn" id="openPhoneModalV4">+ Neue Rufnummer</button>
+  </div>
+  <div class="phoneTableV4" id="phoneItemsV4"></div>
+ </div>
+</section>
+
+<section id="appointmentsV4" class="tab">
+ <div class="card">
+  <h2>📅 Termine</h2>
+  <p class="muted">Termine erscheinen in deiner gewählten Farbe im Kalender.</p>
+  <div class="v4card">
+   <label>Termin</label><input id="apptTitleV4" placeholder="z. B. Hausarzt">
+   <label>Datum</label><input id="apptDateV4" type="date">
+
+   <label>Uhrzeit</label>
+   <button type="button" id="openClockV4" class="clockTriggerV4"><span>🕒 Uhrzeit auswählen</span><strong id="selectedTimeV4">09:00</strong></button>
+
+   <label style="margin-top:12px">Farbe</label>
+   <div id="colorPickerV4" class="colorGridV4"></div>
+
+   <div class="reminderGridV4">
+    <div class="settingBoxV4">
+     <label>🔔 Erinnerung</label>
+     <select id="apptReminderV4">
+      <option value="0">Zur Terminzeit</option>
+      <option value="5">5 Minuten vorher</option>
+      <option value="10">10 Minuten vorher</option>
+      <option value="15" selected>15 Minuten vorher</option>
+      <option value="30">30 Minuten vorher</option>
+      <option value="60">1 Stunde vorher</option>
+      <option value="120">2 Stunden vorher</option>
+      <option value="1440">1 Tag vorher</option>
+     </select>
+    </div>
+    <div class="settingBoxV4">
+     <label>🔊 Erinnerungston</label>
+     <select id="apptToneV4">
+      <option value="soft">Sanfter Ton</option>
+      <option value="classic">Klassischer Ton</option>
+      <option value="double">Doppelton</option>
+      <option value="urgent">Deutlicher Ton</option>
+      <option value="none">Kein Ton</option>
+     </select>
+     <button type="button" class="v4btn secondary" id="testToneV4" style="margin-top:8px">Ton testen</button>
+    </div>
+   </div>
+
+   <div class="settingBoxV4" style="margin-top:10px">
+    <label>🔁 Wiederholung</label>
+    <select id="apptRepeatV4">
+     <option value="none">Keine</option>
+     <option value="daily">Täglich</option>
+     <option value="weekly">Wöchentlich</option>
+     <option value="monthly">Monatlich</option>
+     <option value="yearly">Jährlich</option>
+    </select>
+    <div id="repeatExtraV4" style="display:none;margin-top:10px">
+     <label>Wiederholen bis</label>
+     <select id="repeatEndModeV4">
+      <option value="never">Unbegrenzt</option>
+      <option value="date">Bis zu einem Datum</option>
+     </select>
+     <input id="repeatEndDateV4" type="date" style="display:none;margin-top:8px">
+    </div>
+   </div>
+
+   <label style="margin-top:12px">Notiz</label><textarea id="apptNoteV4" rows="3" placeholder="optional"></textarea>
+
+   <div class="noticeV4">
+    📱 <strong>Handy-Erinnerung:</strong> Beim ersten Termin fragt Schichtiva nach Benachrichtigungs-Erlaubnis.
+    Erinnerungen funktionieren zuverlässig, solange Schichtiva geöffnet ist. Auf manchen Handys kann der Browser Hintergrund-Erinnerungen einschränken.
+   </div>
+
+   <button class="v4btn" onclick="addAppointmentV4()">Termin hinzufügen</button>
+   <div id="apptItemsV4"></div>
+  </div>
+ </div>
+</section>
+
+<section id="changelogV4" class="tab">
+ <div class="card changelog">
+  <h2>🧾 Changelog – Was ist seit V3 neu?</h2>
+  <p class="muted"><strong>Veröffentlichung V4:</strong> finaler getesteter Stand der V4-Reihe.</p>
+  <ul>
+   <li><strong>Umbenennung zu Schichtiva:</strong> neuer App-Name, neues Icon und überarbeitete Oberfläche.</li>
+   <li><strong>Mobile Nutzung:</strong> Smartphone-Optimierung und Swipe-Navigation.</li>
+   <li><strong>Biometrischer App-Schutz:</strong> Entsperren über Gerätesicherheit wie Fingerabdruck, Gesichtserkennung oder Geräte-PIN; automatische Entsperrabfrage beim Öffnen.</li>
+   <li><strong>Kalender erweitert:</strong> Schichten, freie Tage, Urlaub, Krankheit, Feiertage und besondere Kalendertage übersichtlicher dargestellt.</li>
+   <li><strong>Besondere Tage:</strong> Heiligabend, Silvester, Ostersonntag und Pfingstsonntag ergänzt.</li>
+   <li><strong>Lohn/Zuschläge:</strong> Stundenlohn oder Festgehalt, Nacht-, Sonn-/Feiertagsstunden, Zuschläge, bezahlte Abwesenheit und Gesamtverdienst weiter ausgebaut.</li>
+   <li><strong>Scan:</strong> bestehende Scan-Funktion in Schichtiva integriert und beibehalten.</li>
+   <li><strong>Erste-Hilfe-Kompass:</strong> freier Symptomeingang, geführte Fragepfade, Tippfehlertoleranz, 112/116117, Giftnotruf und situationsbezogene Sofortmaßnahmen.</li>
+   <li><strong>Bewusstlosigkeit / Reanimation:</strong> Reaktion → Atmung → HLW/AED-Pfad.</li>
+   <li><strong>AED:</strong> eigene Schritt-für-Schritt-Anleitung bei vorhandenem AED und HLW-Anleitung, wenn zunächst keiner verfügbar ist.</li>
+   <li><strong>Weitere Erste-Hilfe-Pfade:</strong> u. a. Blutung/Kopfverletzung, Stromunfall, Verschlucken/Atemwegsverlegung, Verbrennung, Erbrechen/Vergiftung, Sturz/Knochenverletzung, Allergie/Insektenstich, Brustbeschwerden und Bauchschmerzen mit Fieber.</li>
+   <li><strong>Hinweis im Kompass:</strong> der Kompass wird nach und nach erweitert; bei unklarer möglicher Notfallsituation 112.</li>
+   <li><strong>Telefonliste:</strong> neu in V4 – Rufnummern übersichtlich speichern, direkt anrufen und löschen; neue Nummern werden über ein separates Eingabefenster hinzugefügt.</li>
+   <li><strong>Termine:</strong> neu in V4 – Termine mit Datum, Notiz und eigener Farbe anlegen; überarbeitete dunkle 24-Stunden-Uhr mit Stunden- und Minutenauswahl; farbliche Anzeige im Kalender; einstellbare Erinnerung vor dem Termin; mehrere Erinnerungstöne mit Testfunktion; tägliche, wöchentliche, monatliche oder jährliche Wiederholungen mit optionalem Enddatum; vergangene einmalige Termine werden ab 00:00 Uhr des Folgetages automatisch aus der lokalen Terminliste entfernt.</li>
+   <li><strong>Changelog:</strong> neu in V4 – eigene Seite mit den wichtigsten Änderungen seit V3.</li>
+   <li><strong>Lokale Speicherung:</strong> Telefonliste und Termine bleiben im Teststand lokal auf dem jeweiligen Gerät gespeichert.</li>
+  </ul>
+ </div>
+</section>
+
+</main>
+<div id="lockScreen" class="lockScreen">
+  <div class="lockCard">
+    <img src="./icon-192.png" alt="Schichtiva">
+    <h2>Schichtiva ist gesperrt</h2>
+    <p class="muted">Die Geräte-Entsperrung wird automatisch gestartet. Falls sie abgebrochen wird, kannst du sie unten erneut aufrufen.</p>
+    <button id="unlockBio">🔓 Schichtiva entsperren</button>
+    <div id="lockError" class="lockError"></div>
+  </div>
+</div>
+<div id="rebrandModal" class="modal"><div class="modalbox"><div style="text-align:center"><img src="./icon-192.png" alt="Schichtiva" style="width:96px;height:96px;border-radius:24px"><h2 style="margin-top:10px">DienstBuddy heißt jetzt Schichtiva</h2><p>Keine Diva. Nur dein Dienstplan.</p><p class="muted">Deine bisherigen Schichten, Einstellungen und Kalenderdaten bleiben erhalten. V3.7 ergänzt den Erste-Hilfe-Kompass.</p><button id="rebrandOk">Alles klar</button></div></div></div><div id="modal" class="modal"><div class="modalbox"><div style="display:flex;justify-content:space-between"><h3 id="modalDate"></h3><button class="secondary" id="close">✕</button></div><div id="choices" class="chips"></div><hr style="border:0;border-top:1px solid var(--line);margin:14px 0"><h3>Zeiten ansehen / bearbeiten</h3><div class="grid"><div><label>Beginn</label><input id="cs" type="time"></div><div><label>Ende</label><input id="ce" type="time"></div><div><label>Pause Min.</label><input id="cb" type="number" value="0"></div></div><div class="actions"><button id="saveCustom">Eintragen</button><button id="delDay" class="danger">Tag löschen</button></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script><script>
-const $=x=>document.getElementById(x),KEY='dienstbuddy_v2';const DEF={shifts:[{id:'f',name:'Früh',start:'06:00',end:'14:00',breakMin:30},{id:'s',name:'Spät',start:'14:00',end:'22:00',breakMin:30},{id:'n',name:'Nacht',start:'22:00',end:'06:00',breakMin:30}],entries:{},settings:{base:0,nf:'22:00',nt:'06:00',np:25,sp:50,hp:100,sap:0,employeeKey:''}};let data=(()=>{try{let x=JSON.parse(localStorage.getItem(KEY)||'{}');return {...DEF,...x,settings:{...DEF.settings,...(x.settings||{})}}}catch{return structuredClone(DEF)}})(),view=new Date(),selected=null,cands=[];view=new Date(view.getFullYear(),view.getMonth(),1);const save=()=>localStorage.setItem(KEY,JSON.stringify(data));const M=t=>{let[a,b]=t.split(':').map(Number);return a*60+b};const validTime=t=>{if(typeof t!=='string'||!/^\d{1,2}:\d{2}$/.test(t))return false;let[h,m]=t.split(':').map(Number);return h>=0&&h<=23&&m>=0&&m<=59};
+const $=x=>document.getElementById(x),KEY='dienstbuddy_v2';const DEF={shifts:[{id:'f',name:'Früh',start:'06:00',end:'14:00',breakMin:30},{id:'s',name:'Spät',start:'14:00',end:'22:00',breakMin:30},{id:'n',name:'Nacht',start:'22:00',end:'06:00',breakMin:30}],entries:{},settings:{base:0,nf:'22:00',nt:'06:00',np:25,sp:50,hp:100,sap:0,employeeKey:'',payMode:'salary',hourlyRate:0,state:'',targetHours:8}};let data=(()=>{try{let x=JSON.parse(localStorage.getItem(KEY)||'{}');return {...DEF,...x,settings:{...DEF.settings,...(x.settings||{})}}}catch{return structuredClone(DEF)}})(),view=new Date(),selected=null,cands=[];view=new Date(view.getFullYear(),view.getMonth(),1);const save=()=>localStorage.setItem(KEY,JSON.stringify(data));const M=t=>{let[a,b]=t.split(':').map(Number);return a*60+b};const validTime=t=>{if(typeof t!=='string'||!/^\d{1,2}:\d{2}$/.test(t))return false;let[h,m]=t.split(':').map(Number);return h>=0&&h<=23&&m>=0&&m<=59};
 const ISO=(y,m,d)=>`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;const dur=e=>{if(!e.start)return 0;let x=M(e.end)-M(e.start);if(x<=0)x+=1440;return Math.max(0,(x-Number(e.breakMin||0))/60)};
-function easter(y){let f=Math.floor,G=y%19,C=f(y/100),H=(C-f(C/4)-f((8*C+13)/25)+19*G+15)%30,I=H-f(H/28)*(1-f(29/(H+1))*f((21-G)/11)),J=(y+f(y/4)+I+2-C+f(C/4))%7,L=I-J,m=3+f((L+40)/44),d=L+28-31*f(m/4);return new Date(y,m-1,d)}function hol(dt){let y=dt.getFullYear(),k=ISO(y,dt.getMonth(),dt.getDate()),fix={[`${y}-01-01`]:1,[`${y}-05-01`]:1,[`${y}-10-03`]:1,[`${y}-12-25`]:1,[`${y}-12-26`]:1};if(fix[k])return true;let e=easter(y);for(let off of[-2,1,39,50]){let d=new Date(e);d.setDate(d.getDate()+off);if(ISO(d.getFullYear(),d.getMonth(),d.getDate())===k)return true}return false}
-function renderCal(){let y=view.getFullYear(),m=view.getMonth(),first=(new Date(y,m,1).getDay()+6)%7,days=new Date(y,m+1,0).getDate(),pd=new Date(y,m,0).getDate();$('title').textContent=view.toLocaleDateString('de-DE',{month:'long',year:'numeric'});let now=new Date(),today=ISO(now.getFullYear(),now.getMonth(),now.getDate()),h='';for(let c=0;c<42;c++){let d,cm=m,cy=y,o=false;if(c<first){d=pd-first+c+1;cm=m-1;o=true;if(cm<0){cm=11;cy--}}else if(c>=first+days){d=c-first-days+1;cm=m+1;o=true;if(cm>11){cm=0;cy++}}else d=c-first+1;let k=ISO(cy,cm,d),arr=data.entries[k]||[];h+=`<div class="day ${o?'other':''} ${k===today?'today':''}" data-date="${k}"><div class="daynum">${d}${hol(new Date(cy,cm,d))?' 🎉':''}</div>${arr.map(e=>`<div class="entry ${e.type||''}">${e.label}</div>`).join('')}</div>`}$('calendar').innerHTML=h;document.querySelectorAll('.day').forEach(x=>x.onclick=()=>openDay(x.dataset.date));stats()}
+function easter(y){let f=Math.floor,G=y%19,C=f(y/100),H=(C-f(C/4)-f((8*C+13)/25)+19*G+15)%30,I=H-f(H/28)*(1-f(29/(H+1))*f((21-G)/11)),J=(y+f(y/4)+I+2-C+f(C/4))%7,L=I-J,m=3+f((L+40)/44),d=L+28-31*f(m/4);return new Date(y,m-1,d)}
+function holidayName(dt){
+  let y=dt.getFullYear(),k=ISO(y,dt.getMonth(),dt.getDate()),st=data.settings.state||'';
+  const fixed={
+    [`${y}-01-01`]:'Neujahr',
+    [`${y}-05-01`]:'Tag der Arbeit',
+    [`${y}-10-03`]:'Tag der Deutschen Einheit',
+    [`${y}-12-25`]:'1. Weihnachtstag',
+    [`${y}-12-26`]:'2. Weihnachtstag'
+  };
+  if(k===`${y}-01-06` && ['BW','BY','ST'].includes(st))return 'Heilige Drei Könige';
+  if(k===`${y}-03-08` && ['BE','MV'].includes(st))return 'Internationaler Frauentag';
+  if(k===`${y}-08-15` && st==='SL')return 'Mariä Himmelfahrt';
+  if(k===`${y}-09-20` && st==='TH')return 'Weltkindertag';
+  if(k===`${y}-10-31` && ['BB','HB','HH','MV','NI','SN','ST','SH','TH'].includes(st))return 'Reformationstag';
+  if(k===`${y}-11-01` && ['BW','BY','NW','RP','SL'].includes(st))return 'Allerheiligen';
+  if(fixed[k])return fixed[k];
+
+  let e=easter(y);
+  const moving=[
+    [-2,'Karfreitag'],
+    [1,'Ostermontag'],
+    [39,'Christi Himmelfahrt'],
+    [50,'Pfingstmontag']
+  ];
+  for(let [off,name] of moving){
+    let d=new Date(e);d.setDate(d.getDate()+off);
+    if(ISO(d.getFullYear(),d.getMonth(),d.getDate())===k)return name;
+  }
+  if(['BW','BY','HE','NW','RP','SL'].includes(st)){
+    let d=new Date(e);d.setDate(d.getDate()+60);
+    if(ISO(d.getFullYear(),d.getMonth(),d.getDate())===k)return 'Fronleichnam';
+  }
+  if(st==='SN'){
+    let d=new Date(y,10,22);while(d.getDay()!==3)d.setDate(d.getDate()-1);
+    if(ISO(d.getFullYear(),d.getMonth(),d.getDate())===k)return 'Buß- und Bettag';
+  }
+  if(st==='BB'){
+    for(let [off,name] of [[0,'Ostersonntag'],[49,'Pfingstsonntag']]){
+      let d=new Date(e);d.setDate(d.getDate()+off);
+      if(ISO(d.getFullYear(),d.getMonth(),d.getDate())===k)return name;
+    }
+  }
+  return '';
+}
+function calendarDayName(dt){
+  let y=dt.getFullYear(),k=ISO(y,dt.getMonth(),dt.getDate());
+  if(k===`${y}-12-24`)return 'Heiligabend';
+  if(k===`${y}-12-31`)return 'Silvester';
+  let legal=holidayName(dt);
+  if(legal)return legal;
+  let e=easter(y);
+  for(let [off,name] of [[0,'Ostersonntag'],[49,'Pfingstsonntag']]){
+    let d=new Date(e);d.setDate(d.getDate()+off);
+    if(ISO(d.getFullYear(),d.getMonth(),d.getDate())===k)return name;
+  }
+  return '';
+}
+function hol(dt){return !!holidayName(dt)}
+function renderCal(){let y=view.getFullYear(),m=view.getMonth(),first=(new Date(y,m,1).getDay()+6)%7,days=new Date(y,m+1,0).getDate(),pd=new Date(y,m,0).getDate();$('title').textContent=view.toLocaleDateString('de-DE',{month:'long',year:'numeric'});let now=new Date(),today=ISO(now.getFullYear(),now.getMonth(),now.getDate()),h='';for(let c=0;c<42;c++){let d,cm=m,cy=y,o=false;if(c<first){d=pd-first+c+1;cm=m-1;o=true;if(cm<0){cm=11;cy--}}else if(c>=first+days){d=c-first-days+1;cm=m+1;o=true;if(cm>11){cm=0;cy++}}else d=c-first+1;let k=ISO(cy,cm,d),arr=data.entries[k]||[],dt=new Date(cy,cm,d),hn=calendarDayName(dt),isHol=hol(dt);h+=`<div class="day ${o?'other':''} ${k===today?'today':''}" data-date="${k}"><div class="daynum">${d}${isHol?' 🎉':''}</div>${hn?`<div class="holidayName" title="${hn}">${hn}</div>`:''}${arr.map(e=>`<div class="entry ${e.type||''}">${e.label}</div>`).join('')}</div>`}$('calendar').innerHTML=h;document.querySelectorAll('.day').forEach(x=>x.onclick=()=>openDay(x.dataset.date));stats()}
 
 function resolveEntry(e){
   if(!e)return e;
@@ -163,15 +510,22 @@ function calc(date,e){
   return{h,n,s:special,b,sun,hol:holiday,sat};
 }
 function stats(){
-  let T={h:0,n:0,s:0,b:0},y=view.getFullYear(),m=view.getMonth(),rows=[];
+  let T={h:0,n:0,s:0,b:0,paidAbs:0},y=view.getFullYear(),m=view.getMonth(),rows=[];
+  let targetHours=Number(data.settings.targetHours||0);
   Object.entries(data.entries).sort(([a],[b])=>a.localeCompare(b)).forEach(([d,a])=>{
     let x=new Date(d+'T12:00');
     if(x.getFullYear()!=y||x.getMonth()!=m)return;
     a.forEach(raw=>{
-      let e=resolveEntry(raw),r=calc(d,e);
+      let e=resolveEntry(raw);
+      if(e && (e.type==='Urlaub'||e.type==='Krank'||e.label==='Urlaub'||e.label==='Krank')){
+        T.paidAbs+=targetHours;
+        rows.push({d,label:e.label||e.type,start:'—',end:'—',h:0,n:0,s:0,paid:targetHours});
+        return;
+      }
+      let r=calc(d,e);
       for(let k of ['h','n','s','b'])T[k]+=r[k];
       if(r.h>0){
-        rows.push({d,label:e?.label||'Schicht',start:e?.start||'?',end:e?.end||'?',h:r.h,n:r.n,s:r.s});
+        rows.push({d,label:e?.label||'Schicht',start:e?.start||'?',end:e?.end||'?',h:r.h,n:r.n,s:r.s,paid:0});
       }
     })
   });
@@ -179,20 +533,82 @@ function stats(){
   $('stN').textContent=T.n.toFixed(1).replace('.',',')+' h';
   $('stS').textContent=T.s.toFixed(1).replace('.',',')+' h';
   $('stB').textContent=new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(T.b);
+  $('stPaidAbs').textContent=T.paidAbs.toFixed(1).replace('.',',')+' h';
+
+  let payMode=data.settings.payMode||'salary',rate=Number(data.settings.hourlyRate||0);
+  let paidHours=T.h+T.paidAbs;
+  $('stPay').textContent=payMode==='hourly'
+    ? new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(paidHours*rate+T.b)
+    : 'Festgehalt + '+new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(T.b);
 
   $('monthBreakdown').innerHTML=rows.length?rows.map(r=>`
     <div class="row">
       <strong>${new Date(r.d+'T12:00').toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'})} · ${r.label}</strong>
-      <span>${r.start}–${r.end}</span>
-      <span>${r.h.toFixed(2).replace('.',',')} h Arbeit</span>
-      <span>${r.n.toFixed(2).replace('.',',')} h Nacht${r.s>0?' · '+r.s.toFixed(2).replace('.',',')+' h So./Feiertag':''}</span>
+      <span>${r.paid>0?'bezahlt':r.start+'–'+r.end}</span>
+      <span>${r.paid>0?r.paid.toFixed(2).replace('.',',')+' h Soll':r.h.toFixed(2).replace('.',',')+' h Arbeit'}</span>
+      <span>${r.paid>0?'keine Arbeitszeit':r.n.toFixed(2).replace('.',',')+' h Nacht'+(r.s>0?' · '+r.s.toFixed(2).replace('.',',')+' h So./Feiertag':'')}</span>
       <button class="secondary" data-open="${r.d}">Öffnen</button>
-    </div>`).join(''):'<span class="muted">Noch keine Arbeits-Schichten in diesem Monat.</span>';
+    </div>`).join(''):'<span class="muted">Noch keine Einträge in diesem Monat.</span>';
 
   document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>openDay(b.dataset.open));
 }
 function renderShifts(){$('shiftList').innerHTML=data.shifts.map(s=>`<div class="row"><strong>${s.name}</strong><span>${s.start}</span><span>${s.end}</span><span>${s.breakMin} Min</span><button class="danger" data-del="${s.id}">Löschen</button></div>`).join('');document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{data.shifts=data.shifts.filter(s=>s.id!==b.dataset.del);save();renderShifts()})}$('addShift').onclick=()=>{if(!$('sn').value||!$('ss').value||!$('se').value)return alert('Name, Beginn und Ende ausfüllen.');data.shifts.push({id:'x'+Date.now(),name:$('sn').value,start:$('ss').value,end:$('se').value,breakMin:Number($('sb').value||0)});save();renderShifts()};
-function loadSet(){for(let k of['base','nf','nt','np','sp','hp','sap'])$(k).value=data.settings[k];$('employeeKey').value=data.settings.employeeKey||''}loadSet();$('saveEmployee').onclick=()=>{data.settings.employeeKey=$('employeeKey').value.trim();save();alert('Mitarbeiter-Filter gespeichert.')};$('saveSet').onclick=()=>{for(let k of['base','nf','nt','np','sp','hp','sap'])data.settings[k]=$(k).value;save();renderCal();alert('Gespeichert.')};$('prev').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);renderCal()};$('next').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);renderCal()};document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.tab).classList.add('active');if(b.dataset.tab==='year')renderYear()});
+function syncPayFields(){
+  let hourly=$('payMode').value==='hourly';
+  if(hourly){
+    $('base').value=$('hourlyRate').value||0;
+    $('base').disabled=true;
+    $('baseHint').textContent='Wird automatisch aus dem Stundenlohn übernommen.';
+  }else{
+    $('base').disabled=false;
+    $('baseHint').textContent='Beim Festgehalt frei eintragen, damit Zuschläge berechnet werden können.';
+  }
+}
+function loadSet(){
+  for(let k of['base','nf','nt','np','sp','hp','sap','hourlyRate','targetHours'])$(k).value=data.settings[k]??'';
+  $('payMode').value=data.settings.payMode||'salary';
+  $('state').value=data.settings.state||'';
+  $('employeeKey').value=data.settings.employeeKey||'';
+  syncPayFields();
+}
+loadSet();
+$('payMode').onchange=syncPayFields;
+$('hourlyRate').oninput=()=>{if($('payMode').value==='hourly')$('base').value=$('hourlyRate').value};
+$('saveEmployee').onclick=()=>{data.settings.employeeKey=$('employeeKey').value.trim();save();alert('Mitarbeiter-Filter gespeichert.')};
+$('saveSet').onclick=()=>{
+  for(let k of['nf','nt','np','sp','hp','sap','hourlyRate','targetHours'])data.settings[k]=$(k).value;
+  data.settings.payMode=$('payMode').value;
+  data.settings.state=$('state').value;
+  data.settings.base=data.settings.payMode==='hourly'?$('hourlyRate').value:$('base').value;
+  save();loadSet();renderCal();alert('Gespeichert.');
+};
+$('prev').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);renderCal()};$('next').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);renderCal()};const TAB_ORDER=['kal','sch','scan','year','firstaid','set'];
+function activateTab(tab){
+  document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x.dataset.tab===tab));
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  $(tab).classList.add('active');
+  if(tab==='year')renderYear();
+}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>activateTab(b.dataset.tab));
+
+let swipeStartX=0,swipeStartY=0,swipeTracking=false;
+document.addEventListener('touchstart',e=>{
+  if(e.touches.length!==1)return;
+  if(e.target.closest('input,textarea,select,button,label,.modalbox'))return;
+  swipeStartX=e.touches[0].clientX;swipeStartY=e.touches[0].clientY;swipeTracking=true;
+},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(!swipeTracking||!e.changedTouches.length)return;
+  swipeTracking=false;
+  let dx=e.changedTouches[0].clientX-swipeStartX,dy=e.changedTouches[0].clientY-swipeStartY;
+  if(Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.25)return;
+  let current=document.querySelector('.tab.active')?.id||'kal',i=TAB_ORDER.indexOf(current);
+  if(dx<0 && i<TAB_ORDER.length-1)activateTab(TAB_ORDER[i+1]);
+  if(dx>0 && i>0)activateTab(TAB_ORDER[i-1]);
+},{passive:true});
+
+let scanOcrData=null;
+
 async function prepareImage(file){
   const img=new Image(),url=URL.createObjectURL(file);
   await new Promise((ok,no)=>{img.onload=ok;img.onerror=no;img.src=url});
@@ -217,8 +633,9 @@ $('photo').onchange=async e=>{
     let r=await Tesseract.recognize(prepared,'deu',{
       logger:m=>{if(m.status==='recognizing text')$('scanStatus').textContent='Texterkennung '+Math.round((m.progress||0)*100)+' %'}
     });
+    scanOcrData=r.data||null;
     $('ocr').value=(r.data.text||'').replace(/[|]/g,'I');
-    $('scanStatus').textContent='Fertig. Text prüfen – du kannst ihn vor dem Auswerten korrigieren.';
+    $('scanStatus').textContent='Fertig. Text prüfen – Kalender-Screenshots werden jetzt räumlich ausgewertet.';
   }catch(err){$('scanStatus').textContent='OCR konnte nicht geladen werden. Internet prüfen.'}
 };
 function pdate(l){
@@ -325,6 +742,89 @@ function storedShiftByCode(code){
   return data.shifts.find(s=>String(s.name).toUpperCase().replace(/\s+/g,'')===c)||null;
 }
 
+function normShiftName(v){
+  return String(v||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9äöüß]+/g,' ').trim();
+}
+function storedShiftByNameText(text){
+  let n=normShiftName(text);
+  if(!n)return null;
+  let best=null,bestLen=0;
+  for(let s of data.shifts){
+    let sn=normShiftName(s.name);
+    if(sn && sn.length>=2 && (n.includes(sn)||sn.includes(n)) && sn.length>bestLen){best=s;bestLen=sn.length}
+  }
+  return best;
+}
+function monthFromGermanText(text){
+  const months={januar:0,februar:1,marz:2,märz:2,april:3,mai:4,juni:5,juli:6,august:7,september:8,oktober:9,november:10,dezember:11};
+  let low=String(text||'').toLowerCase();
+  for(let k in months){
+    let m=low.match(new RegExp('\\b'+k+'\\s+(20\\d{2})\\b','i'));
+    if(m)return {month:months[k],year:Number(m[1])};
+  }
+  return null;
+}
+function wordBox(w){
+  let b=w&&w.bbox||{};
+  return {x0:Number(b.x0||0),y0:Number(b.y0||0),x1:Number(b.x1||0),y1:Number(b.y1||0),cx:(Number(b.x0||0)+Number(b.x1||0))/2,cy:(Number(b.y0||0)+Number(b.y1||0))/2};
+}
+function calendarCandidatesFromOcr(learned){
+  let words=(scanOcrData&&scanOcrData.words||[]).filter(w=>String(w.text||'').trim());
+  if(words.length<8)return [];
+  let my=monthFromGermanText(scanOcrData.text||$('ocr').value);
+  if(!my)return [];
+
+  // Find likely day numbers. Calendar day numbers are short numeric OCR words.
+  let nums=words.map(w=>({w,b:wordBox(w),n:Number(String(w.text).replace(/[^0-9]/g,''))}))
+    .filter(o=>o.n>=1&&o.n<=31&&/^\D*\d{1,2}\D*$/.test(String(o.w.text)));
+  if(nums.length<5)return [];
+
+  // Group day numbers into visual calendar rows.
+  nums.sort((a,b)=>a.b.cy-b.b.cy||a.b.cx-b.b.cx);
+  let heights=nums.map(o=>Math.max(8,o.b.y1-o.b.y0)).sort((a,b)=>a-b);
+  let tol=Math.max(14,(heights[Math.floor(heights.length/2)]||12)*1.8);
+  let rows=[];
+  for(let o of nums){
+    let row=rows.find(r=>Math.abs(r.y-o.b.cy)<=tol);
+    if(!row){row={y:o.b.cy,items:[]};rows.push(row)}
+    row.items.push(o);row.y=row.items.reduce((a,z)=>a+z.b.cy,0)/row.items.length;
+  }
+  rows=rows.filter(r=>r.items.length>=4).sort((a,b)=>a.y-b.y);
+  if(!rows.length)return [];
+
+  let out=[];
+  for(let ri=0;ri<rows.length;ri++){
+    let row=rows[ri]; row.items.sort((a,b)=>a.b.cx-b.b.cx);
+    let xs=row.items.map(o=>o.b.cx);
+    if(xs.length<4)continue;
+    let left=Math.min(...xs),right=Math.max(...xs),step=(right-left)/Math.max(1,xs.length-1);
+    let top=row.y-tol*.7;
+    let bottom=ri+1<rows.length?(row.y+rows[ri+1].y)/2:row.y+Math.max(80,step*.95);
+
+    for(let o of row.items){
+      // Ignore spill-over days from adjacent months by validating against target month.
+      let date=mkDate(o.n,my.month+1,my.year); if(!date)continue;
+      let x0=o.b.cx-step*.48,x1=o.b.cx+step*.48;
+      let cellWords=words.filter(w=>{
+        let b=wordBox(w);return b.cx>=x0&&b.cx<=x1&&b.cy>o.b.cy+3&&b.cy<bottom;
+      }).sort((a,b)=>wordBox(a).cy-wordBox(b).cy||wordBox(a).cx-wordBox(b).cx);
+      let txt=cellWords.map(w=>w.text).join(' ').replace(/[|]/g,'I').trim();
+      if(!txt)continue;
+      if(!/(frei|urlaub|krank|[A-Za-zÄÖÜäöü]{2,}|\b\d{1,2}[:.]\d{2}\b)/.test(txt))continue;
+
+      let c=makeCandidate(txt,date,learned);
+      if(!c){
+        let named=storedShiftByNameText(txt);
+        if(named)c={date,type:'shift',label:named.name,start:named.start,end:named.end,breakMin:named.breakMin||0,source:'Kalender: '+txt};
+      }
+      if(c){c.source='Kalender: '+txt;out.push(c)}
+    }
+  }
+  // Deduplicate by date; spatial result is one visible duty per day.
+  let seen=new Set();
+  return out.filter(c=>{let k=c.date+'|'+c.label;if(seen.has(k))return false;seen.add(k);return true});
+}
+
 function makeCandidate(line,date,learned){
   let sm=line.match(/\b(frei|urlaub|krank)\b/i);
   if(sm){
@@ -396,13 +896,19 @@ $('parse').onclick=()=>{
     }
   }
 
-  // Second pass: expand each date expression to one candidate per day.
-  for(let l of lines){
-    let dates=expandDates(l);
-    if(!dates.length)continue;
-    for(let d of dates){
-      let c=makeCandidate(l,d,learned);
-      if(c)cands.push(c);
+  // Calendar screenshots: use OCR coordinates to connect each calendar cell with its day.
+  let spatial=calendarCandidatesFromOcr(learned);
+  if(spatial.length){
+    cands=spatial;
+  }else{
+    // Classic roster/table fallback: expand date expressions from OCR text.
+    for(let l of lines){
+      let dates=expandDates(l);
+      if(!dates.length)continue;
+      for(let d of dates){
+        let c=makeCandidate(l,d,learned);
+        if(c)cands.push(c);
+      }
     }
   }
   renderCandidates();
@@ -468,7 +974,7 @@ function icsDateTime(date,time){
   return `${y}${m}${d}T${hh}${mm}00`;
 }
 function buildIcs(filterFn){
-  let lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//DienstBuddy//DE','CALSCALE:GREGORIAN'];
+  let lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Schichtiva//DE','CALSCALE:GREGORIAN'];
   Object.entries(data.entries).sort(([a],[b])=>a.localeCompare(b)).forEach(([date,arr])=>{
     if(!filterFn(date))return;
     arr.forEach(e=>{
@@ -494,10 +1000,10 @@ function downloadText(name,text,type){
 }
 $('exportIcs').onclick=()=>{
   let y=view.getFullYear(),m=view.getMonth();
-  downloadText(`DienstBuddy-${y}-${String(m+1).padStart(2,'0')}.ics`,buildIcs(d=>{let x=new Date(d+'T12:00');return x.getFullYear()===y&&x.getMonth()===m}),'text/calendar;charset=utf-8');
+  downloadText(`Schichtiva-${y}-${String(m+1).padStart(2,'0')}.ics`,buildIcs(d=>{let x=new Date(d+'T12:00');return x.getFullYear()===y&&x.getMonth()===m}),'text/calendar;charset=utf-8');
 };
 $('exportYearIcs').onclick=()=>{
-  let y=yearView;downloadText(`DienstBuddy-${y}.ics`,buildIcs(d=>new Date(d+'T12:00').getFullYear()===y),'text/calendar;charset=utf-8');
+  let y=yearView;downloadText(`Schichtiva-${y}.ics`,buildIcs(d=>new Date(d+'T12:00').getFullYear()===y),'text/calendar;charset=utf-8');
 };
 $('printMonth').onclick=()=>window.print();
 $('printYear').onclick=()=>{
@@ -506,7 +1012,7 @@ $('printYear').onclick=()=>{
   setTimeout(()=>window.print(),100);
 };
 
-$('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='DienstBuddy-Backup.json';a.click()};$('import').onchange=async e=>{try{data=JSON.parse(await e.target.files[0].text());save();renderShifts();loadSet();renderCal();alert('Backup importiert.')}catch{alert('Datei konnte nicht gelesen werden.')}};$('cleanInvalid').onclick=()=>{
+$('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='Schichtiva-Backup.json';a.click()};$('import').onchange=async e=>{try{data=JSON.parse(await e.target.files[0].text());save();renderShifts();loadSet();renderCal();alert('Backup importiert.')}catch{alert('Datei konnte nicht gelesen werden.')}};$('cleanInvalid').onclick=()=>{
   let n=0;
   for(let date of Object.keys(data.entries)){
     let before=data.entries[date].length;
@@ -517,5 +1023,838 @@ $('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObje
   data.shifts=data.shifts.filter(sh=>!(sh.start&&sh.end&&(!validTime(sh.start)||!validTime(sh.end))));
   save();renderShifts();renderCal();alert(n+' fehlerhafte Scan-Einträge entfernt.');
 };
-$('clear').onclick=()=>{if(confirm('Alle DienstBuddy-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=30').catch(()=>{}));
-</script></body></html>
+$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=4-namefix').catch(()=>{}));
+
+const REBRAND_KEY='schichtiva_v4_welcome_seen';
+window.addEventListener('load',()=>{if(!localStorage.getItem(REBRAND_KEY)){$('rebrandModal').classList.add('open')}});
+$('rebrandOk').onclick=()=>{localStorage.setItem(REBRAND_KEY,'1');$('rebrandModal').classList.remove('open')};
+
+
+
+
+
+
+const BODY_AREAS=[
+ ['kopf','Kopf'],['gesicht','Gesicht'],['auge','Auge'],['ohr','Ohr'],['nase','Nase'],['mund','Mund/Zähne'],
+ ['hals','Hals'],['nacken','Nacken'],['brust','Brust'],['bauch','Bauch'],['oberbauch','Oberbauch'],['unterbauch','Unterbauch'],
+ ['rücken','Rücken'],['arm','Arm'],['schulter','Schulter'],['ellenbogen','Ellenbogen'],['hand','Hand'],['finger','Finger'],
+ ['bein','Bein'],['hüfte','Hüfte'],['knie','Knie'],['fuß','Fuß'],['zehe','Zehe'],['haut','Haut']
+];
+const COMPLAINTS=[
+ ['schmerz','Schmerz'],['blutung','Blutung/Wunde'],['schwindel','Schwindel'],['übelkeit','Übelkeit'],['erbrechen','Erbrechen'],
+ ['durchfall','Durchfall'],['fieber','Fieber'],['atemnot','Atemnot'],['husten','Husten'],['schwellung','Schwellung'],
+ ['ausschlag','Ausschlag'],['taub','Taubheit'],['lähmung','Lähmung/Schwäche'],['sehstörung','Sehstörung'],
+ ['sprachstörung','Sprachstörung'],['bewusstlos','Bewusstlosigkeit/Ohnmacht'],['krampf','Krampfanfall'],
+ ['verbrennung','Verbrennung/Verbrühung'],['verätzung','Verätzung'],['vergiftung','Vergiftung'],
+ ['sturz','Sturz/Unfall'],['bruch','möglicher Bruch'],['stich','Stich/Biss'],['allergie','allergische Reaktion'],
+ ['hitze','Hitzeproblem'],['kälte','Kälteproblem'],['herzrasen','Herzrasen'],['schwäche','starke Schwäche']
+];
+const SYN={
+ 'brustschmerzen':'brust schmerz','brustschmerz':'brust schmerz','kopfschmerzen':'kopf schmerz','kopfschmerz':'kopf schmerz',
+ 'bauchschmerzen':'bauch schmerz','bauchschmerz':'bauch schmerz','rückenschmerzen':'rücken schmerz','rückenschmerz':'rücken schmerz',
+ 'luftnot':'atemnot','keine luft':'atemnot','ohnmacht':'bewusstlos','benommen':'bewusstlos',
+ 'blutet':'blutung','blut':'blutung','wunde':'blutung','schnitt':'blutung','platzwunde':'blutung',
+ 'schlaganfall':'lähmung sprachstörung','herzinfarkt':'brust schmerz','allergisch':'allergie','anaphylaxie':'allergie',
+ 'verbrühung':'verbrennung','stromschlag':'sturz','vergiftet':'vergiftung','gift':'vergiftung',
+ 'sehprobleme':'sehstörung','verschwommen':'sehstörung','sprache':'sprachstörung','taubheit':'taub'
+};
+
+
+// V3.7.3 – erweiterter lokaler Wortschatz.
+// Die Begriffe dienen nur zur Zuordnung in einen Fragepfad, NICHT zur Diagnose.
+const EXTRA_SYMPTOMS={
+ 'bewustlos':'bewusstlos','bewußtlos':'bewusstlos','bewust':'bewusstlos',
+ 'bewusst loß':'bewusstlos','ohnmächtig':'bewusstlos','ohnmacht':'bewusstlos',
+ 'kopfdruck':'kopf schmerz','migräne':'kopf schmerz','lichtempfindlich':'kopf schmerz',
+ 'drehschwindel':'schwindel','schwankschwindel':'schwindel','unsicherer gang':'schwindel',
+ 'herzklopfen':'herzrasen','stolpern':'herzrasen','puls':'herzrasen',
+ 'engegefühl':'brust','druckgefühl':'schmerz','seitenstechen':'schmerz',
+ 'keuchen':'atemnot','pfeifen':'atemnot','kurzatmig':'atemnot',
+ 'schluckbeschwerden':'hals schmerz','halsschmerzen':'hals schmerz','heiser':'hals',
+ 'zahnschmerz':'mund schmerz','zahnschmerzen':'mund schmerz',
+ 'nasenbluten':'nase blutung','ohrenschmerz':'ohr schmerz','ohrenschmerzen':'ohr schmerz',
+ 'nackensteif':'nacken schmerz','steifer nacken':'nacken schmerz',
+ 'flankenschmerz':'rücken schmerz','nierenschmerz':'rücken schmerz',
+ 'kribbeln':'taub','gefühllos':'taub','kraftlos':'schwäche',
+ 'zittert':'schwäche','zittern':'schwäche','matt':'schwäche',
+ 'dehydriert':'erbrechen durchfall schwäche','austrocknung':'erbrechen durchfall schwäche',
+ 'schwarzer stuhl':'blutung bauch','blut im stuhl':'blutung bauch',
+ 'blut erbrechen':'blutung erbrechen','bluterbrechen':'blutung erbrechen',
+ 'blut husten':'blutung husten','bluthusten':'blutung husten',
+ 'querschnitt':'lähmung','hängender mundwinkel':'lähmung','verwaschene sprache':'sprachstörung',
+ 'doppelbilder':'sehstörung','blind':'sehstörung','sehverlust':'sehstörung',
+ 'fremdkörper':'auge','chemikalie':'verätzung','säure':'verätzung','lauge':'verätzung',
+ 'sonnenbrand':'verbrennung','brandblase':'verbrennung','rauch':'atemnot',
+ 'biss':'stich','tierbiss':'stich','zeckenbiss':'stich','wespenstich':'stich allergie','bienenstich':'stich allergie',
+ 'quaddeln':'ausschlag allergie','nesselsucht':'ausschlag allergie',
+ 'geschwollen':'schwellung','entzündet':'schwellung','eiter':'schwellung',
+ 'verstaucht':'sturz','verrenkt':'sturz','quetschung':'sturz','prellung':'sturz',
+ 'offener bruch':'bruch blutung','knochen':'bruch',
+ 'strom':'sturz','stromunfall':'sturz','elektrisch':'sturz',
+ 'ertrinken':'atemnot','verschluckt':'atemnot','ersticken':'atemnot',
+ 'unterkühlt':'kälte','erfroren':'kälte','hitzschlag':'hitze','sonnenstich':'hitze',
+ 'diabetes':'schwäche','unterzucker':'schwäche','unterzuckerung':'schwäche',
+ 'fieberkrampf':'krampf fieber','krampft':'krampf',
+ 'schwanger':'bauch','schwangerschaft':'bauch','vaginale blutung':'blutung unterbauch',
+ 'hodenschmerz':'unterbauch schmerz','leiste':'unterbauch',
+ 'wasserlassen':'unterbauch schmerz','urin':'unterbauch','blut im urin':'blutung unterbauch'
+};
+
+const CONTEXT_WORDS=[
+ 'plötzlich','neu','stark','sehr stark','zunehmend','seit heute','seit gestern','seit tagen',
+ 'nach sturz','nach unfall','nach schlag','nach essen','nach medikament','nach stich',
+ 'schwangerschaft','kind','baby','älterer mensch'
+];
+
+const CATEGORY_RULES=[
+ {id:'headinjury',title:'Kopfverletzung / Kopfwunde',keys:['kopf','sturz','blutung'],any:['kopf'],kind:'headinjury'},
+ {id:'stroke',title:'Neurologische Warnzeichen',any:['lähmung','sprachstörung','sehstörung','taub'],kind:'neuro'},
+ {id:'chest',title:'Brustbeschwerden',any:['brust'],kind:'chest'},
+ {id:'bleeding',title:'Blutung / Wunde',any:['blutung'],kind:'bleeding'},
+ {id:'breathing',title:'Atembeschwerden',any:['atemnot'],kind:'breathing'},
+ {id:'conscious',title:'Bewusstseinsstörung / Ohnmacht',any:['bewusstlos'],kind:'conscious'},
+ {id:'seizure',title:'Krampfanfall',any:['krampf'],kind:'seizure'},
+ {id:'poison',title:'Vergiftung / Stoffkontakt',any:['vergiftung'],kind:'poison'},
+ {id:'burn',title:'Verbrennung / Verbrühung',any:['verbrennung'],kind:'burn'},
+ {id:'chemical',title:'Verätzung / Chemikalienkontakt',any:['verätzung'],kind:'chemical'},
+ {id:'allergy',title:'Allergische Reaktion',any:['allergie'],kind:'allergy'},
+ {id:'eye',title:'Augenbeschwerden / Augenverletzung',any:['auge','sehstörung'],kind:'eye'},
+ {id:'abdominal',title:'Bauchbeschwerden',any:['bauch','oberbauch','unterbauch'],kind:'abdominal'},
+ {id:'fever',title:'Fieber / Infektzeichen',any:['fieber'],kind:'fever'},
+ {id:'injury',title:'Verletzung / Sturz / möglicher Bruch',any:['sturz','bruch'],kind:'injury'},
+ {id:'skin',title:'Haut / Ausschlag / Schwellung',any:['haut','ausschlag','schwellung','stich'],kind:'skin'},
+ {id:'dizziness',title:'Schwindel / Schwäche',any:['schwindel','schwäche'],kind:'dizziness'},
+ {id:'gastro',title:'Übelkeit / Erbrechen / Durchfall',any:['übelkeit','erbrechen','durchfall'],kind:'gastro'},
+ {id:'pain',title:'Schmerzen',any:['schmerz'],kind:'pain'},
+ {id:'general',title:'Allgemeine Beschwerden',any:['herzrasen','husten','hitze','kälte'],kind:'general'}
+];
+
+const Q={
+ headinjury:[
+  ['Gab es einen Sturz, Schlag oder Unfall gegen den Kopf?',1,2],
+  ['War die Person bewusstlos, verwirrt, ungewöhnlich schläfrig oder besteht eine Erinnerungslücke?','red',2],
+  ['Bestehen wiederholtes Erbrechen, Krampf, Lähmung, Sprach-/Sehstörung oder sehr starke/zunehmende Kopfschmerzen?','red',3],
+  ['Ist die Blutung stark oder lässt sie sich durch festen direkten Druck nicht kontrollieren?','red',4],
+  ['Ist die Wunde tief/klaffend oder besteht eine deutliche Schwellung nach dem Unfall?','urgent','medical']
+ ],
+ neuro:[
+  ['Sind die Beschwerden plötzlich neu aufgetreten?',1,4],
+  ['Besteht eine einseitige Schwäche, Lähmung oder Taubheit?','red',2],
+  ['Besteht eine neue Sprachstörung oder versteht die Person Sprache plötzlich schlecht?','red',3],
+  ['Besteht eine neue Sehstörung, ein auffälliger Mundwinkel oder plötzlich sehr starker Kopfschmerz?','red','urgent'],
+  ['Bestehen die neurologischen Beschwerden weiterhin oder wiederholt?','urgent','medical']
+ ],
+ chest:[
+  ['Sind aktuell Schmerzen, Druck oder Enge im Brustkorb vorhanden?',1,4],
+  ['Sind die Beschwerden stark, neu, plötzlich oder ungewohnt?','red',2],
+  ['Bestehen zusätzlich Atemnot, kalter Schweiß, Ohnmacht oder starke Schwäche?','red',3],
+  ['Strahlen die Beschwerden in Arm, Schulter, Rücken, Hals, Kiefer oder Oberbauch aus?','red','urgent'],
+  ['Bestehen Herzrasen, Atemnot, Ohnmacht oder deutliche Verschlechterung?','red','medical']
+ ],
+ bleeding:[
+  ['Ist die Blutung stark, spritzend oder durchnässt sie Tücher/Verbände rasch?','severeBleeding',1],
+  ['Lässt sie sich trotz kräftigem, direktem Druck auf die Wunde nicht kontrollieren?','severeBleeding',2],
+  ['Ist die Wunde tief/klaffend, stark verschmutzt oder durch Biss/Stich entstanden?','urgent','medical']
+ ],
+ breathing:[
+  ['Ist die Atemnot stark, plötzlich oder kann die Person kaum ganze Sätze sprechen?','red',1],
+  ['Bestehen Brustschmerz, bläuliche Lippen/Haut, Bewusstseinsstörung oder rasche Verschlechterung?','red',2],
+  ['Ist die Atemnot neu, anhaltend oder deutlich stärker als üblich?','urgent','medical']
+ ],
+ conscious:[
+  ['Reagiert die Person auf lautes Ansprechen und vorsichtiges Berühren?','urgent',1],
+  ['Atmet die Person normal?','unconsciousBreathing','cpr']
+ ],
+ seizure:[
+  ['Dauert der Anfall länger als 5 Minuten oder folgen mehrere Anfälle ohne vollständige Erholung?','red',1],
+  ['Ist es der erste bekannte Anfall, besteht eine Verletzung/Atemstörung oder erholt sich die Person nicht normal?','red','urgent']
+ ],
+ poison:[
+  ['Bestehen Atemnot, Bewusstseinsstörung, Krampf, schwere Kreislaufprobleme oder ein anderer schwerer Zustand?','red',1],
+  ['Wurde möglicherweise ein Medikament, Reiniger, eine Chemikalie, Pflanze, Pilz oder ein anderer unbekannter Stoff aufgenommen?','poison','poison']
+ ],
+ burn:[
+  ['Ist die Verbrennung großflächig, tief, im Gesicht/Atemweg oder besteht Atemnot?','red',1],
+  ['Sind Säugling/Kleinkind betroffen oder bestehen starke Schmerzen bzw. größere Blasen?','urgent','medical']
+ ],
+ chemical:[
+  ['Sind Auge, Atemwege oder eine größere Hautfläche betroffen oder bestehen Atemnot/starke Schmerzen?','red','urgent']
+ ],
+ allergy:[
+  ['Bestehen Atemnot, Zungen-/Halsschwellung, Kreislaufprobleme oder Bewusstseinsstörung?','red',1],
+  ['Breitet sich die Reaktion rasch aus oder sind mehrere Körperbereiche betroffen?','red','urgent']
+ ],
+ eye:[
+  ['Bestehen plötzlich deutlicher Sehverlust, starke Augenschmerzen oder eine schwere Augenverletzung?','red',1],
+  ['Gab es Chemikalienkontakt, einen eingedrungenen Fremdkörper oder anhaltende Sehprobleme?','urgent','medical']
+ ],
+ abdominal:[
+  ['Sind die Bauchschmerzen sehr stark, plötzlich oder rasch zunehmend?','red',1],
+  ['Bestehen Bewusstseinsstörung, Kreislaufprobleme, Blut im Erbrochenen/Stuhl oder ein harter, stark schmerzhafter Bauch?','red',2],
+  ['Bestehen anhaltendes Erbrechen, hohes Fieber oder kann kaum Flüssigkeit behalten werden?','urgent','medical']
+ ],
+ fever:[
+  ['Bestehen Bewusstseinsstörung, schwere Atemnot, Krampf, steifer Nacken mit schwerem Krankheitsgefühl oder Kreislaufprobleme?','red',1],
+  ['Ist die Person sehr krank wirkend, trinkt kaum oder verschlechtert sich deutlich?','urgent','medical']
+ ],
+ injury:[
+  ['Gab es einen stärkeren Unfall, Sturz aus Höhe oder eine erhebliche Gewalteinwirkung?','red',1],
+  ['Bestehen Fehlstellung, offene Verletzung, starke Schmerzen oder kann der Körperteil gar nicht belastet/bewegt werden?','urgent','medical']
+ ],
+ skin:[
+  ['Bestehen Atemnot, Zungen-/Halsschwellung, Kreislaufprobleme oder rasche Ausbreitung mit schwerem Krankheitsgefühl?','red',1],
+  ['Bestehen starke Schmerzen, Fieber, deutliche Entzündung oder rasche Verschlechterung?','urgent','medical']
+ ],
+ dizziness:[
+  ['Ist der Schwindel plötzlich neu und sehr stark?',1,3],
+  ['Bestehen Sprach-/Sehstörung, einseitige Schwäche/Taubheit oder kann die Person nicht sicher stehen/gehen?','red',2],
+  ['Bestehen Brustschmerz, Atemnot, Ohnmacht oder ungewöhnlich starker Kopfschmerz?','red','urgent'],
+  ['Bestehen anhaltendes Erbrechen, deutliche Verschlechterung oder wiederholte Ohnmacht?','red','medical']
+ ],
+ gastro:[
+  ['Bestehen starke oder zunehmende Bauchschmerzen, Bewusstseinsstörung oder Kreislaufprobleme?','red',1],
+  ['Ist Blut im Erbrochenen/Stuhl oder kann über längere Zeit keine Flüssigkeit behalten werden?','urgent',2],
+  ['Bestehen hohes Fieber, starke Schwäche oder deutliche Verschlechterung?','urgent','medical']
+ ],
+ pain:[
+  ['Sind die Schmerzen sehr stark, plötzlich oder ungewöhnlich?',1,3],
+  ['Bestehen Atemnot, Bewusstseinsstörung, Lähmung/Sprachstörung, starke Blutung oder ein schwerer Unfall?','red',2],
+  ['Befinden sich die starken Schmerzen in Brust oder Bauch?','red','urgent'],
+  ['Halten die Schmerzen an, werden stärker oder beeinträchtigen sie normale Tätigkeiten deutlich?','urgent','medical']
+ ],
+
+ electric:[
+  ['Steht die Person möglicherweise noch unter Strom oder berührt sie noch die Stromquelle?',1,2],
+  ['Handelt es sich um Hochspannung, z. B. Oberleitung, Bahnleitung oder Hochspannungsanlage?','electricHigh','electricLow'],
+  ['Reagiert die Person normal auf Ansprechen?','electric112',3],
+  ['Atmet die Person normal?','unconsciousBreathing','cpr']
+ ],
+ choking:[
+  ['Bekommt die Person schlecht oder gar keine Luft? ',1,4],
+  ['Kann die Person noch kräftig husten und sprechen?','chokeCough',2],
+  ['Ist die Person bei Bewusstsein?','chokeSevere','cpr'],
+  ['Hat sich der Gegenstand gelöst und atmet die Person wieder normal?','urgent','chokeSevere'],
+  ['Bestehen Schluckbeschwerden, Schmerzen, Speichelfluss oder das Gefühl, dass der Gegenstand feststeckt?','urgent','medical']
+ ],
+ burn2:[
+  ['Ist das Gesicht, der Mund/Rachen oder der Atemweg betroffen?',1,2],
+  ['Bestehen Atemnot, Ruß im Mund/Nasenbereich oder zunehmende Schwellung?','burnEmergency','burnUrgent'],
+  ['Ist die Verbrennung größer als die Handfläche der betroffenen Person?','burnEmergency',3],
+  ['Gibt es tiefe, weißliche/schwarze Haut, starke Blasenbildung oder sehr starke Schmerzen?','burnUrgent','burnMinor']
+ ],
+ vomitpoison:[
+  ['Wurden möglicherweise Pilze, unbekannte Pflanzen, Chemikalien, Medikamente oder verdorbene/unklare Lebensmittel aufgenommen?',1,2],
+  ['Bestehen Bewusstseinsstörung, Krampf, schwere Atemnot oder Kreislaufkollaps?','red','poison'],
+  ['Ist Blut im Erbrochenen oder sieht es kaffeesatzartig aus?','red',3],
+  ['Kann die Person Flüssigkeit bei sich behalten?','urgent','vomitHydration']
+ ],
+ vomit2:[
+  ['Ist Blut im Erbrochenen oder sieht es kaffeesatzartig aus?','red',1],
+  ['Bestehen Bewusstseinsstörung, Ohnmacht/Kreislaufkollaps oder schwere Atemnot?','red',2],
+  ['Bestehen sehr starke oder rasch zunehmende Bauchschmerzen?',3,4],
+  ['Ist der Bauch zusätzlich hart/angespannt oder verschlechtert sich der Zustand deutlich?','red','urgent'],
+  ['Kann die Person Flüssigkeit bei sich behalten?','urgent','vomitHydration']
+ ],
+ trauma2:[
+  ['Gibt es eine offene Wunde an der stark geschwollenen Stelle?',1,3],
+  ['Ist Knochen sichtbar oder ragt er aus der Wunde?','openFracture',2],
+  ['Blutet die Wunde stark oder lässt sich die Blutung nicht kontrollieren?','severeBleeding','fractureCare'],
+  ['Besteht eine deutliche Fehlstellung oder kann der Körperteil gar nicht belastet/bewegt werden?','fractureCare',4],
+  ['Bestehen Taubheit, auffällige Blässe/Blaufärbung oder starke zunehmende Schmerzen?','fractureCare','softTissueCare']
+ ],
+
+ allergy2:[
+  ['Besteht Atemnot oder pfeifende/erschwerte Atmung?','allergyEmergency',1],
+  ['Sind Zunge, Lippen, Mund oder Rachen deutlich angeschwollen?','allergyEmergency',2],
+  ['Bestehen Schwindel, Ohnmacht, Kreislaufprobleme oder Bewusstseinsstörung?','allergyEmergency',3],
+  ['Breiten sich Quaddeln/Hautreaktionen rasch über größere Körperbereiche aus?','allergyUrgent',4],
+  ['War der Stich im Mund- oder Rachenraum?','allergyMouth','allergyLocal']
+ ],
+ chest2:[
+  ['Besteht der Druck/Schmerz aktuell noch? ',1,'chestMedical'],
+  ['Ist der Druck/Schmerz neu, ungewohnt oder deutlich stärker als sonst? ',2,'chestMedical'],
+  ['Besteht Atemnot?','chestEmergency',3],
+  ['Bestehen kalter Schweiß, starke Blässe, Übelkeit/Erbrechen, Schwindel oder Ohnmacht?','chestEmergency',4],
+  ['Strahlen Beschwerden in Arm, Schulter, Rücken, Hals, Kiefer oder Oberbauch aus?','chestEmergency','chestEmergency']
+ ],
+ abdofever:[
+  ['Sind die Bauchschmerzen sehr stark oder rasch zunehmend? ',1,3],
+  ['Ist der Bauch auffällig hart/angespannt oder führt Bewegung/Erschütterung zu deutlich mehr Schmerz?','abdoEmergency',2],
+  ['Bestehen Ohnmacht, Kreislaufkollaps, Bewusstseinsstörung oder schwere Atemnot?','abdoEmergency','abdoUrgent'],
+  ['Besteht wiederholtes Erbrechen oder kann kaum Flüssigkeit behalten werden?','abdoUrgent',4],
+  ['Ist Blut im Erbrochenen oder Stuhl vorhanden?','abdoEmergency','abdoUrgent']
+ ],
+ general:[
+  ['Sind die Beschwerden stark, plötzlich oder rasch zunehmend?',1,2],
+  ['Bestehen Atemnot, Bewusstseinsstörung, Ohnmacht, starke Blutung, Lähmung/Sprachstörung oder starke Schmerzen?','red','urgent'],
+  ['Halten die Beschwerden an oder verschlechtern sie sich deutlich?','urgent','medical']
+ ]
+};
+
+const RESULT={
+ allergyEmergency:{cls:'red',title:'Schwere allergische Reaktion – 112',text:'Atemwegs-, Kreislauf- oder Bewusstseinszeichen können auf eine schwere allergische Reaktion hinweisen.',steps:['112 anrufen.','Person beruhigen und nicht allein lassen.','Bei bekannter Allergie beim Anwenden des persönlichen Notfallsets nach ärztlicher Einweisung unterstützen.','Bei Kreislaufproblemen und erhaltener Atmung hinlegen; bei ausgeprägter Atemnot eine atemerleichternde Position unterstützen.','Bei Bewusstlosigkeit Atmung prüfen; bei normaler Atmung stabile Seitenlage, bei fehlender normaler Atmung HLW/AED.']},
+ allergyMouth:{cls:'red',title:'Insektenstich im Mund/Rachen – 112',text:'Schwellungen im Mund-/Rachenraum können die Atemwege gefährden.',steps:['112 anrufen.','Wenn sicheres Schlucken möglich ist: Mund/Rachen von innen kühlen, z. B. Eis lutschen lassen.','Hals von außen mit eingewickeltem Kühlelement kühlen.','Atmung fortlaufend beobachten; bei fehlender normaler Atmung HLW/AED.']},
+ allergyUrgent:{cls:'orange',title:'Ausgedehnte allergische Reaktion – dringend abklären',text:'Keine Atemwegs-/Kreislaufwarnzeichen bestätigt, aber eine ausgedehnte Reaktion sollte medizinisch beurteilt werden.',steps:['Person beobachten und nicht allein lassen.','Bei Atemnot, Mund-/Rachenschwellung, Ohnmacht oder rascher Verschlechterung sofort 112.','Bei dringendem, nicht lebensbedrohlichem Verlauf außerhalb der Praxiszeiten 116117.']},
+ allergyLocal:{cls:'blue',title:'Lokale Reaktion nach Insektenstich',text:'Keine schweren Warnzeichen bestätigt.',steps:['Stichstelle vorsichtig kühlen; Kühlelement nicht direkt auf die Haut.','Falls ein Stachel sichtbar ist, möglichst zügig entfernen, ohne einen eventuell anhängenden Giftsack auszudrücken.','Bei zunehmender großflächiger Schwellung, Atemproblemen oder Kreislaufzeichen sofort neu beurteilen; bei schweren Zeichen 112.']},
+ chestEmergency:{cls:'red',title:'Brustbeschwerden – 112',text:'Neue/ungewohnte Brustbeschwerden mit Warnzeichen müssen als medizinischer Notfall behandelt werden.',steps:['112 anrufen.','Person beruhigen, körperliche Anstrengung vermeiden und nicht allein lassen.','Bei Bewusstsein bequem mit erhöhtem Oberkörper lagern.','Enge Kleidung öffnen.','Bewusstsein und Atmung wiederholt kontrollieren.','Bei Bewusstlosigkeit mit normaler Atmung stabile Seitenlage; bei fehlender normaler Atmung HLW/AED.']},
+ chestMedical:{cls:'orange',title:'Brustbeschwerden – medizinisch abklären',text:'Keine zusätzlichen akuten Warnzeichen bestätigt. Brustbeschwerden sollten trotzdem medizinisch beurteilt werden.',steps:['Körperliche Belastung vermeiden.','Bei neuen/stärkeren Beschwerden, Atemnot, kaltem Schweiß, Ohnmacht oder deutlicher Verschlechterung 112.','Bei dringenden, nicht lebensbedrohlichen Beschwerden außerhalb der Praxiszeiten 116117.']},
+ abdoEmergency:{cls:'red',title:'Bauchbeschwerden mit Warnzeichen – 112',text:'Die Antworten enthalten schwere Warnzeichen.',steps:['112 anrufen.','Person eine möglichst schmerzarme Schonhaltung einnehmen lassen.','Nicht allein lassen und Bewusstsein/Atmung beobachten.','Bis zur professionellen Einschätzung nichts erzwingen; bei Bewusstlosigkeit Atmung prüfen.']},
+ abdoUrgent:{cls:'orange',title:'Bauchschmerzen mit Fieber – dringende Abklärung',text:'Keine eindeutigen 112-Warnzeichen bestätigt, aber Bauchschmerzen mit Fieber sollten zeitnah medizinisch beurteilt werden.',steps:['Schonung und Verlauf beobachten.','Bei Verschlechterung, Kreislaufproblemen, Bewusstseinsstörung, Blutung oder sehr starken Schmerzen 112.','Wenn es dringend ist und die Praxis geschlossen ist: 116117.']},
+
+ electricHigh:{cls:'red',title:'⚡ Hochspannung – Abstand halten + 112',text:'Bei Hochspannung besteht Lebensgefahr für Helfende.',steps:['Person NICHT berühren und nicht selbst zur Stromquelle gehen.','Großen Sicherheitsabstand halten und andere Personen fernhalten.','112 anrufen und ausdrücklich Hochspannungsunfall melden.','Rettung erst nach Freigabe durch Fachpersonal.']},
+ electricLow:{cls:'red',title:'⚡ Stromquelle zuerst sicher unterbrechen',text:'Eigenschutz hat Vorrang.',steps:['Person nicht direkt anfassen, solange Stromkontakt möglich ist.','Wenn gefahrlos möglich: Gerät ausschalten, Stecker ziehen oder Sicherung/Hauptschalter ausschalten.','Nur bei Haushaltsstrom und wenn gefahrlos möglich kann ein nichtleitender trockener Gegenstand helfen, Abstand zur Stromquelle herzustellen.','Danach 112, Bewusstsein und Atmung prüfen.']},
+ electric112:{cls:'red',title:'Stromunfall – 112',text:'Nach einem Stromunfall können ernste innere Folgen auftreten.',steps:['112 anrufen.','Stromquelle muss sicher ausgeschaltet sein, bevor die Person berührt wird.','Brandwunden locker/keimfrei bedecken.','Bewusstsein und Atmung wiederholt prüfen.']},
+ chokeCough:{cls:'orange',title:'Wirksamer Husten – zum Husten ermutigen',text:'Solange die Person kräftig husten und sprechen kann, soll sie weiter husten.',steps:['Zum kräftigen Husten auffordern.','Nicht blind mit den Fingern in den Mund greifen.','Zustand beobachten; wird Husten unwirksam oder Atmung schlechter, sofort weiter im Notfallpfad.']},
+ chokeSevere:{cls:'red',title:'Schwere Atemwegsverlegung – 112',text:'Die Person kann nicht wirksam husten/sprechen oder bekommt kaum Luft.',steps:['112 veranlassen.','Bei Erwachsenen/Kindern über 1 Jahr: bis zu 5 kräftige Schläge zwischen die Schulterblätter; wenn erfolglos, bis zu 5 Oberbauchkompressionen; abwechselnd fortführen.','Wird die Person bewusstlos: vorsichtig zu Boden bringen, Atmung prüfen und bei fehlender normaler Atmung HLW beginnen.','Sichtbaren Fremdkörper nur entfernen, wenn er leicht greifbar ist; nicht blind in den Mund greifen.']},
+ burnEmergency:{cls:'red',title:'Schwere Verbrennung – 112 + Sofortmaßnahmen',text:'Größe, Tiefe oder Atemwegsbeteiligung sprechen für eine schwere Verbrennung.',steps:['Hitzequelle beenden und Eigenschutz beachten.','112 anrufen.','Anhaftende/eingebrannte Kleidung nicht abreißen.','Großflächige Verbrennungen nicht ausgedehnt kühlen; Unterkühlung vermeiden.','Brandwunden locker und keimfrei bedecken und Person warm halten.','Bei Gesichts-/Atemwegsbeteiligung Atmung engmaschig beobachten.']},
+ burnUrgent:{cls:'orange',title:'Verbrennung – dringende ärztliche Abklärung',text:'Die Verbrennung sollte zeitnah medizinisch beurteilt werden.',steps:['Hitzequelle entfernen.','Kleinflächige Verbrennung sofort örtlich mit fließendem kühlem Wasser kühlen; kein Eis.','Brandblasen nicht öffnen und keine Hausmittel auftragen.','Locker keimfrei bedecken und Auskühlung vermeiden.','Bei Verschlechterung, Atemproblemen oder großflächiger/tiefer Verbrennung 112.']},
+ burnMinor:{cls:'blue',title:'Kleinflächige oberflächliche Verbrennung',text:'Keine schweren Warnzeichen bestätigt.',steps:['Hitzequelle entfernen.','Betroffene kleine Stelle mit fließendem kühlem Wasser kühlen; kein Eis.','Blasen nicht öffnen und keine Hausmittel verwenden.','Locker sauber/keimfrei bedecken; bei zunehmenden Beschwerden ärztlich abklären.']},
+ vomitHydration:{cls:'blue',title:'Erbrechen – Flüssigkeit und Verlauf beobachten',text:'Keine akuten 112-Warnzeichen bestätigt.',steps:['In kleinen Schlucken Flüssigkeit anbieten, sofern die Person wach ist und sicher schlucken kann.','Bei anhaltendem Erbrechen, deutlicher Austrocknung, Verschlechterung oder Unsicherheit ärztlich abklären bzw. 116117.','Bei Blut, Bewusstseinsstörung, schwerer Atemnot oder Kreislaufkollaps 112.']},
+ openFracture:{cls:'red',title:'Offener Knochenbruch / Knochen sichtbar – 112',text:'Nicht einrenken oder zurückschieben.',steps:['112 anrufen.','Verletzten Körperteil in vorgefundener Position ruhigstellen und polstern.','Offene Wunde möglichst keimfrei abdecken; sichtbaren Knochen nicht zurückschieben.','Bei starker Blutung Blutstillung durchführen, ohne den Knochen zu manipulieren.']},
+ fractureCare:{cls:'orange',title:'Möglicher Knochenbruch / schwere Verletzung',text:'Fehlstellung, starke Schwellung oder Funktionsverlust müssen medizinisch beurteilt werden.',steps:['Nicht einrenken und keine Bewegungsversuche machen.','Körperteil in vorgefundener Position ruhigstellen und weich polstern.','Bei geschlossenem Bruch/Schwellung vorsichtig kühlen.','Bei offener Wunde keimfrei abdecken.','Bei schwerem Unfall, Kreislaufproblemen, starker Blutung oder deutlicher Verschlechterung 112.']},
+ softTissueCare:{cls:'blue',title:'Schwellung nach Verletzung – keine schweren Warnzeichen bestätigt',text:'Eine Prellung, Verstauchung oder andere Verletzung ist möglich.',steps:['Belastung beenden und verletzten Bereich schonen.','Vorsichtig kühlen und wenn angenehm hochlagern.','Bei zunehmenden Schmerzen/Schwellung, Bewegungsunfähigkeit oder Unsicherheit ärztlich abklären.']},
+
+ severeBleeding:{cls:'red',title:'Starke Blutung – 112 + Blutung sofort stillen',text:'Eine starke oder nicht kontrollierbare Blutung ist ein Notfall.',steps:['112 anrufen bzw. durch eine zweite Person anrufen lassen.','Wenn möglich Einmalhandschuhe verwenden.','Sauberes Tuch oder Wundauflage direkt auf die Wunde drücken und den Druck halten.','An Arm oder Bein kann ein Druckverband angelegt werden. Wenn er durchblutet, weiter Druck ausüben.','Am Kopf oder Hals mit der Hand bzw. einer Wundauflage direkten Druck ausüben, soweit möglich.','Person betreuen und bis zum Eintreffen des Rettungsdienstes beobachten.']},
+ unconsciousBreathing:{cls:'red',title:'Bewusstlos, aber normale Atmung – 112',text:'Bewusstlosigkeit ist ein Notfall. Da normale Atmung vorhanden ist, wird keine Herzdruckmassage begonnen.',steps:['112 anrufen.','Atemwege frei halten und die Person in stabile Seitenlage bringen, sofern keine Situation dagegen spricht.','Atmung fortlaufend kontrollieren. Wenn keine normale Atmung mehr vorhanden ist, sofort mit Wiederbelebung beginnen und AED einsetzen, sobald verfügbar.']},
+ red:{cls:'red',title:'Warnzeichen – 112',text:'Die Antworten enthalten Warnzeichen, bei denen Lebensgefahr oder bleibende Schäden nicht sicher ausgeschlossen werden können.',steps:['112 anrufen und Situation schildern.','Betroffene Person nicht allein lassen.','Bei Bewusstlosigkeit Atmung prüfen; bei fehlender normaler Atmung Wiederbelebung beginnen.']},
+ cpr:{cls:'red',title:'Keine normale Atmung – 112 + Wiederbelebung',text:'Akuter lebensbedrohlicher Notfall.',steps:['112 veranlassen.','Sofort Herz-Lungen-Wiederbelebung beginnen.','AED verwenden, wenn verfügbar.']},
+ urgent:{cls:'orange',title:'Dringende medizinische Abklärung',text:'Keine eindeutigen 112-Warnzeichen bestätigt, aber die Beschwerden sollten zeitnah medizinisch beurteilt werden.',steps:['Wenn die Praxis geschlossen ist und es nicht bis zur nächsten Sprechzeit warten kann: 116117.','Bei Verschlechterung oder neuen Warnzeichen sofort 112.']},
+ medical:{cls:'blue',title:'Keine akuten Warnzeichen bestätigt',text:'Der Kompass stellt keine Diagnose und kann Erkrankungen nicht ausschließen.',steps:['Bei anhaltenden, wiederkehrenden oder unklaren Beschwerden ärztlich abklären.','Bei dringenden Beschwerden außerhalb der Praxiszeiten 116117.','Bei Verschlechterung oder Lebensgefahr 112.']},
+ poison:{cls:'blue',title:'Giftnotruf kontaktieren',text:'Bei Vergiftungsverdacht ohne lebensbedrohliche Symptome kann ein Giftinformationszentrum beraten.',steps:['Produkt/Verpackung, Alter/Gewicht, mögliche Menge, Zeitpunkt und Aufnahmeweg bereithalten.','Giftnotruf anrufen und Anweisungen befolgen.','Bei schweren Symptomen oder Verschlechterung 112.']}
+};
+const POISON_CENTERS=[['Berlin','030 19240','03019240'],['Bonn','0228 19240','022819240'],['Erfurt','0361 730730','0361730730'],['Freiburg','0761 19240','076119240'],['Göttingen','0551 19240','055119240'],['Mainz','06131 19240','0613119240'],['München','089 19240','08919240']];
+
+function safeTxt(x){return String(x).replace(/[<>&"]/g,m=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[m]))}
+function foldText(x){
+ return String(x||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ß/g,'ss')
+  .replace(/[^a-z0-9\s-]/g,' ').replace(/\s+/g,' ').trim();
+}
+const SAFE_SYNONYMS={
+ 'ohnmacht':'bewusstlos','ohnmachtig':'bewusstlos','bewustlos':'bewusstlos','bewusstlo':'bewusstlos','bewust':'bewusstlos',
+ 'luftnot':'atemnot','kurzatmig':'atemnot','keine luft':'atemnot',
+ 'blutet':'blutung','blutend':'blutung','wunde':'blutung','platzwunde':'blutung','schnittwunde':'blutung',
+ 'brustschmerz':'brust schmerz','brustschmerzen':'brust schmerz','brustdruck':'brust schmerz',
+ 'kopfschmerz':'kopf schmerz','kopfschmerzen':'kopf schmerz','bauchschmerz':'bauch schmerz','bauchschmerzen':'bauch schmerz',
+ 'schlaganfall':'lahmung sprachstorung','herzinfarkt':'brust schmerz','verbruhung':'verbrennung',
+ 'sehprobleme':'sehstorung','sehverlust':'sehstorung','doppelbilder':'sehstorung','verwaschene sprache':'sprachstorung',
+ 'taubheit':'taub','anaphylaxie':'allergie','allergisch':'allergie','gift':'vergiftung','vergiftet':'vergiftung'
+};
+function editDistance(a,b){
+ const m=a.length,n=b.length,d=Array.from({length:m+1},()=>Array(n+1).fill(0));
+ for(let i=0;i<=m;i++)d[i][0]=i; for(let j=0;j<=n;j++)d[0][j]=j;
+ for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
+ return d[m][n];
+}
+function normalize(q){
+ let x=foldText(q);
+ Object.entries(SAFE_SYNONYMS).sort((a,b)=>b[0].length-a[0].length).forEach(([a,b])=>{
+   const aa=foldText(a).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+   x=x.replace(new RegExp('(^|\\\\s)'+aa+'(?=\\\\s|$)','g'),(m,p)=>p+b);
+ });
+ return x.replace(/\s+/g,' ').trim();
+}
+function tokens(q){return normalize(q).split(' ').filter(Boolean)}
+function keyMatch(token,key){
+ token=foldText(token); key=foldText(key);
+ if(token===key)return true;
+ if(token.length<5||key.length<5)return false;
+ return editDistance(token,key)<=(Math.max(token.length,key.length)>=9?2:1);
+}
+function hasTok(toks,key){
+ return foldText(key).split(' ').filter(Boolean).every(k=>toks.some(t=>keyMatch(t,k)));
+}
+
+function categoryScore(rule,toks){
+ let score=0;
+ (rule.any||[]).forEach(k=>{if(hasTok(toks,k))score+=4});
+ (rule.keys||[]).forEach(k=>{if(hasTok(toks,k))score+=2});
+ return score;
+}
+let current=null,step=0;
+
+function scenarioKind(t){
+ const raw=t.join(' ');
+ if(hasTok(t,'stromschlag')||raw.includes('stromunfall')||raw.includes('elektrisch')) return {kind:'electric',title:'Stromunfall / Stromschlag'};
+ if((raw.includes('verschluck')||hasTok(t,'gegenstand'))&&(raw.includes('gegenstand')||raw.includes('verschluck'))) return {kind:'choking',title:'Gegenstand verschluckt / Atemwegsverlegung'};
+ if(hasTok(t,'verbrennung')||raw.includes('verbruh')||raw.includes('heiss')||raw.includes('heis')||raw.includes('ol')) return {kind:'burn2',title:'Verbrennung / Verbrühung'};
+ if((hasTok(t,'erbrechen')||raw.includes('schwall'))&&(raw.includes('pilz')||raw.includes('gift')||raw.includes('verdorben')||raw.includes('falsch gegessen'))) return {kind:'vomitpoison',title:'Erbrechen + möglicher Vergiftungs-/Lebensmittelkontakt'};
+ if(hasTok(t,'erbrechen')||raw.includes('schwall')) return {kind:'vomit2',title:'Erbrechen'};
+ if((hasTok(t,'schwellung')||raw.includes('geschwollen'))&&(hasTok(t,'sturz')||raw.includes('fahrrad')||raw.includes('rad'))) return {kind:'trauma2',title:'Schwellung / Verletzung nach Sturz'};
+ if((raw.includes('allerg')||raw.includes('wespen')||raw.includes('bienen'))&&(raw.includes('stich')||raw.includes('reaktion')||raw.includes('allerg'))) return {kind:'allergy2',title:'Allergische Reaktion / Insektenstich'};
+ if((hasTok(t,'brust')||raw.includes('brustdruck')||raw.includes('enge'))&&(raw.includes('druck')||raw.includes('schmerz')||raw.includes('enge'))) return {kind:'chest2',title:'Druck / Schmerz / Enge im Brustkorb'};
+ if((hasTok(t,'bauch')||raw.includes('bauchschmerz'))&&(hasTok(t,'fieber')||raw.includes('fieber'))) return {kind:'abdofever',title:'Bauchschmerzen mit Fieber'};
+ return null;
+}
+
+function showMatches(){
+ const raw=$('triageSearch')?.value||'',t=tokens(raw),box=$('symptomMatches'); if(!box)return;
+ $('triageFlow').innerHTML='';
+ if(!raw.trim()){box.innerHTML='<span class="muted">Du kannst mehrere Angaben kombinieren, z. B. „starke Blutung Kopf nach Sturz“.</span>';return;}
+ let ranked=CATEGORY_RULES.map(r=>({r,score:categoryScore(r,t)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score);
+ const sc=scenarioKind(t);
+ if(sc){ranked.unshift({r:{kind:sc.kind,title:sc.title,id:'scenario'},score:200});}
+ // Bonus: head + bleeding/injury should prioritize head injury.
+ if(hasTok(t,'kopf')&&(hasTok(t,'blutung')||hasTok(t,'sturz'))){
+   ranked=ranked.filter(x=>x.r.id!=='headinjury'); ranked.unshift({r:CATEGORY_RULES.find(x=>x.id==='headinjury'),score:99});
+ }
+ box.innerHTML=ranked.length?ranked.slice(0,6).map(x=>`<button class="symptomMatch" data-kind="${x.r.kind}" data-title="${safeTxt(x.r.title)}"><strong>${safeTxt(x.r.title)}</strong><span class="muted">Geführte Abfrage starten →</span></button>`).join(''):`<button class="symptomMatch" data-kind="general" data-title="Allgemeine Beschwerden"><strong>Allgemeine geführte Abfrage</strong><span class="muted">Kein genauer Begriff erkannt – Sicherheits- und Dringlichkeitscheck starten →</span></button>`;
+ box.querySelectorAll('[data-kind]').forEach(b=>b.onclick=()=>startFlow(b.dataset.kind,b.dataset.title));
+}
+function startFlow(kind,title){
+ current={kind,title};step=0;
+ $('triageSearch').disabled=true;
+ $('symptomMatches').innerHTML='';
+ renderQuestion();
+}
+function renderQuestion(){
+ const flow=Q[current.kind]||Q.general,item=flow[step];
+ $('triageFlow').innerHTML=`<div class="questionBox"><div class="muted">${safeTxt(current.title)} · Frage ${step+1}</div><h3>${safeTxt(item[0])}</h3><div class="answerRow"><button id="yes">Ja</button><button id="no" class="secondary">Nein</button></div><div class="actions"><button id="restart" class="secondary">↩ Neu starten</button></div></div>`;
+ $('yes').onclick=()=>answer(item[1]);$('no').onclick=()=>answer(item[2]);$('restart').onclick=resetTriage;
+}
+function answer(next){if(typeof next==='number'){step=next;renderQuestion();}else renderResult(next);}
+function contextualEmergencySteps(){
+ if(!current)return null;
+ if(current.kind==='bleeding'||current.kind==='headinjury')return ['112 anrufen.','Blutung mit sauberer Wundauflage/Tuch durch direkten Druck stillen.','Bei starker Kopf-/Halsblutung direkten Druck auf die Wundauflage ausüben.','Person betreuen und Zustand beobachten.'];
+ if(current.kind==='conscious')return ['112 anrufen.','Atmung prüfen.','Bei normaler Atmung stabile Seitenlage und Atmung fortlaufend kontrollieren.','Bei fehlender normaler Atmung sofort HLW beginnen und AED einsetzen, sobald verfügbar.'];
+ if(current.kind==='breathing')return ['112 anrufen.','Person nicht allein lassen und eine Position unterstützen, in der sie am besten atmen kann.','Bei Bewusstlosigkeit Atmung prüfen; bei fehlender normaler Atmung HLW beginnen.'];
+ if(current.kind==='neuro')return ['112 anrufen.','Zeitpunkt des Beginns merken.','Person nicht allein lassen.','Bei Bewusstlosigkeit Atmung prüfen.'];
+ return null;
+}
+function renderResult(key){
+ if(key==='cpr'){renderCPRChoice();return;}
+ let r=RESULT[key]||RESULT.medical;
+ if(key==='red'){const extra=contextualEmergencySteps();if(extra)r={...r,steps:extra};}
+ $('triageFlow').innerHTML=`<div class="triageResult ${r.cls}"><h3>${safeTxt(r.title)}</h3><p>${safeTxt(r.text)}</p><h3>Sofortmaßnahmen / nächster Schritt</h3><ul>${r.steps.map(x=>`<li>${safeTxt(x)}</li>`).join('')}</ul><div class="callRow">${['red','cpr','unconsciousBreathing','severeBleeding','electricHigh','electricLow','electric112','chokeSevere','burnEmergency','openFracture','allergyEmergency','allergyMouth','chestEmergency','abdoEmergency'].includes(key)?'<a class="callBtn" href="tel:112">📞 112 anrufen</a>':''}${key==='urgent'||key==='medical'?'<a class="callBtn secondary" href="tel:116117">📞 116117</a>':''}${key==='poison'?'<button id="poisonJump" class="secondary">☠️ Giftnotrufnummern</button>':''}</div><div class="actions"><button id="restart" class="secondary">↩ Neuer Check</button><a class="callBtn secondary" href="https://www.116117.de/de/patienten-navi.php" target="_blank" rel="noopener">Offizielles 116117 Patienten-Navi</a></div></div>`;
+ $('restart').onclick=resetTriage;if($('poisonJump'))$('poisonJump').onclick=()=>document.querySelector('#poisonList').scrollIntoView({behavior:'smooth'});
+}
+
+function renderCPRChoice(){
+ $('triageFlow').innerHTML=`<div class="cprGuide"><h3>❤️ Nicht ansprechbar + keine normale Atmung – Herz-Kreislauf-Stillstand möglich</h3>
+ <p><strong>112 veranlassen und sofort mit Herzdruckmassage beginnen.</strong> Laut GRC/ERC soll ein AED verwendet werden, sobald er verfügbar ist; die Herzdruckmassage dabei möglichst wenig unterbrechen.</p>
+ <div class="questionBox"><h3>Ist ein AED / Defibrillator verfügbar oder kann jemand einen holen?</h3>
+ <div class="answerRow"><button id="aedYes">Ja – AED verfügbar</button><button id="aedNo" class="secondary">Nein – kein AED</button></div></div>
+ <div class="callRow"><a class="callBtn" href="tel:112">📞 112 anrufen</a></div></div>`;
+ $('aedYes').onclick=renderAEDGuide;
+ $('aedNo').onclick=renderHLWGuide;
+}
+function renderAEDGuide(){
+ $('triageFlow').innerHTML=`<div class="cprGuide"><h3>⚡ AED verwenden – gleichzeitig HLW fortführen</h3>
+ <div class="cprStep"><span class="cprBig">1. 112 + Herzdruckmassage</span><br>Eine Person ruft 112, eine andere holt wenn möglich den AED. Herzdruckmassage möglichst ohne Unterbrechung fortführen.</div>
+ <div class="cprStep"><span class="cprBig">2. AED einschalten</span><br>Gerät öffnen/einschalten und den gesprochenen bzw. angezeigten Anweisungen folgen.</div>
+ <div class="cprStep"><span class="cprBig">3. Brust freimachen + Elektroden kleben</span><br>Elektroden entsprechend den Abbildungen auf den Elektroden bzw. dem Gerät auf die nackte Brust kleben.</div>
+ <div class="cprStep"><span class="cprBig">4. Analyse</span><br>Wenn der AED zur Analyse auffordert: Niemand berührt die Person. Den Anweisungen des Geräts genau folgen.</div>
+ <div class="cprStep"><span class="cprBig">5. Schock nur nach AED-Anweisung</span><br>Fordert das Gerät einen Schock: sicherstellen, dass niemand die Person berührt, dann den Schock nach Geräteanweisung auslösen. Bei vollautomatischen Geräten den Geräteanweisungen folgen.</div>
+ <div class="cprStep"><span class="cprBig">6. Sofort weiterdrücken</span><br>Nach Analyse bzw. Schock sofort wieder Herzdruckmassage durchführen und weiter den AED-Anweisungen folgen.</div>
+ <p><strong>Herzdruckmassage:</strong> Mitte des Brustkorbs, 100–120/min, mindestens 5 cm und höchstens 6 cm tief, Brustkorb nach jeder Kompression vollständig entlasten.</p>
+ <div class="callRow"><a class="callBtn" href="tel:112">📞 112</a></div>
+ <div class="actions"><button id="restart" class="secondary">↩ Neuer Check</button></div></div>`;
+ $('restart').onclick=resetTriage;
+}
+function renderHLWGuide(){
+ $('triageFlow').innerHTML=`<div class="cprGuide"><h3>❤️ Kein AED verfügbar – HLW sofort fortführen</h3>
+ <div class="cprStep"><span class="cprBig">1. 112</span><br>Notruf veranlassen. Wenn möglich Telefon auf Lautsprecher stellen und den Anweisungen der Leitstelle folgen.</div>
+ <div class="cprStep"><span class="cprBig">2. Hände in die Mitte des Brustkorbs</span><br>Handballen auf die untere Hälfte des Brustbeins / Mitte des Brustkorbs, zweite Hand darüber, Arme gestreckt.</div>
+ <div class="cprStep"><span class="cprBig">3. Drücken: 100–120 pro Minute</span><br>Mindestens 5 cm, höchstens 6 cm tief drücken. Nach jeder Kompression vollständig entlasten. Unterbrechungen möglichst vermeiden.</div>
+ <div class="cprStep"><span class="cprBig">4. Beatmung</span><br>Wenn du in Beatmung geschult bist: 30 Kompressionen und 2 Beatmungen. Wenn du nicht darin geschult bist: ununterbrochene Herzdruckmassage.</div>
+ <div class="cprStep"><span class="cprBig">5. Nicht aufhören</span><br>Fortführen, bis professionelle Hilfe übernimmt, die Person wieder normal atmet oder ein AED verfügbar wird.</div>
+ <div class="questionBox"><h3>Ist inzwischen ein AED verfügbar?</h3><div class="answerRow"><button id="aedLater">Ja – AED ist jetzt da</button></div></div>
+ <div class="callRow"><a class="callBtn" href="tel:112">📞 112</a></div>
+ <div class="actions"><button id="restart" class="secondary">↩ Neuer Check</button></div></div>`;
+ $('aedLater').onclick=renderAEDGuide;
+ $('restart').onclick=resetTriage;
+}
+
+function resetTriage(){current=null;step=0;$('triageFlow').innerHTML='';$('triageSearch').disabled=false;$('triageSearch').value='';showMatches();$('triageSearch').focus();}
+function renderPoison(){$('poisonList').innerHTML=POISON_CENTERS.map(([c,d,n])=>`<div class="row"><strong>${c}</strong><span>${d}</span><span></span><span></span><a class="callBtn secondary" href="tel:${n}">Anrufen</a></div>`).join('');}
+if($('triageSearch'))$('triageSearch').oninput=showMatches;
+if($('firstAidQuick'))$('firstAidQuick').onclick=()=>activateTab('firstaid');
+showMatches();renderPoison();
+
+const BIO_ENABLED_KEY='schichtiva_bio_enabled_v1';
+const BIO_CRED_KEY='schichtiva_bio_credential_v1';
+let lastHiddenAt=0;
+let bioPromptRunning=false;
+
+function b64url(bytes){
+  return btoa(String.fromCharCode(...bytes))
+    .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+}
+function fromB64url(s){
+  s=s.replace(/-/g,'+').replace(/_/g,'/');
+  while(s.length%4)s+='=';
+  return Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+}
+function randomBytes(n=32){
+  let a=new Uint8Array(n);crypto.getRandomValues(a);return a;
+}
+function bioSupported(){
+  return !!(window.PublicKeyCredential && navigator.credentials && window.isSecureContext);
+}
+function bioEnabled(){
+  return localStorage.getItem(BIO_ENABLED_KEY)==='1' && !!localStorage.getItem(BIO_CRED_KEY);
+}
+function setBioStatus(msg){let x=$('bioStatus');if(x)x.textContent=msg}
+function refreshBioStatus(){
+  if(!bioSupported()){
+    setBioStatus('Auf diesem Browser/über diese Adresse ist WebAuthn nicht verfügbar. Für den Test die HTTPS-Testadresse verwenden.');
+    return;
+  }
+  setBioStatus(bioEnabled()?'✅ App-Schutz ist aktiviert.':'App-Schutz ist noch nicht aktiviert.');
+}
+
+async function setupBiometric(){
+  if(!bioSupported()){
+    alert('Biometrie/WebAuthn ist hier nicht verfügbar. Öffne Schichtiva über die HTTPS-Testadresse auf dem Handy.');
+    return false;
+  }
+  try{
+    const userId=randomBytes(16);
+    const cred=await navigator.credentials.create({
+      publicKey:{
+        challenge:randomBytes(32),
+        rp:{name:'Schichtiva'},
+        user:{id:userId,name:'schichtiva-local-user',displayName:'Schichtiva Nutzer'},
+        pubKeyCredParams:[
+          {type:'public-key',alg:-7},
+          {type:'public-key',alg:-257}
+        ],
+        authenticatorSelection:{
+          authenticatorAttachment:'platform',
+          residentKey:'discouraged',
+          userVerification:'required'
+        },
+        timeout:60000,
+        attestation:'none'
+      }
+    });
+    if(!cred)throw new Error('Keine Anmeldung erstellt');
+    localStorage.setItem(BIO_CRED_KEY,b64url(new Uint8Array(cred.rawId)));
+    localStorage.setItem(BIO_ENABLED_KEY,'1');
+    refreshBioStatus();
+    alert('App-Schutz ist aktiviert.');
+    return true;
+  }catch(err){
+    console.error(err);
+    alert('Einrichtung wurde abgebrochen oder ist auf diesem Gerät nicht verfügbar.');
+    return false;
+  }
+}
+
+async function verifyBiometric(){
+  if(!bioEnabled())return true;
+  if(!bioSupported())throw new Error('WebAuthn nicht verfügbar');
+  const id=fromB64url(localStorage.getItem(BIO_CRED_KEY));
+  const assertion=await navigator.credentials.get({
+    publicKey:{
+      challenge:randomBytes(32),
+      allowCredentials:[{type:'public-key',id:id,transports:['internal']}],
+      userVerification:'required',
+      timeout:60000
+    }
+  });
+  return !!assertion;
+}
+
+async function unlockApp(auto=false){
+  if(bioPromptRunning)return false;
+  bioPromptRunning=true;
+  $('lockError').textContent=auto?'Geräte-Entsperrung wird gestartet …':'';
+  try{
+    if(await verifyBiometric()){
+      $('lockScreen').classList.remove('open');
+      $('lockError').textContent='';
+      return true;
+    }
+  }catch(err){
+    console.error(err);
+    $('lockError').textContent='Entsperrung abgebrochen oder fehlgeschlagen. Tippe unten zum erneuten Versuch.';
+  }finally{
+    bioPromptRunning=false;
+  }
+  return false;
+}
+
+function lockAndAutoUnlock(){
+  if(!bioEnabled())return;
+  $('lockScreen').classList.add('open');
+  // Give the page a moment to paint the lock screen, then request device verification.
+  setTimeout(()=>unlockApp(true),250);
+}
+
+function lockApp(){
+  if(bioEnabled())$('lockScreen').classList.add('open');
+}
+
+$('setupBio').onclick=setupBiometric;
+$('testBio').onclick=async()=>{
+  if(!bioEnabled())return alert('Bitte zuerst den App-Schutz einrichten.');
+  try{
+    if(await verifyBiometric())alert('Entsperrung erfolgreich.');
+  }catch(err){
+    alert('Entsperrung fehlgeschlagen oder wurde abgebrochen.');
+  }
+};
+$('disableBio').onclick=()=>{
+  if(!bioEnabled())return alert('Der App-Schutz ist nicht aktiviert.');
+  if(!confirm('App-Schutz wirklich deaktivieren?'))return;
+  localStorage.removeItem(BIO_ENABLED_KEY);
+  localStorage.removeItem(BIO_CRED_KEY);
+  $('lockScreen').classList.remove('open');
+  refreshBioStatus();
+  alert('App-Schutz wurde deaktiviert.');
+};
+$('unlockBio').onclick=unlockApp;
+
+window.addEventListener('load',()=>{
+  refreshBioStatus();
+  if(bioEnabled())lockAndAutoUnlock();
+});
+
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden){
+    lastHiddenAt=Date.now();
+  }else if(bioEnabled() && lastHiddenAt && Date.now()-lastHiddenAt>15000){
+    lockAndAutoUnlock();
+  }
+});
+
+</script>
+<script>
+const V4_PHONE_KEY='schichtiva_v4_phone_list';
+const V4_APPT_KEY='schichtiva_v4_appointments';
+const V4_NOTIFIED_KEY='schichtiva_v4_notified';
+let selectedHourV4='09', selectedMinuteV4='00', selectedColorV4='#8b5cf6', clockModeV4='hour';
+const V4_COLORS=['#8b5cf6','#2563eb','#059669','#d97706','#dc2626','#db2777','#0891b2','#64748b'];
+
+function v4Load(k){try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(e){return []}}
+function v4Save(k,v){localStorage.setItem(k,JSON.stringify(v))}
+function v4Esc(x){return String(x||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function pad2(n){return String(n).padStart(2,'0')}
+
+function openPhoneModalV4(){const m=document.getElementById('phoneModalV4');if(!m)return;m.classList.add('open');m.setAttribute('aria-hidden','false');setTimeout(()=>document.getElementById('phoneNameV4')?.focus(),50)}
+function closePhoneModalV4(){const m=document.getElementById('phoneModalV4');if(!m)return;m.classList.remove('open');m.setAttribute('aria-hidden','true')}
+function addPhoneV4(){const n=document.getElementById('phoneNameV4').value.trim(),tel=document.getElementById('phoneNumberV4').value.trim();if(!n||!tel){alert('Bitte Name und Telefonnummer eingeben.');return}const a=v4Load(V4_PHONE_KEY);a.push({id:Date.now(),name:n,tel});v4Save(V4_PHONE_KEY,a);document.getElementById('phoneNameV4').value='';document.getElementById('phoneNumberV4').value='';closePhoneModalV4();renderPhonesV4()}
+function delPhoneV4(id){if(!confirm('Rufnummer wirklich löschen?'))return;v4Save(V4_PHONE_KEY,v4Load(V4_PHONE_KEY).filter(x=>x.id!==id));renderPhonesV4()}
+function renderPhonesV4(){const el=document.getElementById('phoneItemsV4');if(!el)return;const a=v4Load(V4_PHONE_KEY);el.innerHTML=a.length?a.map(x=>`<div class="phoneRowV4"><div class="phoneNameV4">${v4Esc(x.name)}</div><div class="phoneNumV4">${v4Esc(x.tel)}</div><a class="phoneActionV4 phoneCallV4" href="tel:${v4Esc(x.tel)}">📞 Anrufen</a><button class="phoneActionV4 phoneDeleteV4" onclick="delPhoneV4(${x.id})">🗑 Löschen</button></div>`).join(''):'<p class="muted">Noch keine eigenen Rufnummern gespeichert.</p>'}
+
+function renderColorPickerV4(){
+ const el=document.getElementById('colorPickerV4');if(!el)return;
+ el.innerHTML=V4_COLORS.map(c=>`<button type="button" class="colorChoiceV4 ${c===selectedColorV4?'active':''}" data-color="${c}" style="background:${c}" aria-label="Farbe ${c}"></button>`).join('');
+ el.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>{selectedColorV4=b.dataset.color;renderColorPickerV4();const card=document.querySelector('.clockCardV4');if(card)card.style.setProperty('--clock-accent',selectedColorV4)});
+}
+
+function openClockV4(){
+ clockModeV4='hour';
+ const card=document.querySelector('.clockCardV4');if(card)card.style.setProperty('--clock-accent',selectedColorV4);
+ document.getElementById('clockModalV4')?.classList.add('open');
+ document.getElementById('clockModalV4')?.setAttribute('aria-hidden','false');
+ renderClockFaceV4();
+}
+function closeClockV4(){document.getElementById('clockModalV4')?.classList.remove('open');document.getElementById('clockModalV4')?.setAttribute('aria-hidden','true')}
+function renderClockFaceV4(){
+ const face=document.getElementById('clockFaceV4');if(!face)return;
+ face.querySelectorAll('.clockNumV4').forEach(x=>x.remove());
+ const isHour=clockModeV4==='hour';
+ const vals=isHour?Array.from({length:24},(_,i)=>i):Array.from({length:12},(_,i)=>i*5);
+ const cx=150,cy=150;
+ vals.forEach((num,i)=>{
+   const outer=isHour ? num>=12 : true;
+   const ringRadius=isHour?(outer?116:82):116;
+   const angle=(isHour?(num%12)/12:num/60)*Math.PI*2-Math.PI/2;
+   const b=document.createElement('button');b.type='button';b.className='clockNumV4';
+   b.style.left=(cx+Math.cos(angle)*ringRadius)+'px';b.style.top=(cy+Math.sin(angle)*ringRadius)+'px';
+   b.textContent=isHour?pad2(num):pad2(num);
+   const active=isHour?Number(selectedHourV4)===num:Number(selectedMinuteV4)===num;
+   if(active)b.classList.add('active');
+   b.onclick=()=>{
+     if(isHour){selectedHourV4=pad2(num);clockModeV4='minute';}
+     else selectedMinuteV4=pad2(num);
+     renderClockFaceV4();updateClockPreviewV4();
+   };
+   face.appendChild(b);
+ });
+ document.getElementById('clockModeTitleV4').textContent=isHour?'Stunde wählen (00–23)':'Minute wählen';
+ document.getElementById('clockBackV4').style.display=isHour?'none':'inline-block';
+ updateClockPreviewV4();
+ updateClockHandV4();
+}
+function updateClockHandV4(){
+ const hand=document.getElementById('clockHandV4');if(!hand)return;
+ const isHour=clockModeV4==='hour';
+ const value=isHour?(Number(selectedHourV4)%12):Number(selectedMinuteV4);
+ const angle=(isHour?value/12:value/60)*360-90;
+ hand.style.width=(isHour?'78px':'112px');
+ hand.style.transform=`rotate(${angle}deg)`;
+}
+function updateClockPreviewV4(){
+ const t=`${selectedHourV4}:${selectedMinuteV4}`;
+ document.getElementById('clockTimePreviewV4')&&(document.getElementById('clockTimePreviewV4').textContent=t);
+ document.getElementById('selectedTimeV4')&&(document.getElementById('selectedTimeV4').textContent=t);
+}
+
+function repeatOccurrenceDatesV4(a, from, to){
+ const dates=[];
+ const start=new Date(a.date+'T00:00:00');
+ const endMode=a.repeatEndMode||'never';
+ const endDate=a.repeatEndDate?new Date(a.repeatEndDate+'T23:59:59'):null;
+ for(let d=new Date(start);d<=to;d.setDate(d.getDate()+1)){
+   if(d<from||d<start)continue;
+   if(endMode==='date'&&endDate&&d>endDate)break;
+   let match=false;
+   if(a.repeat==='daily')match=true;
+   else if(a.repeat==='weekly')match=d.getDay()===start.getDay();
+   else if(a.repeat==='monthly')match=d.getDate()===start.getDate();
+   else if(a.repeat==='yearly')match=d.getDate()===start.getDate()&&d.getMonth()===start.getMonth();
+   if(match)dates.push(new Date(d));
+ }
+ return dates;
+}
+function occurrenceListV4(from,to){
+ const list=[];
+ v4Load(V4_APPT_KEY).forEach(a=>{
+   if(!a.repeat||a.repeat==='none'){
+     const d=new Date(`${a.date}T${a.time||'00:00'}:00`);
+     if(d>=from&&d<=to)list.push({...a,occurrenceDate:a.date});
+   }else{
+     repeatOccurrenceDatesV4(a,from,to).forEach(d=>{
+       const ds=`${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
+       list.push({...a,occurrenceDate:ds});
+     });
+   }
+ });
+ return list;
+}
+async function ensureNotificationPermissionV4(){
+ if(!('Notification' in window))return false;
+ if(Notification.permission==='granted')return true;
+ if(Notification.permission==='denied')return false;
+ try{return (await Notification.requestPermission())==='granted'}catch(e){return false}
+}
+function playToneV4(tone){
+ if(tone==='none')return;
+ try{
+   const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
+   const ctx=new AC();
+   const patterns={
+     soft:[[660,.12],[880,.16]], classic:[[880,.18],[660,.18]], double:[[880,.14],[0,.08],[880,.14]], urgent:[[880,.15],[1040,.15],[880,.15]]
+   };
+   let t=ctx.currentTime;
+   (patterns[tone]||patterns.soft).forEach(([freq,dur])=>{
+     if(freq){const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=freq;o.connect(g);g.connect(ctx.destination);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.15,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.start(t);o.stop(t+dur+.02);}
+     t+=dur;
+   });
+ }catch(e){}
+}
+function checkRemindersV4(){
+ const now=new Date(), horizon=new Date(now.getTime()+2*86400000);
+ const occ=occurrenceListV4(new Date(now.getTime()-2*86400000),horizon);
+ let notified=v4Load(V4_NOTIFIED_KEY);
+ const keepAfter=Date.now()-7*86400000;
+ notified=notified.filter(x=>x.ts>keepAfter);
+ occ.forEach(a=>{
+   const dt=new Date(`${a.occurrenceDate}T${a.time||'00:00'}:00`);
+   const remind=Number(a.reminder||0);
+   const trigger=dt.getTime()-remind*60000;
+   const key=`${a.id}_${a.occurrenceDate}_${a.time}_${remind}`;
+   if(Date.now()>=trigger&&Date.now()<dt.getTime()+60000&&!notified.some(x=>x.key===key)){
+     const body=`${a.title} um ${a.time}${remind?` – Erinnerung ${remind} Min. vorher`:''}`;
+     if('Notification' in window&&Notification.permission==='granted'){
+       try{new Notification('Schichtiva – Termin', {body,icon:'icon-192.png',tag:key})}catch(e){}
+     }
+     playToneV4(a.tone||'soft');
+     notified.push({key,ts:Date.now()});
+   }
+ });
+ v4Save(V4_NOTIFIED_KEY,notified);
+}
+function cleanupExpiredAppointmentsV4(){
+ const today=new Date();today.setHours(0,0,0,0);
+ const arr=v4Load(V4_APPT_KEY);
+ const kept=arr.filter(a=>{
+   if(a.repeat&&a.repeat!=='none')return true;
+   const d=new Date(a.date+'T00:00:00');
+   // Delete once the next calendar day has begun.
+   return d>=today;
+ });
+ if(kept.length!==arr.length){v4Save(V4_APPT_KEY,kept);renderAppointmentsV4();renderCalendarAppointmentsV4();}
+}
+
+async function addAppointmentV4(){
+ const title=document.getElementById('apptTitleV4').value.trim(),date=document.getElementById('apptDateV4').value,note=document.getElementById('apptNoteV4').value.trim();
+ if(!title||!date){alert('Bitte mindestens Termin und Datum eingeben.');return}
+ const reminder=document.getElementById('apptReminderV4').value;
+ const tone=document.getElementById('apptToneV4').value;
+ const repeat=document.getElementById('apptRepeatV4').value;
+ const repeatEndMode=document.getElementById('repeatEndModeV4').value;
+ const repeatEndDate=document.getElementById('repeatEndDateV4').value;
+ const time=`${selectedHourV4}:${selectedMinuteV4}`;
+ const a=v4Load(V4_APPT_KEY);
+ a.push({id:Date.now(),title,date,time,note,color:selectedColorV4,reminder,tone,repeat,repeatEndMode,repeatEndDate});
+ a.sort((x,y)=>(x.date+x.time).localeCompare(y.date+y.time));v4Save(V4_APPT_KEY,a);
+ await ensureNotificationPermissionV4();
+ document.getElementById('apptTitleV4').value='';document.getElementById('apptDateV4').value='';document.getElementById('apptNoteV4').value='';
+ renderAppointmentsV4();renderCalendarAppointmentsV4();checkRemindersV4();
+}
+function delAppointmentV4(id){if(!confirm('Termin wirklich löschen?'))return;v4Save(V4_APPT_KEY,v4Load(V4_APPT_KEY).filter(x=>x.id!==id));renderAppointmentsV4();renderCalendarAppointmentsV4()}
+function repeatLabelV4(a){return !a.repeat||a.repeat==='none'?'':({daily:' · täglich',weekly:' · wöchentlich',monthly:' · monatlich',yearly:' · jährlich'}[a.repeat]||'')}
+function renderAppointmentsV4(){
+ const el=document.getElementById('apptItemsV4');if(!el)return;
+ const a=v4Load(V4_APPT_KEY);
+ el.innerHTML=a.length?a.map(x=>`<div class="v4item" style="border-left:8px solid ${v4Esc(x.color||'#8b5cf6')};padding-left:10px"><strong>${v4Esc(x.title)}</strong><br>${v4Esc(x.date)} · ${v4Esc(x.time)}${repeatLabelV4(x)}<br><span class="muted">🔔 ${v4Esc(x.reminder||'0')} Min. vorher · 🔊 ${v4Esc(x.tone||'soft')}</span>${x.note?'<br>'+v4Esc(x.note):''}<div style="margin-top:7px"><button class="v4btn danger" onclick="delAppointmentV4(${x.id})">Löschen</button></div></div>`).join(''):'<p class="muted">Noch keine Termine gespeichert.</p>';
+}
+function renderCalendarAppointmentsV4(){
+ document.querySelectorAll('.appointmentBadgeV4').forEach(x=>x.remove());
+ const monthNames={Januar:1,Februar:2,März:3,April:4,Mai:5,Juni:6,Juli:7,August:8,September:9,Oktober:10,November:11,Dezember:12};
+ const title=[...document.querySelectorAll('#kal h2,#kal h3')].find(x=>Object.keys(monthNames).some(m=>(x.textContent||'').includes(m)));if(!title)return;
+ const mt=(title.textContent||'').match(/(Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember)\s+(\d{4})/);if(!mt)return;
+ const month=monthNames[mt[1]],year=Number(mt[2]);
+ const from=new Date(year,month-1,1),to=new Date(year,month,0,23,59,59);
+ occurrenceListV4(from,to).forEach(a=>{
+   const day=Number(a.occurrenceDate.slice(8,10));let cell=document.querySelector(`#kal [data-date="${a.occurrenceDate}"]`);
+   if(!cell){const c=[...document.querySelectorAll('#kal td,#kal .day,#kal .calendar-day,#kal [class*="day"]')];cell=c.find(el=>(el.firstElementChild?.textContent||'').trim()===String(day))}
+   if(cell){const b=document.createElement('span');b.className='appointmentBadgeV4';b.style.background=a.color||'#8b5cf6';b.style.color='#fff';b.style.borderColor=a.color||'#8b5cf6';b.textContent=`📅 ${a.time} ${a.title}`;cell.appendChild(b)}
+ });
+}
+function initV4Enhancements(){
+ renderPhonesV4();renderAppointmentsV4();renderColorPickerV4();updateClockPreviewV4();cleanupExpiredAppointmentsV4();renderCalendarAppointmentsV4();
+ document.getElementById('openPhoneModalV4')?.addEventListener('click',openPhoneModalV4);
+ document.getElementById('closePhoneModalV4')?.addEventListener('click',closePhoneModalV4);
+ document.getElementById('cancelPhoneModalV4')?.addEventListener('click',closePhoneModalV4);
+ document.getElementById('phoneModalV4')?.addEventListener('click',e=>{if(e.target.id==='phoneModalV4')closePhoneModalV4()});
+ document.getElementById('openClockV4')?.addEventListener('click',openClockV4);
+ document.getElementById('closeClockV4')?.addEventListener('click',closeClockV4);
+ document.getElementById('clockUseV4')?.addEventListener('click',closeClockV4);
+ document.getElementById('clockBackV4')?.addEventListener('click',()=>{clockModeV4='hour';renderClockFaceV4()});
+ document.getElementById('clockModalV4')?.addEventListener('click',e=>{if(e.target.id==='clockModalV4')closeClockV4()});
+ document.getElementById('testToneV4')?.addEventListener('click',()=>playToneV4(document.getElementById('apptToneV4').value));
+ document.getElementById('apptRepeatV4')?.addEventListener('change',e=>{document.getElementById('repeatExtraV4').style.display=e.target.value==='none'?'none':'block'});
+ document.getElementById('repeatEndModeV4')?.addEventListener('change',e=>{document.getElementById('repeatEndDateV4').style.display=e.target.value==='date'?'block':'none'});
+ document.addEventListener('click',e=>{if(e.target.closest('[data-tab="kal"]')||e.target.closest('#kal button'))setTimeout(renderCalendarAppointmentsV4,100)});
+ setInterval(()=>{cleanupExpiredAppointmentsV4();checkRemindersV4()},30000);
+ checkRemindersV4();
+}
+document.addEventListener('DOMContentLoaded',initV4Enhancements);
+</script>
+
+
+<div id="phoneModalV4" class="modalV4" aria-hidden="true">
+ <div class="modalCardV4">
+  <div class="modalHeadV4"><h3 style="margin:0">📞 Neue Rufnummer</h3><button id="closePhoneModalV4" class="modalCloseV4">✕</button></div>
+  <label>Name / Stelle</label><input id="phoneNameV4" placeholder="z. B. Hausarzt">
+  <label>Telefonnummer</label><input id="phoneNumberV4" inputmode="tel" placeholder="z. B. 01234 567890">
+  <div class="actions"><button class="v4btn" onclick="addPhoneV4()">Speichern</button><button class="v4btn secondary" id="cancelPhoneModalV4">Abbrechen</button></div>
+ </div>
+</div>
+
+
+<div id="clockModalV4" class="clockModalV4" aria-hidden="true">
+ <div class="clockCardV4" style="--clock-accent:#6d4bc3">
+  <div class="modalHeadV4"><h3 style="margin:0">🕒 Uhrzeit wählen</h3><button id="closeClockV4" class="modalCloseV4">✕</button></div>
+  <div id="clockModeTitleV4" class="clockTitleV4">Stunde wählen</div>
+  <div id="clockTimePreviewV4" class="clockTimeV4">09:00</div>
+  <div id="clockFaceV4" class="clockFaceV4"><div class="clockCenterV4"></div><div id="clockHandV4" class="clockHandV4"></div></div>
+  <div class="actions" style="justify-content:center"><button id="clockBackV4" class="v4btn secondary" style="display:none">← Stunde ändern</button><button id="clockUseV4" class="v4btn">Übernehmen</button></div>
+ </div>
+</div>
+
+</body></html>
