@@ -2,8 +2,8 @@
   "id": "./",
   "name": "Schichtiva",
   "short_name": "Schichtiva",
-  "description": "Schichtiva V4 – Dienstplan, Kalender, Termine, Telefonliste und Erste-Hilfe-Kompass.",
-  "start_url": "./?v=4",
+  "description": "Schichtiva V4 – ScanFix: räumliche Kalender-Screenshot-Erkennung.",
+  "start_url": "./?v=4-scanfix",
   "scope": "./",
   "display": "standalone",
   "display_override": [

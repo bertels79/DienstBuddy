@@ -1,14 +1,17 @@
-Schichtiva V4 – Namens-Hotfix
+Schichtiva V4 – ScanFix
 
-Geändert:
-- PWA-Name: Schichtiva
-- Kurzname: Schichtiva
-- Browser/Application-Name: Schichtiva
-- Apple-PWA-Titel: Schichtiva
-- Manifest und Service Worker bekommen einen neuen Cache-Stand.
+Neu im Scanner:
+- Parser 3.0 mit räumlicher Kalender-Screenshot-Erkennung.
+- Tesseract-Koordinaten werden gespeichert und ausgewertet.
+- Kalendertage werden als Raster erkannt.
+- Schichttexte unter einem Datum werden dem passenden Kalendertag zugeordnet.
+- Statusleisten-Uhrzeiten wie 23:11 werden nicht als Schicht interpretiert.
+- Monatsname aus dem Screenshot wird zur Datumsbildung verwendet.
+- Gespeicherte Schichtnamen wie „Früh kurz“ werden direkt erkannt.
+- Codes wie F2/S2 bleiben unterstützt.
+- Klassische Text-/Tabellen-Dienstpläne nutzen weiterhin den bisherigen Parser als Fallback.
 
-Wichtig:
-Die bestehende App-Identität/start_url wurde NICHT verändert, damit bestehende Installationen
-nicht absichtlich als neue App behandelt werden. Ob Android/Chrome den Namen eines bereits
-installierten Symbols automatisch umbenennt, hängt vom Gerät/Browser ab. Neue Installationen
-heißen definitiv Schichtiva.
+Testfall:
+Kalender-Screenshot mit Einträgen wie „Früh (F2) 06:30“, „Früh kurz 06:20“ und „Spät (S2) 14:00“.
+
+Vor Veröffentlichung bitte mit den bereitgestellten Kalender-Screenshots testen.
