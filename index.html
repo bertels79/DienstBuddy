@@ -784,10 +784,28 @@ function makeCandidate(line,date,learned){
 
   // Bei einem bekannten Schichtnamen die gespeicherten End-/Pausenzeiten nutzen.
   // Wenn der Screenshot eine einzelne Startzeit zeigt (z. B. F2 06:30), hat diese Vorrang.
+  // Falls OCR die Uhrzeit zerstört, greifen bekannte Kalender-Codes als sicherer Fallback:
+  // F2 = 06:30, S2 = 14:00.
   if(stored){
     let start=stored.start;
-    if(times.length===1 && validTime(times[0]))start=times[0];
-    return {date,type:'shift',label:stored.name,start,end:stored.end,breakMin:stored.breakMin||0,source:line};
+
+    if(times.length===1 && validTime(times[0])){
+      start=times[0];
+    }else if(code==='F2'){
+      start='06:30';
+    }else if(code==='S2'){
+      start='14:00';
+    }
+
+    return {
+      date,
+      type:'shift',
+      label:stored.name,
+      start,
+      end:stored.end,
+      breakMin:stored.breakMin||0,
+      source:line
+    };
   }
 
   // If code has explicit valid times, learn it for this scan.
