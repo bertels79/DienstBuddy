@@ -1,5 +1,5 @@
 <!doctype html><html lang="de"><head>
-<meta name="apple-mobile-web-app-title" content="Schichtiva"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva</title><link rel="manifest" href="./manifest.webmanifest?v=4-namefix">
+<meta name="apple-mobile-web-app-title" content="Schichtiva"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2d5c"><title>Schichtiva</title><link rel="manifest" href="./manifest.webmanifest?v=4-scanfix">
 <link rel="icon" href="./icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <meta name="application-name" content="Schichtiva">
@@ -199,7 +199,7 @@
   </div>
 </section>
 <section id="sch" class="tab"><div class="card"><h2>Vordefinierte Schichten</h2><div class="grid"><div><label>Name</label><input id="sn" placeholder="Früh"></div><div><label>Beginn</label><input id="ss" type="time"></div><div><label>Ende</label><input id="se" type="time"></div><div><label>Pause Min.</label><input id="sb" type="number" value="0"></div></div><div class="actions"><button id="addShift">Schicht speichern</button></div></div><div class="card" id="shiftList"></div></section>
-<section id="scan" class="tab"><div class="card"><h2>Dienstplan scannen</h2><div class="scanbox"><strong>Foto aufnehmen ODER vorhandenes Bild auswählen</strong><p class="muted">Das Dateifeld öffnet auf dem Handy Kamera, Galerie oder Dateien – je nach Browser.</p><input id="photo" type="file" accept="image/*"><img id="preview" class="preview"><div id="scanStatus" class="muted">Noch kein Bild gewählt.</div></div><label style="margin-top:10px">Erkannter Text</label><textarea id="ocr" rows="8"></textarea><div class="actions"><button id="parse">Auswerten</button></div></div><div class="card"><h3>Erkannte Einträge <span class="muted">Parser 2.9</span></h3><div id="scanResults" class="muted">Noch nichts erkannt.</div><p class="muted">Neue erkannte Schichtzeiten werden beim Übernehmen automatisch unter „Schichten“ gespeichert.</p><div class="actions"><button id="importScan" class="good">In Kalender übernehmen</button></div></div></section>
+<section id="scan" class="tab"><div class="card"><h2>Dienstplan scannen</h2><div class="scanbox"><strong>Foto aufnehmen ODER vorhandenes Bild auswählen</strong><p class="muted">Das Dateifeld öffnet auf dem Handy Kamera, Galerie oder Dateien – je nach Browser.</p><input id="photo" type="file" accept="image/*"><img id="preview" class="preview"><div id="scanStatus" class="muted">Noch kein Bild gewählt.</div></div><label style="margin-top:10px">Erkannter Text</label><textarea id="ocr" rows="8"></textarea><div class="actions"><button id="parse">Auswerten</button></div></div><div class="card"><h3>Erkannte Einträge <span class="muted">Parser 3.1 · Kalender-Screenshot</span></h3><div id="scanResults" class="muted">Noch nichts erkannt.</div><p class="muted">Neue erkannte Schichtzeiten werden beim Übernehmen automatisch unter „Schichten“ gespeichert.</p><div class="actions"><button id="importScan" class="good">In Kalender übernehmen</button></div></div></section>
 
 <section id="firstaid" class="tab">
 <div class="card">
@@ -607,8 +607,6 @@ document.addEventListener('touchend',e=>{
   if(dx>0 && i>0)activateTab(TAB_ORDER[i-1]);
 },{passive:true});
 
-let scanOcrData=null;
-
 async function prepareImage(file){
   const img=new Image(),url=URL.createObjectURL(file);
   await new Promise((ok,no)=>{img.onload=ok;img.onerror=no;img.src=url});
@@ -633,9 +631,10 @@ $('photo').onchange=async e=>{
     let r=await Tesseract.recognize(prepared,'deu',{
       logger:m=>{if(m.status==='recognizing text')$('scanStatus').textContent='Texterkennung '+Math.round((m.progress||0)*100)+' %'}
     });
-    scanOcrData=r.data||null;
     $('ocr').value=(r.data.text||'').replace(/[|]/g,'I');
-    $('scanStatus').textContent='Fertig. Text prüfen – Kalender-Screenshots werden jetzt räumlich ausgewertet.';
+    window.__schichtivaOcrData=r.data||null;
+    window.__schichtivaOcrCanvas={width:prepared.width,height:prepared.height};
+    $('scanStatus').textContent='Fertig. Kalender-Screenshots werden feldweise räumlich ausgewertet; Text kann zusätzlich korrigiert werden.';
   }catch(err){$('scanStatus').textContent='OCR konnte nicht geladen werden. Internet prüfen.'}
 };
 function pdate(l){
@@ -742,87 +741,14 @@ function storedShiftByCode(code){
   return data.shifts.find(s=>String(s.name).toUpperCase().replace(/\s+/g,'')===c)||null;
 }
 
-function normShiftName(v){
-  return String(v||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9äöüß]+/g,' ').trim();
-}
-function storedShiftByNameText(text){
-  let n=normShiftName(text);
-  if(!n)return null;
-  let best=null,bestLen=0;
-  for(let s of data.shifts){
-    let sn=normShiftName(s.name);
-    if(sn && sn.length>=2 && (n.includes(sn)||sn.includes(n)) && sn.length>bestLen){best=s;bestLen=sn.length}
-  }
-  return best;
-}
-function monthFromGermanText(text){
-  const months={januar:0,februar:1,marz:2,märz:2,april:3,mai:4,juni:5,juli:6,august:7,september:8,oktober:9,november:10,dezember:11};
-  let low=String(text||'').toLowerCase();
-  for(let k in months){
-    let m=low.match(new RegExp('\\b'+k+'\\s+(20\\d{2})\\b','i'));
-    if(m)return {month:months[k],year:Number(m[1])};
-  }
-  return null;
-}
-function wordBox(w){
-  let b=w&&w.bbox||{};
-  return {x0:Number(b.x0||0),y0:Number(b.y0||0),x1:Number(b.x1||0),y1:Number(b.y1||0),cx:(Number(b.x0||0)+Number(b.x1||0))/2,cy:(Number(b.y0||0)+Number(b.y1||0))/2};
-}
-function calendarCandidatesFromOcr(learned){
-  let words=(scanOcrData&&scanOcrData.words||[]).filter(w=>String(w.text||'').trim());
-  if(words.length<8)return [];
-  let my=monthFromGermanText(scanOcrData.text||$('ocr').value);
-  if(!my)return [];
-
-  // Find likely day numbers. Calendar day numbers are short numeric OCR words.
-  let nums=words.map(w=>({w,b:wordBox(w),n:Number(String(w.text).replace(/[^0-9]/g,''))}))
-    .filter(o=>o.n>=1&&o.n<=31&&/^\D*\d{1,2}\D*$/.test(String(o.w.text)));
-  if(nums.length<5)return [];
-
-  // Group day numbers into visual calendar rows.
-  nums.sort((a,b)=>a.b.cy-b.b.cy||a.b.cx-b.b.cx);
-  let heights=nums.map(o=>Math.max(8,o.b.y1-o.b.y0)).sort((a,b)=>a-b);
-  let tol=Math.max(14,(heights[Math.floor(heights.length/2)]||12)*1.8);
-  let rows=[];
-  for(let o of nums){
-    let row=rows.find(r=>Math.abs(r.y-o.b.cy)<=tol);
-    if(!row){row={y:o.b.cy,items:[]};rows.push(row)}
-    row.items.push(o);row.y=row.items.reduce((a,z)=>a+z.b.cy,0)/row.items.length;
-  }
-  rows=rows.filter(r=>r.items.length>=4).sort((a,b)=>a.y-b.y);
-  if(!rows.length)return [];
-
-  let out=[];
-  for(let ri=0;ri<rows.length;ri++){
-    let row=rows[ri]; row.items.sort((a,b)=>a.b.cx-b.b.cx);
-    let xs=row.items.map(o=>o.b.cx);
-    if(xs.length<4)continue;
-    let left=Math.min(...xs),right=Math.max(...xs),step=(right-left)/Math.max(1,xs.length-1);
-    let top=row.y-tol*.7;
-    let bottom=ri+1<rows.length?(row.y+rows[ri+1].y)/2:row.y+Math.max(80,step*.95);
-
-    for(let o of row.items){
-      // Ignore spill-over days from adjacent months by validating against target month.
-      let date=mkDate(o.n,my.month+1,my.year); if(!date)continue;
-      let x0=o.b.cx-step*.48,x1=o.b.cx+step*.48;
-      let cellWords=words.filter(w=>{
-        let b=wordBox(w);return b.cx>=x0&&b.cx<=x1&&b.cy>o.b.cy+3&&b.cy<bottom;
-      }).sort((a,b)=>wordBox(a).cy-wordBox(b).cy||wordBox(a).cx-wordBox(b).cx);
-      let txt=cellWords.map(w=>w.text).join(' ').replace(/[|]/g,'I').trim();
-      if(!txt)continue;
-      if(!/(frei|urlaub|krank|[A-Za-zÄÖÜäöü]{2,}|\b\d{1,2}[:.]\d{2}\b)/.test(txt))continue;
-
-      let c=makeCandidate(txt,date,learned);
-      if(!c){
-        let named=storedShiftByNameText(txt);
-        if(named)c={date,type:'shift',label:named.name,start:named.start,end:named.end,breakMin:named.breakMin||0,source:'Kalender: '+txt};
-      }
-      if(c){c.source='Kalender: '+txt;out.push(c)}
-    }
-  }
-  // Deduplicate by date; spatial result is one visible duty per day.
-  let seen=new Set();
-  return out.filter(c=>{let k=c.date+'|'+c.label;if(seen.has(k))return false;seen.add(k);return true});
+function storedShiftByText(line){
+  let clean=String(line||'').toLowerCase().replace(/[()[\]{}]/g,' ').replace(/\s+/g,' ').trim();
+  let shifts=[...data.shifts].sort((a,b)=>String(b.name).length-String(a.name).length);
+  return shifts.find(sh=>{
+    let n=String(sh.name||'').toLowerCase().replace(/\s+/g,' ').trim();
+    if(!n)return false;
+    return clean.includes(n);
+  })||null;
 }
 
 function makeCandidate(line,date,learned){
@@ -833,10 +759,11 @@ function makeCandidate(line,date,learned){
   }
 
   let code=extractShiftCode(line);
-  let stored=storedShiftByCode(code);
+  let stored=storedShiftByCode(code) || storedShiftByText(line);
   let times=extractTimes(line);
 
-  // If a known code exists, ALWAYS trust its stored times.
+  // If a known code OR saved shift name exists, ALWAYS trust its stored times.
+  // This is important for calendar screenshots such as "Früh kurz" or "Spät (S2) 14:00".
   if(stored){
     return {date,type:'shift',label:stored.name,start:stored.start,end:stored.end,breakMin:stored.breakMin||0,source:line};
   }
@@ -863,6 +790,257 @@ function makeCandidate(line,date,learned){
   return null;
 }
 
+
+const SCAN_MONTHS={
+  januar:1,februar:2,märz:3,maerz:3,april:4,mai:5,juni:6,juli:7,
+  august:8,september:9,oktober:10,november:11,dezember:12
+};
+
+function bboxOfOcrNode(n){
+  if(!n)return null;
+  let b=n.bbox||n.boundingBox||null;
+  if(!b)return null;
+  let x0=Number(b.x0 ?? b.left),y0=Number(b.y0 ?? b.top),x1=Number(b.x1 ?? b.right),y1=Number(b.y1 ?? b.bottom);
+  if(![x0,y0,x1,y1].every(Number.isFinite))return null;
+  return {x0,y0,x1,y1,cx:(x0+x1)/2,cy:(y0+y1)/2,w:x1-x0,h:y1-y0};
+}
+
+function flattenOcrWords(dataObj){
+  let out=[],seen=new Set();
+  function add(w){
+    let b=bboxOfOcrNode(w),text=String(w?.text||'').trim();
+    if(!b||!text)return;
+    let key=[Math.round(b.x0),Math.round(b.y0),Math.round(b.x1),Math.round(b.y1),text].join('|');
+    if(seen.has(key))return;seen.add(key);
+    out.push({text,bbox:b});
+  }
+  if(Array.isArray(dataObj?.words))dataObj.words.forEach(add);
+  function walk(n){
+    if(!n||typeof n!=='object')return;
+    if(Array.isArray(n.words))n.words.forEach(add);
+    for(let k of ['blocks','paragraphs','lines']){
+      if(Array.isArray(n[k]))n[k].forEach(walk);
+    }
+  }
+  walk(dataObj);
+  return out;
+}
+
+function flattenOcrLines(dataObj){
+  let out=[],seen=new Set();
+  function add(n){
+    let b=bboxOfOcrNode(n),text=normalizeScanLine(String(n?.text||''));
+    if(!b||!text)return;
+    let key=[Math.round(b.x0),Math.round(b.y0),Math.round(b.x1),Math.round(b.y1),text].join('|');
+    if(seen.has(key))return;seen.add(key);
+    out.push({text,bbox:b});
+  }
+  if(Array.isArray(dataObj?.lines))dataObj.lines.forEach(add);
+  function walk(n){
+    if(!n||typeof n!=='object')return;
+    if(Array.isArray(n.lines))n.lines.forEach(add);
+    if(Array.isArray(n.paragraphs))n.paragraphs.forEach(walk);
+    if(Array.isArray(n.blocks))n.blocks.forEach(walk);
+  }
+  walk(dataObj);
+  return out;
+}
+
+function scanMonthYearFromOcr(dataObj){
+  let text=String(dataObj?.text||$('ocr').value||'').toLowerCase();
+  let month=null;
+  for(let [name,num] of Object.entries(SCAN_MONTHS)){
+    if(new RegExp('\\b'+name+'\\b','i').test(text)){month=num;break}
+  }
+  let ym=text.match(/\b(20\d{2})\b/);
+  return {month:month || (view.getMonth()+1),year:ym?Number(ym[1]):view.getFullYear()};
+}
+
+function clusterValues(values,tolerance){
+  let sorted=[...values].sort((a,b)=>a-b),groups=[];
+  for(let v of sorted){
+    let g=groups.find(x=>Math.abs(x.mean-v)<=tolerance);
+    if(!g){groups.push({items:[v],mean:v});continue}
+    g.items.push(v);g.mean=g.items.reduce((a,b)=>a+b,0)/g.items.length;
+  }
+  return groups.sort((a,b)=>a.mean-b.mean);
+}
+
+function isCalendarNoise(text){
+  let t=String(text||'').toLowerCase().trim();
+  if(!t)return true;
+  if(/^(mo|di|mi|do|fr|sa|so|montag|dienstag|mittwoch|donnerstag|freitag|samstag|sonntag)$/.test(t))return true;
+  if(/^(kalender|heute|termine|monat|woche)$/.test(t))return true;
+  if(Object.keys(SCAN_MONTHS).some(m=>t===m))return true;
+  if(/^\d{1,2}$/.test(t))return true;
+  if(/^\d{1,2}:\d{2}$/.test(t))return true; // isolated phone/status-bar time
+  return false;
+}
+
+function spatialCalendarCandidates(){
+  let ocr=window.__schichtivaOcrData;
+  if(!ocr)return [];
+
+  let words=flattenOcrWords(ocr),lines=flattenOcrLines(ocr);
+  if(!words.length)return [];
+
+  let dims=window.__schichtivaOcrCanvas||{width:1,height:1};
+  let {month,year}=scanMonthYearFromOcr(ocr);
+
+  // Nur reine Tageszahlen 1..31 als mögliche Kalender-Anker verwenden.
+  let days=words.map(w=>{
+    let t=String(w.text||'').replace(/[.,]/g,'').trim();
+    if(!/^(?:[1-9]|[12]\d|3[01])$/.test(t))return null;
+    return {...w,day:Number(t)};
+  }).filter(Boolean);
+
+  // Statusleiste / Kopfbereich ignorieren und nur echte Tage des Monats behalten.
+  days=days.filter(d=>{
+    if(d.bbox.cy<dims.height*.10)return false;
+    return !!mkDate(d.day,month,year);
+  });
+  if(days.length<4)return [];
+
+  // Kalender-Raster aus Datumspunkten lernen: sieben Spalten + Wochenzeilen.
+  let xGroups=clusterValues(days.map(d=>d.bbox.cx),Math.max(14,dims.width*.035));
+  let yGroups=clusterValues(days.map(d=>d.bbox.cy),Math.max(14,dims.height*.022));
+
+  // Störzahlen können zusätzliche X-Gruppen erzeugen. Die sieben stärksten behalten.
+  xGroups=xGroups
+    .sort((a,b)=>b.items.length-a.items.length)
+    .slice(0,7)
+    .sort((a,b)=>a.mean-b.mean);
+
+  if(xGroups.length<4||yGroups.length<2)return [];
+
+  const nearest=(groups,v)=>{
+    let best=0,dist=Infinity;
+    groups.forEach((g,i)=>{
+      let d=Math.abs(g.mean-v);
+      if(d<dist){dist=d;best=i}
+    });
+    return {index:best,dist};
+  };
+
+  let anchors=[];
+  for(let d of days){
+    let xc=nearest(xGroups,d.bbox.cx),yc=nearest(yGroups,d.bbox.cy);
+    if(xc.dist>dims.width*.09||yc.dist>dims.height*.06)continue;
+    anchors.push({...d,col:xc.index,row:yc.index,date:mkDate(d.day,month,year)});
+  }
+
+  // Pro Rasterfeld nur einen Datumsanker behalten.
+  let byCell=new Map();
+  for(let a of anchors){
+    let k=a.row+'|'+a.col,old=byCell.get(k);
+    if(!old || a.bbox.w*a.bbox.h<old.bbox.w*old.bbox.h)byCell.set(k,a);
+  }
+  anchors=[...byCell.values()];
+  if(anchors.length<4)return [];
+
+  let colCenters=xGroups.map(g=>g.mean),rowCenters=yGroups.map(g=>g.mean);
+  function bounds(centers,i,min,max){
+    return {
+      lo:i===0?min:(centers[i-1]+centers[i])/2,
+      hi:i===centers.length-1?max:(centers[i]+centers[i+1])/2
+    };
+  }
+
+  // Etwas Innenabstand verhindert, dass Wörter aus dem Nachbarfeld übernommen werden.
+  const xPad=Math.max(2,dims.width*.004);
+  const yPad=Math.max(2,dims.height*.002);
+
+  // Wort-Müll, der innerhalb eines Kalenderfelds ignoriert werden darf.
+  // Uhrzeiten NICHT entfernen – sie werden für unbekannte Schichten gebraucht.
+  function isCellWordNoise(text){
+    let t=String(text||'').trim();
+    let low=t.toLowerCase();
+    if(!t)return true;
+    if(/^(mo|di|mi|do|fr|sa|so|m|d|f|s)$/i.test(t))return true;
+    if(/^(kalender|auswertung|schichten|mehr|heute|termine|monat|woche)$/i.test(low))return true;
+    if(Object.keys(SCAN_MONTHS).some(m=>low===m))return true;
+    // einzelne reine Tageszahl innerhalb des Feldes ist kein Schichtinhalt
+    if(/^(?:[1-9]|[12]\d|3[01])$/.test(t))return true;
+    // typische OCR-/Statusleistenreste
+    if(/^(?:rn|sull|volte|lte|5g|4g|oo|o0)$/i.test(t))return true;
+    if(/^[®©<>]+$/.test(t))return true;
+    return false;
+  }
+
+  let learned={},result=[];
+
+  // Explizite unbekannte Codes mit vollständigem Zeitpaar weiterhin lernen.
+  for(let l of lines){
+    let code=extractShiftCode(l.text),times=extractTimes(l.text);
+    if(code&&!storedShiftByCode(code)&&times.length>=2&&validTime(times[0])&&validTime(times[1])){
+      learned[code]={name:code,start:times[0],end:times[1],breakMin:0};
+    }
+  }
+
+  for(let a of anchors.sort((x,y)=>x.date.localeCompare(y.date))){
+    let xb=bounds(colCenters,a.col,0,dims.width);
+    let yb=bounds(rowCenters,a.row,0,dims.height);
+
+    // Inhalt beginnt direkt unter der Datumszahl und endet vor der nächsten Woche.
+    let top=Math.max(a.bbox.y1+yPad,yb.lo);
+    let bottom=yb.hi-yPad;
+
+    // WICHTIGER FIX 3.1:
+    // Nicht ganze OCR-Zeilen verwenden (eine OCR-Zeile kann mehrere Kalendertage
+    // enthalten), sondern jedes OCR-WORT anhand seiner X/Y-Koordinate exakt
+    // diesem einzelnen Tagesfeld zuordnen.
+    let cellWords=words
+      .filter(w=>{
+        let b=w.bbox;
+        if(b.cy<=top||b.cy>=bottom)return false;
+        return b.cx>xb.lo+xPad && b.cx<xb.hi-xPad;
+      })
+      .sort((u,v)=>{
+        let dy=u.bbox.cy-v.bbox.cy;
+        if(Math.abs(dy)>Math.max(5,dims.height*.006))return dy;
+        return u.bbox.cx-v.bbox.cx;
+      })
+      .map(w=>normalizeScanLine(w.text))
+      .filter(t=>!isCellWordNoise(t));
+
+    // Doppelte OCR-Wörter reduzieren, aber echte Wiederholungen in getrennten
+    // Positionen sind vorher bereits räumlich auf genau ein Feld begrenzt.
+    let compact=[];
+    for(let t of cellWords){
+      if(!compact.length || compact[compact.length-1]!==t)compact.push(t);
+    }
+    cellWords=compact;
+    if(!cellWords.length)continue;
+
+    let combined=cellWords.join(' ');
+
+    // Ein Feld braucht einen echten Schicht-Hinweis. So verhindern wir, dass
+    // Navigations-/Statusreste als Schicht übernommen werden.
+    let hasKnownShift=!!storedShiftByText(combined);
+    let code=extractShiftCode(combined);
+    let hasCode=!!code;
+    let hasStatus=/\b(frei|urlaub|krank)\b/i.test(combined);
+    if(!hasKnownShift&&!hasCode&&!hasStatus)continue;
+
+    let c=makeCandidate(combined,a.date,learned);
+    if(c){
+      c.source='Kalenderfeld '+a.day+': '+combined;
+      c.spatial=true;
+      result.push(c);
+    }
+  }
+
+  // Pro Datum nur einen eindeutigen Treffer behalten. Falls OCR denselben Inhalt
+  // doppelt liefert, gewinnt der zuerst räumlich erkannte Kandidat.
+  let uniq=new Map();
+  for(let c of result){
+    let key=[c.date,c.label,c.start||'',c.end||''].join('|');
+    if(!uniq.has(key))uniq.set(key,c);
+  }
+  return [...uniq.values()].sort((a,b)=>a.date.localeCompare(b.date));
+}
+
+
 function renderCandidates(){
   $('scanResults').innerHTML=cands.length?cands.map((c,i)=>`
     <div class="row">
@@ -880,6 +1058,17 @@ function renderCandidates(){
 
 $('parse').onclick=()=>{
   cands=[];
+
+  // 1) Calendar screenshots: use OCR coordinates to keep date + event together.
+  let spatial=spatialCalendarCandidates();
+  if(spatial.length){
+    cands=spatial;
+    $('scanStatus').textContent='Kalender-Screenshot erkannt: '+cands.length+' Schicht(en) räumlich einem Datum zugeordnet.';
+    renderCandidates();
+    return;
+  }
+
+  // 2) Fallback for classic text/table rosters.
   let learned={};
   let lines=$('ocr').value.split(/\r?\n/).map(normalizeScanLine).filter(Boolean);
   let employee=(data.settings.employeeKey||'').trim().toLowerCase();
@@ -896,21 +1085,18 @@ $('parse').onclick=()=>{
     }
   }
 
-  // Calendar screenshots: use OCR coordinates to connect each calendar cell with its day.
-  let spatial=calendarCandidatesFromOcr(learned);
-  if(spatial.length){
-    cands=spatial;
-  }else{
-    // Classic roster/table fallback: expand date expressions from OCR text.
-    for(let l of lines){
-      let dates=expandDates(l);
-      if(!dates.length)continue;
-      for(let d of dates){
-        let c=makeCandidate(l,d,learned);
-        if(c)cands.push(c);
-      }
+  // Second pass: expand each date expression to one candidate per day.
+  for(let l of lines){
+    let dates=expandDates(l);
+    if(!dates.length)continue;
+    for(let d of dates){
+      let c=makeCandidate(l,d,learned);
+      if(c)cands.push(c);
     }
   }
+  $('scanStatus').textContent=cands.length
+    ? 'Text-Dienstplan ausgewertet: '+cands.length+' Eintrag/Einträge erkannt.'
+    : 'Keine eindeutigen Einträge erkannt. OCR-Text bitte prüfen.';
   renderCandidates();
 };
 $('importScan').onclick=()=>{
@@ -1023,7 +1209,7 @@ $('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObje
   data.shifts=data.shifts.filter(sh=>!(sh.start&&sh.end&&(!validTime(sh.start)||!validTime(sh.end))));
   save();renderShifts();renderCal();alert(n+' fehlerhafte Scan-Einträge entfernt.');
 };
-$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=4-namefix').catch(()=>{}));
+$('clear').onclick=()=>{if(confirm('Alle Schichtiva-Daten löschen?')){data=structuredClone(DEF);save();renderShifts();loadSet();renderCal()}};renderShifts();renderCal();if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=4-scanfix').catch(()=>{}));
 
 const REBRAND_KEY='schichtiva_v4_welcome_seen';
 window.addEventListener('load',()=>{if(!localStorage.getItem(REBRAND_KEY)){$('rebrandModal').classList.add('open')}});
