@@ -1,34 +1,15 @@
-🆕 **SCHICHTIVA V4 IST DA!**
+🆕 **SCHICHTIVA V4.1 IST DA!**
 
-Mit V4 bekommt Schichtiva einen großen Rundumschlag mit neuen Funktionen und vielen Verbesserungen.
+Mit V4.1 wird der Dienstplan noch übersichtlicher: Die Farben können jetzt selbst angepasst werden.
 
-📅 **Neuer Terminbereich**
-• Termine, Notizen und Erinnerungen
-• Kalenderansicht und Farbauswahl
-• Wiederkehrende Termine
-• Neue Uhrzeitauswahl
+🎨 **Frei wählbare Dienstplanfarben**
+• Jede gespeicherte Schicht kann eine eigene Farbe bekommen
+• Farben für Frei, Urlaub und Krank selbst auswählen
+• Auch individuelle Einträge können farblich angepasst werden
+• Die gewählten Farben werden lokal auf dem Gerät gespeichert
+• Bestehende Kalendereinträge bleiben erhalten
 
-📞 **Neue Telefonliste**
-• Eigene Kontakte speichern
-• Telefonnummern direkt aufrufen
-• Kontakte lokal verwalten
+So lassen sich Schichten, freie Tage, Urlaub und Krankheit im Kalender schneller erkennen und besser auseinanderhalten.
 
-🩹 **Neuer Erste-Hilfe-Kompass**
-• Symptom- und Warnzeichen-Abfragen
-• Hinweise bei möglichen Notfällen
-• Sofortmaßnahmen und wichtige Rufnummern
-• Wird Schritt für Schritt weiter ausgebaut
-
-🎨 **Weitere Verbesserungen**
-• Optimierungen für die Smartphone-Nutzung
-• Überarbeitete und einheitlichere Darstellung
-• Persönliche Termine und Telefonkontakte werden lokal gespeichert
-
-🌐 **Aus DienstBuddy wird Schichtiva**
-Mit V4 trägt die App offiziell ihren neuen Namen: **Schichtiva**.
-
-💻 **Auch die Schichtiva-Webseite wurde überarbeitet**
-Unter anderem mit neuem Design, aktualisierter Hilfe & FAQ sowie einem verbesserten Wünsche-&-Feedback-System mit automatischen Status-E-Mails.
-
-💙 **Und das war noch nicht alles.**
-Schichtiva wird weiterentwickelt – Fehlerberichte, Wünsche und Erfahrungen fließen weiterhin direkt in die Entwicklung ein.
+💙 **Schichtiva wird weiterentwickelt.**
+Fehlerberichte, Wünsche und Erfahrungen fließen weiterhin direkt in die Entwicklung ein.

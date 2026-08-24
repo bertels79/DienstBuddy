@@ -159,7 +159,16 @@
   color:#fff !important;
 }
 
-</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="icon-192.png" alt="Schichtiva" onerror="this.onerror=null;this.src='./icon-192.png?v=4003'" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V4</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div><button id="firstAidQuick" class="firstAidQuick"><span class="redCross">✚</span> Erste-Hilfe-Kompass</button></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="firstaid">🩹 Erste-Hilfe-Kompass</button><button data-tab="phoneListV4">📞 Telefonliste</button><button data-tab="appointmentsV4">📅 Termine</button><button data-tab="changelogV4">🧾 Changelog</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
+/* V4 build 4006 – frei wählbare Kalenderfarben */
+.colorSettingsV4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.colorSettingV4{border:1px solid var(--line);border-radius:12px;padding:11px;background:#f8fafc}
+.colorSettingV4 input[type="color"]{height:44px;padding:3px;cursor:pointer;background:#fff}
+.shiftRowColorV4{display:grid;grid-template-columns:1.2fr .8fr .8fr .8fr .65fr auto;gap:7px;align-items:center;border:1px solid var(--line);border-radius:11px;padding:9px;margin:7px 0}
+.shiftColorDotV4{display:inline-block;width:13px;height:13px;border-radius:50%;margin-right:7px;vertical-align:-1px;border:1px solid #0002}
+.shiftRowColorV4 input[type="color"]{height:36px;padding:2px;cursor:pointer}
+@media(max-width:720px){.colorSettingsV4{grid-template-columns:1fr 1fr}.shiftRowColorV4{grid-template-columns:1fr 1fr}.shiftRowColorV4 .shiftDeleteV4{grid-column:2}.shiftRowColorV4 input[type="color"]{width:100%}}
+
+</style></head><body><header><div class="wrap"><div class="brand"><div class="logo"><img src="icon-192.png" alt="Schichtiva" onerror="this.onerror=null;this.src='./icon-192.png?v=4003'" style="width:44px;height:44px;border-radius:13px;display:block"></div><div><h1>Schichtiva V4.1</h1><div style="opacity:.8;font-size:12px">Keine Diva. Nur dein Dienstplan.</div></div><button id="firstAidQuick" class="firstAidQuick"><span class="redCross">✚</span> Erste-Hilfe-Kompass</button></div><nav><button class="active" data-tab="kal">📅 Kalender</button><button data-tab="sch">🕒 Schichten</button><button data-tab="scan">📷 Scan</button><button data-tab="year">📊 Jahr</button><button data-tab="firstaid">🩹 Erste-Hilfe-Kompass</button><button data-tab="phoneListV4">📞 Telefonliste</button><button data-tab="appointmentsV4">📅 Termine</button><button data-tab="changelogV4">🧾 Changelog</button><button data-tab="set">⚙️ Einstellungen</button></nav></div></header><main>
 <section id="kal" class="tab active"><div class="stats"><div class="stat"><span class="muted">Arbeitsstunden</span><strong id="stH">0,0 h</strong></div><div class="stat"><span class="muted">Nachtstunden</span><strong id="stN">0,0 h</strong></div><div class="stat"><span class="muted">So./Feiertag</span><strong id="stS">0,0 h</strong></div><div class="stat"><span class="muted">Zuschläge</span><strong id="stB">0,00 €</strong></div><div class="stat"><span class="muted">Bezahlte Abwesenheit</span><strong id="stPaidAbs">0,0 h</strong></div><div class="stat"><span class="muted">Verdienst inkl. Zuschläge</span><strong id="stPay">—</strong></div></div><div class="card"><div class="calhead"><button class="secondary" id="prev">‹</button><h2 id="title"></h2><button class="secondary" id="next">›</button></div><div class="week"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div><div id="calendar" class="calendar"></div></div>
 <div class="card"><h3>Monatsauswertung</h3><p class="muted">Hier siehst du genau, welche Schicht welche Stunden verursacht.</p><div id="monthBreakdown"></div></div>
 <div class="card"><h3>Kalender benutzen</h3><p class="muted">Tippe auf einen Tag. Dann kannst du eine gespeicherte Schicht, Frei, Urlaub, Krank oder eine individuelle Schicht eintragen.</p></div>
@@ -198,7 +207,7 @@
     </div>
   </div>
 </section>
-<section id="sch" class="tab"><div class="card"><h2>Vordefinierte Schichten</h2><div class="grid"><div><label>Name</label><input id="sn" placeholder="Früh"></div><div><label>Beginn</label><input id="ss" type="time"></div><div><label>Ende</label><input id="se" type="time"></div><div><label>Pause Min.</label><input id="sb" type="number" value="0"></div></div><div class="actions"><button id="addShift">Schicht speichern</button></div></div><div class="card" id="shiftList"></div></section>
+<section id="sch" class="tab"><div class="card"><h2>Vordefinierte Schichten</h2><p class="muted">Jede Schicht kann ihre eigene Farbe bekommen. So erkennst du Früh-, Spät- oder Nachtschichten im Kalender sofort.</p><div class="grid"><div><label>Name</label><input id="sn" placeholder="Früh"></div><div><label>Beginn</label><input id="ss" type="time"></div><div><label>Ende</label><input id="se" type="time"></div><div><label>Pause Min.</label><input id="sb" type="number" value="0"></div><div><label>Farbe</label><input id="scolor" type="color" value="#2563eb"></div></div><div class="actions"><button id="addShift">Schicht speichern</button></div></div><div class="card"><h3>Gespeicherte Schichten & Farben</h3><div id="shiftList"></div></div></section>
 <section id="scan" class="tab"><div class="card"><h2>Dienstplan scannen</h2><div class="scanbox"><strong>Foto aufnehmen ODER vorhandenes Bild auswählen</strong><p class="muted">Das Dateifeld öffnet auf dem Handy Kamera, Galerie oder Dateien – je nach Browser.</p><input id="photo" type="file" accept="image/*"><img id="preview" class="preview"><div id="scanStatus" class="muted">Noch kein Bild gewählt.</div></div><label style="margin-top:10px">Erkannter Text</label><textarea id="ocr" rows="8"></textarea><div class="actions"><button id="parse">Auswerten</button></div></div><div class="card"><h3>Erkannte Einträge <span class="muted">Parser 3.1 · Kalender-Screenshot</span></h3><div id="scanResults" class="muted">Noch nichts erkannt.</div><p class="muted">Prüfe Schicht, Beginn, Ende und Pause vor der Übernahme. Korrekturen werden als persönliche Schicht gespeichert und bei späteren Scans automatisch wiederverwendet.</p><div class="actions"><button id="importScan" class="good">In Kalender übernehmen</button></div></div></section>
 
 <section id="firstaid" class="tab">
@@ -230,6 +239,17 @@
     <div><label>Name oder Kürzel</label><input id="employeeKey" placeholder="z. B. Max Mustermann oder MM"></div>
   </div>
   <div class="actions"><button id="saveEmployee">Filter speichern</button></div>
+</div>
+<div class="card">
+  <h2>🎨 Farben im Dienstplan</h2>
+  <p class="muted">Wähle selbst, wie Frei, Urlaub, Krank und individuelle Einträge im Kalender aussehen. Die Farben werden nur auf diesem Gerät gespeichert.</p>
+  <div class="colorSettingsV4">
+    <div class="colorSettingV4"><label>🏠 Frei</label><input id="colorFrei" type="color" value="#2e7d32"></div>
+    <div class="colorSettingV4"><label>🌴 Urlaub</label><input id="colorUrlaub" type="color" value="#d97706"></div>
+    <div class="colorSettingV4"><label>🤒 Krank</label><input id="colorKrank" type="color" value="#c62828"></div>
+    <div class="colorSettingV4"><label>✏️ Individuell</label><input id="colorCustom" type="color" value="#64748b"></div>
+  </div>
+  <p class="muted" style="margin-top:10px">Die Farben für Früh-, Spät-, Nacht- und eigene Schichten stellst du direkt unter „Schichten“ ein.</p>
 </div>
 <div class="card"><h2>Lohn & Zuschläge</h2><p class="muted">Wähle dein Modell. Beim Festgehalt werden weiterhin nur die Zuschläge berechnet. Beim Stundenlohn zeigt Schichtiva zusätzlich den Monatsverdienst.</p><div class="grid"><div><label>Lohnmodell</label><select id="payMode"><option value="salary">Festgehalt</option><option value="hourly">Stundenlohn</option></select></div><div><label>Stundenlohn €</label><input id="hourlyRate" type="number" min="0" step="0.01"></div><div><label>Sollstunden pro bezahltem Urlaub-/Kranktag</label><input id="targetHours" type="number" min="0" step="0.25"></div><div><label>Basis-Stundenwert für Zuschläge €</label><input id="base" type="number" step="0.01"><div class="muted" id="baseHint" style="margin-top:4px">Bei Stundenlohn wird dieser Wert automatisch übernommen.</div></div><div><label>Bundesland</label><select id="state"><option value="">Nur bundesweite Feiertage</option><option value="BW">Baden-Württemberg</option><option value="BY">Bayern</option><option value="BE">Berlin</option><option value="BB">Brandenburg</option><option value="HB">Bremen</option><option value="HH">Hamburg</option><option value="HE">Hessen</option><option value="MV">Mecklenburg-Vorpommern</option><option value="NI">Niedersachsen</option><option value="NW">Nordrhein-Westfalen</option><option value="RP">Rheinland-Pfalz</option><option value="SL">Saarland</option><option value="SN">Sachsen</option><option value="ST">Sachsen-Anhalt</option><option value="SH">Schleswig-Holstein</option><option value="TH">Thüringen</option></select></div><div><label>Nacht von</label><input id="nf" type="time"></div><div><label>Nacht bis</label><input id="nt" type="time"></div><div><label>Nacht %</label><input id="np" type="number" step="0.1"></div><div><label>Sonntag %</label><input id="sp" type="number" step="0.1"></div><div><label>Feiertag %</label><input id="hp" type="number" step="0.1"></div><div><label>Samstag % optional</label><input id="sap" type="number" step="0.1"></div></div><div class="actions"><button id="saveSet">Einstellungen speichern</button></div><p class="muted">Schichtiva berücksichtigt bundesweite Feiertage und – nach Auswahl – die landesweit geltenden Feiertage des Bundeslands. Kommunale Sonderregelungen sind nicht enthalten.</p></div>
 <div class="card">
@@ -331,7 +351,7 @@
 <section id="changelogV4" class="tab">
  <div class="card changelog">
   <h2>🧾 Changelog – Was ist seit V3 neu?</h2>
-  <p class="muted"><strong>Veröffentlichung V4:</strong> finaler getesteter Stand der V4-Reihe.</p>
+  <p class="muted"><strong>Veröffentlichung V4.1:</strong> V4.1 erweitert Schichtiva um frei wählbare Farben im Dienstplan.</p>
   <ul>
    <li><strong>Umbenennung zu Schichtiva:</strong> neuer App-Name, neues Icon und überarbeitete Oberfläche.</li>
    <li><strong>Mobile Nutzung:</strong> Smartphone-Optimierung und Swipe-Navigation.</li>
@@ -347,6 +367,7 @@
    <li><strong>Hinweis im Kompass:</strong> der Kompass wird nach und nach erweitert; bei unklarer möglicher Notfallsituation 112.</li>
    <li><strong>Telefonliste:</strong> neu in V4 – Rufnummern übersichtlich speichern, direkt anrufen und löschen; neue Nummern werden über ein separates Eingabefenster hinzugefügt.</li>
    <li><strong>Termine:</strong> neu in V4 – Termine mit Datum, Notiz und eigener Farbe anlegen; überarbeitete dunkle 24-Stunden-Uhr mit Stunden- und Minutenauswahl; farbliche Anzeige im Kalender; einstellbare Erinnerung vor dem Termin; mehrere Erinnerungstöne mit Testfunktion; tägliche, wöchentliche, monatliche oder jährliche Wiederholungen mit optionalem Enddatum; vergangene einmalige Termine werden ab 00:00 Uhr des Folgetages automatisch aus der lokalen Terminliste entfernt.</li>
+   <li><strong>Farben im Dienstplan:</strong> neu in V4.1 – Farben für gespeicherte Schichten sowie Frei, Urlaub, Krank und individuelle Einträge können vom Nutzer selbst gewählt werden und werden lokal gespeichert.</li>
    <li><strong>Changelog:</strong> neu in V4 – eigene Seite mit den wichtigsten Änderungen seit V3.</li>
    <li><strong>Lokale Speicherung:</strong> Telefonliste und Termine bleiben im Teststand lokal auf dem jeweiligen Gerät gespeichert.</li>
   </ul>
@@ -365,7 +386,7 @@
 </div>
 <div id="rebrandModal" class="modal"><div class="modalbox"><div style="text-align:center"><img src="./icon-192.png" alt="Schichtiva" style="width:96px;height:96px;border-radius:24px"><h2 style="margin-top:10px">DienstBuddy heißt jetzt Schichtiva</h2><p>Keine Diva. Nur dein Dienstplan.</p><p class="muted">Deine bisherigen Schichten, Einstellungen und Kalenderdaten bleiben erhalten. V3.7 ergänzt den Erste-Hilfe-Kompass.</p><button id="rebrandOk">Alles klar</button></div></div></div><div id="modal" class="modal"><div class="modalbox"><div style="display:flex;justify-content:space-between"><h3 id="modalDate"></h3><button class="secondary" id="close">✕</button></div><div id="choices" class="chips"></div><hr style="border:0;border-top:1px solid var(--line);margin:14px 0"><h3>Zeiten ansehen / bearbeiten</h3><div class="grid"><div><label>Beginn</label><input id="cs" type="time"></div><div><label>Ende</label><input id="ce" type="time"></div><div><label>Pause Min.</label><input id="cb" type="number" value="0"></div></div><div class="actions"><button id="saveCustom">Eintragen</button><button id="delDay" class="danger">Tag löschen</button></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script><script>
-const $=x=>document.getElementById(x),KEY='dienstbuddy_v2';const DEF={shifts:[{id:'f',name:'Früh',start:'06:00',end:'14:00',breakMin:30},{id:'s',name:'Spät',start:'14:00',end:'22:00',breakMin:30},{id:'n',name:'Nacht',start:'22:00',end:'06:00',breakMin:30}],entries:{},settings:{base:0,nf:'22:00',nt:'06:00',np:25,sp:50,hp:100,sap:0,employeeKey:'',payMode:'salary',hourlyRate:0,state:'',targetHours:8}};let data=(()=>{try{let x=JSON.parse(localStorage.getItem(KEY)||'{}');return {...DEF,...x,settings:{...DEF.settings,...(x.settings||{})}}}catch{return structuredClone(DEF)}})(),view=new Date(),selected=null,cands=[];view=new Date(view.getFullYear(),view.getMonth(),1);const save=()=>localStorage.setItem(KEY,JSON.stringify(data));const M=t=>{let[a,b]=t.split(':').map(Number);return a*60+b};const validTime=t=>{if(typeof t!=='string'||!/^\d{1,2}:\d{2}$/.test(t))return false;let[h,m]=t.split(':').map(Number);return h>=0&&h<=23&&m>=0&&m<=59};
+const $=x=>document.getElementById(x),KEY='dienstbuddy_v2';const DEF={shifts:[{id:'f',name:'Früh',start:'06:00',end:'14:00',breakMin:30,color:'#2563eb'},{id:'s',name:'Spät',start:'14:00',end:'22:00',breakMin:30,color:'#7c3aed'},{id:'n',name:'Nacht',start:'22:00',end:'06:00',breakMin:30,color:'#0f172a'}],entries:{},settings:{base:0,nf:'22:00',nt:'06:00',np:25,sp:50,hp:100,sap:0,employeeKey:'',payMode:'salary',hourlyRate:0,state:'',targetHours:8,colorFrei:'#2e7d32',colorUrlaub:'#d97706',colorKrank:'#c62828',colorCustom:'#64748b'}};let data=(()=>{try{let x=JSON.parse(localStorage.getItem(KEY)||'{}');return {...DEF,...x,settings:{...DEF.settings,...(x.settings||{})}}}catch{return structuredClone(DEF)}})(),view=new Date(),selected=null,cands=[];view=new Date(view.getFullYear(),view.getMonth(),1);const save=()=>localStorage.setItem(KEY,JSON.stringify(data));const M=t=>{let[a,b]=t.split(':').map(Number);return a*60+b};const validTime=t=>{if(typeof t!=='string'||!/^\d{1,2}:\d{2}$/.test(t))return false;let[h,m]=t.split(':').map(Number);return h>=0&&h<=23&&m>=0&&m<=59};
 const ISO=(y,m,d)=>`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;const dur=e=>{if(!e.start)return 0;let x=M(e.end)-M(e.start);if(x<=0)x+=1440;return Math.max(0,(x-Number(e.breakMin||0))/60)};
 function easter(y){let f=Math.floor,G=y%19,C=f(y/100),H=(C-f(C/4)-f((8*C+13)/25)+19*G+15)%30,I=H-f(H/28)*(1-f(29/(H+1))*f((21-G)/11)),J=(y+f(y/4)+I+2-C+f(C/4))%7,L=I-J,m=3+f((L+40)/44),d=L+28-31*f(m/4);return new Date(y,m-1,d)}
 function holidayName(dt){
@@ -426,21 +447,44 @@ function calendarDayName(dt){
   return '';
 }
 function hol(dt){return !!holidayName(dt)}
-function renderCal(){let y=view.getFullYear(),m=view.getMonth(),first=(new Date(y,m,1).getDay()+6)%7,days=new Date(y,m+1,0).getDate(),pd=new Date(y,m,0).getDate();$('title').textContent=view.toLocaleDateString('de-DE',{month:'long',year:'numeric'});let now=new Date(),today=ISO(now.getFullYear(),now.getMonth(),now.getDate()),h='';for(let c=0;c<42;c++){let d,cm=m,cy=y,o=false;if(c<first){d=pd-first+c+1;cm=m-1;o=true;if(cm<0){cm=11;cy--}}else if(c>=first+days){d=c-first-days+1;cm=m+1;o=true;if(cm>11){cm=0;cy++}}else d=c-first+1;let k=ISO(cy,cm,d),arr=data.entries[k]||[],dt=new Date(cy,cm,d),hn=calendarDayName(dt),isHol=hol(dt);h+=`<div class="day ${o?'other':''} ${k===today?'today':''}" data-date="${k}"><div class="daynum">${d}${isHol?' 🎉':''}</div>${hn?`<div class="holidayName" title="${hn}">${hn}</div>`:''}${arr.map(e=>`<div class="entry ${e.type||''}">${e.label}</div>`).join('')}</div>`}$('calendar').innerHTML=h;document.querySelectorAll('.day').forEach(x=>x.onclick=()=>openDay(x.dataset.date));stats()}
+function normalizeHexColor(c,fallback='#2563eb'){
+  return typeof c==='string'&&/^#[0-9a-f]{6}$/i.test(c)?c:fallback;
+}
+function readableTextColor(hex){
+  hex=normalizeHexColor(hex,'#2563eb').slice(1);
+  let r=parseInt(hex.slice(0,2),16),g=parseInt(hex.slice(2,4),16),b=parseInt(hex.slice(4,6),16);
+  return (r*299+g*587+b*114)/1000>155?'#10213d':'#ffffff';
+}
+function entryColorV4(e){
+  if(!e)return '#eaf2ff';
+  let type=String(e.type||'');
+  if(type==='Frei'||e.label==='Frei')return normalizeHexColor(data.settings.colorFrei,'#2e7d32');
+  if(type==='Urlaub'||e.label==='Urlaub')return normalizeHexColor(data.settings.colorUrlaub,'#d97706');
+  if(type==='Krank'||e.label==='Krank')return normalizeHexColor(data.settings.colorKrank,'#c62828');
+  if(type==='custom')return normalizeHexColor(data.settings.colorCustom,'#64748b');
+  let sh=data.shifts.find(s=>String(s.name).toLowerCase()===String(e.label||'').toLowerCase());
+  if(type==='shift'||sh)return normalizeHexColor(e.color||(sh&&sh.color),'#2563eb');
+  return normalizeHexColor(data.settings.colorCustom,'#64748b');
+}
+function entryStyleV4(e){
+  let bg=entryColorV4(e),fg=readableTextColor(bg);
+  return `background:${bg};color:${fg};border:1px solid ${bg};`;
+}
+function renderCal(){let y=view.getFullYear(),m=view.getMonth(),first=(new Date(y,m,1).getDay()+6)%7,days=new Date(y,m+1,0).getDate(),pd=new Date(y,m,0).getDate();$('title').textContent=view.toLocaleDateString('de-DE',{month:'long',year:'numeric'});let now=new Date(),today=ISO(now.getFullYear(),now.getMonth(),now.getDate()),h='';for(let c=0;c<42;c++){let d,cm=m,cy=y,o=false;if(c<first){d=pd-first+c+1;cm=m-1;o=true;if(cm<0){cm=11;cy--}}else if(c>=first+days){d=c-first-days+1;cm=m+1;o=true;if(cm>11){cm=0;cy++}}else d=c-first+1;let k=ISO(cy,cm,d),arr=data.entries[k]||[],dt=new Date(cy,cm,d),hn=calendarDayName(dt),isHol=hol(dt);h+=`<div class="day ${o?'other':''} ${k===today?'today':''}" data-date="${k}"><div class="daynum">${d}${isHol?' 🎉':''}</div>${hn?`<div class="holidayName" title="${hn}">${hn}</div>`:''}${arr.map(e=>`<div class="entry ${e.type||''}" style="${entryStyleV4(e)}">${e.label}</div>`).join('')}</div>`}$('calendar').innerHTML=h;document.querySelectorAll('.day').forEach(x=>x.onclick=()=>openDay(x.dataset.date));stats()}
 
 function resolveEntry(e){
   if(!e)return e;
   if(e.start&&e.end)return e;
   let sh=data.shifts.find(s=>String(s.name).toLowerCase()===String(e.label||'').toLowerCase());
-  return sh?{...e,type:'shift',label:sh.name,start:sh.start,end:sh.end,breakMin:sh.breakMin}:e;
+  return sh?{...e,type:'shift',label:sh.name,start:sh.start,end:sh.end,breakMin:sh.breakMin,color:e.color||sh.color}:e;
 }
 function openDay(k){
   selected=k;
   $('modalDate').textContent=new Date(k+'T12:00').toLocaleDateString('de-DE',{weekday:'long',day:'2-digit',month:'2-digit',year:'numeric'});
-  $('choices').innerHTML=data.shifts.map(s=>`<button class="chip" data-sh="${s.id}">${s.name} ${s.start}–${s.end}</button>`).join('')+`<button class="chip" data-status="Frei">🏠 Frei</button><button class="chip" data-status="Urlaub">🌴 Urlaub</button><button class="chip" data-status="Krank">🤒 Krank</button>`;
+  $('choices').innerHTML=data.shifts.map(s=>{let c=normalizeHexColor(s.color,'#2563eb');return `<button class="chip" data-sh="${s.id}" style="border-color:${c};box-shadow:inset 4px 0 0 ${c}">${s.name} ${s.start}–${s.end}</button>`}).join('')+`<button class="chip" data-status="Frei" style="border-color:${data.settings.colorFrei}">🏠 Frei</button><button class="chip" data-status="Urlaub" style="border-color:${data.settings.colorUrlaub}">🌴 Urlaub</button><button class="chip" data-status="Krank" style="border-color:${data.settings.colorKrank}">🤒 Krank</button>`;
   document.querySelectorAll('[data-sh]').forEach(b=>b.onclick=()=>{
     let sh=data.shifts.find(x=>x.id===b.dataset.sh);
-    data.entries[selected]=[{type:'shift',label:sh.name,start:sh.start,end:sh.end,breakMin:sh.breakMin}];
+    data.entries[selected]=[{type:'shift',label:sh.name,start:sh.start,end:sh.end,breakMin:sh.breakMin,color:sh.color}];
     save();renderCal();close()
   });
   document.querySelectorAll('[data-status]').forEach(b=>b.onclick=()=>{
@@ -552,7 +596,25 @@ function stats(){
 
   document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>openDay(b.dataset.open));
 }
-function renderShifts(){$('shiftList').innerHTML=data.shifts.map(s=>`<div class="row"><strong>${s.name}</strong><span>${s.start}</span><span>${s.end}</span><span>${s.breakMin} Min</span><button class="danger" data-del="${s.id}">Löschen</button></div>`).join('');document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{data.shifts=data.shifts.filter(s=>s.id!==b.dataset.del);save();renderShifts()})}$('addShift').onclick=()=>{if(!$('sn').value||!$('ss').value||!$('se').value)return alert('Name, Beginn und Ende ausfüllen.');data.shifts.push({id:'x'+Date.now(),name:$('sn').value,start:$('ss').value,end:$('se').value,breakMin:Number($('sb').value||0)});save();renderShifts()};
+function renderShifts(){
+  $('shiftList').innerHTML=data.shifts.map(s=>{
+    let c=normalizeHexColor(s.color,'#2563eb');
+    return `<div class="shiftRowColorV4"><strong><span class="shiftColorDotV4" style="background:${c}"></span>${s.name}</strong><span>${s.start}</span><span>${s.end}</span><span>${s.breakMin} Min</span><input type="color" value="${c}" data-shift-color="${s.id}" aria-label="Farbe für ${s.name}"><button class="danger shiftDeleteV4" data-del="${s.id}">Löschen</button></div>`;
+  }).join('');
+  document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{data.shifts=data.shifts.filter(s=>s.id!==b.dataset.del);save();renderShifts();renderCal()});
+  document.querySelectorAll('[data-shift-color]').forEach(inp=>inp.oninput=()=>{
+    let sh=data.shifts.find(s=>s.id===inp.dataset.shiftColor);
+    if(!sh)return;
+    sh.color=inp.value;
+    save();renderShifts();renderCal();
+  });
+}
+$('addShift').onclick=()=>{
+  if(!$('sn').value||!$('ss').value||!$('se').value)return alert('Name, Beginn und Ende ausfüllen.');
+  data.shifts.push({id:'x'+Date.now(),name:$('sn').value,start:$('ss').value,end:$('se').value,breakMin:Number($('sb').value||0),color:normalizeHexColor($('scolor').value,'#2563eb')});
+  save();renderShifts();renderCal();
+  $('sn').value='';$('ss').value='';$('se').value='';$('sb').value='0';
+};
 function syncPayFields(){
   let hourly=$('payMode').value==='hourly';
   if(hourly){
@@ -569,9 +631,11 @@ function loadSet(){
   $('payMode').value=data.settings.payMode||'salary';
   $('state').value=data.settings.state||'';
   $('employeeKey').value=data.settings.employeeKey||'';
+  for(let k of ['colorFrei','colorUrlaub','colorKrank','colorCustom'])if($(k))$(k).value=normalizeHexColor(data.settings[k],DEF.settings[k]);
   syncPayFields();
 }
 loadSet();
+for(let k of ['colorFrei','colorUrlaub','colorKrank','colorCustom'])if($(k))$(k).oninput=()=>{data.settings[k]=$(k).value;save();renderCal()};
 $('payMode').onchange=syncPayFields;
 $('hourlyRate').oninput=()=>{if($('payMode').value==='hourly')$('base').value=$('hourlyRate').value};
 $('saveEmployee').onclick=()=>{data.settings.employeeKey=$('employeeKey').value.trim();save();alert('Mitarbeiter-Filter gespeichert.')};
@@ -580,6 +644,7 @@ $('saveSet').onclick=()=>{
   data.settings.payMode=$('payMode').value;
   data.settings.state=$('state').value;
   data.settings.base=data.settings.payMode==='hourly'?$('hourlyRate').value:$('base').value;
+  for(let k of ['colorFrei','colorUrlaub','colorKrank','colorCustom'])if($(k))data.settings[k]=$(k).value;
   save();loadSet();renderCal();alert('Gespeichert.');
 };
 $('prev').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);renderCal()};$('next').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);renderCal()};const TAB_ORDER=['kal','sch','scan','year','firstaid','set'];
