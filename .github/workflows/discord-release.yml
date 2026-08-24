@@ -22,22 +22,18 @@ jobs:
           import os
           import urllib.request
 
-          with open("README.txt", "r", encoding="utf-8") as f:
-              text = f.read().strip()
+          with open("DISCORD_CHANGELOG.txt", "r", encoding="utf-8") as f:
+              message = f.read().strip()
 
-          header = "🚀 **Schichtiva – Neues Update veröffentlicht!**\n\n"
-          footer = "\n\n💙 Schichtiva wird kontinuierlich weiterentwickelt."
-
-          message = header + text + footer
-
-          # Discord erlaubt pro Nachricht maximal 2000 Zeichen.
           chunks = []
+
           while message:
               if len(message) <= 1900:
                   chunks.append(message)
                   break
 
               cut = message.rfind("\n", 0, 1900)
+
               if cut <= 0:
                   cut = 1900
 
