@@ -1,0 +1,62 @@
+name: Schichtiva Release zu Discord
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  discord:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository laden
+        uses: actions/checkout@v4
+
+      - name: Changelog an Discord senden
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          python3 <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          with open("README.txt", "r", encoding="utf-8") as f:
+              text = f.read().strip()
+
+          header = "🚀 **Schichtiva – Neues Update veröffentlicht!**\n\n"
+          footer = "\n\n💙 Schichtiva wird kontinuierlich weiterentwickelt."
+
+          message = header + text + footer
+
+          # Discord erlaubt pro Nachricht maximal 2000 Zeichen.
+          chunks = []
+          while message:
+              if len(message) <= 1900:
+                  chunks.append(message)
+                  break
+
+              cut = message.rfind("\n", 0, 1900)
+              if cut <= 0:
+                  cut = 1900
+
+              chunks.append(message[:cut])
+              message = message[cut:].lstrip()
+
+          webhook = os.environ["DISCORD_WEBHOOK"]
+
+          for chunk in chunks:
+              data = json.dumps({
+                  "content": chunk
+              }).encode("utf-8")
+
+              request = urllib.request.Request(
+                  webhook,
+                  data=data,
+                  headers={"Content-Type": "application/json"},
+                  method="POST"
+              )
+
+              with urllib.request.urlopen(request) as response:
+                  response.read()
+          PY
